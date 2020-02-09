@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581259842166</updated>
-      <workItem from="1581259844360" duration="3243000" />
+      <workItem from="1581259844360" duration="4714000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1581261490834</created>
@@ -90,7 +92,35 @@
       <option name="project" value="LOCAL" />
       <updated>1581265477442</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update angular">
+      <created>1581266125695</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1581266125695</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update angular">
+      <created>1581266166064</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1581266166064</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update angular">
+      <created>1581266290189</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1581266290190</updated>
+    </task>
+    <task id="LOCAL-00006" summary="update angular">
+      <created>1581266348269</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1581266348269</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,7 +130,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="html/css files added" />
-    <option name="LAST_COMMIT_MESSAGE" value="html/css files added" />
+    <MESSAGE value="update angular" />
+    <option name="LAST_COMMIT_MESSAGE" value="update angular" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-1904" y="211" key="#Project_Structure" timestamp="1581260812050">
@@ -111,10 +142,10 @@
       <screen x="-3008" y="-300" width="3008" height="1692" />
     </state>
     <state x="-1890" y="242" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581259907922" />
-    <state x="936" y="448" key="CommitChangelistDialog2" timestamp="1581266289966">
+    <state x="936" y="448" key="CommitChangelistDialog2" timestamp="1581266348068">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
-    <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266289966" />
+    <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266348068" />
     <state width="2966" height="374" key="GridCell.Tab.0.bottom" timestamp="1581261245551">
       <screen x="-3008" y="-300" width="3008" height="1692" />
     </state>
@@ -147,17 +178,22 @@
       <screen x="-3008" y="-300" width="3008" height="1692" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.1.right/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245553" />
-    <state x="992" y="427" key="SettingsEditor" timestamp="1581261415372">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="412" y="121" key="SettingsEditor" timestamp="1581269707456">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="412" y="121" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1581269707456" />
     <state x="992" y="427" key="SettingsEditor/0.0.3008.1692@0.0.3008.1692" timestamp="1581261415372" />
-    <state x="1104" y="586" key="Vcs.Push.Dialog.v2" timestamp="1581266168897">
+    <state x="1104" y="586" key="Vcs.Push.Dialog.v2" timestamp="1581266350028">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
-    <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266168897" />
+    <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266350028" />
     <state x="1376" y="781" width="350" height="300" key="org.angular.cli.generate" timestamp="1581264424005">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="1376" y="781" width="350" height="300" key="org.angular.cli.generate/0.0.3008.1692@0.0.3008.1692" timestamp="1581264424005" />
+    <state x="1169" y="394" width="670" height="676" key="search.everywhere.popup" timestamp="1581266416049">
+      <screen x="0" y="0" width="3008" height="1692" />
+    </state>
+    <state x="1169" y="394" width="670" height="676" key="search.everywhere.popup/0.0.3008.1692@0.0.3008.1692" timestamp="1581266416049" />
   </component>
 </project>
