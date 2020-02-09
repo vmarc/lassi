@@ -6,20 +6,8 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-time',
-  template: `
-    <div class="title">Time</div>
-    <div class="time">
-      {{time}}
-    </div>
-  `,
-  styles: [`
-    .time {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 3em;
-    }
-  `]
+  templateUrl: './time.component.html',
+  styles: [ './time.component.css']
 })
 export class TimeComponent implements OnInit, OnDestroy {
 

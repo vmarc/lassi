@@ -1,0 +1,14 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-row {
+  padding-bottom: 1em;
+}
+
+.record button {
+  margin-top: 2em;
+  font-size: 1.2em;
+}

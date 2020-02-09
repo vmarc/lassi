@@ -6,37 +6,8 @@ import {Scene} from '../scene/scene';
 
 @Component({
   selector: 'app-monitor',
-  template: `
-    <div class="title">
-      Monitor
-    </div>
-    <div class="dmx-levels">
-      <div *ngFor="let dmxValue of scene.dmxValues" class="dmx-level">
-        {{dmxValue}}
-      </div>
-    </div>
-  `,
-  styles: [`
-
-    .dmx-levels {
-      display: flex;
-      flex-wrap: wrap;
-      margin-left: 1em;
-      margin-right: 1em;
-      border-top: 1px solid lightgray;
-      border-left: 1px solid lightgray;
-    }
-
-    .dmx-level {
-      display: inline-block;
-      width: 2.2em;
-      height: 1.8em;
-      line-height: 1.8em;
-      border-right: 1px solid lightgray;
-      border-bottom: 1px solid lightgray;
-      text-align: center;
-    }
-  `]
+  templateUrl: './monitor.component.html',
+  styleUrls: ['./monitor.component.css']
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
