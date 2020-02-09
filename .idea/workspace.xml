@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Scenes.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581259842166</updated>
-      <workItem from="1581259844360" duration="4714000" />
+      <workItem from="1581259844360" duration="4893000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1581261490834</created>
@@ -120,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581266348269</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="update angular">
+      <created>1581275484626</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1581275484626</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,9 +148,10 @@
       <screen x="-3008" y="-300" width="3008" height="1692" />
     </state>
     <state x="-1890" y="242" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581259907922" />
-    <state x="936" y="448" key="CommitChangelistDialog2" timestamp="1581266348068">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="523" y="255" key="CommitChangelistDialog2" timestamp="1581275484511">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="523" y="255" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1581275484511" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266348068" />
     <state width="2966" height="374" key="GridCell.Tab.0.bottom" timestamp="1581261245551">
       <screen x="-3008" y="-300" width="3008" height="1692" />
@@ -178,14 +185,15 @@
       <screen x="-3008" y="-300" width="3008" height="1692" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.1.right/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245553" />
-    <state x="412" y="121" key="SettingsEditor" timestamp="1581269707456">
+    <state x="412" y="121" key="SettingsEditor" timestamp="1581276635635">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="412" y="121" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1581269707456" />
+    <state x="412" y="121" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1581276635635" />
     <state x="992" y="427" key="SettingsEditor/0.0.3008.1692@0.0.3008.1692" timestamp="1581261415372" />
-    <state x="1104" y="586" key="Vcs.Push.Dialog.v2" timestamp="1581266350028">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="617" y="364" key="Vcs.Push.Dialog.v2" timestamp="1581275486187">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1581275486187" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266350028" />
     <state x="1376" y="781" width="350" height="300" key="org.angular.cli.generate" timestamp="1581264424005">
       <screen x="0" y="0" width="3008" height="1692" />
