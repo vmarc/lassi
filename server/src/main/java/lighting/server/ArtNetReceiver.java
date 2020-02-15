@@ -28,6 +28,8 @@ public class ArtNetReceiver {
                     @Override
                     public void artNetPacketReceived(ArtNetPacket packet) {
                         receivedPackets.add(packet);
+
+
                     }
                 }
         );

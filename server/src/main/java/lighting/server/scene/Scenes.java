@@ -11,7 +11,7 @@ public class Scenes {
 		for (int i = 0; i < Scene.SCENE_COUNT; i++) {
 			int[] dmxValues = new int[Scene.SCENE_DMX_VALUES];
 			String name = String.format("Scene %d", i + 1);
-			scenes.add(new Scene(i, name, dmxValues));
+			scenes.add(new Scene(i, dmxValues, ));
 		}
 	}
 

@@ -1,27 +1,26 @@
 package lighting.server.scene;
 
+import java.sql.Time;
+
 public class Scene {
 
 	public static final int SCENE_COUNT = 9;
 	public static final int SCENE_DMX_VALUES = 512;
 
 	private final int id;
-	private final String name;
 	private final int[] dmxValues;
+	private final Time time;
 
-	public Scene(int id, String name, int[] dmxValues) {
+	public Scene(int id, int[] dmxValues, Time time) {
 		this.id = id;
-		this.name = name;
 		this.dmxValues = dmxValues;
+		this.time = time;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
 
 	public int[] getDmxValues() {
 		return dmxValues;
