@@ -1,9 +1,15 @@
 package lighting.server.scene;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 @Component
 public class SceneServiceImpl implements SceneService {
@@ -19,6 +25,9 @@ public class SceneServiceImpl implements SceneService {
 		this.template = template;
 	}
 
+	public SceneServiceImpl() {
+	}
+
 	public Reply recordScene(int sceneId) {
 		logger.info(String.format("record scene %d", sceneId));
 		currentScene = scenes.getScene(sceneId);
@@ -31,6 +40,17 @@ public class SceneServiceImpl implements SceneService {
 		currentScene = scenes.getScene(sceneId);
 		sendSceneStatuses();
 		return new Reply();
+	}
+
+	public void saveSceneToJSON() {
+		int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
+		Scene scene = new Scene(1, "testScene", dmx);
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			objectMapper.writeValue(new File("/Users/matthiassomay/Desktop/scenes/test.json"), scene);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Scene getCurrentScene() {
