@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/server/src/artnet4j-0.6.1/src/artnet4j/artnet4J.iml" filepath="$PROJECT_DIR$/server/src/artnet4j-0.6.1/src/artnet4j/artnet4J.iml" />
+      <module fileurl="file://$PROJECT_DIR$/server/src/artnet4j/artnet4j.iml" filepath="$PROJECT_DIR$/server/src/artnet4j/artnet4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/server/src/main/main.iml" filepath="$PROJECT_DIR$/server/src/main/main.iml" />
     </modules>
   </component>

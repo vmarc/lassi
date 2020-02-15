@@ -4,7 +4,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/server/src/main/pom.xml" />
-        <option value="$PROJECT_DIR$/server/src/artnet4j-0.6.1/pom.xml" />
       </list>
     </option>
   </component>
