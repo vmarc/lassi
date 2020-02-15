@@ -9,12 +9,10 @@ public class Scene {
 
 	private final int id;
 	private final int[] dmxValues;
-	private final Time time;
 
 	public Scene(int id, int[] dmxValues, Time time) {
 		this.id = id;
 		this.dmxValues = dmxValues;
-		this.time = time;
 	}
 
 	public int getId() {
