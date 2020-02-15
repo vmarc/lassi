@@ -1,15 +1,23 @@
 package lighting.server.scene;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Component
 public class SceneServiceImpl implements SceneService {
@@ -44,13 +52,36 @@ public class SceneServiceImpl implements SceneService {
 
 	public void saveSceneToJSON() {
 		int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
-		Scene scene = new Scene(1, "testScene", dmx);
-		ObjectMapper objectMapper = new ObjectMapper();
+		Duration time = Duration.ofSeconds(40);
+		Scene scene = new Scene(2, dmx, time);
+		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 		try {
-			objectMapper.writeValue(new File("/Users/matthiassomay/Desktop/scenes/test.json"), scene);
+			objectMapper.writeValue(new File("/Users/matthiassomay/Desktop/scenes/test2.json"), scene);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public List<Scene> getAllScenesFromDisk() throws IOException {
+		List<String> result;
+		List<Scene> sceneList = new ArrayList<>();
+
+		Stream<Path> walk = Files.walk(Paths.get("/Users/matthiassomay/Desktop/scenes"));
+
+		result = walk.filter(Files::isRegularFile)
+					.map(x -> x.toString()).filter(f -> f.endsWith(".json")).collect(Collectors.toList());
+
+		result.forEach(System.out::println);
+
+		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+
+		for (String j : result) {
+			Scene scene = objectMapper.readValue(new File(j), Scene.class);
+			sceneList.add(scene);
+		}
+
+		return sceneList;
+
 	}
 
 	public Scene getCurrentScene() {
