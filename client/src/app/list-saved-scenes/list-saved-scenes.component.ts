@@ -7,7 +7,7 @@ import { ScenesService } from './scenes.service';
   template: `
 <h1>List of Scenes</h1>
   <div>
-  <mat-table [dataSource]="dataSource">
+  <mat-table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.id}} </mat-cell>
