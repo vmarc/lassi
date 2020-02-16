@@ -39,6 +39,6 @@ public class MonitorService {
 		}
 		int[] dmxValues = new int[Scene.SCENE_DMX_VALUES];
 		Arrays.fill(dmxValues, newDmxValue);
-		//scene = new Scene(-1, "output", dmxValues);
+		scene = new Scene(-1, "output", dmxValues);
 	}
 }

@@ -26,6 +26,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
+import { MatTableModule } from '@angular/material/table';
+import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import {MatSliderModule} from '@angular/material/slider';
     SimulatorComponent,
     SimulatorLedComponent,
     SimulatorControlComponent,
-    AboutComponent
+    AboutComponent,
+    ListSavedScenesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import {MatSliderModule} from '@angular/material/slider';
     MatCheckboxModule,
     MatRadioModule,
     MatSliderModule,
+    MatTableModule,
     ReactiveFormsModule
   ],
   providers: [

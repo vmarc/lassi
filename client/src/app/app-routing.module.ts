@@ -6,6 +6,7 @@ import {MonitorComponent} from './monitor/monitor.component';
 import {SetupComponent} from './setup/setup.component';
 import {SimulatorComponent} from './simulator/simulator.component';
 import {AboutComponent} from './about/about.component';
+import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
 
 export const routes: Routes = [
   {
@@ -29,9 +30,14 @@ export const routes: Routes = [
     component: AboutComponent
   },
   {
+    path: 'scenes',
+    component: ListSavedScenesComponent
+  },
+  {
     path: '',
     component: MenuComponent
   }
+
 ];
 
 @NgModule({

@@ -5,14 +5,20 @@ import java.util.List;
 
 public class Scenes {
 
-	private final List<Scene> scenes = new ArrayList<>();
+	private String name;
+	private List<Scene> scenes = new ArrayList<>();
 
 	public Scenes() {
-		for (int i = 0; i < Scene.SCENE_COUNT; i++) {
+		this.name = "test";
+		/*for (int i = 0; i < Scene.SCENE_COUNT; i++) {
 			int[] dmxValues = new int[Scene.SCENE_DMX_VALUES];
 			String name = String.format("Scene %d", i + 1);
-			scenes.add(new Scene(i, dmxValues, null));
-		}
+			scenes.add(new Scene(i, "test",  dmxValues));
+		}*/
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	public Scene getScene(int sceneId) {
@@ -21,6 +27,10 @@ public class Scenes {
 
 	public List<Scene> getScenes() {
 		return scenes;
+	}
+
+	public void addSceneToScenes(Scene scene) {
+		this.scenes.add(scene);
 	}
 
 }

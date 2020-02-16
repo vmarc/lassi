@@ -50,40 +50,6 @@ public class SceneServiceImpl implements SceneService {
 		return new Reply();
 	}
 
-	public void saveSceneToJSON() {
-		int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
-		Duration time = Duration.ofSeconds(40);
-		Scene scene = new Scene(2, dmx, time);
-		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-		try {
-			objectMapper.writeValue(new File("/Users/matthiassomay/Desktop/scenes/test2.json"), scene);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public List<Scene> getAllScenesFromDisk() throws IOException {
-		List<String> result;
-		List<Scene> sceneList = new ArrayList<>();
-
-		Stream<Path> walk = Files.walk(Paths.get("/Users/matthiassomay/Desktop/scenes"));
-
-		result = walk.filter(Files::isRegularFile)
-					.map(x -> x.toString()).filter(f -> f.endsWith(".json")).collect(Collectors.toList());
-
-		result.forEach(System.out::println);
-
-		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-
-		for (String j : result) {
-			Scene scene = objectMapper.readValue(new File(j), Scene.class);
-			sceneList.add(scene);
-		}
-
-		return sceneList;
-
-	}
-
 	public Scene getCurrentScene() {
 		return currentScene;
 	}
