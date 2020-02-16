@@ -2,53 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_200.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_persistence_jakarta_persistence_api_2_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_transaction_jakarta_transaction_api_1_3_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_10_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_24_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_1_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_2_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_2_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_2_2_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_5_2_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_2_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_5_2_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_2_3_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/list-saved-scenes/list-saved-scenes.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/list-saved-scenes/list-saved-scenes.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/list-saved-scenes/list-saved-scenes.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/list-saved-scenes/scenes.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/app/scene/scenes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/SceneSerialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/ScenesController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/ArtNetReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/ArtNetReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/monitor/MonitorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/monitor/MonitorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/list-saved-scenes/scenes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/list-saved-scenes/scenes.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/environments/environment.prod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/environments/environment.prod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/proxy.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/proxy.conf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Scenes.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/Scenes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/monitor/MonitorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/monitor/MonitorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/Scene.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/Scene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/SceneServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/SceneServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/SceneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/SceneController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/Scenes.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/scene/Scenes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,6 +65,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/app/list-saved-scenes" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -112,7 +80,7 @@
       <recent name="$PROJECT_DIR$/client/src/app/list-saved-scenes" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="lighting.server.scene.Main" />
       <module name="main" />
@@ -153,6 +121,7 @@
       <workItem from="1581337414499" duration="2064000" />
       <workItem from="1581704323830" duration="15771000" />
       <workItem from="1581803520312" duration="11223000" />
+      <workItem from="1581881455828" duration="7851000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1581261490834</created>
@@ -293,52 +262,60 @@
     <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1581874226150" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266348068" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
-    <state width="1638" height="214" key="GridCell.Tab.0.bottom" timestamp="1581874294772">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.0.bottom" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.0.bottom/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245551" />
+    <state width="1493" height="229" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581874294772" />
     <state width="2966" height="374" key="GridCell.Tab.0.bottom/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089551" />
-    <state width="1638" height="214" key="GridCell.Tab.0.center" timestamp="1581874294771">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.0.center" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.0.center/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245550" />
+    <state width="1493" height="229" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581874294771" />
     <state width="2966" height="374" key="GridCell.Tab.0.center/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089549" />
-    <state width="1638" height="214" key="GridCell.Tab.0.left" timestamp="1581874294770">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.0.left" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.0.left/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245549" />
+    <state width="1493" height="229" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1581874294770" />
     <state width="2966" height="374" key="GridCell.Tab.0.left/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089548" />
-    <state width="1638" height="214" key="GridCell.Tab.0.right" timestamp="1581874294771">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.0.right" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.0.right/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245550" />
+    <state width="1493" height="229" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581874294771" />
     <state width="2966" height="374" key="GridCell.Tab.0.right/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089550" />
-    <state width="1638" height="214" key="GridCell.Tab.1.bottom" timestamp="1581871308435">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.1.bottom" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.1.bottom/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245553" />
+    <state width="1493" height="229" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.1.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1581871308435" />
     <state width="2966" height="374" key="GridCell.Tab.1.bottom/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089557" />
-    <state width="1638" height="214" key="GridCell.Tab.1.center" timestamp="1581871308434">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.1.center" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.1.center/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245552" />
+    <state width="1493" height="229" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.1.center/0.0.1680.1050@0.0.1680.1050" timestamp="1581871308434" />
     <state width="2966" height="374" key="GridCell.Tab.1.center/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089553" />
-    <state width="1638" height="214" key="GridCell.Tab.1.left" timestamp="1581871308434">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.1.left" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.1.left/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245551" />
+    <state width="1493" height="229" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.1.left/0.0.1680.1050@0.0.1680.1050" timestamp="1581871308434" />
     <state width="2966" height="374" key="GridCell.Tab.1.left/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089552" />
-    <state width="1638" height="214" key="GridCell.Tab.1.right" timestamp="1581871308435">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state width="1493" height="229" key="GridCell.Tab.1.right" timestamp="1581891443723">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2966" height="374" key="GridCell.Tab.1.right/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1581261245553" />
+    <state width="1493" height="229" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581891443723" />
     <state width="1638" height="214" key="GridCell.Tab.1.right/0.0.1680.1050@0.0.1680.1050" timestamp="1581871308435" />
     <state width="2966" height="374" key="GridCell.Tab.1.right/0.0.3008.1692@0.0.3008.1692" timestamp="1581284089555" />
     <state width="1638" height="243" key="GridCell.Tab.2.bottom" timestamp="1581871162811">
@@ -369,9 +346,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="536" y="240" width="803" height="598" key="NewModule_or_Project.wizard/0.0.1680.1050@0.0.1680.1050" timestamp="1581803449491" />
-    <state x="412" y="121" key="SettingsEditor" timestamp="1581803452035">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="377" y="95" key="SettingsEditor" timestamp="1581881504435">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="377" y="95" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581881504435" />
     <state x="412" y="121" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1581803452035" />
     <state x="992" y="427" key="SettingsEditor/0.0.3008.1692@0.0.3008.1692" timestamp="1581261415372" />
     <state width="500" height="447" key="SwitcherDM" timestamp="1581865038743">
@@ -383,6 +361,10 @@
     </state>
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1581804101959" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1581266350028" />
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1581881456033">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1581881456033" />
     <state x="500" y="323" key="git4idea.merge.GitPullDialog" timestamp="1581874235339">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>

@@ -11,7 +11,7 @@ export class ScenesService {
   private scenesUrl: string;
 
   constructor(private http: HttpClient) {
-    this.scenesUrl = 'http://localhost:8080/api/sceneslist';
+    //this.scenesUrl = 'http://localhost:8080/api/sceneslist';
   }
 
   public findAll(): Observable<Scenes[]> {

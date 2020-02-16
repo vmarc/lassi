@@ -10,11 +10,11 @@ public class Scenes {
 
 	public Scenes() {
 		this.name = "test";
-		/*for (int i = 0; i < Scene.SCENE_COUNT; i++) {
+		for (int i = 0; i < Scene.SCENE_COUNT; i++) {
 			int[] dmxValues = new int[Scene.SCENE_DMX_VALUES];
 			String name = String.format("Scene %d", i + 1);
-			scenes.add(new Scene(i, "test",  dmxValues));
-		}*/
+			scenes.add(new Scene(i, name,  dmxValues));
+		}
 	}
 
 	public String getName() {

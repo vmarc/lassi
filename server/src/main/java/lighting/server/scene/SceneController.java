@@ -24,6 +24,7 @@ public class SceneController {
 
 	@GetMapping(value = "/api/goto/{sceneId}")
 	public Reply gotoScene(@PathVariable Integer sceneId) {
+		System.out.println("gotoRoute");
 		return sceneService.gotoScene(sceneId);
 	}
 
@@ -34,6 +35,7 @@ public class SceneController {
 
 	@GetMapping(value = "/api/scenes")
 	public Scenes scenes() {
+		System.out.println("scenes");
 		return sceneService.getScenes();
 	}
 
