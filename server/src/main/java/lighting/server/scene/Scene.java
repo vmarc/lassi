@@ -9,24 +9,21 @@ public class Scene {
 
 	private int id;
 	private int[] dmxValues;
-	private Duration time;
+	private String name;
 
 	public Scene() {
 	}
 
-	public Scene(int id, int[] dmxValues, Duration time) {
+	public Scene(int id, String name, int[] dmxValues) {
 		this.id = id;
 		this.dmxValues = dmxValues;
-		this.time = time;
+		this.name = name;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public Duration getTime() {
-		return time;
-	}
 
 	public int[] getDmxValues() {
 		return dmxValues;

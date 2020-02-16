@@ -53,7 +53,7 @@ public class SceneServiceImpl implements SceneService {
 	public void saveSceneToJSON() {
 		int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
 		Duration time = Duration.ofSeconds(40);
-		Scene scene = new Scene(2, dmx, time);
+		Scene scene = new Scene(2, "test",dmx);
 		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 		try {
 			objectMapper.writeValue(new File("/Users/matthiassomay/Desktop/scenes/test2.json"), scene);
@@ -65,6 +65,7 @@ public class SceneServiceImpl implements SceneService {
 	public List<Scene> getAllScenesFromDisk() throws IOException {
 		List<String> result;
 		List<Scene> sceneList = new ArrayList<>();
+
 
 		Stream<Path> walk = Files.walk(Paths.get("/Users/matthiassomay/Desktop/scenes"));
 
