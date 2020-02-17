@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordService } from './record.service';
 
 @Component({
   selector: 'app-record',
   template: `
 
-  <button mat-flat-button color="warn">Record</button>
+  <button mat-flat-button color="warn" (click)="record()">Record</button>
   <button mat-flat-button color="primary">Stop</button>
 
   `,
@@ -12,9 +13,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recordService: RecordService) { }
 
   ngOnInit(): void {
+  }
+
+  record() {
+    this.recordService.record();
   }
 
 }

@@ -29,7 +29,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
-import { RecordComponent } from './record.component';
+import { RecordComponent } from './record/record.component';
 
 @NgModule({
   declarations: [
