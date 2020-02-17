@@ -30,7 +30,7 @@ export const routes: Routes = [
     component: AboutComponent
   },
   {
-    path: 'scenesList',
+    path: 'sceneslist',
     component: ListSavedScenesComponent
   },
   {

@@ -28,6 +28,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
+import { ScenesService } from './list-saved-scenes/scenes.service';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.
   ],
   providers: [
     SceneService,
+    ScenesService,
     SimulatorService,
     {
       provide: InjectableRxStompConfig,

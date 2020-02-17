@@ -27,7 +27,7 @@ import { ScenesService } from './scenes.service';
 })
 export class ListSavedScenesComponent implements OnInit {
 
-  dataSource: Scenes[];
+  dataSource: Array<Scenes> = [];
   displayedColumns = ['id', 'name'];
 
   constructor(private scenesService: ScenesService) { }
