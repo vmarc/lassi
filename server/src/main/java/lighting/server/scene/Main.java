@@ -21,7 +21,7 @@ public class Main {
             Thread.sleep(5000);
             System.out.println("send" + i);
         }
-
+/*
         System.out.println("test");
         SceneSerialization serialization = new SceneSerialization();
         try {
@@ -29,7 +29,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
 
     }
 

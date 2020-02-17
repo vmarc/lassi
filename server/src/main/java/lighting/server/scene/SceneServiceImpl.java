@@ -9,10 +9,8 @@ import org.springframework.stereotype.Component;
 public class SceneServiceImpl implements SceneService {
 
 	private final Logger logger = LoggerFactory.getLogger(SceneServiceImpl.class);
-
 	private final Scenes scenes = new Scenes();
 	private Scene currentScene = null;
-
 	private SimpMessagingTemplate template;
 
 	public SceneServiceImpl(SimpMessagingTemplate template) {

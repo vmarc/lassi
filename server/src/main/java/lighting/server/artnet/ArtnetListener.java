@@ -6,12 +6,12 @@ import ch.bildspur.artnet.packets.ArtDmxPacket;
 import ch.bildspur.artnet.packets.ArtNetPacket;
 import lighting.server.scene.Scene;
 
-public class ArtnetReceiver {
+public class ArtnetListener {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
     private Scene scene = new Scene();
 
-    public ArtnetReceiver() {
+    public ArtnetListener() {
         listenData();
     }
 
@@ -29,6 +29,7 @@ public class ArtnetReceiver {
                 });
         artNetClient.start();
     }
+
 
     public int[] byteArrayToIntArray(byte[] byteArray){
         int[] intArray = new int[512];

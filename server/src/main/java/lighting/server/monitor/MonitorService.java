@@ -1,6 +1,6 @@
 package lighting.server.monitor;
 
-import lighting.server.artnet.ArtnetReceiver;
+import lighting.server.artnet.ArtnetListener;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -8,18 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class MonitorService {
 
-	private final ArtnetReceiver artnetReceiver;
+	private final ArtnetListener artnetListener;
 	private final SimpMessagingTemplate messagingTemplate;
 
 
 	public MonitorService(SimpMessagingTemplate messagingTemplate) {
 		this.messagingTemplate = messagingTemplate;
-		this.artnetReceiver = new ArtnetReceiver();
+		this.artnetListener = new ArtnetListener();
 	}
 
 	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
-		this.messagingTemplate.convertAndSend("/topic/output", artnetReceiver.getScene());
+		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getScene());
 	}
 
 }
