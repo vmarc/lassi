@@ -29,6 +29,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
+import { RecordComponent } from './record.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ScenesService } from './list-saved-scenes/scenes.service';
     SimulatorLedComponent,
     SimulatorControlComponent,
     AboutComponent,
-    ListSavedScenesComponent
+    ListSavedScenesComponent,
+    RecordComponent
   ],
   imports: [
     BrowserModule,

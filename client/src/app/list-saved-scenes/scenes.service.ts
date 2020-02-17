@@ -12,19 +12,19 @@ export class ScenesService {
   private scenesUrl: string;
 
   constructor(private http: HttpClient) {
+    this.scenesUrl = "http://localhost:8080/api/sceneslist";
   }
 
-  public findAll(): Observable<Array<Scenes>> {
+  /*public findAll(): Observable<Array<Scenes>> {
     return this.http.get('/api/sceneslist').pipe(
       map(response => {
-        // @ts-ignore
+
         return response.sceneslist.map(scenes => Sceneslist.fromJSON(scenes));
       })
     );
-  }
+  }*/
 
-  /*
   public findAll(): Observable<Scenes[]> {
     return this.http.get<Scenes[]>(this.scenesUrl);
-  }*/
+  }
 }
