@@ -23,10 +23,7 @@ public class SceneController {
 	}
 
 	@GetMapping(value = "/api/goto/{sceneId}")
-	public Reply gotoScene(@PathVariable Integer sceneId) {
-		System.out.println("gotoRoute");
-		return sceneService.gotoScene(sceneId);
-	}
+	public Reply gotoScene(@PathVariable Integer sceneId) { return sceneService.gotoScene(sceneId);}
 
 	@GetMapping(value = "/api/scene/{sceneId}")
 	public Scene scene(@PathVariable Integer sceneId) {
@@ -34,10 +31,7 @@ public class SceneController {
 	}
 
 	@GetMapping(value = "/api/scenes")
-	public Scenes scenes() {
-		System.out.println("scenes");
-		return sceneService.getScenes();
-	}
+	public Scenes scenes() { return sceneService.getScenes(); }
 
 	@PostMapping(value = "/api/setup")
 	public void setup(@RequestBody Setup setup) {

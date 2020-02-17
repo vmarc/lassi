@@ -23,17 +23,12 @@ import java.util.stream.Stream;
 public class SceneServiceImpl implements SceneService {
 
 	private final Logger logger = LoggerFactory.getLogger(SceneServiceImpl.class);
-
 	private final Scenes scenes = new Scenes();
 	private Scene currentScene = null;
-
 	private SimpMessagingTemplate template;
 
 	public SceneServiceImpl(SimpMessagingTemplate template) {
 		this.template = template;
-	}
-
-	public SceneServiceImpl() {
 	}
 
 	public Reply recordScene(int sceneId) {

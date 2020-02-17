@@ -41,16 +41,15 @@ public class SceneSerialization {
         }
     }
 
-    public void saveScenesToJSON() throws IOException {
-        int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
+    public void saveScenesToJSON(Scenes scenes) throws IOException {
+        /*int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
         Scenes scenes = new Scenes();
         Scene scene = new Scene(1, "test3", dmx);
         Scene scene2 = new Scene(2, "test4", dmx);
         scenes.addSceneToScenes(scene);
-        scenes.addSceneToScenes(scene2);
+        scenes.addSceneToScenes(scene2);*/
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         objectMapper.writeValue(new File((scenesDir) + "/scene_" + uuid.randomUUID() + ".json" ), scenes);
-
     }
 
     public List<Scenes> getAllScenesFromDisk() throws IOException {
