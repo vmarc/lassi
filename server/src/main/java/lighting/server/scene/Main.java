@@ -4,21 +4,22 @@ import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.IO.SceneSerialization;
 
 import java.io.IOException;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        byte[] dmxData = new byte[512];
+
         ArtNetClient client = new ArtNetClient();
         client.start();
-        client.broadcastDmx(0,0, dmxData);
+        Random random = new Random();
+        byte[] dmx = new byte[512];
+
 
         for (int i = 0; i < 100; i++) {
-            dmxData[0] = (byte) i;
-            dmxData[1] = (byte) i;
-            dmxData[2] = (byte) i;
-            dmxData[3] = (byte) i;
-            client.broadcastDmx(0,0, dmxData);
-            Thread.sleep(5000);
+            random.nextBytes(dmx);
+            client.broadcastDmx(0,0, dmx);
+            Thread.sleep(2000);
             System.out.println("send" + i);
         }
 /*

@@ -26,6 +26,10 @@ public class SceneX {
         this.frames = frames;
     }
 
+    public SceneX() {
+
+    }
+
     public String getName() {
         return name;
     }

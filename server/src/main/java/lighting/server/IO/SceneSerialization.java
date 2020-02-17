@@ -1,9 +1,8 @@
 package lighting.server.IO;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lighting.server.scene.Scene;
+import lighting.server.sceneX.SceneX;
 import lighting.server.scene.Scenes;
 
 import java.io.File;
@@ -11,13 +10,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class SceneSerialization {
@@ -41,7 +37,7 @@ public class SceneSerialization {
         }
     }
 
-    public void saveScenesToJSON(Scenes scenes) throws IOException {
+    public void saveScenesToJSON(SceneX sceneX) throws IOException {
         /*int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
         Scenes scenes = new Scenes();
         Scene scene = new Scene(1, "test3", dmx);
@@ -49,7 +45,7 @@ public class SceneSerialization {
         scenes.addSceneToScenes(scene);
         scenes.addSceneToScenes(scene2);*/
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        objectMapper.writeValue(new File((scenesDir) + "/scene_" + uuid.randomUUID() + ".json" ), scenes);
+        objectMapper.writeValue(new File((scenesDir) + "/scene_" + uuid.randomUUID() + ".json" ), sceneX);
     }
 
     public List<Scenes> getAllScenesFromDisk() throws IOException {
