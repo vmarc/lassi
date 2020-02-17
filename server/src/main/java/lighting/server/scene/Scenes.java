@@ -17,6 +17,10 @@ public class Scenes {
 		}
 	}
 
+	public Scenes(String name) {
+		this.name = name;
+	}
+
 	public String getName() {
 		return name;
 	}

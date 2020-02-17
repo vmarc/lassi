@@ -1,6 +1,18 @@
 import { Scene } from './scene';
 
 export class Scenes {
-  name: string;
-  scenes: Array<Scene>;
+
+  constructor(name: string, scenes: Array<Scene>) {
+  }
+
+
+  public static fromJSON(jsonObject): Scenes {
+    if (!jsonObject) {
+      return undefined;
+    }
+    return new Scenes(
+      jsonObject.name,
+      jsonObject.scenes
+    );
+  }
 }

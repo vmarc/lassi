@@ -28,6 +28,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
+import { ScenesService } from './list-saved-scenes/scenes.service';
+import { RecordComponent } from './record/record.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.
     SimulatorLedComponent,
     SimulatorControlComponent,
     AboutComponent,
-    ListSavedScenesComponent
+    ListSavedScenesComponent,
+    RecordComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +63,7 @@ import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.
   ],
   providers: [
     SceneService,
+    ScenesService,
     SimulatorService,
     {
       provide: InjectableRxStompConfig,
