@@ -1,7 +1,8 @@
 package lighting.server.sceneX;
 
 import lighting.server.scene.Reply;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -13,8 +14,10 @@ public class SceneXController {
         this.sceneService = sceneService;
     }
 
-    @GetMapping(value = "/api/recordscenebis")
+    @PostMapping(value = "/api/recordscenebis")
+    //@CrossOrigin(origins = "http://localhost:4200")
     public Reply recordScene() {
+        System.out.println("recording...");
         return sceneService.recordScene();
     }
 

@@ -30,6 +30,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
 import { RecordComponent } from './record/record.component';
+import { RecordService } from './record/record.service';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { RecordComponent } from './record/record.component';
   providers: [
     SceneService,
     ScenesService,
+    RecordService,
     SimulatorService,
     {
       provide: InjectableRxStompConfig,
