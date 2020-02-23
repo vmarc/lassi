@@ -26,6 +26,14 @@ public class SceneX {
         this.frames = frames;
     }
 
+    public SceneX(String name, Long duration, int buttonId, LocalDateTime createdOn, List<Frame> frames) {
+        this.name = name;
+        this.duration = duration;
+        this.buttonId = buttonId;
+        this.createdOn = createdOn;
+        this.frames = frames;
+    }
+
     public SceneX() {
 
     }

@@ -2,7 +2,7 @@ import { Scene } from './scene';
 
 export class Scenes {
 
-  constructor(name: string, scenes: Array<Scene>) {
+  constructor(id: number, name: string, duration: number, buttonID: number, createdOn: Date, scenes: Array<Scene>) {
   }
 
 
@@ -11,7 +11,11 @@ export class Scenes {
       return undefined;
     }
     return new Scenes(
+      jsonObject.id,
       jsonObject.name,
+      jsonObject.duration,
+      jsonObject.buttonID,
+      jsonObject.createdOn,
       jsonObject.scenes
     );
   }
