@@ -26,8 +26,8 @@ import { ScenesService } from './scenes.service';
     </ng-container>
     <ng-container matColumnDef="createdOn">
       <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>
-      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn}} </mat-cell>
-    </ng-container>
+      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>
+    </ng-container>Ò
 
     <ng-container matColumnDef="actions">
   <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
