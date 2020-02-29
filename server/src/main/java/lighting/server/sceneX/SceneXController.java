@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class SceneXController {
@@ -30,8 +31,15 @@ public class SceneXController {
     }
 
 
-    @DeleteMapping(value = "api/deletescene/{scene_id}")
-    public void deleteScene() {
+    /*@DeleteMapping(value = "/api/deletescene/{scene_id}")
+    public void deleteScene(@PathVariable UUID scene_id) {
+        System.out.println("deleting...");
+
+    }*/
+
+    @PostMapping(value = "/api/deletescene/{scene_id}")
+    public void deleteScene(@PathVariable UUID scene_id) {
+        System.out.println("deleting...");
 
     }
 

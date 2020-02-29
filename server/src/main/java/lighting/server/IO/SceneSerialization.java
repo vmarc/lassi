@@ -11,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -19,7 +18,6 @@ public class SceneSerialization {
 
     private Path parentDir = Paths.get(System.getProperty("user.dir")).getParent();
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
-    private UUID uuid;
 
     public SceneSerialization() {
         createScenesDirectory();

@@ -1,8 +1,9 @@
 import { Scene } from './scene';
+import { v4 as uuidv4 } from 'uuid';
 
 export class Scenes {
 
-  constructor(id: number, name: string, duration: number, buttonID: number, createdOn: Date, scenes: Array<Scene>) {
+  constructor(id: uuidv4, name: string, duration: number, buttonId: number, createdOn: Date, scenes: Array<Scene>) {
   }
 
 
@@ -14,7 +15,7 @@ export class Scenes {
       jsonObject.id,
       jsonObject.name,
       jsonObject.duration,
-      jsonObject.buttonID,
+      jsonObject.buttonId,
       jsonObject.createdOn,
       jsonObject.scenes
     );

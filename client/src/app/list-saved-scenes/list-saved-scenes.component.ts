@@ -29,7 +29,7 @@ import { ScenesService } from './scenes.service';
       <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>
     </ng-container>Ò
 
-    <ng-container matColumnDef="actions">
+<ng-container matColumnDef="actions">
   <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
   <mat-cell *matCellDef="let row" >
        <button mat-icon-button (click)="play()" >
@@ -40,7 +40,7 @@ import { ScenesService } from './scenes.service';
        <mat-icon>edit</mat-icon>
        </button>
 
-       <button mat-icon-button (click)="delete()">
+       <button mat-icon-button (click)="delete(row)">
        <mat-icon>delete</mat-icon>
        </button>
   </mat-cell>
@@ -56,6 +56,7 @@ import { ScenesService } from './scenes.service';
 })
 export class ListSavedScenesComponent implements OnInit {
 
+  rowID;
   dataSource: Array<Scenes> = [];
   displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
 
@@ -71,13 +72,17 @@ export class ListSavedScenesComponent implements OnInit {
 
   }
 
-  delete() {
-
+  delete(row) {
+    this.scenesService.delete(row['id']);
+    this.rowID = row['id'];
+    console.log(this.rowID);
 
   }
 
   edit() {
 
   }
+
+
 
 }
