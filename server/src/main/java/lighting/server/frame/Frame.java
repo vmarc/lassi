@@ -17,6 +17,9 @@ public class Frame {
         this.startTime = startTime;
     }
 
+    public Frame() {
+    }
+
     public int[] getDmxValues() {
         return dmxValues;
     }

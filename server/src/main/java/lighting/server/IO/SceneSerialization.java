@@ -3,7 +3,6 @@ package lighting.server.IO;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.sceneX.SceneX;
-import lighting.server.scene.Scenes;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +11,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,7 +18,6 @@ public class SceneSerialization {
 
     private Path parentDir = Paths.get(System.getProperty("user.dir")).getParent();
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
-    private UUID uuid;
 
     public SceneSerialization() {
         createScenesDirectory();
@@ -38,19 +35,13 @@ public class SceneSerialization {
     }
 
     public void saveScenesToJSON(SceneX sceneX) throws IOException {
-        /*int[] dmx = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
-        Scenes scenes = new Scenes();
-        Scene scene = new Scene(1, "test3", dmx);
-        Scene scene2 = new Scene(2, "test4", dmx);
-        scenes.addSceneToScenes(scene);
-        scenes.addSceneToScenes(scene2);*/
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        objectMapper.writeValue(new File((scenesDir) + "/scene_" + uuid.randomUUID() + ".json" ), sceneX);
+        objectMapper.writeValue(new File((scenesDir) + "/scene_" + sceneX.getId() + ".json" ), sceneX);
     }
 
-    public List<Scenes> getAllScenesFromDisk() throws IOException {
+    public List<SceneX> getAllScenesFromDisk() throws IOException {
         List<String> result;
-        List<Scenes> scenesList = new ArrayList<>();
+        List<SceneX> scenesList = new ArrayList<>();
 
         Stream<Path> walk = Files.walk(Paths.get(String.valueOf(scenesDir)));
 
@@ -62,8 +53,8 @@ public class SceneSerialization {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
         for (String j : result) {
-            Scenes scenes = objectMapper.readValue(new File(j), Scenes.class);
-            scenesList.add(scenes);
+            SceneX scene = objectMapper.readValue(new File(j), SceneX.class);
+            scenesList.add(scene);
         }
 
         return scenesList;

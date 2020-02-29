@@ -27,9 +27,11 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon'
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
 import { RecordComponent } from './record/record.component';
+import { RecordService } from './record/record.service';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { RecordComponent } from './record/record.component';
     HttpClientModule,
     MatButtonModule,
     MatToolbarModule,
+    MatIconModule,
     AppRoutingModule,
     MatSlideToggleModule,
     MatFormFieldModule,
@@ -64,6 +67,7 @@ import { RecordComponent } from './record/record.component';
   providers: [
     SceneService,
     ScenesService,
+    RecordService,
     SimulatorService,
     {
       provide: InjectableRxStompConfig,

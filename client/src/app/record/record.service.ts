@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Reply } from '../scene/reply';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +14,9 @@ export class RecordService {
     this.url = "http://localhost:8080/api/recordscenebis";
   }
 
-  record() {
+  record() : void {
     console.log("recording...");
-    return this.http.post('/api/recordscenebis', null);
+    this.http.post('/api/recordscenebis', "test").subscribe();
 
   }
 

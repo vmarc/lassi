@@ -16,10 +16,33 @@ import { ScenesService } from './scenes.service';
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.name}} </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="actions">
+    <ng-container matColumnDef="duration">
+      <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
+      <mat-cell *matCellDef="let scenes"> {{scenes.duration}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="buttonId">
+      <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>
+      <mat-cell *matCellDef="let scenes"> {{scenes.buttonID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="createdOn">
+      <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>
+      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>
+    </ng-container>Ò
+
+<ng-container matColumnDef="actions">
   <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
   <mat-cell *matCellDef="let row" >
-       <button mat-raised-button >Play</button>
+       <button mat-icon-button (click)="play()" >
+       <mat-icon>play_arrow</mat-icon>
+       </button>
+
+       <button mat-icon-button (click)="edit()" >
+       <mat-icon>edit</mat-icon>
+       </button>
+
+       <button mat-icon-button (click)="delete(row)">
+       <mat-icon>delete</mat-icon>
+       </button>
   </mat-cell>
 </ng-container>
 
@@ -33,8 +56,9 @@ import { ScenesService } from './scenes.service';
 })
 export class ListSavedScenesComponent implements OnInit {
 
+  rowID;
   dataSource: Array<Scenes> = [];
-  displayedColumns = ['id', 'name', 'actions'];
+  displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
 
   constructor(private scenesService: ScenesService) { }
 
@@ -43,5 +67,22 @@ export class ListSavedScenesComponent implements OnInit {
       this.dataSource = data;
     })
   }
+
+  play() {
+
+  }
+
+  delete(row) {
+    this.scenesService.delete(row['id']);
+    this.rowID = row['id'];
+    console.log(this.rowID);
+
+  }
+
+  edit() {
+
+  }
+
+
 
 }
