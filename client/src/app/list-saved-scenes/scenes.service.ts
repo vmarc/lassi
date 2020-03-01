@@ -31,10 +31,9 @@ export class ScenesService {
     return this.http.get<Scenes[]>(this.scenesUrl);
   }
 
-  public delete(scene_id: uuidv4) {
+  public delete(scene_id: string): void {
     console.log("deleting...");
-    return this.http.post(this.deleteUrl + scene_id, null)
+    this.http.get(this.deleteUrl + scene_id).subscribe();
   }
-
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Scenes } from '../scene/scenes';
 import { ScenesService } from './scenes.service';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-saved-scenes',
@@ -60,7 +61,7 @@ export class ListSavedScenesComponent implements OnInit {
   dataSource: Array<Scenes> = [];
   displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
 
-  constructor(private scenesService: ScenesService) { }
+  constructor(private scenesService: ScenesService, private _router: Router) {}
 
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
@@ -74,13 +75,18 @@ export class ListSavedScenesComponent implements OnInit {
 
   delete(row) {
     this.scenesService.delete(row['id']);
-    this.rowID = row['id'];
-    console.log(this.rowID);
+    this.reloadComponent();
 
   }
 
   edit() {
 
+  }
+
+  reloadComponent() {
+    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this._router.onSameUrlNavigation = 'reload';
+    this._router.navigate(['/sceneslist']);
   }
 
 

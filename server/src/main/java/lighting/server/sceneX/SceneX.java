@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class SceneX {
 
-    private UUID id = UUID.randomUUID();
+    private String id = UUID.randomUUID().toString();
     private String name;
     private Long duration;
     private int buttonId;
@@ -78,5 +78,5 @@ public class SceneX {
         this.frames = frames;
     }
 
-    public UUID getId() { return id; }
+    public String getId() { return id; }
 }
