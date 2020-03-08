@@ -48,7 +48,7 @@ public class SceneSerialization {
         result = walk.filter(Files::isRegularFile)
                 .map(x -> x.toString()).filter(f -> f.endsWith(".json")).collect(Collectors.toList());
 
-        result.forEach(System.out::println);
+        //result.forEach(System.out::println);
 
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -59,6 +59,13 @@ public class SceneSerialization {
 
         return scenesList;
 
+    }
+
+    public void deleteSceneFromDisk(String scene_id) throws IOException {
+
+        Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
+        Files.deleteIfExists(filePath);
+        System.out.println("delete successful");
     }
 
 }

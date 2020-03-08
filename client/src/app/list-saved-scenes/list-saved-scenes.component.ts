@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Scenes } from '../scene/scenes';
 import { ScenesService } from './scenes.service';
+import { NavigationEnd, Router } from '@angular/router';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-list-saved-scenes',
@@ -40,7 +43,7 @@ import { ScenesService } from './scenes.service';
        <mat-icon>edit</mat-icon>
        </button>
 
-       <button mat-icon-button (click)="delete(row)">
+       <button mat-icon-button (click)="openDialog(row)">
        <mat-icon>delete</mat-icon>
        </button>
   </mat-cell>
@@ -60,7 +63,9 @@ export class ListSavedScenesComponent implements OnInit {
   dataSource: Array<Scenes> = [];
   displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
 
-  constructor(private scenesService: ScenesService) { }
+  constructor(private scenesService: ScenesService,
+              private _router: Router,
+              private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
@@ -74,8 +79,7 @@ export class ListSavedScenesComponent implements OnInit {
 
   delete(row) {
     this.scenesService.delete(row['id']);
-    this.rowID = row['id'];
-    console.log(this.rowID);
+    this.reloadComponent();
 
   }
 
@@ -83,6 +87,49 @@ export class ListSavedScenesComponent implements OnInit {
 
   }
 
+  reloadComponent() {
+    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this._router.onSameUrlNavigation = 'reload';
+    this._router.navigate(['/sceneslist']);
+  }
+
+  openDialog(row) {
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
+      width: '750px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete(row);
+      }
+    })
+  }
+
+
+
+}
+
+@Component({
+  selector: 'confirm-delete-dialog',
+  template: `<h1 mat-dialog-title>Confirmation</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to delete this Scene?</p>
+</div>
+<div mat-dialog-actions>
+ <button mat-button [mat-dialog-close]="true">Yes</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>No</button>
+</div>
+`
+})
+export class ConfirmDeleteDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmDeleteDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: String) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 
 }

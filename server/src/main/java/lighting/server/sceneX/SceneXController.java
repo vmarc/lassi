@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 public class SceneXController {
@@ -30,16 +29,15 @@ public class SceneXController {
         return sceneSerialization.getAllScenesFromDisk();
     }
 
-
-    /*@DeleteMapping(value = "/api/deletescene/{scene_id}")
-    public void deleteScene(@PathVariable UUID scene_id) {
-        System.out.println("deleting...");
-
-    }*/
-
-    @PostMapping(value = "/api/deletescene/{scene_id}")
-    public void deleteScene(@PathVariable UUID scene_id) {
-        System.out.println("deleting...");
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/api/deletescene/{scene_id}")
+    public void deleteScene(@PathVariable String scene_id) {
+        System.out.println("deleting..." + scene_id);
+        try {
+            this.sceneSerialization.deleteSceneFromDisk(scene_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
