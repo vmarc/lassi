@@ -68,4 +68,11 @@ public class SceneSerialization {
         System.out.println("delete successful");
     }
 
+    public SceneX getSceneFromDisk(String scene_id) throws IOException {
+        Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
+        ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        SceneX scene = objectMapper.readValue(filePath.toFile(), SceneX.class);
+        return scene;
+
+    }
 }

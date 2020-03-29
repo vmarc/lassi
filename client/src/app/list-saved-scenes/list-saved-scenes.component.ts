@@ -25,12 +25,12 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
     </ng-container>
     <ng-container matColumnDef="buttonId">
       <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>
-      <mat-cell *matCellDef="let scenes"> {{scenes.buttonID}} </mat-cell>
+      <mat-cell *matCellDef="let scenes"> {{scenes.buttonId}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="createdOn">
       <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>
-    </ng-container>Ò
+    </ng-container>
 
 <ng-container matColumnDef="actions">
   <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
@@ -39,7 +39,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
        <mat-icon>play_arrow</mat-icon>
        </button>
 
-       <button mat-icon-button (click)="edit()" >
+       <button mat-icon-button (click)="edit(row)" >
        <mat-icon>edit</mat-icon>
        </button>
 
@@ -64,7 +64,7 @@ export class ListSavedScenesComponent implements OnInit {
   displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
 
   constructor(private scenesService: ScenesService,
-              private _router: Router,
+              private router: Router,
               private dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -83,14 +83,15 @@ export class ListSavedScenesComponent implements OnInit {
 
   }
 
-  edit() {
+  edit(row) {
+    this.router.navigate(['/editscene', row['id']]);
 
   }
 
   reloadComponent() {
-    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this._router.onSameUrlNavigation = 'reload';
-    this._router.navigate(['/sceneslist']);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/sceneslist']);
   }
 
   openDialog(row) {

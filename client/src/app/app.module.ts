@@ -33,6 +33,7 @@ import { ScenesService } from './list-saved-scenes/scenes.service';
 import { RecordComponent } from './record/record.component';
 import { RecordService } from './record/record.service';
 import {MatDialogModule} from '@angular/material/dialog';
+import { EditSavedSceneComponent } from './edit-saved-scene/edit-saved-scene.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AboutComponent,
     ListSavedScenesComponent,
     RecordComponent,
-    ConfirmDeleteDialogComponent
+    ConfirmDeleteDialogComponent,
+    EditSavedSceneComponent
   ],
   imports: [
     BrowserModule,

@@ -32,13 +32,23 @@ public class SceneXController {
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/deletescene/{scene_id}")
     public void deleteScene(@PathVariable String scene_id) {
-        System.out.println("deleting..." + scene_id);
         try {
             this.sceneSerialization.deleteSceneFromDisk(scene_id);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/api/getscene/{scene_id}")
+    public SceneX getScene(@PathVariable String scene_id) {
+        try {
+            return this.sceneSerialization.getSceneFromDisk(scene_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
