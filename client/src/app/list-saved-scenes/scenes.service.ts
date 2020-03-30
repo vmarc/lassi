@@ -9,6 +9,7 @@ import {Sceneslist} from './sceneslist';
 @Injectable()
 export class ScenesService {
 
+
   private scenesUrl: string;
   private deleteUrl: string;
   private getUrl: string;
@@ -29,16 +30,19 @@ export class ScenesService {
   }*/
 
   public findAll(): Observable<Scenes[]> {
-    return this.http.get<Scenes[]>(this.scenesUrl);
+    return this.http.get<Scenes[]>('/api/sceneslist');
   }
 
   public delete(scene_id: string): void {
-    console.log("deleting...");
-    this.http.get(this.deleteUrl + scene_id).subscribe();
+    this.http.get('/api/deletescene/' + scene_id).subscribe();
   }
 
   public get(scene_id: string): Observable<Scenes> {
-    return this.http.get<Scenes>(this.getUrl + scene_id);
+    return this.http.get<Scenes>('/api/getscene/' + scene_id);
+  }
+
+  public play(scene_id: string): void {
+    this.http.get('/api/playscene/' + scene_id);
   }
 
 }

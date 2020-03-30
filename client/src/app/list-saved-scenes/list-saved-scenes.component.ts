@@ -35,7 +35,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 <ng-container matColumnDef="actions">
   <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
   <mat-cell *matCellDef="let row" >
-       <button mat-icon-button (click)="play()" >
+       <button mat-icon-button (click)="play(row)" >
        <mat-icon>play_arrow</mat-icon>
        </button>
 
@@ -73,7 +73,8 @@ export class ListSavedScenesComponent implements OnInit {
     })
   }
 
-  play() {
+  play(row) {
+    this.scenesService.play(row['id']);
 
   }
 

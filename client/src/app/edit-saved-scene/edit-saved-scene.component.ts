@@ -11,11 +11,9 @@ import { FormControl, FormGroup } from '@angular/forms';
   template: `
 
  <h1>Edit Scene</h1>
-
+ {{scene.id}}
 <div class="container" *ngIf="!post; else forminfo" novalidate>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit(formGroup.value)" class="form">
-
-
 
     <mat-form-field class="form-element">
       <label>Name</label>

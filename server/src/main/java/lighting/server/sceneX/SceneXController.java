@@ -1,6 +1,5 @@
 package lighting.server.sceneX;
 
-import lighting.server.IO.SceneSerialization;
 import lighting.server.scene.Reply;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,10 +7,10 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class SceneXController {
 
     private final ISceneXService sceneService;
-    private final SceneSerialization sceneSerialization = new SceneSerialization();
 
     public SceneXController(ISceneXService sceneService) {
         this.sceneService = sceneService;
@@ -23,28 +22,36 @@ public class SceneXController {
         return sceneService.recordScene();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(value = "/api/sceneslist")
-    public List<SceneX> getScenes() throws IOException {
-        return sceneSerialization.getAllScenesFromDisk();
+    //TODO
+    @GetMapping(value = "/api/playscene/{scene_id}")
+    public void playScene(@PathVariable String scene_id) throws IOException {
+        try {
+            this.sceneService.playScene();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/api/sceneslist")
+    public List<SceneX> getScenes() throws IOException {
+        return sceneService.getAllScenesFromDisk();
+    }
+
     @GetMapping(value = "/api/deletescene/{scene_id}")
     public void deleteScene(@PathVariable String scene_id) {
         try {
-            this.sceneSerialization.deleteSceneFromDisk(scene_id);
+            this.sceneService.deleteSceneFromDisk(scene_id);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/getscene/{scene_id}")
     public SceneX getScene(@PathVariable String scene_id) {
         try {
-            return this.sceneSerialization.getSceneFromDisk(scene_id);
+            return this.sceneService.getSceneFromDisk(scene_id);
         } catch (IOException e) {
             e.printStackTrace();
         }

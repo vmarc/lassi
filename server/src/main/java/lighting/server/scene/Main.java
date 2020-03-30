@@ -1,9 +1,9 @@
 package lighting.server.scene;
 
 import ch.bildspur.artnet.ArtNetClient;
-import lighting.server.IO.SceneSerialization;
 import lighting.server.frame.Frame;
 import lighting.server.sceneX.SceneX;
+import lighting.server.sceneX.SceneXXServiceImpl;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -24,9 +24,9 @@ public class Main {
         LocalDateTime dateTime = LocalDateTime.now();
         SceneX sceneX = new SceneX("Podium", 200L, 1, dateTime, frames);
 
-        SceneSerialization serialization = new SceneSerialization();
+        SceneXXServiceImpl sceneXXService = new SceneXXServiceImpl();
         try {
-            serialization.saveScenesToJSON(sceneX);
+            sceneXXService.saveScenesToJSON(sceneX);
         } catch (IOException e) {
             e.printStackTrace();
         }
