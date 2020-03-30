@@ -26,7 +26,7 @@ public class SceneXController {
     @GetMapping(value = "/api/playscene/{scene_id}")
     public void playScene(@PathVariable String scene_id) throws IOException {
         try {
-            this.sceneService.playScene();
+            this.sceneService.playScene(scene_id);
 
         } catch (IOException e) {
             e.printStackTrace();

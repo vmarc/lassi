@@ -1,12 +1,12 @@
 package lighting.server.sceneX;
 
+import ch.bildspur.artnet.ArtNetClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.artnet.ArtnetListener;
+import lighting.server.frame.Frame;
 import lighting.server.scene.Reply;
 import org.springframework.stereotype.Component;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -59,9 +59,15 @@ public class SceneXXServiceImpl implements ISceneXService {
         return null;
     }
 
-    @Override
-    public void playScene() throws IOException {
-        //TODO
+    public void playScene(String scene_id) throws IOException {
+        SceneX sceneX = getSceneFromDisk(scene_id);
+        ArtNetClient artnet = new ArtNetClient();
+        artnet.start();
+
+        for (Frame dmx : sceneX.getFrames()) {
+            artnet.broadcastDmx(0, 0, dmx.getDmxValues());
+        }
+        artnet.stop();
     }
 
     public void saveScenesToJSON(SceneX sceneX) throws IOException {
