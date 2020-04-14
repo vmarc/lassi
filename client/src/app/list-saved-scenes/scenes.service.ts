@@ -9,15 +9,7 @@ import {Sceneslist} from './sceneslist';
 @Injectable()
 export class ScenesService {
 
-
-  private scenesUrl: string;
-  private deleteUrl: string;
-  private getUrl: string;
-
   constructor(private http: HttpClient) {
-    this.scenesUrl = "http://localhost:8080/api/sceneslist";
-    this.deleteUrl = "http://localhost:8080/api/deletescene/";
-    this.getUrl = "http://localhost:8080/api/getscene/";
   }
 
   /*public findAll(): Observable<Array<Scenes>> {
@@ -43,6 +35,10 @@ export class ScenesService {
 
   public play(scene_id: string): void {
     this.http.get('/api/playscene/' + scene_id);
+  }
+
+  public save(scene: Scenes) {
+    return this.http.put<Scenes>("/api/savescene/", scene).subscribe();
   }
 
 }

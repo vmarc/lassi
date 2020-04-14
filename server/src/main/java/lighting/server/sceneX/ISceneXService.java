@@ -8,6 +8,7 @@ import java.util.List;
 public interface ISceneXService {
     Reply recordScene();
     void playScene(String scene_id) throws IOException;
+    void updateSceneFromDisk(SceneX sceneX) throws IOException;
     void saveScenesToJSON(SceneX sceneX) throws IOException;
     List<SceneX> getAllScenesFromDisk() throws IOException;
     void deleteSceneFromDisk(String scene_id) throws IOException;

@@ -1,6 +1,7 @@
 package lighting.server.sceneX;
 
 import ch.bildspur.artnet.ArtNetClient;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.artnet.ArtnetListener;
@@ -16,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 
 @Component
 public class SceneXXServiceImpl implements ISceneXService {
@@ -65,10 +65,12 @@ public class SceneXXServiceImpl implements ISceneXService {
         artnet.start();
 
         for (Frame dmx : sceneX.getFrames()) {
-            artnet.broadcastDmx(0, 0, dmx.getDmxValues());
+            //artnet.broadcastDmx(0, 0, dmx.getDmxValues());
         }
         artnet.stop();
     }
+
+
 
     public void saveScenesToJSON(SceneX sceneX) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -108,6 +110,14 @@ public class SceneXXServiceImpl implements ISceneXService {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         SceneX scene = objectMapper.readValue(filePath.toFile(), SceneX.class);
         return scene;
+
+    }
+
+    @Override
+    public void updateSceneFromDisk(SceneX sceneX) throws IOException {
+        deleteSceneFromDisk(sceneX.getId());
+        saveScenesToJSON(sceneX);
+
 
     }
 

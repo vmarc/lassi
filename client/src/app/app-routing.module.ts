@@ -7,7 +7,6 @@ import {SetupComponent} from './setup/setup.component';
 import {SimulatorComponent} from './simulator/simulator.component';
 import {AboutComponent} from './about/about.component';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
-import { EditSavedSceneComponent } from './edit-saved-scene/edit-saved-scene.component';
 
 export const routes: Routes = [
   {
@@ -33,10 +32,6 @@ export const routes: Routes = [
   {
     path: 'sceneslist',
     component: ListSavedScenesComponent
-  },
-  {
-    path: 'editscene/:id',
-    component: EditSavedSceneComponent
   },
   {
     path: '',

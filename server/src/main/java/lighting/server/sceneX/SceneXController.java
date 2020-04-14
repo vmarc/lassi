@@ -22,9 +22,18 @@ public class SceneXController {
         return sceneService.recordScene();
     }
 
+    @PutMapping(value = "/api/savescene/")
+    public void saveScene(@RequestBody SceneX sceneX) {
+        try {
+            this.sceneService.updateSceneFromDisk(sceneX);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     //TODO
     @GetMapping(value = "/api/playscene/{scene_id}")
-    public void playScene(@PathVariable String scene_id) throws IOException {
+    public void playScene(@PathVariable String scene_id) {
         try {
             this.sceneService.playScene(scene_id);
 
@@ -34,8 +43,13 @@ public class SceneXController {
     }
 
     @GetMapping(value = "/api/sceneslist")
-    public List<SceneX> getScenes() throws IOException {
-        return sceneService.getAllScenesFromDisk();
+    public List<SceneX> getScenes() {
+        try {
+            return sceneService.getAllScenesFromDisk();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @GetMapping(value = "/api/deletescene/{scene_id}")

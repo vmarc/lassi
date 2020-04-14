@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
+        /*
         int[] dmxValues = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
         Frame frame1 = new Frame(dmxValues, 10);
         Frame frame2 = new Frame(dmxValues, 20);
@@ -43,6 +44,8 @@ public class Main {
             Thread.sleep(2000);
             System.out.println("send" + i);
         }
+
+         */
 /*
         System.out.println("test");
         SceneSerialization serialization = new SceneSerialization();

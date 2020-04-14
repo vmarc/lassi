@@ -1,9 +1,9 @@
 export class Frame {
   dmxValues: any;
 
-  constructor(readonly id: number = 0,
-              readonly name: string = '',
-              dmxValues: Array<number> = null) {
+  constructor(readonly id: number,
+              readonly name: string,
+              dmxValues: Array<number>) {
     this.dmxValues = dmxValues;
   }
 

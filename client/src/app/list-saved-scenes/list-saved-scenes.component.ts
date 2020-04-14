@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Scenes } from '../scene/scenes';
 import { ScenesService } from './scenes.service';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 @Component({
@@ -39,11 +40,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
        <mat-icon>play_arrow</mat-icon>
        </button>
 
-       <button mat-icon-button (click)="edit(row)" >
+       <button mat-icon-button (click)="openEditDialog(row)" >
        <mat-icon>edit</mat-icon>
        </button>
 
-       <button mat-icon-button (click)="openDialog(row)">
+       <button mat-icon-button (click)="openDeleteDialog(row)">
        <mat-icon>delete</mat-icon>
        </button>
   </mat-cell>
@@ -84,8 +85,16 @@ export class ListSavedScenesComponent implements OnInit {
 
   }
 
-  edit(row) {
-    this.router.navigate(['/editscene', row['id']]);
+  openEditDialog(row) {
+    const dialogRef = this.dialog.open(EditSavedSceneDialogComponent, {
+      width: '750px',
+      data: {
+        id: row['id']
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => this.reloadComponent());
+
 
   }
 
@@ -95,7 +104,7 @@ export class ListSavedScenesComponent implements OnInit {
     this.router.navigate(['/sceneslist']);
   }
 
-  openDialog(row) {
+  openDeleteDialog(row) {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
       width: '750px'
     });
@@ -104,7 +113,7 @@ export class ListSavedScenesComponent implements OnInit {
       if (result) {
         this.delete(row);
       }
-    })
+    });
   }
 
 
@@ -131,6 +140,91 @@ export class ConfirmDeleteDialogComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+
+}
+
+@Component({
+  selector: 'edit-scene-dialog',
+  template: `<h1 mat-dialog-title>Edit Scene</h1>
+ <form [formGroup]="editForm">
+<div mat-dialog-content>
+<div>
+<mat-form-field>
+  <p>Name</p>
+  <input matInput formControlName="name">
+</mat-form-field>
+</div>
+
+<div>
+<mat-form-field>
+  <p>Button</p>
+  <mat-select  formControlName="buttonId" (change)="changeButton($event)" [value]="selected">
+    <mat-option *ngFor="let button of buttons" [value]="button" >{{button}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+
+</div>
+<div mat-dialog-actions>
+ <button mat-button (click)="save()">Save</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+</div>
+</form>
+`
+})
+export class EditSavedSceneDialogComponent {
+
+  editForm: FormGroup = new FormGroup({
+    name: new FormControl(),
+    buttonId: new FormControl(),
+  });
+
+  scene: Scenes;
+  selected: any;
+  buttons: any[] = [1,2,3,4,5,6,7,8,9];
+
+  constructor(
+    public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: string },
+    private scenesService: ScenesService) {}
+
+  ngOnInit(): void {
+    this.scenesService.get(this.data.id).subscribe(data => {
+        this.scene = data
+      this.selected = this.scene.buttonId
+        this.editForm.setValue({
+          name: this.scene.name,
+          buttonId: this.scene.buttonId
+        });
+      });
+
+  }
+
+  get buttonId() {
+    return this.editForm.get('buttonId');
+  }
+
+  changeButton($event) {
+    this.buttonId.setValue(this.buttons[$event]);
+
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  save(): void {
+    this.scene.name = this.editForm.get('name').value;
+    console.log(this.scene.name);
+    this.scene.buttonId = this.editForm.get('buttonId').value;
+    console.log(this.scene.buttonId);
+
+    this.scenesService.save(this.scene);
+    this.dialogRef.close();
+
+
   }
 
 
