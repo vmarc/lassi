@@ -57,7 +57,7 @@ public class ArtnetListener {
         int x = 0;
         for (byte b: byteArray
         ) {
-            int i = (b & 0xFF);
+            byte i = (byte) (b & 0xFF);
             intArray[x] = i;
             x++;
         }

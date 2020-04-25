@@ -28,11 +28,13 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'
-import { ListSavedScenesComponent, ConfirmDeleteDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
+import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
 import { RecordComponent } from './record/record.component';
 import { RecordService } from './record/record.service';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     AboutComponent,
     ListSavedScenesComponent,
     RecordComponent,
-    ConfirmDeleteDialogComponent
+    ConfirmDeleteDialogComponent,
+    EditSavedSceneDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSliderModule,
     MatTableModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    FormsModule
   ],
   entryComponents: [
     ConfirmDeleteDialogComponent

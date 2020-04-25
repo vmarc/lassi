@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SceneService} from '../scene/scene.service';
-import {Scene} from '../scene/scene';
+import {Frame} from '../scene/frame';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {Setup} from './setup';
 
@@ -11,7 +11,7 @@ import {Setup} from './setup';
 })
 export class SetupComponent implements OnInit {
 
-  scenes: Array<Scene> = [];
+  scenes: Array<Frame> = [];
 
   readonly form: FormGroup;
   readonly scene = new FormControl();

@@ -5,17 +5,11 @@ import { Observable } from 'rxjs';
 import { Reply } from '../scene/reply';
 import {map} from 'rxjs/operators';
 import {Sceneslist} from './sceneslist';
-import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
 export class ScenesService {
 
-  private scenesUrl: string;
-  private deleteUrl: string;
-
   constructor(private http: HttpClient) {
-    this.scenesUrl = "http://localhost:8080/api/sceneslist";
-    this.deleteUrl = "http://localhost:8080/api/deletescene/";
   }
 
   /*public findAll(): Observable<Array<Scenes>> {
@@ -28,12 +22,23 @@ export class ScenesService {
   }*/
 
   public findAll(): Observable<Scenes[]> {
-    return this.http.get<Scenes[]>(this.scenesUrl);
+    return this.http.get<Scenes[]>('/api/sceneslist');
   }
 
   public delete(scene_id: string): void {
-    console.log("deleting...");
-    this.http.get(this.deleteUrl + scene_id).subscribe();
+    this.http.get('/api/deletescene/' + scene_id).subscribe();
+  }
+
+  public get(scene_id: string): Observable<Scenes> {
+    return this.http.get<Scenes>('/api/getscene/' + scene_id);
+  }
+
+  public play(scene_id: string): void {
+    this.http.get('/api/playscene/' + scene_id);
+  }
+
+  public save(scene: Scenes) {
+    return this.http.put<Scenes>("/api/savescene/", scene).subscribe();
   }
 
 }

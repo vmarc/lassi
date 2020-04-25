@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
-import {Scene} from '../scene/scene';
+import {Frame} from '../scene/frame';
 
 @Component({
   selector: 'app-monitor',
@@ -11,7 +11,7 @@ import {Scene} from '../scene/scene';
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
-  scene: Scene = Scene.empty();
+  frame: Frame = Frame.empty();
   private topicSubscription: Subscription;
 
   constructor(private rxStompService: RxStompService) {
@@ -19,7 +19,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((message: Message) => {
-      this.scene = Scene.fromJSON(JSON.parse(message.body));
+      this.frame = Frame.fromJSON(JSON.parse(message.body));
     });
   }
 

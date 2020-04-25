@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Scene} from './scene';
+import {Frame} from './frame';
 import {map} from 'rxjs/operators';
 import {Reply} from './reply';
 import {Setup} from '../setup/setup';
@@ -30,11 +30,11 @@ export class SceneService {
     );
   }
 
-  public scenes(): Observable<Array<Scene>> {
+  public scenes(): Observable<Array<Frame>> {
     return this.http.get('/api/scenes').pipe(
       map(response => {
         // @ts-ignore
-        return response.scenes.map(scene => Scene.fromJSON(scene));
+        return response.scenes.map(scene => Frame.fromJSON(scene));
       })
     );
   }
