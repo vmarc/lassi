@@ -11,6 +11,9 @@ public class SceneFader {
     private Frame startFrame;
     private Frame endFrame;
 
+    public SceneFader() {
+    }
+
     public SceneFader(int framesPerSecond, int fadeTimeInSeconds, Frame startFrame, Frame endFrame) {
         this.framesPerSecond = framesPerSecond;
         this.fadeTimeInSeconds = fadeTimeInSeconds;

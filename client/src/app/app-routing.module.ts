@@ -6,8 +6,14 @@ import {SetupComponent} from './setup/setup.component';
 import {SimulatorComponent} from './simulator/simulator.component';
 import {AboutComponent} from './about/about.component';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
+  {
+    path: 'settings',
+    component: SettingsComponent
+
+  },
   {
     path: 'monitor',
     component: MonitorComponent

@@ -38,7 +38,7 @@ export class ScenesService {
   }
 
   public save(scene: Scenes) {
-    return this.http.put<Scenes>("/api/savescene/", scene).subscribe();
+    return this.http.put<Scenes>('/api/savescene/', scene).subscribe();
   }
 
 }

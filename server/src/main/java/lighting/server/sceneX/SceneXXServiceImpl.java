@@ -1,7 +1,6 @@
 package lighting.server.sceneX;
 
 import ch.bildspur.artnet.ArtNetClient;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.artnet.ArtnetListener;
@@ -24,14 +23,15 @@ public class SceneXXServiceImpl implements ISceneXService {
     private Path parentDir = Paths.get(System.getProperty("user.dir")).getParent();
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
 
-    ArtnetListener artnetListener;
+    private ArtnetListener artnetListener;
+
 
     public SceneXXServiceImpl() {
-        createScenesDirectory();
+        createDirectory(scenesDir);
     }
 
-    public void createScenesDirectory() {
-        File file = new File(String.valueOf(scenesDir));
+    public void createDirectory(Path dir) {
+        File file = new File(String.valueOf(dir));
         if (!file.exists()) {
             if (file.mkdir()) {
                 System.out.println("Directory is created!");

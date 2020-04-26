@@ -217,9 +217,7 @@ export class EditSavedSceneDialogComponent {
 
   save(): void {
     this.scene.name = this.editForm.get('name').value;
-    console.log(this.scene.name);
     this.scene.buttonId = this.editForm.get('buttonId').value;
-    console.log(this.scene.buttonId);
 
     this.scenesService.save(this.scene);
     this.dialogRef.close();
