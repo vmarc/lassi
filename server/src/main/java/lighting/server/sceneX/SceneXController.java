@@ -40,6 +40,7 @@ public class SceneXController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Raspberrypi..............");
     }
 
     @GetMapping(value = "/api/sceneslist")
@@ -61,6 +62,7 @@ public class SceneXController {
         }
 
     }
+
 
     @GetMapping(value = "/api/getscene/{scene_id}")
     public SceneX getScene(@PathVariable String scene_id) {
