@@ -1,6 +1,7 @@
 package lighting.server.scene;
 
 import ch.bildspur.artnet.ArtNetClient;
+import lighting.server.SceneFader;
 import lighting.server.frame.Frame;
 import lighting.server.sceneX.SceneX;
 import lighting.server.sceneX.SceneXXServiceImpl;
@@ -15,10 +16,15 @@ import java.util.stream.IntStream;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        /*
-        int[] dmxValues = IntStream.generate(() -> new Random().nextInt(512)).limit(512).toArray();
+        int[] dmxValues = IntStream.generate(() -> new Random().nextInt(256)).limit(512).toArray();
         Frame frame1 = new Frame(dmxValues, 10);
-        Frame frame2 = new Frame(dmxValues, 20);
+        int[] dmxValues2 = IntStream.generate(() -> new Random().nextInt(256)).limit(512).toArray();
+        Frame frame2 = new Frame(dmxValues2, 20);
+
+        SceneFader sf = new SceneFader(10,5,frame1,frame2);
+        sf.fadeFrame();
+
+        /*
         List<Frame> frames = new ArrayList<>();
         frames.add(frame1);
         frames.add(frame2);
@@ -45,7 +51,7 @@ public class Main {
             System.out.println("send" + i);
         }
 
-         */
+
 /*
         System.out.println("test");
         SceneSerialization serialization = new SceneSerialization();
