@@ -6,7 +6,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
 import {appRxStompConfig} from './app-rx-stomp.config';
 import {MonitorComponent} from './monitor/monitor.component';
-import {TimeComponent} from './time/time.component';
 import {MenuComponent} from './menu/menu.component';
 import {SetupComponent} from './setup/setup.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -35,12 +34,12 @@ import { RecordService } from './record/record.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonitorComponent,
-    TimeComponent,
     MenuComponent,
     SetupComponent,
     SimulatorComponent,
@@ -51,6 +50,7 @@ import { FormsModule } from '@angular/forms';
     RecordComponent,
     ConfirmDeleteDialogComponent,
     EditSavedSceneDialogComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
