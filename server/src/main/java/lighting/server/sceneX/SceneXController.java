@@ -1,6 +1,5 @@
 package lighting.server.sceneX;
 
-import lighting.server.scene.Reply;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -16,10 +15,10 @@ public class SceneXController {
         this.sceneService = sceneService;
     }
 
-    @PostMapping(value = "/api/recordscenebis")
-    public Reply recordScene() {
+    @PostMapping(value = "/api/recordscenebis/{button_id}")
+    public void recordScene(@RequestBody int button_id) {
         System.out.println("recording...");
-        return sceneService.recordScene();
+        this.sceneService.recordScene(button_id);
     }
 
     @PutMapping(value = "/api/savescene/")
@@ -32,15 +31,14 @@ public class SceneXController {
     }
 
     //TODO
-    @GetMapping(value = "/api/playscene/{scene_id}")
-    public void playScene(@PathVariable String scene_id) {
+    @GetMapping(value = "/api/playscene/{button_id}")
+    public void playSceneFromButton(@PathVariable int button_id) {
         try {
-            this.sceneService.playScene(scene_id);
+            this.sceneService.playSceneFromButton(button_id);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Raspberrypi..............");
     }
 
     @GetMapping(value = "/api/sceneslist")
@@ -68,6 +66,26 @@ public class SceneXController {
     public SceneX getScene(@PathVariable String scene_id) {
         try {
             return this.sceneService.getSceneFromDisk(scene_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping(value = "api/getbuttonswithscene")
+    public List<Integer> getButtonsWithScene() {
+        try {
+            return this.sceneService.getButtonsWithScene();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @GetMapping(value = "api/getbuttonswithoutscene")
+    public List<Integer> getButtonsWithoutScene() {
+        try {
+            return this.sceneService.getButtonsWithoutScene();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -4,8 +4,6 @@ import ch.bildspur.artnet.ArtNetClient;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.artnet.ArtnetListener;
-import lighting.server.frame.Frame;
-import lighting.server.scene.Reply;
 import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -41,7 +40,7 @@ public class SceneXXServiceImpl implements ISceneXService {
         }
     }
 
-    public Reply recordScene() {
+    public void recordScene(int button_id) {
         artnetListener = new ArtnetListener();
         artnetListener.recordData();
         try {
@@ -56,21 +55,20 @@ public class SceneXXServiceImpl implements ISceneXService {
         }
 
         System.out.println("test made");
-        return null;
     }
 
-    public void playScene(String scene_id) throws IOException {
-        SceneX sceneX = getSceneFromDisk(scene_id);
-        ArtNetClient artnet = new ArtNetClient();
-        artnet.start();
+    public void playSceneFromButton(int button) throws IOException {
+        List<SceneX> scenes = getAllScenesFromDisk();
 
-        for (Frame dmx : sceneX.getFrames()) {
-            //artnet.broadcastDmx(0, 0, dmx.getDmxValues());
+        for (SceneX scene : scenes) {
+            if (scene.getButtonId() == button) {
+                //TODO play scene
+                System.out.println("playing scene from button");
+            }
+
         }
-        artnet.stop();
+
     }
-
-
 
     public void saveScenesToJSON(SceneX sceneX) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -85,8 +83,6 @@ public class SceneXXServiceImpl implements ISceneXService {
 
         result = walk.filter(Files::isRegularFile)
                 .map(x -> x.toString()).filter(f -> f.endsWith(".json")).collect(Collectors.toList());
-
-        //result.forEach(System.out::println);
 
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
@@ -113,13 +109,38 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     }
 
-    @Override
     public void updateSceneFromDisk(SceneX sceneX) throws IOException {
         deleteSceneFromDisk(sceneX.getId());
         saveScenesToJSON(sceneX);
 
-
     }
+
+    public List<Integer> getButtonsWithScene() throws IOException {
+        List<Integer> buttonsWithScene = new ArrayList<>();
+
+        List<SceneX> scenes = getAllScenesFromDisk();
+
+        for (SceneX scene : scenes) {
+            buttonsWithScene.add(scene.getButtonId());
+
+        }
+        return buttonsWithScene;
+    }
+
+    public List<Integer> getButtonsWithoutScene() throws IOException {
+        List<Integer> buttons = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<SceneX> scenes = getAllScenesFromDisk();
+
+        for (SceneX scene : scenes) {
+            if (buttons.contains(scene.getButtonId())) {
+                buttons.remove(scene.getButtonId());
+            }
+
+        }
+        return buttons;
+    }
+
+
 
 
 }
