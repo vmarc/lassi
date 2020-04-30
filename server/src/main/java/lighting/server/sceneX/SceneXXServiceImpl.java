@@ -98,7 +98,6 @@ public class SceneXXServiceImpl implements ISceneXService {
     public void deleteSceneFromDisk(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         Files.deleteIfExists(filePath);
-        System.out.println("delete successful");
     }
 
     public SceneX getSceneFromDisk(String scene_id) throws IOException {
@@ -110,6 +109,17 @@ public class SceneXXServiceImpl implements ISceneXService {
     }
 
     public void updateSceneFromDisk(SceneX sceneX) throws IOException {
+        List<SceneX> scenesFromDisk = getAllScenesFromDisk();
+
+        //if chosen button is already assigned to an existing scene, the old scene will get value 0
+        for (SceneX scene : scenesFromDisk) {
+            if (scene.getButtonId() == sceneX.getButtonId()) {
+                scene.setButtonId(0);
+                deleteSceneFromDisk(scene.getId());
+                saveScenesToJSON(scene);
+            }
+
+        }
         deleteSceneFromDisk(sceneX.getId());
         saveScenesToJSON(sceneX);
 
