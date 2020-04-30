@@ -131,7 +131,12 @@ public class SceneXXServiceImpl implements ISceneXService {
         List<SceneX> scenes = getAllScenesFromDisk();
 
         for (SceneX scene : scenes) {
-            buttonsWithScene.add(scene.getButtonId());
+            if (scene.getButtonId() == 0) {
+                System.out.println("Excluding 'button' 0");
+            } else {
+                buttonsWithScene.add(scene.getButtonId());
+            }
+
 
         }
         return buttonsWithScene;
