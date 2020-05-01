@@ -9,8 +9,7 @@ public class ArtnetSender {
     private final ArtNetClient artNetClient = new ArtNetClient();
     private SceneX sceneToPlay;
 
-    public ArtnetSender(SceneX scene) {
-        this.sceneToPlay = scene;
+    public ArtnetSender() {
     }
 
     public void setSceneToPlay(SceneX sceneToPlay) {

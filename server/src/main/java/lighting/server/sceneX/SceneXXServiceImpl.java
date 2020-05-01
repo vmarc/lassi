@@ -45,6 +45,7 @@ public class SceneXXServiceImpl implements ISceneXService {
     }
 
     public void playSceneFromButton(int button) throws IOException {
+        artnetSender = new ArtnetSender();
         List<SceneX> scenes = iOService.getAllScenesFromDisk();
 
         for (SceneX scene : scenes) {
