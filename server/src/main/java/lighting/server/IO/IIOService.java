@@ -13,7 +13,7 @@ public interface IIOService {
     void deleteSceneFromDisk(String scene_id) throws IOException;
     SceneX getSceneFromDisk(String scene_id) throws IOException;
     List<Integer> getButtonsWithScene() throws IOException;
-    List<Integer> getButtonsWithoutScene() throws IOException;
+    List<Boolean> getButtonsWithoutScene() throws IOException;
     void saveSettingsToDisk(Settings settings) throws IOException;
     Settings getSettingsFromDisk() throws IOException;
 }
