@@ -129,7 +129,8 @@ public class IOServiceImpl implements IIOService {
     }
 
     public List<Integer> getButtonsWithoutScene() throws IOException {
-        List<Integer> buttons = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<Integer> buttons = new ArrayList<>( Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9) );
+
         List<SceneX> scenes = getAllScenesFromDisk();
 
         for (SceneX scene : scenes) {

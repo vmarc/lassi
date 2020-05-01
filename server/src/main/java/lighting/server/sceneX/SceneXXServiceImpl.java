@@ -2,6 +2,7 @@ package lighting.server.sceneX;
 
 import lighting.server.IO.IIOService;
 import lighting.server.artnet.ArtnetListener;
+import lighting.server.artnet.ArtnetSender;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -17,6 +18,7 @@ public class SceneXXServiceImpl implements ISceneXService {
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
 
     private ArtnetListener artnetListener;
+    private ArtnetSender artnetSender;
 
     private final IIOService iOService;
 
@@ -47,7 +49,8 @@ public class SceneXXServiceImpl implements ISceneXService {
 
         for (SceneX scene : scenes) {
             if (scene.getButtonId() == button) {
-                //TODO play scene
+                this.artnetSender.setSceneToPlay(scene);
+                this.artnetSender.sendData();
                 System.out.println("playing scene from button");
             }
 

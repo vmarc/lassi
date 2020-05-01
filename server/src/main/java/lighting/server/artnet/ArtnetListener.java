@@ -24,7 +24,6 @@ public class ArtnetListener {
 
     public ArtnetListener(ISceneXService service) {
         this.service = service;
-        listenData();
     }
 
     public Scene getScene() {
@@ -33,17 +32,6 @@ public class ArtnetListener {
 
     public SceneX getSceneX() {
         return sceneX;
-    }
-
-    public void listenData(){
-        artNetClient.getArtNetServer().addListener(
-                new ArtNetServerEventAdapter() {
-                    @Override public void artNetPacketReceived(ArtNetPacket packet) {
-                        ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
-                        scene = new Scene(1,"test",byteArrayToIntArray(dmxPacket.getDmxData()));
-                    }
-                });
-        artNetClient.start();
     }
 
     public void recordData(int button_id){
@@ -73,22 +61,6 @@ public class ArtnetListener {
 
         artNetClient.start();
 
-    }
-
-
-    public byte[] intArrayToByteArray(int[] intArray) {
-        int arrayLength = intArray.length;
-        byte[] byteArray = new byte[arrayLength << 2];
-
-        for (int i = 0; i < arrayLength; i++) {
-            int x = intArray[i];
-            int j = i << 2;
-            byteArray[j++] = (byte) ((x >>> 0) & 0xff);
-            byteArray[j++] = (byte) ((x >>> 8) & 0xff);
-            byteArray[j++] = (byte) ((x >>> 16) & 0xff);
-            byteArray[j++] = (byte) ((x >>> 24) & 0xff);
-        }
-        return byteArray;
     }
 
 

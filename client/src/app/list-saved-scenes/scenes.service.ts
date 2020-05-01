@@ -33,8 +33,8 @@ export class ScenesService {
     return this.http.get<Scenes>('/api/getscene/' + scene_id);
   }
 
-  public play(scene_id: string): void {
-    this.http.get('/api/playscene/' + scene_id);
+  public play(buttonId: number): void {
+    this.http.get('/api/playscene/' + buttonId);
   }
 
   public save(scene: Scenes) {

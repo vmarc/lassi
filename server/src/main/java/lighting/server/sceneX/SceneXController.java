@@ -35,7 +35,6 @@ public class SceneXController {
     public void playSceneFromButton(@PathVariable int button_id) {
         try {
             this.sceneService.playSceneFromButton(button_id);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
