@@ -1,7 +1,8 @@
-package lighting.server.scene;
+package lighting.server;
 
 import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.SceneFader;
+import lighting.server.artnet.ArtnetListener;
 import lighting.server.frame.Frame;
 import lighting.server.sceneX.SceneX;
 import lighting.server.sceneX.SceneXXServiceImpl;
@@ -21,8 +22,27 @@ public class Main {
         int[] dmxValues2 = IntStream.generate(() -> new Random().nextInt(256)).limit(512).toArray();
         Frame frame2 = new Frame(dmxValues2, 20);
 
-        SceneFader sf = new SceneFader(10,5,frame1,frame2);
-        sf.fadeFrame();
+        //SceneFader sf = new SceneFader(10,5,frame1,frame2);
+        //sf.fadeFrame();
+
+
+        ArtNetClient client = new ArtNetClient();
+        client.start();
+        Random random = new Random();
+        byte[] dmx = new byte[512];
+
+        for (int i = 0; i < 10; i++) {
+            random.nextBytes(dmx);
+            client.broadcastDmx(0,0, dmx);
+            Thread.sleep(2000);
+            System.out.println("send" + i);
+        }
+
+
+
+
+
+
 
         /*
         List<Frame> frames = new ArrayList<>();
@@ -38,18 +58,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        ArtNetClient client = new ArtNetClient();
-        client.start();
-        Random random = new Random();
-        byte[] dmx = new byte[512];
 
-
-        for (int i = 0; i < 100; i++) {
-            random.nextBytes(dmx);
-            client.broadcastDmx(0,0, dmx);
-            Thread.sleep(2000);
-            System.out.println("send" + i);
-        }
 
 
 /*

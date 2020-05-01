@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MonitorService {
 
-	private final ArtnetListener artnetListener;
+	/*private final ArtnetListener artnetListener;
 	private final SimpMessagingTemplate messagingTemplate;
 
 
@@ -20,6 +20,6 @@ public class MonitorService {
 	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
 		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getScene());
-	}
+	}*/
 
 }
