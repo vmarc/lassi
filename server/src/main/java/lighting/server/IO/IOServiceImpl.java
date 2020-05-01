@@ -128,7 +128,7 @@ public class IOServiceImpl implements IIOService {
         return buttonsWithScene;
     }
 
-    public List<Boolean> getButtonsWithoutScene() throws IOException {
+    public List<Boolean> getButtons() throws IOException {
         List<Boolean> buttons = new ArrayList<>( Arrays.asList(true, true, true, true, true, true, true, true, true));
 
         List<SceneX> scenes = getAllScenesFromDisk();

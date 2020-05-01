@@ -71,20 +71,10 @@ public class SceneXController {
         return null;
     }
 
-    @GetMapping(value = "api/getbuttonswithscene")
-    public List<Integer> getButtonsWithScene() {
+    @GetMapping(value = "api/getbuttons")
+    public List<Boolean> getButtonsWithoutScene() {
         try {
-            return this.sceneService.getButtonsWithScene();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    @GetMapping(value = "api/getbuttonswithoutscene")
-    public List<Integer> getButtonsWithoutScene() {
-        try {
-            return this.sceneService.getButtonsWithoutScene();
+            return this.sceneService.getButtons();
         } catch (IOException e) {
             e.printStackTrace();
         }

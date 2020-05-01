@@ -82,12 +82,8 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     }
 
-    public List<Integer> getButtonsWithScene() throws IOException {
-        return this.iOService.getButtonsWithScene();
-    }
-
-    public List<Integer> getButtonsWithoutScene() throws IOException {
-        return this.iOService.getButtonsWithoutScene();
+    public List<Boolean> getButtons() throws IOException {
+        return this.iOService.getButtons();
 
     }
 

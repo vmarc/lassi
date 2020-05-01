@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IIOService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IIOService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/ISceneXService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/ISceneXService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXXServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXXServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +167,7 @@
       <workItem from="1586858367356" duration="11975000" />
       <workItem from="1587324647724" duration="99000" />
       <workItem from="1587808406881" duration="24654000" />
-      <workItem from="1588333791935" duration="10704000" />
+      <workItem from="1588333791935" duration="10831000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1581261490834</created>
@@ -437,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588347960363</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="IO Service added">
+      <created>1588348657948</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1588348657948</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -525,11 +537,11 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2" timestamp="1588347960264">
+    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2" timestamp="1588348657851">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
-    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1588347960264" />
+    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1588348657851" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1588266083017" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
     <state x="936" y="448" key="CommitChangelistDialog2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588334678392" />
@@ -717,10 +729,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="168" y="94" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1581959956705" />
-    <state x="987" y="400" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1587901317813">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1588348666302">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="551" y="248" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1581964520750" />
+    <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588348666302" />
     <state x="987" y="400" width="443" height="252" key="MultipleFileMergeDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1587901317813" />
     <state x="536" y="240" width="803" height="598" key="NewModule_or_Project.wizard" timestamp="1581803449491">
       <screen x="0" y="0" width="1680" height="1050" />
@@ -743,19 +755,19 @@
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1588347963034" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1588266084564" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588176460010" />
-    <state x="1115" y="724" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587901309511">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588348662231">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1582292501667" />
+    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1588348662231" />
     <state x="1115" y="724" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3008.1692@0.0.3008.1692" timestamp="1587901309511" />
     <state x="0" y="0" width="2590" height="1692" key="dock-window-1" timestamp="1585503337603">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="0" y="0" width="2590" height="1692" key="dock-window-1/0.0.3008.1692@0.0.3008.1692" timestamp="1585503337603" />
-    <state x="895" y="520" key="git4idea.merge.GitPullDialog" timestamp="1587901281510">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="500" y="323" key="git4idea.merge.GitPullDialog" timestamp="1588348650497">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="500" y="323" key="git4idea.merge.GitPullDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1581964489850" />
+    <state x="500" y="323" key="git4idea.merge.GitPullDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588348650497" />
     <state x="895" y="520" key="git4idea.merge.GitPullDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1587901281510" />
     <state x="301" y="162" key="new project wizard" timestamp="1581803335659">
       <screen x="0" y="0" width="1680" height="1050" />
