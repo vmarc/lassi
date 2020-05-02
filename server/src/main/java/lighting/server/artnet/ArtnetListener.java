@@ -4,9 +4,9 @@ import ch.bildspur.artnet.ArtNetClient;
 import ch.bildspur.artnet.events.ArtNetServerEventAdapter;
 import ch.bildspur.artnet.packets.ArtDmxPacket;
 import ch.bildspur.artnet.packets.ArtNetPacket;
+import lighting.server.IO.IIOService;
 import lighting.server.frame.Frame;
 import lighting.server.scene.Scene;
-import lighting.server.sceneX.ISceneXService;
 import lighting.server.sceneX.SceneX;
 import org.springframework.stereotype.Component;
 
@@ -18,11 +18,11 @@ import java.time.format.DateTimeFormatter;
 public class ArtnetListener {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
-    private final ISceneXService service;
+    private final IIOService service;
     private Scene scene = new Scene();
     private SceneX sceneX = new SceneX();
 
-    public ArtnetListener(ISceneXService service) {
+    public ArtnetListener(IIOService service) {
         this.service = service;
     }
 
