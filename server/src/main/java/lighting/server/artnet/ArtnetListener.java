@@ -63,20 +63,7 @@ public class ArtnetListener {
 
     }
 
-
-    public int[] byteArrayToIntArray(byte[] byteArray){
-        int[] intArray = new int[512];
-        int x = 0;
-        for (byte b: byteArray
-        ) {
-            byte i = (byte) (b & 0xFF);
-            intArray[x] = i;
-            x++;
-        }
-        return intArray;
-    }
-
-    public int[] byte2int(byte[]src) {
+    public int[] byteArrayToIntArray(byte[]src) {
         int dstLength = src.length >>> 2;
         int[]dst = new int[dstLength];
 

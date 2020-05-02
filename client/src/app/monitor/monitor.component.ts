@@ -6,7 +6,15 @@ import {Frame} from '../scene/frame';
 
 @Component({
   selector: 'app-monitor',
-  templateUrl: './monitor.component.html',
+  template: `
+<h1>Monitor</h1>
+<div class="dmx-levels">
+  <div *ngFor="let dmxValue of frame.dmxValues" class="dmx-level">
+    {{dmxValue}}
+  </div>
+</div>
+<app-record></app-record>
+`,
   styleUrls: ['./monitor.component.css']
 })
 export class MonitorComponent implements OnInit, OnDestroy {

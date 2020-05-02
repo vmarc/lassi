@@ -8,15 +8,12 @@ import { Reply } from '../scene/reply';
 })
 export class RecordService {
 
-  private url: string;
-
   constructor(private http: HttpClient) {
-    this.url = "http://localhost:8080/api/recordscenebis";
   }
 
   record() : void {
     console.log("recording...");
-    this.http.post('/api/recordscenebis', "test").subscribe();
+    this.http.get('/api/recordscenebis/' + 0).subscribe();
 
   }
 

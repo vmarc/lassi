@@ -6,7 +6,7 @@ import { RecordService } from './record.service';
   template: `
 
   <button mat-flat-button color="warn" (click)="record()">Record</button>
-  <button mat-flat-button color="primary">Stop</button>
+  <button mat-flat-button color="primary" (click)="stop()">Stop</button>
 
   `,
   styles: []
@@ -20,6 +20,10 @@ export class RecordComponent implements OnInit {
 
   record() {
     this.recordService.record();
+  }
+
+  stop() {
+
   }
 
 }
