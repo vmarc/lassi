@@ -20,14 +20,15 @@ public class ArtnetSender {
 
         for (Frame frame : sceneToPlay.getFrames()) {
             byte[] dmxData = intArrayToByteArray(frame.getDmxValues());
-
-            artNetClient.start();
+            if (!artNetClient.isRunning()) {
+                artNetClient.start();
+            }
 
             artNetClient.broadcastDmx(0, 0, dmxData);
 
         }
 
-        artNetClient.stop();
+        //artNetClient.stop();
 
 
     }
@@ -46,4 +47,7 @@ public class ArtnetSender {
         }
         return byteArray;
     }
+
 }
+
+
