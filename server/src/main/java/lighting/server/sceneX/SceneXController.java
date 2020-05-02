@@ -21,6 +21,7 @@ public class SceneXController {
     @GetMapping(value = "/api/recordscenebis/{button_id}")
     public void recordScene(@PathVariable int button_id) {
         System.out.println("recording...");
+
         this.sceneService.recordScene(button_id);
     }
 
