@@ -135,7 +135,7 @@ public class IOServiceImpl implements IIOService {
 
         for (SceneX scene : scenes) {
             if (scene.getButtonId() != 0) {
-                buttons.set(scene.getButtonId(), false);
+                buttons.set((scene.getButtonId() -1), false);
             }
 
         }
