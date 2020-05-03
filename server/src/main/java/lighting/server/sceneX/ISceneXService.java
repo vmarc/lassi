@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ISceneXService {
-    void recordScene(int button_id);
+    boolean recordScene(int button_id);
     void playSceneFromButton(int button) throws IOException;
     void updateSceneFromDisk(SceneX sceneX) throws IOException;
     void saveScenesToJSON(SceneX sceneX) throws IOException;

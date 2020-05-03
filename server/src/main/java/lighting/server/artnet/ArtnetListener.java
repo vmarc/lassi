@@ -21,6 +21,7 @@ public class ArtnetListener {
     private final ISceneXService service;
     private Scene scene = new Scene();
     private SceneX sceneX = new SceneX();
+    private boolean framesAdded = false;
 
     public ArtnetListener(ISceneXService service) {
         this.service = service;
@@ -34,49 +35,47 @@ public class ArtnetListener {
         return sceneX;
     }
 
-    public void recordData(int button_id){
-       sceneX.setButtonId(button_id);
-       sceneX.setCreatedOn(LocalDateTime.now());
-       DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-       sceneX.setName("Recording of " + sceneX.getCreatedOn().format(formatter));
+    public boolean recordData(int button_id){
+        sceneX.setButtonId(button_id);
+        sceneX.setCreatedOn(LocalDateTime.now());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        sceneX.setName("Recording of " + sceneX.getCreatedOn().format(formatter));
 
-       artNetClient.getArtNetServer().addListener(
+        artNetClient.getArtNetServer().addListener(
+
                 new ArtNetServerEventAdapter() {
                     @Override public void artNetPacketReceived(ArtNetPacket packet) {
 
-                            ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
-                            Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
-                            sceneX.getFrames().add(frame);
-
-                            try {
-                                service.saveScenesToJSON(sceneX);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            artNetClient.stop();
+                        ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
+                        sceneX.getFrames().add(frame);
+                        framesAdded = true;
+                        try {
+                            service.saveScenesToJSON(sceneX);
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
+                        artNetClient.stop();
+                    }
 
 
                 });
-
         artNetClient.start();
 
-    }
-
-
-    public int[] byteArrayToIntArray(byte[] byteArray){
-        int[] intArray = new int[512];
-        int x = 0;
-        for (byte b: byteArray
-        ) {
-            byte i = (byte) (b & 0xFF);
-            intArray[x] = i;
-            x++;
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        return intArray;
+        artNetClient.stop();
+        if(framesAdded){
+            System.out.println("Something recorded");
+            return true;
+        }
+        else return false;
     }
 
-    public int[] byte2int(byte[]src) {
+    public int[] byteArrayToIntArray(byte[]src) {
         int dstLength = src.length >>> 2;
         int[]dst = new int[dstLength];
 

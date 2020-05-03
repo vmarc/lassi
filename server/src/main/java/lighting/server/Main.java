@@ -21,13 +21,14 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
         ArtnetSender a = new ArtnetSender();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             SceneX sceneX = new SceneX();
             int[] dmxValues = IntStream.generate(() -> new Random().nextInt(256)).limit(128).toArray();
             Frame frame = new Frame(dmxValues, 10);
             sceneX.getFrames().add(frame);
             a.setSceneToPlay(sceneX);
             a.sendData();
+            Thread.sleep(1000);
         }
 
 

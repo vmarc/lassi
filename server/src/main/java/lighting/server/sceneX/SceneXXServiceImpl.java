@@ -38,10 +38,11 @@ public class SceneXXServiceImpl implements ISceneXService {
         }
     }
 
-    public void recordScene(int button_id) {
+    public boolean recordScene(int button_id) {
         artnetListener = new ArtnetListener(this);
-        artnetListener.recordData(button_id);
         System.out.println("test made");
+        return (artnetListener.recordData(button_id));
+
     }
 
     public void playSceneFromButton(int button) throws IOException {
