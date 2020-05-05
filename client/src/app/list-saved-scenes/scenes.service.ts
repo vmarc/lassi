@@ -32,9 +32,9 @@ export class ScenesService {
     this.http.get('/api/playscene/' + buttonId).subscribe();
   }
 
-  public record(button: number) : void {
+  public record(button: number) : Observable<boolean> {
     console.log("recording...");
-    this.http.get('/api/recordscenebis/' + button).subscribe();
+    return this.http.get<boolean>('/api/recordscenebis/' + button);
 
   }
 

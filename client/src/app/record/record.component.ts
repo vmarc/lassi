@@ -22,8 +22,7 @@ export class RecordComponent implements OnInit {
   }
 
   record() {
-    this.sceneService.record(0);
-    this.sceneService.recordingDone().subscribe(data => this.recordingDone = data);
+    this.sceneService.record(0).subscribe(data => data = this.recordingDone);
   }
 
   stop() {

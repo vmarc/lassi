@@ -6,10 +6,7 @@ import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Component
@@ -25,7 +22,7 @@ public class SceneXXServiceImpl implements ISceneXService {
     }
 
     public boolean recordScene(int button_id) {
-        artnetListener = new ArtnetListener(this);
+        artnetListener = new ArtnetListener(iOService);
         artnetListener.recordData(button_id);
         try {
             Thread.sleep(3000);
