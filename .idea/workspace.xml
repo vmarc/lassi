@@ -3,30 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/list-saved-scenes/scenes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/list-saved-scenes/scenes.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/monitor/monitor.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/monitor/monitor.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/record/record.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/record/record.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/record/record.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/simulator/simulator-control.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/simulator/simulator-control.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/simulator/simulator-led.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/simulator/simulator-led.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/simulator/simulator.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/simulator/simulator.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/simulator/simulator.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/simulator/simulator.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/SceneFader.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/SceneFader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/artnet/ArtnetListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/artnet/ArtnetListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/artnet/ArtnetSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/artnet/ArtnetSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/monitor/MonitorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/monitor/MonitorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/ISceneXService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/ISceneXService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneX.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneX.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXXServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneXXServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/artnet/ArtnetListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/artnet/ArtnetListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/monitor/MonitorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/monitor/MonitorService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/ISceneXService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/ISceneXService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneX.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneX.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneXController.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneXController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneXXServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneXXServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/artnet/ArtnetListener$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/artnet/ArtnetListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/ISceneXService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneXController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/sceneX/SceneXXServiceImpl.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,7 +170,7 @@
       <workItem from="1586858367356" duration="11975000" />
       <workItem from="1587324647724" duration="99000" />
       <workItem from="1587808406881" duration="24654000" />
-      <workItem from="1588333791935" duration="31754000" />
+      <workItem from="1588333791935" duration="32224000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1581261490834</created>
@@ -496,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588418700662</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="monitor component">
+      <created>1588701832793</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1588701832793</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -571,10 +562,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="581" y="368" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1581276798862" />
-    <state x="1169" y="400" key="#com.intellij.ide.util.MemberChooser" timestamp="1588683658851">
-      <screen x="0" y="0" width="3008" height="1692" />
+    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser" timestamp="1588702110737">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1588427779596" />
+    <state x="653" y="248" key="#com.intellij.ide.util.MemberChooser/0.0.1680.1050@0.0.1680.1050" timestamp="1588702110737" />
     <state x="1169" y="400" key="#com.intellij.ide.util.MemberChooser/0.0.3008.1692@0.0.3008.1692" timestamp="1588683658851" />
     <state x="1169" y="400" key="#com.intellij.ide.util.MemberChooser/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588099235070" />
     <state x="-1890" y="242" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1581259907922">
@@ -586,11 +577,11 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2" timestamp="1588418700496">
+    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2" timestamp="1588701832599">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
-    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1588418700496" />
+    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1588701832599" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1588266083017" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
     <state x="936" y="448" key="CommitChangelistDialog2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588334678392" />
@@ -778,10 +769,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="168" y="94" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588413462482" />
-    <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1588413470350">
+    <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog" timestamp="1588702012855">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588413470350" />
+    <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588702012855" />
     <state x="987" y="400" width="443" height="252" key="MultipleFileMergeDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1587901317813" />
     <state x="536" y="240" width="803" height="598" key="NewModule_or_Project.wizard" timestamp="1581803449491">
       <screen x="0" y="0" width="1680" height="1050" />
@@ -804,10 +795,10 @@
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1588418702389" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1588266084564" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588176460010" />
-    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588348662231">
+    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588701993023">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1588348662231" />
+    <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1588701993023" />
     <state x="1115" y="724" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3008.1692@0.0.3008.1692" timestamp="1587901309511" />
     <state x="0" y="0" width="2590" height="1692" key="dock-window-1" timestamp="1585503337603">
       <screen x="0" y="0" width="3008" height="1692" />

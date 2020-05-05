@@ -8,5 +8,4 @@ public interface ISceneXService {
     boolean recordScene(int button_id);
     void playSceneFromButton(int button) throws IOException;
     Frame getLiveData();
-    boolean isRecordingDone();
 }
