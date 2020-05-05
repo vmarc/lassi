@@ -1,6 +1,7 @@
 package lighting.server.sceneX;
 
 import lighting.server.IO.IIOService;
+import lighting.server.frame.Frame;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -76,12 +77,24 @@ public class SceneXController {
 
     @GetMapping(value = "api/getbuttons")
     public List<Boolean> getButtons() {
+        System.out.println("sending buttons");
         try {
             return this.iioService.getButtons();
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @GetMapping(value = "api/livedata")
+    public Frame getLiveData() {
+        //return this.sceneService.getLiveData();
+        return null;
+    }
+
+    @GetMapping(value = "api/donerecording")
+    public boolean recordingDone() {
+        return this.sceneService.isRecordingDone();
     }
 
 }

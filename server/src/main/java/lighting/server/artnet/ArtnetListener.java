@@ -63,6 +63,23 @@ public class ArtnetListener {
 
     }
 
+    public void captureData() {
+        artNetClient.getArtNetServer().addListener(
+                new ArtNetServerEventAdapter() {
+                    @Override public void artNetPacketReceived(ArtNetPacket packet) {
+
+                        ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
+                        sceneX.getFrames().add(frame);
+                        artNetClient.stop();
+                    }
+
+
+                });
+
+        artNetClient.start();
+    }
+
     public int[] byteArrayToIntArray(byte[]src) {
         int dstLength = src.length >>> 2;
         int[]dst = new int[dstLength];

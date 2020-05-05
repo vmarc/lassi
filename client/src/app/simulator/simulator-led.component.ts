@@ -1,6 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {SimulatorService} from './simulator.service';
 import {Subscription} from 'rxjs';
+import { ScenesService } from '../list-saved-scenes/scenes.service';
 
 @Component({
   selector: 'app-simulator-led',
@@ -44,16 +45,26 @@ import {Subscription} from 'rxjs';
 export class SimulatorLedComponent implements OnInit, OnDestroy {
 
   @Input() sceneId: number;
+  buttons: boolean[];
   color = 'gray';
   private subscription: Subscription;
 
-  constructor(private simulatorService: SimulatorService) {
+  constructor(private simulatorService: SimulatorService, private sceneService: ScenesService) {
   }
 
-  ngOnInit() {
+  /*ngOnInit() {
     this.subscription = this.simulatorService.status(this.sceneId - 1).subscribe(status => {
       this.color = status ? 'red' : 'gray';
     });
+  }*/
+
+  ngOnInit() {
+    this.sceneService.buttons.subscribe(data => this.buttons = data);
+      var bool = this.buttons[this.sceneId];
+      if (bool) {
+        this.color = 'red';
+      }
+
   }
 
   ngOnDestroy() {

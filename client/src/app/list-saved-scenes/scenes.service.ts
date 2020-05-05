@@ -5,21 +5,16 @@ import { Observable } from 'rxjs';
 import { Reply } from '../scene/reply';
 import {map} from 'rxjs/operators';
 import {Sceneslist} from './sceneslist';
+import { Frame } from '../scene/frame';
 
 @Injectable()
 export class ScenesService {
 
+  buttons: Observable<boolean[]>;
+
   constructor(private http: HttpClient) {
+    this.buttons = this.getButtons();
   }
-
-  /*public findAll(): Observable<Array<Scenes>> {
-    return this.http.get('/api/sceneslist').pipe(
-      map(response => {
-
-        return response.sceneslist.map(scenes => Sceneslist.fromJSON(scenes));
-      })
-    );
-  }*/
 
   public findAll(): Observable<Scenes[]> {
     return this.http.get<Scenes[]>('/api/sceneslist');
@@ -37,8 +32,27 @@ export class ScenesService {
     this.http.get('/api/playscene/' + buttonId).subscribe();
   }
 
+  public record(button: number) : void {
+    console.log("recording...");
+    this.http.get('/api/recordscenebis/' + button).subscribe();
+
+  }
+
   public save(scene: Scenes) {
     return this.http.put<Scenes>('/api/savescene/', scene).subscribe();
+  }
+
+  public getButtons(): Observable<boolean[]> {
+    return this.http.get<boolean[]>('api/getbuttons');
+
+  }
+
+  public getLiveData(): Observable<Frame> {
+    return this.http.get<Frame>('api/livedata');
+  }
+
+  public recordingDone(): Observable<boolean> {
+    return this.http.get<boolean>('api/donerecording');
   }
 
 }

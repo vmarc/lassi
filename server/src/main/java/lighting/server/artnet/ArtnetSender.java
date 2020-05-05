@@ -4,16 +4,32 @@ import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.frame.Frame;
 import lighting.server.sceneX.SceneX;
 
+import java.util.List;
+
 public class ArtnetSender {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
     private SceneX sceneToPlay;
+    private List<int[]> toPlay;
 
     public ArtnetSender() {
     }
 
     public void setSceneToPlay(SceneX sceneToPlay) {
         this.sceneToPlay = sceneToPlay;
+    }
+
+
+    public SceneX getSceneToPlay() {
+        return sceneToPlay;
+    }
+
+    public void setToPlay(List<int[]> toPlay) {
+        this.toPlay = toPlay;
+    }
+
+    public List<int[]> getToPlay() {
+        return toPlay;
     }
 
     public void sendData() {
@@ -31,6 +47,19 @@ public class ArtnetSender {
         //artNetClient.stop();
 
 
+    }
+
+    public void sendFrame() {
+        if (!artNetClient.isRunning()) {
+            artNetClient.start();
+        }
+        for (int[] frame : toPlay) {
+            byte[] dmxData = intArrayToByteArray(frame);
+            artNetClient.broadcastDmx(0, 0, dmxData);
+
+        }
+        System.out.println("Frame verstuurd");
+        artNetClient.stop();
     }
 
     public byte[] intArrayToByteArray(int[] intArray) {
