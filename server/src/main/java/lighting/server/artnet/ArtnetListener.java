@@ -23,6 +23,7 @@ public class ArtnetListener {
     private Scene scene = new Scene();
     private SceneX sceneX = new SceneX();
     private boolean framesAdded = false;
+    private Frame currentFrame;
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
@@ -34,6 +35,10 @@ public class ArtnetListener {
 
     public SceneX getSceneX() {
         return sceneX;
+    }
+
+    public Frame getCurrentFrame() {
+        return currentFrame;
     }
 
     public ArtNetClient getArtNetClient() {
@@ -80,7 +85,7 @@ public class ArtnetListener {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
-                        sceneX.getFrames().add(frame);
+                        currentFrame = frame;
                         artNetClient.stop();
                     }
 

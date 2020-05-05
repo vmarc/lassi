@@ -1,9 +1,11 @@
 package lighting.server.sceneX;
 
 import lighting.server.IO.IIOService;
+import lighting.server.SceneFader;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
+import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -14,11 +16,18 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     private ArtnetListener artnetListener;
     private ArtnetSender artnetSender;
+    private SceneX currentPlayingScene = new SceneX();
+    private Settings settings;
 
     private final IIOService iOService;
 
     public SceneXXServiceImpl(IIOService iOService) {
         this.iOService = iOService;
+        try {
+            this.settings = this.iOService.getSettingsFromDisk();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean recordScene(int button_id) {
@@ -45,6 +54,14 @@ public class SceneXXServiceImpl implements ISceneXService {
             if (scene.getButtonId() == button) {
                 this.artnetSender.setSceneToPlay(scene);
                 this.artnetSender.sendData();
+                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
+                try {
+                    this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                    this.artnetSender.sendFrame();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.currentPlayingScene = scene;
                 System.out.println("playing scene from button");
             }
 
@@ -54,7 +71,8 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     @Override
     public Frame getLiveData() {
-        return null;
+        this.artnetListener.captureData();
+        return this.artnetListener.getCurrentFrame();
     }
 
 
