@@ -1,9 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { Scenes } from '../scene/scenes';
 import { ScenesService } from './scenes.service';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSort, Sort } from '@angular/material/sort';
 
 
 @Component({
@@ -60,6 +61,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ListSavedScenesComponent implements OnInit {
 
+  @ViewChild(MatSort) sort: MatSort;
+
   rowID;
   dataSource: Array<Scenes> = [];
   displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
@@ -71,7 +74,7 @@ export class ListSavedScenesComponent implements OnInit {
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
       this.dataSource = data;
-    })
+    });
   }
 
   play(row) {

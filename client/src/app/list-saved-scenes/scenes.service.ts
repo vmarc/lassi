@@ -34,7 +34,7 @@ export class ScenesService {
   }
 
   public play(buttonId: number): void {
-    this.http.get('/api/playscene/' + buttonId);
+    this.http.get('/api/playscene/' + buttonId).subscribe();
   }
 
   public save(scene: Scenes) {
