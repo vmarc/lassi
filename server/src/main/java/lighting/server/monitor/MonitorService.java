@@ -17,6 +17,7 @@ public class MonitorService {
 		this.messagingTemplate = messagingTemplate;
 		this.artnetListener = new ArtnetListener(new IOServiceImpl());
 		this.artnetListener.captureData();
+
 	}
 
 	@Scheduled(fixedDelay = 200)

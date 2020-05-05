@@ -37,7 +37,7 @@ public class SceneX {
     }
 
     public SceneX() {
-        createEmptyFrame();
+        //createEmptyFrame();
     }
 
     public void createEmptyFrame() {
