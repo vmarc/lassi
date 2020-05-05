@@ -110,24 +110,6 @@ public class IOServiceImpl implements IIOService {
 
     }
 
-    public List<Integer> getButtonsWithScene() throws IOException {
-        List<Integer> buttonsWithScene = new ArrayList<>();
-
-        List<SceneX> scenes = getAllScenesFromDisk();
-
-        for (SceneX scene : scenes) {
-            //Excluding 'button' 0
-            if (scene.getButtonId() == 0) {
-
-            } else {
-                buttonsWithScene.add(scene.getButtonId());
-            }
-
-
-        }
-        return buttonsWithScene;
-    }
-
     public List<Boolean> getButtons() throws IOException {
         List<Boolean> buttons = new ArrayList<>( Arrays.asList(true, true, true, true, true, true, true, true, true));
 

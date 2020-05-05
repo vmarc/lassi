@@ -4,7 +4,9 @@ import lighting.server.frame.Frame;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 public class SceneX {
 
@@ -35,7 +37,13 @@ public class SceneX {
     }
 
     public SceneX() {
+        createEmptyFrame();
+    }
 
+    public void createEmptyFrame() {
+        int[] dmxValues = IntStream.generate(() -> new Random().nextInt(1)).limit(128).toArray();
+        Frame frame = new Frame(dmxValues);
+        this.getFrames().add(frame);
     }
 
     public String getName() {

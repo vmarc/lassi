@@ -4,6 +4,7 @@ import ch.bildspur.artnet.ArtNetClient;
 import ch.bildspur.artnet.events.ArtNetServerEventAdapter;
 import ch.bildspur.artnet.packets.ArtDmxPacket;
 import ch.bildspur.artnet.packets.ArtNetPacket;
+import lighting.server.IO.IIOService;
 import lighting.server.frame.Frame;
 import lighting.server.scene.Scene;
 import lighting.server.sceneX.ISceneXService;
@@ -18,13 +19,13 @@ import java.time.format.DateTimeFormatter;
 public class ArtnetListener {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
-    private final ISceneXService service;
+    private final IIOService iioService;
     private Scene scene = new Scene();
     private SceneX sceneX = new SceneX();
     private boolean framesAdded = false;
 
-    public ArtnetListener(ISceneXService service) {
-        this.service = service;
+    public ArtnetListener(IIOService iioService) {
+        this.iioService = iioService;
     }
 
     public Scene getScene() {
@@ -60,7 +61,7 @@ public class ArtnetListener {
                         sceneX.getFrames().add(frame);
                         framesAdded = true;
                         try {
-                            service.saveScenesToJSON(sceneX);
+                            iioService.saveScenesToJSON(sceneX);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -69,6 +70,23 @@ public class ArtnetListener {
 
 
                 });
+        artNetClient.start();
+    }
+
+    public void captureData() {
+        artNetClient.getArtNetServer().addListener(
+                new ArtNetServerEventAdapter() {
+                    @Override public void artNetPacketReceived(ArtNetPacket packet) {
+
+                        ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
+                        sceneX.getFrames().add(frame);
+                        artNetClient.stop();
+                    }
+
+
+                });
+
         artNetClient.start();
     }
 

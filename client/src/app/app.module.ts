@@ -30,7 +30,6 @@ import {MatIconModule} from '@angular/material/icon'
 import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
 import { RecordComponent } from './record/record.component';
-import { RecordService } from './record/record.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -78,7 +77,6 @@ import { SettingsComponent } from './settings/settings.component';
   providers: [
     SceneService,
     ScenesService,
-    RecordService,
     SimulatorService,
     {
       provide: InjectableRxStompConfig,

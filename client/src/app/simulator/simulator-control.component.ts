@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SimulatorService} from './simulator.service';
+import { ScenesService } from '../list-saved-scenes/scenes.service';
 
 @Component({
   selector: 'app-simulator-control',
@@ -28,19 +29,25 @@ import {SimulatorService} from './simulator.service';
     }
   `]
 })
-export class SimulatorControlComponent {
+export class SimulatorControlComponent implements OnInit {
 
   @Input() sceneId: number;
   @Input() record: boolean;
 
-  constructor(private simulatorService: SimulatorService) {
+  constructor(private simulatorService: SimulatorService, private sceneService: ScenesService) {
   }
+
+  ngOnInit(): void {
+
+    }
+
+
 
   buttonClicked(): void {
     if (this.record) {
-      this.simulatorService.recordScene(this.sceneId).subscribe();
+      this.sceneService.record(this.sceneId);
     } else {
-      this.simulatorService.gotoScene(this.sceneId).subscribe();
+      this.sceneService.play(this.sceneId);
     }
   }
 
