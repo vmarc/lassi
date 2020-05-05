@@ -40,9 +40,18 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     public boolean recordScene(int button_id) {
         artnetListener = new ArtnetListener(this);
-        System.out.println("test made");
-        return (artnetListener.recordData(button_id));
-
+        artnetListener.recordData(button_id);
+        try {
+            Thread.sleep(3000);
+            artnetListener.getArtNetClient().stop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if(artnetListener.isFramesAdded()){
+            System.out.println("Something recorded");
+            return true;
+        }
+        else return false;
     }
 
     public void playSceneFromButton(int button) throws IOException {

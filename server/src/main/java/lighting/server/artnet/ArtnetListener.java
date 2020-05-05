@@ -35,7 +35,15 @@ public class ArtnetListener {
         return sceneX;
     }
 
-    public boolean recordData(int button_id){
+    public ArtNetClient getArtNetClient() {
+        return artNetClient;
+    }
+
+    public boolean isFramesAdded() {
+        return framesAdded;
+    }
+
+    public void recordData(int button_id) {
         sceneX.setButtonId(button_id);
         sceneX.setCreatedOn(LocalDateTime.now());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
@@ -44,9 +52,10 @@ public class ArtnetListener {
         artNetClient.getArtNetServer().addListener(
 
                 new ArtNetServerEventAdapter() {
-                    @Override public void artNetPacketReceived(ArtNetPacket packet) {
+                    @Override
+                    public void artNetPacketReceived(ArtNetPacket packet) {
 
-                        ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
+                        ArtDmxPacket dmxPacket = (ArtDmxPacket) packet;
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
                         sceneX.getFrames().add(frame);
                         framesAdded = true;
@@ -61,18 +70,6 @@ public class ArtnetListener {
 
                 });
         artNetClient.start();
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        artNetClient.stop();
-        if(framesAdded){
-            System.out.println("Something recorded");
-            return true;
-        }
-        else return false;
     }
 
     public int[] byteArrayToIntArray(byte[]src) {
