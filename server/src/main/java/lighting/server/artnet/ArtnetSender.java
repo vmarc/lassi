@@ -62,20 +62,17 @@ public class ArtnetSender {
         artNetClient.stop();
     }
 
-    public byte[] intArrayToByteArray(int[] intArray) {
-        int arrayLength = intArray.length;
-        byte[] byteArray = new byte[arrayLength << 2];
 
-        for (int i = 0; i < arrayLength; i++) {
-            int x = intArray[i];
-            int j = i << 2;
-            byteArray[j++] = (byte) ((x >>> 0) & 0xff);
-            byteArray[j++] = (byte) ((x >>> 8) & 0xff);
-            byteArray[j++] = (byte) ((x >>> 16) & 0xff);
-            byteArray[j++] = (byte) ((x >>> 24) & 0xff);
+    public byte[] intArrayToByteArray(int[] intArray) {
+        byte[] byteArray = new byte[512];
+
+        for (int i = 0; i < 512; i++) {
+            byte b = (byte) (intArray[i] & 0xFF);
+            byteArray[i] = b;
         }
         return byteArray;
     }
+
 
 }
 

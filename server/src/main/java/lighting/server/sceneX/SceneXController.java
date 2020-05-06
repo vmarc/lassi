@@ -85,9 +85,5 @@ public class SceneXController {
         return null;
     }
 
-    @GetMapping(value = "api/livedata")
-    public Frame getLiveData() {
-        return this.sceneService.getLiveData();
-    }
 
 }

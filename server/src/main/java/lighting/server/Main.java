@@ -13,7 +13,7 @@ public class Main {
         ArtnetSender a = new ArtnetSender();
         for (int i = 0; i < 1000; i++) {
             SceneX sceneX = new SceneX();
-            int[] dmxValues = IntStream.generate(() -> new Random().nextInt(256)).limit(128).toArray();
+            int[] dmxValues = IntStream.generate(() -> new Random().nextInt(256)).limit(512).toArray();
             Frame frame = new Frame(dmxValues, 10);
             sceneX.getFrames().add(frame);
             a.setSceneToPlay(sceneX);

@@ -94,19 +94,14 @@ public class ArtnetListener {
         artNetClient.start();
     }
 
-    public int[] byteArrayToIntArray(byte[]src) {
-        int dstLength = src.length >>> 2;
-        int[]dst = new int[dstLength];
+    public int[] byteArrayToIntArray(byte[] src) {
+        int[] intArray = new int[512];
 
-        for (int i=0; i<dstLength; i++) {
-            int j = i << 2;
-            int x = 0;
-            x += (src[j++] & 0xff) << 0;
-            x += (src[j++] & 0xff) << 8;
-            x += (src[j++] & 0xff) << 16;
-            x += (src[j++] & 0xff) << 24;
-            dst[i] = x;
+        for (int i = 0; i < 512; i++) {
+            int x = src[i] & 0xFF;
+            intArray[i] = x;
         }
-        return dst;
+        return intArray;
+
     }
 }
