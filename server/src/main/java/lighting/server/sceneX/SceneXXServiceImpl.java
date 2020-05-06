@@ -4,7 +4,6 @@ import lighting.server.IO.IIOService;
 import lighting.server.SceneFader;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.artnet.ArtnetSender;
-import lighting.server.frame.Frame;
 import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
@@ -67,12 +66,6 @@ public class SceneXXServiceImpl implements ISceneXService {
 
         }
 
-    }
-
-    @Override
-    public Frame getLiveData() {
-        this.artnetListener.captureData();
-        return this.artnetListener.getCurrentFrame();
     }
 
 

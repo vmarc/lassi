@@ -47,8 +47,4 @@ export class ScenesService {
 
   }
 
-  public getLiveData(): Observable<Frame> {
-    return this.http.get<Frame>('api/livedata');
-  }
-
 }
