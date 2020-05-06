@@ -1,6 +1,7 @@
 package lighting.server.sceneX;
 
 import lighting.server.IO.IIOService;
+import lighting.server.frame.Frame;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -82,6 +83,11 @@ public class SceneXController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @GetMapping(value = "api/livedata")
+    public Frame getLiveData() {
+        return this.sceneService.getLiveData();
     }
 
 }

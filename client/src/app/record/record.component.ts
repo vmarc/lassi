@@ -21,8 +21,16 @@ export class RecordComponent implements OnInit {
     this.recordingDone = true;
   }
 
+  setBoolean(bool: boolean) {
+    if (bool) {
+      this.recordingDone = false;
+    } else if (!bool) {
+      this.recordingDone = true;
+    }
+  }
+
   record() {
-    this.sceneService.record(0).subscribe(data => data = this.recordingDone);
+    this.sceneService.record(0).subscribe(data => this.setBoolean(data));
   }
 
   stop() {

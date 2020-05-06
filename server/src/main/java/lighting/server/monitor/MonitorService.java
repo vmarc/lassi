@@ -17,11 +17,17 @@ public class MonitorService {
 		this.messagingTemplate = messagingTemplate;
 		this.artnetListener = new ArtnetListener(new IOServiceImpl());
 		this.artnetListener.captureData();
+
 	}
 
 	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
-		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getSceneX().getFrames());
+		if (artnetListener.getCurrentFrame() == null) {
+			System.out.println("frame is null");
+		} else {
+			this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrame());
+
+		}
 	}
 
 }

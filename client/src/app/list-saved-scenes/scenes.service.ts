@@ -47,12 +47,4 @@ export class ScenesService {
 
   }
 
-  public getLiveData(): Observable<Frame> {
-    return this.http.get<Frame>('api/livedata');
-  }
-
-  public recordingDone(): Observable<boolean> {
-    return this.http.get<boolean>('api/donerecording');
-  }
-
 }
