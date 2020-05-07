@@ -6,9 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="monitor recording">
+    <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnOff" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,20 +173,6 @@
       <workItem from="1588508961289" duration="4903000" />
       <workItem from="1588701800618" duration="2512000" />
       <workItem from="1588787564797" duration="1972000" />
-    </task>
-    <task id="LOCAL-00003" summary="update angular">
-      <created>1581266125695</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1581266125695</updated>
-    </task>
-    <task id="LOCAL-00004" summary="update angular">
-      <created>1581266166064</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1581266166064</updated>
     </task>
     <task id="LOCAL-00005" summary="update angular">
       <created>1581266290189</created>
@@ -518,7 +503,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588852412766</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="directories">
+      <created>1588855668379</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1588855668379</updated>
+    </task>
+    <task id="LOCAL-00053" summary="directories">
+      <created>1588855713153</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1588855713153</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="html/css files added" />
     <MESSAGE value="update angular" />
     <MESSAGE value="ArtNetReceiver" />
     <MESSAGE value="savetofile" />
@@ -563,7 +561,8 @@
     <MESSAGE value="KB adjustment" />
     <MESSAGE value="maven" />
     <MESSAGE value="monitor recording" />
-    <option name="LAST_COMMIT_MESSAGE" value="monitor recording" />
+    <MESSAGE value="directories" />
+    <option name="LAST_COMMIT_MESSAGE" value="directories" />
   </component>
   <component name="WindowStateProjectService">
     <state x="440" y="173" key="#Plugins" timestamp="1584978906064">
@@ -613,7 +612,7 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="936" y="448" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1588855062559">
+    <state x="936" y="448" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1588855713032">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
@@ -621,7 +620,7 @@
     <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1588348657851" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1588266083017" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
-    <state x="936" y="448" key="CommitChangelistDialog2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588855062559" />
+    <state x="936" y="448" key="CommitChangelistDialog2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588855713032" />
     <state x="3498" y="0" width="963" height="1050" key="CommitChangelistDialog2/3008.0.1680.1050/0.0.3008.1692@3008.0.1680.1050" timestamp="1588846891119" />
     <state width="422" height="466" key="DebuggerActiveHint" timestamp="1588407783520">
       <screen x="0" y="0" width="1536" height="824" />
@@ -874,14 +873,14 @@
     </state>
     <state width="500" height="447" key="SwitcherDM/0.0.1680.1050@0.0.1680.1050" timestamp="1581865038743" />
     <state width="896" height="721" key="SwitcherDM/0.0.3008.1692@0.0.3008.1692" timestamp="1585400319831" />
-    <state x="1104" y="586" key="Vcs.Push.Dialog.v2" timestamp="1588854843919">
+    <state x="1104" y="586" key="Vcs.Push.Dialog.v2" timestamp="1588855714488">
       <screen x="0" y="0" width="3008" height="1692" />
     </state>
     <state x="-1903" y="287" key="Vcs.Push.Dialog.v2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989582643" />
     <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588703043182" />
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1588347963034" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1588266084564" />
-    <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588854843919" />
+    <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588855714488" />
     <state x="3437" y="199" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@3008.0.1680.1050" timestamp="1588846892750" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog" timestamp="1588509062339">
       <screen x="0" y="0" width="1536" height="824" />
