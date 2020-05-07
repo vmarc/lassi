@@ -59,8 +59,8 @@ export class SimulatorLedComponent implements OnInit, OnDestroy {
   }*/
 
   ngOnInit() {
-    this.sceneService.buttons.subscribe(data => this.buttons = data);
-      var bool = this.buttons[this.sceneId];
+    this.sceneService.buttons.subscribe(data => console.log(data));
+      var bool = this.buttons[this.sceneId - 1];
       if (bool) {
         this.color = 'red';
       }

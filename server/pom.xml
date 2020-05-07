@@ -39,10 +39,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>com.pi4j</groupId>
-			<artifactId>pi4j-core</artifactId>
-			<version>1.2</version>
-		</dependency>	
+			<groupId>ch.bildspur</groupId>
+			<artifactId>artnet4j</artifactId>
+			<version>0.6.2</version>
+		  </dependency>
 	</dependencies>
 
 	<build>

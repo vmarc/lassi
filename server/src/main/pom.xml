@@ -66,10 +66,9 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
         <dependency>
-            <groupId>groupId</groupId>
-            <artifactId>artnet4J</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>ch.bildspur</groupId>
+            <artifactId>artnet4j</artifactId>
+            <version>0.6.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

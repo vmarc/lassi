@@ -7,7 +7,7 @@ import { ScenesService } from '../list-saved-scenes/scenes.service';
 <div class="buttons">
   <div>
     <div class="button-row">
-      <app-simulator-control [record]="record" [sceneId]="1"></app-simulator-control>
+      <app-simulator-control [record]="record" [sceneId]="1" [clickable]=""></app-simulator-control>
       <app-simulator-control [record]="record" [sceneId]="2"></app-simulator-control>
       <app-simulator-control [record]="record" [sceneId]="3"></app-simulator-control>
     </div>
@@ -33,7 +33,7 @@ export class SimulatorComponent implements OnInit{
 
   buttons: boolean[];
 
-  record = false;
+  record: boolean = false;
 
   constructor(private sceneService: ScenesService) {
   }

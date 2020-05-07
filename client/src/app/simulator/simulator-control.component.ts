@@ -39,7 +39,7 @@ export class SimulatorControlComponent implements OnInit {
 
   ngOnInit(): void {
 
-    }
+  }
 
 
 
