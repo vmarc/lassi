@@ -68,5 +68,27 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     }
 
+    public void playSceneFromId(String id) throws IOException {
+        artnetSender = new ArtnetSender();
+        List<SceneX> scenes = iOService.getAllScenesFromDisk();
+
+        for (SceneX scene : scenes) {
+            if (scene.getId() == id) {
+                this.artnetSender.setSceneToPlay(scene);
+                this.artnetSender.sendData();
+                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
+                try {
+                    this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                    this.artnetSender.sendFrame();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                this.currentPlayingScene = scene;
+                System.out.println("playing scene from id");
+            }
+
+        }
+    }
+
 
 }

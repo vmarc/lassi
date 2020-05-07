@@ -28,8 +28,8 @@ export class ScenesService {
     return this.http.get<Scenes>('/api/getscene/' + scene_id);
   }
 
-  public play(buttonId: number): void {
-    this.http.get('/api/playscene/' + buttonId).subscribe();
+  public play(id: string): void {
+    this.http.get('/api/playscenefromid/' + id).subscribe();
   }
 
   public record(button: number) : Observable<boolean> {

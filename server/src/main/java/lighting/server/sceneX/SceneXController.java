@@ -34,7 +34,6 @@ public class SceneXController {
         }
     }
 
-    //TODO
     @GetMapping(value = "/api/playscene/{button_id}")
     public void playSceneFromButton(@PathVariable int button_id) {
         try {
@@ -43,6 +42,16 @@ public class SceneXController {
             e.printStackTrace();
         }
     }
+
+    @GetMapping(value = "/api/playscenefromid/{id}")
+    public void playSceneFromButton(@PathVariable String id) {
+        try {
+            this.sceneService.playSceneFromId(id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @GetMapping(value = "/api/sceneslist")
     public List<SceneX> getScenes() {

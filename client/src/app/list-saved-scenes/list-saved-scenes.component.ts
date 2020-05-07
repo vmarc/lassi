@@ -78,7 +78,7 @@ export class ListSavedScenesComponent implements OnInit {
   }
 
   play(row) {
-    this.scenesService.play(row['buttonId']);
+    this.scenesService.play(row['id']);
 
   }
 
