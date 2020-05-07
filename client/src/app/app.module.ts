@@ -29,7 +29,6 @@ import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'
 import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
-import { RecordComponent } from './record/record.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
@@ -46,7 +45,6 @@ import { SettingsComponent } from './settings/settings.component';
     SimulatorControlComponent,
     AboutComponent,
     ListSavedScenesComponent,
-    RecordComponent,
     ConfirmDeleteDialogComponent,
     EditSavedSceneDialogComponent,
     SettingsComponent,
