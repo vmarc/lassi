@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 @Component
 public class IOServiceImpl implements IIOService {
 
-    private Path parentDir = Paths.get(System.getProperty("user.dir")).getParent();
+    private Path parentDir = Paths.get(System.getProperty("user.dir"));
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
     private Path settingsDir = Paths.get(parentDir + "/settings/");
 
