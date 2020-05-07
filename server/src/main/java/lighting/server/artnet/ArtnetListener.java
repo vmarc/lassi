@@ -85,6 +85,7 @@ public class ArtnetListener {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
+                        System.out.println("frame captured");
                         currentFrame = frame;
                     }
 
