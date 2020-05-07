@@ -1,7 +1,6 @@
 package lighting.server.sceneX;
 
 import lighting.server.IO.IIOService;
-import lighting.server.frame.Frame;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -44,7 +43,7 @@ public class SceneXController {
     }
 
     @GetMapping(value = "/api/playscenefromid/{id}")
-    public void playSceneFromButton(@PathVariable String id) {
+    public void playSceneFromId(@PathVariable String id) {
         try {
             this.sceneService.playSceneFromId(id);
         } catch (IOException e) {

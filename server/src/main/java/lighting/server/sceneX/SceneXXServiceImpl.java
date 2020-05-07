@@ -56,28 +56,7 @@ public class SceneXXServiceImpl implements ISceneXService {
 
         for (SceneX scene : scenes) {
             if (scene.getButtonId() == button) {
-                this.artnetSender.setSceneToPlay(scene);
-                this.artnetSender.sendData();
-                if (currentPlayingScene.getFrames() == null) {
-                    SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), emptyFrame, scene.getFrames().get(0));
-                    try {
-                        this.artnetSender.setToPlay(sceneFader.fadeFrame());
-                        this.artnetSender.sendFrame();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    this.currentPlayingScene = scene;
-                    System.out.println("playing scene from button");
-                }
-                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
-                try {
-                    this.artnetSender.setToPlay(sceneFader.fadeFrame());
-                    this.artnetSender.sendFrame();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                this.currentPlayingScene = scene;
-                System.out.println("playing scene from button");
+                playScene(scene);
             }
 
         }
@@ -89,21 +68,40 @@ public class SceneXXServiceImpl implements ISceneXService {
         List<SceneX> scenes = iOService.getAllScenesFromDisk();
 
         for (SceneX scene : scenes) {
-            if (scene.getId() == id) {
-                this.artnetSender.setSceneToPlay(scene);
-                this.artnetSender.sendData();
-                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
-                try {
-                    this.artnetSender.setToPlay(sceneFader.fadeFrame());
-                    this.artnetSender.sendFrame();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                this.currentPlayingScene = scene;
-                System.out.println("playing scene from id");
+            if (scene.getId().equals(id)) {
+                playScene(scene);
             }
 
         }
+    }
+
+    public void playScene(SceneX scene) {
+        this.artnetSender.setSceneToPlay(scene);
+        this.artnetSender.sendData();
+        if (currentPlayingScene.getFrames().isEmpty()) {
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), emptyFrame, scene.getFrames().get(0));
+            try {
+                this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                this.artnetSender.sendFrame();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.currentPlayingScene = scene;
+            System.out.println("playing scene");
+
+        } else {
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
+            try {
+                this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                this.artnetSender.sendFrame();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.currentPlayingScene = scene;
+            System.out.println("playing scene");
+        }
+
+
     }
 
 
