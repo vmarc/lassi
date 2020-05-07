@@ -7,7 +7,6 @@ import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@s
 import {appRxStompConfig} from './app-rx-stomp.config';
 import {MonitorComponent, RecordingDoneDialogComponent} from './monitor/monitor.component';
 import {MenuComponent} from './menu/menu.component';
-import {SetupComponent} from './setup/setup.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -39,7 +38,6 @@ import { SettingsComponent } from './settings/settings.component';
     AppComponent,
     MonitorComponent,
     MenuComponent,
-    SetupComponent,
     SimulatorComponent,
     SimulatorLedComponent,
     SimulatorControlComponent,

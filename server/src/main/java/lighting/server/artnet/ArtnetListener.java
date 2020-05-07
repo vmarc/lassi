@@ -7,7 +7,6 @@ import ch.bildspur.artnet.packets.ArtNetPacket;
 import lighting.server.IO.IIOService;
 import lighting.server.frame.Frame;
 import lighting.server.scene.Scene;
-import lighting.server.sceneX.ISceneXService;
 import lighting.server.sceneX.SceneX;
 import org.springframework.stereotype.Component;
 

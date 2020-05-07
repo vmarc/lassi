@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {MenuComponent} from './menu/menu.component';
 import {MonitorComponent} from './monitor/monitor.component';
-import {SetupComponent} from './setup/setup.component';
 import {SimulatorComponent} from './simulator/simulator.component';
 import {AboutComponent} from './about/about.component';
 import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
@@ -17,10 +16,6 @@ export const routes: Routes = [
   {
     path: 'monitor',
     component: MonitorComponent
-  },
-  {
-    path: 'setup',
-    component: SetupComponent
   },
   {
     path: 'simulator',
