@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   margin-left: 1em;
   margin-right: 1em;
+  margin-bottom: 3em;
   border-top: 1px solid lightgray;
   border-left: 1px solid lightgray;
 }
@@ -15,6 +16,14 @@
   border-right: 1px solid lightgray;
   border-bottom: 1px solid lightgray;
   text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1em;
+  margin-right: 1em;
+
 }
 
 h1 { text-align: center;}

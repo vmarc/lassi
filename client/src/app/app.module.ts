@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
 import {appRxStompConfig} from './app-rx-stomp.config';
-import {MonitorComponent} from './monitor/monitor.component';
+import {MonitorComponent, RecordingDoneDialogComponent} from './monitor/monitor.component';
 import {MenuComponent} from './menu/menu.component';
 import {SetupComponent} from './setup/setup.component';
 import {AppRoutingModule} from './app-routing.module';
@@ -50,6 +50,7 @@ import { SettingsComponent } from './settings/settings.component';
     ConfirmDeleteDialogComponent,
     EditSavedSceneDialogComponent,
     SettingsComponent,
+    RecordingDoneDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +73,8 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule
   ],
   entryComponents: [
-    ConfirmDeleteDialogComponent
+    ConfirmDeleteDialogComponent,
+    RecordingDoneDialogComponent
   ],
   providers: [
     SceneService,
