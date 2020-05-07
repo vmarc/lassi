@@ -4,11 +4,14 @@ import lighting.server.IO.IIOService;
 import lighting.server.SceneFader;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.artnet.ArtnetSender;
+import lighting.server.frame.Frame;
 import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.IntStream;
 
 @Component
 public class SceneXXServiceImpl implements ISceneXService {
@@ -16,6 +19,8 @@ public class SceneXXServiceImpl implements ISceneXService {
     private ArtnetListener artnetListener;
     private ArtnetSender artnetSender;
     private SceneX currentPlayingScene = new SceneX();
+    int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
+    Frame emptyFrame = new Frame(emptyArray);
     private Settings settings;
 
     private final IIOService iOService;
@@ -53,6 +58,17 @@ public class SceneXXServiceImpl implements ISceneXService {
             if (scene.getButtonId() == button) {
                 this.artnetSender.setSceneToPlay(scene);
                 this.artnetSender.sendData();
+                if (currentPlayingScene.getFrames() == null) {
+                    SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), emptyFrame, scene.getFrames().get(0));
+                    try {
+                        this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                        this.artnetSender.sendFrame();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    this.currentPlayingScene = scene;
+                    System.out.println("playing scene from button");
+                }
                 SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
                 try {
                     this.artnetSender.setToPlay(sceneFader.fadeFrame());

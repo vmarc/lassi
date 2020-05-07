@@ -47,7 +47,7 @@ export class SimulatorControlComponent implements OnInit {
     if (this.record) {
       this.sceneService.record(this.sceneId);
     } else {
-      this.sceneService.play(this.sceneId);
+      //this.sceneService.play(this.sceneId);
     }
   }
 
