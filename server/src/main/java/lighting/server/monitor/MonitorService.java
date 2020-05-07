@@ -23,7 +23,7 @@ public class MonitorService {
 	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
 		if (artnetListener.getCurrentFrame() == null) {
-			System.out.println("frame is null");
+
 		} else {
 			this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrame());
 
