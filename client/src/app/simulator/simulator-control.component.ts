@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SimulatorService} from './simulator.service';
 import { ScenesService } from '../list-saved-scenes/scenes.service';
 
 @Component({
@@ -34,7 +33,7 @@ export class SimulatorControlComponent implements OnInit {
   @Input() sceneId: number;
   @Input() record: boolean;
 
-  constructor(private simulatorService: SimulatorService, private sceneService: ScenesService) {
+  constructor(private sceneService: ScenesService) {
   }
 
   ngOnInit(): void {

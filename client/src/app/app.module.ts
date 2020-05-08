@@ -14,8 +14,6 @@ import {SimulatorComponent} from './simulator/simulator.component';
 import {SimulatorLedComponent} from './simulator/simulator-led.component';
 import {SimulatorControlComponent} from './simulator/simulator-control.component';
 import {HttpClientModule} from '@angular/common/http';
-import {SimulatorService} from './simulator/simulator.service';
-import {SceneService} from './scene/scene.service';
 import {AboutComponent} from './about/about.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -73,9 +71,7 @@ import { SettingsComponent } from './settings/settings.component';
     RecordingDoneDialogComponent
   ],
   providers: [
-    SceneService,
     ScenesService,
-    SimulatorService,
     {
       provide: InjectableRxStompConfig,
       useValue: appRxStompConfig

@@ -1,5 +1,4 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {SimulatorService} from './simulator.service';
 import {Subscription} from 'rxjs';
 import { ScenesService } from '../list-saved-scenes/scenes.service';
 
@@ -49,14 +48,9 @@ export class SimulatorLedComponent implements OnInit, OnDestroy {
   color = 'gray';
   private subscription: Subscription;
 
-  constructor(private simulatorService: SimulatorService, private sceneService: ScenesService) {
+  constructor(private sceneService: ScenesService) {
   }
 
-  /*ngOnInit() {
-    this.subscription = this.simulatorService.status(this.sceneId - 1).subscribe(status => {
-      this.color = status ? 'red' : 'gray';
-    });
-  }*/
 
   ngOnInit() {
     this.sceneService.buttons.subscribe(data => console.log(data));
