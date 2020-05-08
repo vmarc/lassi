@@ -19,8 +19,6 @@ public class SceneXXServiceImpl implements ISceneXService {
     private ArtnetListener artnetListener;
     private ArtnetSender artnetSender;
     private SceneX currentPlayingScene = new SceneX();
-    int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
-    Frame emptyFrame = new Frame(emptyArray);
     private Settings settings;
 
     private final IIOService iOService;
@@ -79,6 +77,8 @@ public class SceneXXServiceImpl implements ISceneXService {
         this.artnetSender.setSceneToPlay(scene);
         this.artnetSender.sendData();
         if (currentPlayingScene.getFrames().isEmpty()) {
+            int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
+            Frame emptyFrame = new Frame(emptyArray);
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), emptyFrame, scene.getFrames().get(0));
             try {
                 this.artnetSender.setToPlay(sceneFader.fadeFrame());
