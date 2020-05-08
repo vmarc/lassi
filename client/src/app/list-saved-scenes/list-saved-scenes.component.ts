@@ -11,6 +11,7 @@ import { MatSort, Sort } from '@angular/material/sort';
   selector: 'app-list-saved-scenes',
   template: `
 <h1>List of Scenes</h1>
+
   <div>
   <mat-table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="id">
@@ -55,6 +56,7 @@ import { MatSort, Sort } from '@angular/material/sort';
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
 </div>
+
 
   `,
   styleUrls: ['./list-saved-scenes.component.css']

@@ -46,7 +46,7 @@ import { SettingsComponent } from './settings/settings.component';
     ConfirmDeleteDialogComponent,
     EditSavedSceneDialogComponent,
     SettingsComponent,
-    RecordingDoneDialogComponent
+    RecordingDoneDialogComponent,
   ],
   imports: [
     BrowserModule,
