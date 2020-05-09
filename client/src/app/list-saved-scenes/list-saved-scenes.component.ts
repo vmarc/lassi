@@ -15,7 +15,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 <h1>List of Scenes</h1>
 
   <div class="container">
-  <mat-table #table class="center" [dataSource]="dataSource">
+  <mat-table  #table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.id}} </mat-cell>
@@ -85,14 +85,15 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  rowID;
   dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
   displayedColumns = ['name', 'buttonId', 'universe', 'fadeTime', 'actions'];
 
   constructor(private scenesService: ScenesService,
               private router: Router,
               private dialog: MatDialog,
-              private snackbar: MatSnackBar) {}
+              private snackbar: MatSnackBar) {
+
+  }
 
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
@@ -102,6 +103,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+
   }
 
   play(row) {
@@ -278,14 +280,14 @@ export class ConfirmDeleteDialogComponent {
 <div mat-dialog-content>
 <div>
 <mat-form-field>
-  <p>Name</p>
+  <h4>Name:</h4>
   <input matInput formControlName="name">
 </mat-form-field>
 </div>
 
 <div>
 <mat-form-field>
-  <p>Button</p>
+  <h4>Button:</h4>
   <mat-select  formControlName="buttonId" (change)="changeButton($event)" [value]="selectedButton">
     <mat-option *ngFor="let button of buttons" [value]="button" >{{button}}</mat-option>
   </mat-select>
@@ -294,7 +296,7 @@ export class ConfirmDeleteDialogComponent {
 
 <div>
 <mat-form-field>
-  <p>Fade Time</p>
+  <h4>Fade Time:</h4>
   <mat-select  formControlName="fadeTime" (change)="changeFadeTime($event)" [value]="selectedFadeTime">
     <mat-option *ngFor="let fade of fadeTimes" [value]="fade" >{{fade}}</mat-option>
   </mat-select>

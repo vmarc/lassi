@@ -71,7 +71,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     FormsModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   entryComponents: [
     ConfirmDeleteDialogComponent,
