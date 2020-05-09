@@ -176,7 +176,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
         duration: 3000
       });
 
-    })
+    });
   }
 
   reloadComponent() {
