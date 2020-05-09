@@ -28,6 +28,10 @@ export class ScenesService {
     return this.http.get<Scenes>('/api/getscene/' + scene_id);
   }
 
+  public download(scene_id: string): Observable<Blob> {
+    return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'});
+  }
+
   public play(id: string): void {
     this.http.get('/api/playscenefromid/' + id).subscribe();
   }

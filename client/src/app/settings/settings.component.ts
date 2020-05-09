@@ -19,7 +19,7 @@ import { Settings } from './settings';
 </div>
 <div>
 <mat-form-field>
-  <p>Fade time in seconds</p>
+  <p>Fade time in seconds for newly recorded scenes</p>
   <mat-select  formControlName="fadeTimeInSeconds" (change)="changeFade($event)" [value]="fadeSec">
     <mat-option *ngFor="let fade of fadeTimeInSec" [value]="fade" >{{fade}}</mat-option>
   </mat-select>

@@ -13,6 +13,7 @@ public class Settings {
         this.fadeTimeInSeconds = fadeTimeInSeconds;
     }
 
+
     public int getFramesPerSecond() {
         return framesPerSecond;
     }
@@ -28,4 +29,5 @@ public class Settings {
     public void setFadeTimeInSeconds(int fadeTimeInSeconds) {
         this.fadeTimeInSeconds = fadeTimeInSeconds;
     }
+
 }

@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, AfterViewInit } from '@angular/core';
 import { Scenes } from '../scene/scenes';
 import { ScenesService } from './scenes.service';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { MatSort, Sort } from '@angular/material/sort';
 <h1>List of Scenes</h1>
 
   <div>
-  <mat-table class="center" [dataSource]="dataSource">
+  <mat-table #table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.id}} </mat-cell>
@@ -23,23 +24,35 @@ import { MatSort, Sort } from '@angular/material/sort';
       <mat-cell *matCellDef="let scenes"> {{scenes.name}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="duration">
-      <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>
-      <mat-cell *matCellDef="let scenes"> {{scenes.duration}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>>
+      <mat-cell *matCellDef="let scenes"> {{scenes.duration}} </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="buttonId">
-      <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>
-      <mat-cell *matCellDef="let scenes"> {{scenes.buttonId}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>>
+      <mat-cell *matCellDef="let scenes"> {{scenes.buttonId}} </mat-cell>>
+    </ng-container>
+     <ng-container matColumnDef="universe">
+      <mat-header-cell *matHeaderCellDef> Universe </mat-header-cell>>
+      <mat-cell *matCellDef="let scenes"> {{scenes.universe}} </mat-cell>>
+    </ng-container>
+     <ng-container matColumnDef="fadeTime">
+      <mat-header-cell *matHeaderCellDef> FadeTime </mat-header-cell>>
+      <mat-cell *matCellDef="let scenes"> {{scenes.fadeTime}} </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="createdOn">
-      <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>
-      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>>
+      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>>
     </ng-container>
 
 <ng-container matColumnDef="actions">
-  <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
-  <mat-cell *matCellDef="let row" >
+  <mat-header-cell *matHeaderCellDef > Actions </mat-header-cell>>
+  <mat-cell *matCellDef="let row">
        <button mat-icon-button (click)="play(row)" >
        <mat-icon>play_arrow</mat-icon>
+       </button>
+
+       <button mat-icon-button (click)="openDetailsDialog(row)">
+       <mat-icon>visibility</mat-icon>
        </button>
 
        <button mat-icon-button (click)="openEditDialog(row)" >
@@ -49,25 +62,31 @@ import { MatSort, Sort } from '@angular/material/sort';
        <button mat-icon-button (click)="openDeleteDialog(row)">
        <mat-icon>delete</mat-icon>
        </button>
+
+       <button mat-icon-button (click)="download(row)">
+       <mat-icon>save_alt</mat-icon>
+       </button>
   </mat-cell>
 </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></mat-header-row>>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>>
   </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
 
 
   `,
   styleUrls: ['./list-saved-scenes.component.css']
 })
-export class ListSavedScenesComponent implements OnInit {
+export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   rowID;
-  dataSource: Array<Scenes> = [];
-  displayedColumns = ['id', 'name', 'duration', 'buttonId', 'createdOn', 'actions'];
+  dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
+  displayedColumns = ['name', 'buttonId', 'universe', 'fadeTime', 'actions'];
 
   constructor(private scenesService: ScenesService,
               private router: Router,
@@ -75,8 +94,12 @@ export class ListSavedScenesComponent implements OnInit {
 
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
-      this.dataSource = data;
+      this.dataSource.data = data;
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
   play(row) {
@@ -88,6 +111,15 @@ export class ListSavedScenesComponent implements OnInit {
     this.scenesService.delete(row['id']);
     this.reloadComponent();
 
+  }
+
+  openDetailsDialog(row) {
+    const dialogRef = this.dialog.open(SceneDetailsDialogComponent, {
+      width: '750px',
+      data: {
+        id: row['id']
+      }
+    });
   }
 
   openEditDialog(row) {
@@ -103,11 +135,6 @@ export class ListSavedScenesComponent implements OnInit {
 
   }
 
-  reloadComponent() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/sceneslist']);
-  }
 
   openDeleteDialog(row) {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
@@ -117,10 +144,81 @@ export class ListSavedScenesComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.delete(row);
+
       }
     });
   }
 
+  download(row) {
+    this.scenesService.download(row['id']).subscribe( x => {
+      var newBlob = new Blob([x], {type: "text/plain"});
+
+      const data = window.URL.createObjectURL(newBlob);
+
+      var link = document.createElement('a');
+      link.href = data;
+      link.download = row['id'] + ".txt";
+      link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+
+    })
+  }
+
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/sceneslist']);
+  }
+
+
+
+}
+
+
+@Component({
+  selector: 'scene-details-dialog',
+  template: `<h1 mat-dialog-title>Scene Details</h1>
+<div mat-dialog-content>
+  <h4>ID:</h4>
+  <p>{{scene?.id}}</p>
+  <h4>Name:</h4>
+  <p>{{scene?.name}}</p>
+  <h4>Duration:</h4>
+  <p>{{scene?.duration}}</p>
+  <h4>Button:</h4>
+  <p>{{scene?.buttonId}}</p>
+  <h4>Fade Time:</h4>
+  <p>{{scene?.fadeTime}}</p>
+  <h4>Universe:</h4>
+  <p>{{scene?.universe}}</p>
+  <h4>Created On:</h4>
+  <p>{{scene?.createdOn}}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+
+</div>
+`
+})
+export class SceneDetailsDialogComponent implements OnInit{
+
+  scene: Scenes;
+
+
+  constructor(
+    public dialogRef: MatDialogRef<SceneDetailsDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: string },
+    private sceneService: ScenesService) {
+
+  }
+
+  ngOnInit(): void {
+        const id = this.data.id;
+        this.sceneService.get(id).subscribe(x => this.scene = x);
+    }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 
 }
@@ -165,8 +263,17 @@ export class ConfirmDeleteDialogComponent {
 <div>
 <mat-form-field>
   <p>Button</p>
-  <mat-select  formControlName="buttonId" (change)="changeButton($event)" [value]="selected">
+  <mat-select  formControlName="buttonId" (change)="changeButton($event)" [value]="selectedButton">
     <mat-option *ngFor="let button of buttons" [value]="button" >{{button}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
+
+<div>
+<mat-form-field>
+  <p>Fade Time</p>
+  <mat-select  formControlName="fadeTime" (change)="changeFadeTime($event)" [value]="selectedFadeTime">
+    <mat-option *ngFor="let fade of fadeTimes" [value]="fade" >{{fade}}</mat-option>
   </mat-select>
 </mat-form-field>
 </div>
@@ -184,11 +291,14 @@ export class EditSavedSceneDialogComponent {
   editForm: FormGroup = new FormGroup({
     name: new FormControl(),
     buttonId: new FormControl(),
+    fadeTime: new FormControl()
   });
 
   scene: Scenes;
-  selected: any;
-  buttons: any[] = [1,2,3,4,5,6,7,8,9];
+  selectedButton: any;
+  selectedFadeTime: any;
+  buttons: any[] = [0,1,2,3,4,5,6,7,8,9];
+  fadeTimes: any[] = [5,10,15,20,30,60];
 
   constructor(
     public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
@@ -197,11 +307,13 @@ export class EditSavedSceneDialogComponent {
 
   ngOnInit(): void {
     this.scenesService.get(this.data.id).subscribe(data => {
-        this.scene = data
-      this.selected = this.scene.buttonId
+      this.scene = data;
+      this.selectedButton = this.scene.buttonId;
+      this.selectedFadeTime = this.scene.fadeTime;
         this.editForm.setValue({
           name: this.scene.name,
-          buttonId: this.scene.buttonId
+          buttonId: this.scene.buttonId,
+          fadeTime: this.scene.fadeTime
         });
       });
 
@@ -211,8 +323,17 @@ export class EditSavedSceneDialogComponent {
     return this.editForm.get('buttonId');
   }
 
+  get fadeTime() {
+    return this.editForm.get('fadeTime');
+  }
+
   changeButton($event) {
     this.buttonId.setValue(this.buttons[$event]);
+
+  }
+
+  changeFadeTime($event) {
+    this.fadeTime.setValue(this.fadeTimes[$event]);
 
   }
 
@@ -223,6 +344,7 @@ export class EditSavedSceneDialogComponent {
   save(): void {
     this.scene.name = this.editForm.get('name').value;
     this.scene.buttonId = this.editForm.get('buttonId').value;
+    this.scene.fadeTime = this.editForm.get('fadeTime').value;
 
     this.scenesService.save(this.scene);
     this.dialogRef.close();

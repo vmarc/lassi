@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface IIOService {
     void updateSceneFromDisk(SceneX sceneX) throws IOException;
-    void saveScenesToJSON(SceneX sceneX) throws IOException;
+    void saveSceneToDisk(SceneX sceneX) throws IOException;
+    String downloadScene(String scene_id) throws IOException;
     List<SceneX> getAllScenesFromDisk() throws IOException;
     void deleteSceneFromDisk(String scene_id) throws IOException;
     SceneX getSceneFromDisk(String scene_id) throws IOException;

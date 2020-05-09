@@ -24,10 +24,11 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'
-import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
+import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent, SceneDetailsDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
 import { ScenesService } from './list-saved-scenes/scenes.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
 
@@ -43,6 +44,7 @@ import { SettingsComponent } from './settings/settings.component';
     ListSavedScenesComponent,
     ConfirmDeleteDialogComponent,
     EditSavedSceneDialogComponent,
+    SceneDetailsDialogComponent,
     SettingsComponent,
     RecordingDoneDialogComponent,
   ],
@@ -60,6 +62,7 @@ import { SettingsComponent } from './settings/settings.component';
     MatCheckboxModule,
     MatRadioModule,
     MatSliderModule,
+    MatPaginatorModule,
     MatTableModule,
     ReactiveFormsModule,
     MatDialogModule,

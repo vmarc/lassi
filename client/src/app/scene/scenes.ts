@@ -6,14 +6,18 @@ export class Scenes {
   name: string;
   duration: number;
   buttonId: number;
+  fadeTime: number;
+  universe: number;
   createdOn: Date;
   frames: Array<Frame>;
 
-  constructor(id: string, name: string, duration: number, buttonId: number, createdOn: Date, frames?: Array<Frame>) {
+  constructor(id: string, name: string, duration: number, buttonId: number, fadeTime: number, universe: number, createdOn: Date, frames?: Array<Frame>) {
     this.id = id;
     this.name = name;
     this.duration = duration;
     this.buttonId = buttonId;
+    this.fadeTime = fadeTime;
+    this.universe = universe;
     this.createdOn = createdOn;
     this.frames = frames;
   }
@@ -28,6 +32,8 @@ export class Scenes {
       jsonObject.name,
       jsonObject.duration,
       jsonObject.buttonId,
+      jsonObject.fadeTime,
+      jsonObject.universe,
       jsonObject.createdOn,
       jsonObject.scenes
     );

@@ -6,8 +6,8 @@ import ch.bildspur.artnet.packets.ArtDmxPacket;
 import ch.bildspur.artnet.packets.ArtNetPacket;
 import lighting.server.IO.IIOService;
 import lighting.server.frame.Frame;
-import lighting.server.scene.Scene;
 import lighting.server.sceneX.SceneX;
+import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -19,18 +19,16 @@ public class ArtnetListener {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
     private final IIOService iioService;
-    private Scene scene = new Scene();
     private SceneX sceneX = new SceneX();
     private boolean framesAdded = false;
     private Frame currentFrame;
+    private Settings settings;
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
+
     }
 
-    public Scene getScene() {
-        return scene;
-    }
 
     public SceneX getSceneX() {
         return sceneX;
@@ -48,7 +46,11 @@ public class ArtnetListener {
         return framesAdded;
     }
 
-    public void recordData(int button_id) {
+    public void recordData(int button_id) throws IOException {
+
+        this.settings = this.iioService.getSettingsFromDisk();
+
+        sceneX.setFadeTime(settings.getFadeTimeInSeconds());
         sceneX.setButtonId(button_id);
         sceneX.setCreatedOn(LocalDateTime.now());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
@@ -61,11 +63,12 @@ public class ArtnetListener {
                     public void artNetPacketReceived(ArtNetPacket packet) {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket) packet;
+                        sceneX.setUniverse(dmxPacket.getUniverseID());
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
                         sceneX.getFrames().add(frame);
                         framesAdded = true;
                         try {
-                            iioService.saveScenesToJSON(sceneX);
+                            iioService.saveSceneToDisk(sceneX);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

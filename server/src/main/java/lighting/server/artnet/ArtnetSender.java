@@ -40,7 +40,7 @@ public class ArtnetSender {
                 artNetClient.start();
             }
 
-            artNetClient.unicastDmx("169.254.101.194", 0, 0, dmxData);
+            artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
 
         }
 

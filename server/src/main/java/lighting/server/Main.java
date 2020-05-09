@@ -15,6 +15,7 @@ public class Main {
             SceneX sceneX = new SceneX();
             int[] dmxValues = IntStream.generate(() -> new Random().nextInt(256)).limit(512).toArray();
             Frame frame = new Frame(dmxValues, 10);
+            sceneX.setUniverse(2);
             sceneX.getFrames().add(frame);
             a.setSceneToPlay(sceneX);
             a.sendData();

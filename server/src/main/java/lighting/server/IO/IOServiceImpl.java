@@ -4,11 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.sceneX.SceneX;
 import lighting.server.settings.Settings;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -57,9 +57,15 @@ public class IOServiceImpl implements IIOService {
     }
 
 
-    public void saveScenesToJSON(SceneX sceneX) throws IOException {
+    public void saveSceneToDisk(SceneX sceneX) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         objectMapper.writeValue(new File((scenesDir) + "/scene_" + sceneX.getId() + ".json" ), sceneX);
+    }
+
+    public String downloadScene(String scene_id) throws IOException {
+        Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
+        String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
+        return str;
     }
 
     public List<SceneX> getAllScenesFromDisk() throws IOException {
@@ -103,12 +109,12 @@ public class IOServiceImpl implements IIOService {
             if (scene.getButtonId() == sceneX.getButtonId()) {
                 scene.setButtonId(0);
                 deleteSceneFromDisk(scene.getId());
-                saveScenesToJSON(scene);
+                saveSceneToDisk(scene);
             }
 
         }
         deleteSceneFromDisk(sceneX.getId());
-        saveScenesToJSON(sceneX);
+        saveSceneToDisk(sceneX);
 
     }
 

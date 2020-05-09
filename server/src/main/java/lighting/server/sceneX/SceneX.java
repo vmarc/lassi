@@ -13,6 +13,8 @@ public class SceneX {
     private String id = UUID.randomUUID().toString();
     private String name;
     private Long duration;
+    private int fadeTime;
+    private int universe;
     private int buttonId;
     private LocalDateTime createdOn;
     private List<Frame> frames = new ArrayList<>();
@@ -28,10 +30,12 @@ public class SceneX {
         this.frames = frames;
     }
 
-    public SceneX(String name, Long duration, int buttonId, LocalDateTime createdOn, List<Frame> frames) {
+    public SceneX(String name, Long duration, int buttonId, int fadeTime, int universe,  LocalDateTime createdOn, List<Frame> frames) {
         this.name = name;
         this.duration = duration;
         this.buttonId = buttonId;
+        this.fadeTime = fadeTime;
+        this.universe = universe;
         this.createdOn = createdOn;
         this.frames = frames;
     }
@@ -68,6 +72,22 @@ public class SceneX {
 
     public void setButtonId(int buttonId) {
         this.buttonId = buttonId;
+    }
+
+    public int getFadeTime() {
+        return fadeTime;
+    }
+
+    public void setFadeTime(int fadeTime) {
+        this.fadeTime = fadeTime;
+    }
+
+    public int getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(int universe) {
+        this.universe = universe;
     }
 
     public LocalDateTime getCreatedOn() {

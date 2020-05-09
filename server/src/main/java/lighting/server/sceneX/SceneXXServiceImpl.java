@@ -34,7 +34,11 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     public boolean recordScene(int button_id) {
         artnetListener = new ArtnetListener(iOService);
-        artnetListener.recordData(button_id);
+        try {
+            artnetListener.recordData(button_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         try {
             Thread.sleep(3000);
             artnetListener.getArtNetClient().stop();
@@ -79,7 +83,7 @@ public class SceneXXServiceImpl implements ISceneXService {
         if (currentPlayingScene.getFrames().isEmpty()) {
             int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
             Frame emptyFrame = new Frame(emptyArray);
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), emptyFrame, scene.getFrames().get(0));
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), emptyFrame, scene.getFrames().get(0));
             try {
                 this.artnetSender.setToPlay(sceneFader.fadeFrame());
                 this.artnetSender.sendFrame();
@@ -90,7 +94,7 @@ public class SceneXXServiceImpl implements ISceneXService {
             System.out.println("playing scene");
 
         } else {
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
             try {
                 this.artnetSender.setToPlay(sceneFader.fadeFrame());
                 this.artnetSender.sendFrame();

@@ -33,6 +33,16 @@ public class SceneXController {
         }
     }
 
+    @GetMapping(value = "api/downloadscene/{scene_id}")
+    public String downloadScene(@PathVariable String scene_id) {
+        try {
+            return this.iioService.downloadScene(scene_id);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     @GetMapping(value = "/api/playscene/{button_id}")
     public void playSceneFromButton(@PathVariable int button_id) {
         try {
