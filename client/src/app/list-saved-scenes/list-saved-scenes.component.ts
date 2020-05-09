@@ -6,6 +6,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   template: `
 <h1>List of Scenes</h1>
 
-  <div>
+  <div class="container">
   <mat-table #table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
@@ -48,23 +49,23 @@ import { MatTableDataSource } from '@angular/material/table';
   <mat-header-cell *matHeaderCellDef > Actions </mat-header-cell>>
   <mat-cell *matCellDef="let row">
        <button mat-icon-button (click)="play(row)" >
-       <mat-icon>play_arrow</mat-icon>
+       <mat-icon matTooltip="Play Scene">play_arrow</mat-icon>
        </button>
 
        <button mat-icon-button (click)="openDetailsDialog(row)">
-       <mat-icon>visibility</mat-icon>
+       <mat-icon matTooltip="View details of Scene">visibility</mat-icon>
        </button>
 
        <button mat-icon-button (click)="openEditDialog(row)" >
-       <mat-icon>edit</mat-icon>
+       <mat-icon matTooltip="Edit Scene">edit</mat-icon>
        </button>
 
        <button mat-icon-button (click)="openDeleteDialog(row)">
-       <mat-icon>delete</mat-icon>
+       <mat-icon matTooltip="Delete Scene">delete</mat-icon>
        </button>
 
        <button mat-icon-button (click)="download(row)">
-       <mat-icon>save_alt</mat-icon>
+       <mat-icon matTooltip="Download Scene">save_alt</mat-icon>
        </button>
   </mat-cell>
 </ng-container>
@@ -90,7 +91,8 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   constructor(private scenesService: ScenesService,
               private router: Router,
-              private dialog: MatDialog) {}
+              private dialog: MatDialog,
+              private snackbar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
@@ -104,12 +106,18 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   play(row) {
     this.scenesService.play(row['id']);
+    this.snackbar.open('Playing Scene...', 'Close', {
+      duration: 3000
+    });
 
   }
 
   delete(row) {
     this.scenesService.delete(row['id']);
     this.reloadComponent();
+    this.snackbar.open('Scene deleted', 'Close', {
+      duration: 3000
+    });
 
   }
 
@@ -130,11 +138,15 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => this.reloadComponent());
+    dialogRef.afterClosed().subscribe(result => {
+      this.reloadComponent();
+      this.snackbar.open('Scene edited', 'Close', {
+        duration: 3000
+      });
 
 
+    });
   }
-
 
   openDeleteDialog(row) {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, {
@@ -159,6 +171,10 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
       link.href = data;
       link.download = row['id'] + ".txt";
       link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+
+      this.snackbar.open('Scene downloaded', 'Close', {
+        duration: 3000
+      });
 
     })
   }
@@ -191,7 +207,14 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   <h4>Universe:</h4>
   <p>{{scene?.universe}}</p>
   <h4>Created On:</h4>
-  <p>{{scene?.createdOn}}</p>
+  <p>{{scene?.createdOn | date:'d/LL/yyyy, HH:mm'}}</p>
+  <h4>Frames:</h4>
+  <ul>
+    <li *ngFor="let frame of scene?.frames">
+    {{frame.dmxValues}}
+    </li>
+</ul>
+
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
@@ -280,7 +303,7 @@ export class ConfirmDeleteDialogComponent {
 
 </div>
 <div mat-dialog-actions>
- <button mat-button (click)="save()">Save</button>
+ <button mat-button [mat-dialog-close]="true" (click)="save()">Save</button>
   <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
 </div>
 </form>

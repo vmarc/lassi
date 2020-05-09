@@ -2,54 +2,32 @@
   width: 100%;
   margin-left:auto;
   margin-right:auto;
-}
-
-
-
-@media screen and (max-width: 480px) {
-  .mat-table {
-    border: 0;
-    overflow: scroll;
-  }
-
-  .mat-table .mat-row {
-    border-bottom: 5px solid #ddd;
-    display: list-item;
-  }
-
-  /*.mat-row, .mat-header-row {*/
-  /*  min-width: 2800px;*/
-  /*  width: 100%;*/
-  /*}*/
-
-
-  .mat-table .mat-cell {
-    border-bottom: 1px solid #ddd;
-    display: list-item;
-    font-size: 1em;
-    text-align: right;
-    font-weight: bold;
-    height:30px;
-    margin-bottom: 4%;
-  }
-  .mat-table .mat-cell:before {
-    content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
-    font-weight: normal;
-
-    font-size: .85em;
-  }
-  .mat-table .mat-cell:last-child {
-    border-bottom: 0;
-  }
-  .mat-table .mat-cell:first-child {
-    margin-top: 4%;
-  }
-
 
 }
 
+.container {
+  /*overflow-x: auto;*/
+  top:30%;
+  left: 50%;
+  transform: translate3d(-50%,-50%, 0);
+  position: absolute;
+
+}
+
+.mat-row, .mat-header-row {
+  min-width: 1000px;
+  width: max-content;
+}
+
+.mat-header-cell {
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-cell {
+  text-align: center;
+  justify-content:center;
+}
 
 
 h1 { text-align: center;}

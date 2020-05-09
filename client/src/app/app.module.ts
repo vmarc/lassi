@@ -31,6 +31,8 @@ import {MatInputModule} from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings/settings.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { SettingsComponent } from './settings/settings.component';
     ReactiveFormsModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     ConfirmDeleteDialogComponent,
