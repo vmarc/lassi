@@ -46,8 +46,6 @@ export class SimulatorControlComponent implements OnInit {
 
 
   buttonClicked(): void {
-    console.log(this.record);
-    console.log(this.playable);
     if (this.record) {
       this.sceneService.record(this.sceneId);
       this.snackbar.open('Recording Scene...', 'Close', {
