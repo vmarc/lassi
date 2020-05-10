@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewChild, AfterViewInit } from '@angular/core';
 import { Scenes } from '../scene/scenes';
-import { ScenesService } from './scenes.service';
+import { ScenesService } from '../scene/scenes.service';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -16,17 +16,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
   <div class="container">
   <mat-table  #table class="center" [dataSource]="dataSource">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let scenes"> {{scenes.id}} </mat-cell>
-    </ng-container>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.name}} </mat-cell>
-    </ng-container>
-    <ng-container matColumnDef="duration">
-      <mat-header-cell *matHeaderCellDef> Duration </mat-header-cell>>
-      <mat-cell *matCellDef="let scenes"> {{scenes.duration}} </mat-cell>>
     </ng-container>
     <ng-container matColumnDef="buttonId">
       <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>>
@@ -35,14 +27,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
      <ng-container matColumnDef="universe">
       <mat-header-cell *matHeaderCellDef> Universe </mat-header-cell>>
       <mat-cell *matCellDef="let scenes"> {{scenes.universe}} </mat-cell>>
-    </ng-container>
-     <ng-container matColumnDef="fadeTime">
-      <mat-header-cell *matHeaderCellDef> FadeTime </mat-header-cell>>
-      <mat-cell *matCellDef="let scenes"> {{scenes.fadeTime}} </mat-cell>>
-    </ng-container>
-    <ng-container matColumnDef="createdOn">
-      <mat-header-cell *matHeaderCellDef> Created On </mat-header-cell>>
-      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn  | date:'d/LL/yyyy, HH:mm'}} </mat-cell>>
     </ng-container>
 
 <ng-container matColumnDef="actions">
@@ -86,7 +70,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
-  displayedColumns = ['name', 'buttonId', 'universe', 'fadeTime', 'actions'];
+  displayedColumns = ['name', 'buttonId', 'universe', 'actions'];
 
   constructor(private scenesService: ScenesService,
               private router: Router,

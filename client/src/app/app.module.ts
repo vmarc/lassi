@@ -25,7 +25,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'
 import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent, SceneDetailsDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
-import { ScenesService } from './list-saved-scenes/scenes.service';
+import { ScenesService } from './scene/scenes.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';

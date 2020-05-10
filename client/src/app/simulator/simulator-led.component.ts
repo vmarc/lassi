@@ -1,11 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
-import { ScenesService } from '../list-saved-scenes/scenes.service';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-simulator-led',
   template: `
-    <div class="led {{color}}">
+    <div class="led {{playable}}">
     </div>
   `,
   styles: [`
@@ -41,27 +39,18 @@ import { ScenesService } from '../list-saved-scenes/scenes.service';
 
   `]
 })
-export class SimulatorLedComponent implements OnInit, OnDestroy {
+export class SimulatorLedComponent implements OnInit {
 
   @Input() sceneId: number;
-  buttons: boolean[];
-  color = 'gray';
-  private subscription: Subscription;
+  @Input() playable: string;
 
-  constructor(private sceneService: ScenesService) {
+  buttons: boolean[];
+
+  constructor() {
   }
 
 
   ngOnInit() {
-    this.sceneService.buttons.subscribe(data => console.log(data));
-      var bool = this.buttons[this.sceneId - 1];
-      if (bool) {
-        this.color = 'red';
-      }
-
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }

@@ -3,7 +3,7 @@ import {Subscription} from 'rxjs';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
 import {Frame} from '../scene/frame';
-import { ScenesService } from '../list-saved-scenes/scenes.service';
+import { ScenesService } from '../scene/scenes.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 

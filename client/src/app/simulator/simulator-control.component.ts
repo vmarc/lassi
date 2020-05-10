@@ -1,11 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { ScenesService } from '../list-saved-scenes/scenes.service';
+import { ScenesService } from '../scene/scenes.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-simulator-control',
   template: `
     <div class="control">
-      <app-simulator-led [sceneId]="sceneId"></app-simulator-led>
+      <app-simulator-led [sceneId]="sceneId" [playable]="playable"></app-simulator-led>
       <button mat-stroked-button (click)="buttonClicked()">{{sceneId}}</button>
     </div>
   `,
@@ -32,8 +33,10 @@ export class SimulatorControlComponent implements OnInit {
 
   @Input() sceneId: number;
   @Input() record: boolean;
+  @Input() playable: string;
 
-  constructor(private sceneService: ScenesService) {
+
+  constructor(private sceneService: ScenesService, private snackbar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -43,11 +46,31 @@ export class SimulatorControlComponent implements OnInit {
 
 
   buttonClicked(): void {
+    console.log(this.record);
+    console.log(this.playable);
     if (this.record) {
       this.sceneService.record(this.sceneId);
-    } else {
-      //this.sceneService.play(this.sceneId);
+      this.snackbar.open('Recording Scene...', 'Close', {
+        duration: 3000
+      });
     }
-  }
+
+      if (!this.record) {
+        if (this.playable == 'green') {
+          this.sceneService.playFromButton(this.sceneId);
+          this.snackbar.open('Playing Scene...', 'Close', {
+            duration: 3000
+          });
+        } else {
+          this.snackbar.open('This button does not have a Scene...', 'Close', {
+            duration: 3000
+          });
+        }
+
+      }
+
+    }
+
+
 
 }

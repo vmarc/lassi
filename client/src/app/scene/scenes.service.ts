@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Scenes } from '../scene/scenes';
+import { Scenes } from './scenes';
 import { Observable } from 'rxjs';
-import { Reply } from '../scene/reply';
 import {map} from 'rxjs/operators';
-import {Sceneslist} from './sceneslist';
-import { Frame } from '../scene/frame';
+import { Frame } from './frame';
 
 @Injectable()
 export class ScenesService {
@@ -35,6 +33,11 @@ export class ScenesService {
   public play(id: string): void {
     this.http.get('/api/playscenefromid/' + id).subscribe();
   }
+
+  public playFromButton(button: number): void {
+    this.http.get('/api/playscene/' + button).subscribe();
+  }
+
 
   public record(button: number) : Observable<boolean> {
     console.log("recording...");
