@@ -33,5 +33,9 @@
   white-space: pre-wrap;
 }
 
+.mat-icon-button {
+  font-size: 20px;
+}
+
 
 h1 { text-align: center;}

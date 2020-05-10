@@ -22,7 +22,7 @@ import {map, retry, catchError} from 'rxjs/operators';
   <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordingDone">
   <i class="fas fa-record-vinyl"></i> Record</button>
   <button class="buttons" mat-flat-button color="primary" (click)="stop()">
-  <i class="far fa-stop-circle"></i> Stop</button>
+  <i class="fas fa-stop-circle"></i> Stop</button>
  </div>
 `,
   styleUrls: ['./monitor.component.css']
