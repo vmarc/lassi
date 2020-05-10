@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SceneX {
+public class Scene {
 
     private String id = UUID.randomUUID().toString();
     private String name;
@@ -17,18 +17,18 @@ public class SceneX {
     private LocalDateTime createdOn;
     private List<Frame> frames = new ArrayList<>();
 
-    public SceneX(String name, List<Frame> frames) {
+    public Scene(String name, List<Frame> frames) {
         this.name = name;
         this.frames = frames;
     }
 
-    public SceneX(String name, int buttonId, List<Frame> frames) {
+    public Scene(String name, int buttonId, List<Frame> frames) {
         this.name = name;
         this.buttonId = buttonId;
         this.frames = frames;
     }
 
-    public SceneX(String name, Long duration, int buttonId, int fadeTime, int universe,  LocalDateTime createdOn, List<Frame> frames) {
+    public Scene(String name, Long duration, int buttonId, int fadeTime, int universe, LocalDateTime createdOn, List<Frame> frames) {
         this.name = name;
         this.duration = duration;
         this.buttonId = buttonId;
@@ -38,7 +38,7 @@ public class SceneX {
         this.frames = frames;
     }
 
-    public SceneX() {
+    public Scene() {
     }
 
     public String getName() {

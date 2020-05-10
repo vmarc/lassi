@@ -2,25 +2,25 @@ package lighting.server.artnet;
 
 import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.frame.Frame;
-import lighting.server.sceneX.SceneX;
+import lighting.server.sceneX.Scene;
 
 import java.util.List;
 
 public class ArtnetSender {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
-    private SceneX sceneToPlay;
+    private Scene sceneToPlay;
     private List<int[]> toPlay;
 
     public ArtnetSender() {
     }
 
-    public void setSceneToPlay(SceneX sceneToPlay) {
+    public void setSceneToPlay(Scene sceneToPlay) {
         this.sceneToPlay = sceneToPlay;
     }
 
 
-    public SceneX getSceneToPlay() {
+    public Scene getSceneToPlay() {
         return sceneToPlay;
     }
 

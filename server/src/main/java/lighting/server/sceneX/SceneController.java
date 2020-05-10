@@ -8,12 +8,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-public class SceneXController {
+public class SceneController {
 
-    private final ISceneXService sceneService;
+    private final ISceneService sceneService;
     private final IIOService iioService;
 
-    public SceneXController(ISceneXService sceneService, IIOService iioService) {
+    public SceneController(ISceneService sceneService, IIOService iioService) {
         this.sceneService = sceneService;
         this.iioService = iioService;
     }
@@ -25,9 +25,9 @@ public class SceneXController {
     }
 
     @PutMapping(value = "/api/savescene/")
-    public void saveScene(@RequestBody SceneX sceneX) {
+    public void saveScene(@RequestBody Scene scene) {
         try {
-            this.iioService.updateSceneFromDisk(sceneX);
+            this.iioService.updateSceneFromDisk(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -63,7 +63,7 @@ public class SceneXController {
 
 
     @GetMapping(value = "/api/sceneslist")
-    public List<SceneX> getScenes() {
+    public List<Scene> getScenes() {
         try {
             return iioService.getAllScenesFromDisk();
         } catch (IOException e) {
@@ -84,7 +84,7 @@ public class SceneXController {
 
 
     @GetMapping(value = "/api/getscene/{scene_id}")
-    public SceneX getScene(@PathVariable String scene_id) {
+    public Scene getScene(@PathVariable String scene_id) {
         try {
             return this.iioService.getSceneFromDisk(scene_id);
         } catch (IOException e) {

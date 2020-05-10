@@ -2,7 +2,7 @@ package lighting.server.IO;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lighting.server.sceneX.SceneX;
+import lighting.server.sceneX.Scene;
 import lighting.server.settings.Settings;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
@@ -57,9 +57,9 @@ public class IOServiceImpl implements IIOService {
     }
 
 
-    public void saveSceneToDisk(SceneX sceneX) throws IOException {
+    public void saveSceneToDisk(Scene scene) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        objectMapper.writeValue(new File((scenesDir) + "/scene_" + sceneX.getId() + ".json" ), sceneX);
+        objectMapper.writeValue(new File((scenesDir) + "/scene_" + scene.getId() + ".json" ), scene);
     }
 
     public String downloadScene(String scene_id) throws IOException {
@@ -68,9 +68,9 @@ public class IOServiceImpl implements IIOService {
         return str;
     }
 
-    public List<SceneX> getAllScenesFromDisk() throws IOException {
+    public List<Scene> getAllScenesFromDisk() throws IOException {
         List<String> result;
-        List<SceneX> scenesList = new ArrayList<>();
+        List<Scene> scenesList = new ArrayList<>();
 
         Stream<Path> walk = Files.walk(Paths.get(String.valueOf(scenesDir)));
 
@@ -80,7 +80,7 @@ public class IOServiceImpl implements IIOService {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 
         for (String j : result) {
-            SceneX scene = objectMapper.readValue(new File(j), SceneX.class);
+            Scene scene = objectMapper.readValue(new File(j), Scene.class);
             scenesList.add(scene);
         }
 
@@ -93,19 +93,19 @@ public class IOServiceImpl implements IIOService {
         Files.deleteIfExists(filePath);
     }
 
-    public SceneX getSceneFromDisk(String scene_id) throws IOException {
+    public Scene getSceneFromDisk(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        SceneX scene = objectMapper.readValue(filePath.toFile(), SceneX.class);
+        Scene scene = objectMapper.readValue(filePath.toFile(), Scene.class);
         return scene;
 
     }
 
-    public void updateSceneFromDisk(SceneX sceneX) throws IOException {
-        List<SceneX> scenesFromDisk = getAllScenesFromDisk();
+    public void updateSceneFromDisk(Scene sceneX) throws IOException {
+        List<Scene> scenesFromDisk = getAllScenesFromDisk();
 
         //if chosen button is already assigned to an existing scene, the old scene will get value 0
-        for (SceneX scene : scenesFromDisk) {
+        for (Scene scene : scenesFromDisk) {
             if (scene.getButtonId() == sceneX.getButtonId()) {
                 scene.setButtonId(0);
                 deleteSceneFromDisk(scene.getId());
@@ -121,9 +121,9 @@ public class IOServiceImpl implements IIOService {
     public List<Boolean> getButtons() throws IOException {
         List<Boolean> buttons = new ArrayList<>( Arrays.asList(true, true, true, true, true, true, true, true, true));
 
-        List<SceneX> scenes = getAllScenesFromDisk();
+        List<Scene> scenes = getAllScenesFromDisk();
 
-        for (SceneX scene : scenes) {
+        for (Scene scene : scenes) {
             if (scene.getButtonId() != 0) {
                 buttons.set((scene.getButtonId() -1), false);
             }

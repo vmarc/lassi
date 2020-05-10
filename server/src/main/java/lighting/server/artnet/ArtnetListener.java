@@ -6,7 +6,7 @@ import ch.bildspur.artnet.packets.ArtDmxPacket;
 import ch.bildspur.artnet.packets.ArtNetPacket;
 import lighting.server.IO.IIOService;
 import lighting.server.frame.Frame;
-import lighting.server.sceneX.SceneX;
+import lighting.server.sceneX.Scene;
 import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +19,7 @@ public class ArtnetListener {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
     private final IIOService iioService;
-    private SceneX sceneX = new SceneX();
+    private Scene scene = new Scene();
     private boolean framesAdded = false;
     private Frame currentFrame;
     private Settings settings;
@@ -30,8 +30,8 @@ public class ArtnetListener {
     }
 
 
-    public SceneX getSceneX() {
-        return sceneX;
+    public Scene getScene() {
+        return scene;
     }
 
     public Frame getCurrentFrame() {
@@ -50,11 +50,11 @@ public class ArtnetListener {
 
         this.settings = this.iioService.getSettingsFromDisk();
 
-        sceneX.setFadeTime(settings.getFadeTimeInSeconds());
-        sceneX.setButtonId(button_id);
-        sceneX.setCreatedOn(LocalDateTime.now());
+        scene.setFadeTime(settings.getFadeTimeInSeconds());
+        scene.setButtonId(button_id);
+        scene.setCreatedOn(LocalDateTime.now());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        sceneX.setName("Recording of " + sceneX.getCreatedOn().format(formatter));
+        scene.setName("Recording of " + scene.getCreatedOn().format(formatter));
 
         artNetClient.getArtNetServer().addListener(
 
@@ -63,12 +63,12 @@ public class ArtnetListener {
                     public void artNetPacketReceived(ArtNetPacket packet) {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket) packet;
-                        sceneX.setUniverse(dmxPacket.getUniverseID());
+                        scene.setUniverse(dmxPacket.getUniverseID());
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
-                        sceneX.getFrames().add(frame);
+                        scene.getFrames().add(frame);
                         framesAdded = true;
                         try {
-                            iioService.saveSceneToDisk(sceneX);
+                            iioService.saveSceneToDisk(scene);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

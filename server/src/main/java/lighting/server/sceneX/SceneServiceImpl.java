@@ -14,16 +14,16 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 @Component
-public class SceneXXServiceImpl implements ISceneXService {
+public class SceneServiceImpl implements ISceneService {
 
     private ArtnetListener artnetListener;
     private ArtnetSender artnetSender;
-    private SceneX currentPlayingScene = new SceneX();
+    private Scene currentPlayingScene = new Scene();
     private Settings settings;
 
     private final IIOService iOService;
 
-    public SceneXXServiceImpl(IIOService iOService) {
+    public SceneServiceImpl(IIOService iOService) {
         this.iOService = iOService;
         try {
             this.settings = this.iOService.getSettingsFromDisk();
@@ -33,6 +33,18 @@ public class SceneXXServiceImpl implements ISceneXService {
     }
 
     public boolean recordScene(int button_id) {
+        try {
+            List<Scene> scenesOnDisk = iOService.getAllScenesFromDisk();
+            for (Scene s : scenesOnDisk) {
+                if (s.getButtonId() == button_id) {
+                    s.setButtonId(0);
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         artnetListener = new ArtnetListener(iOService);
         try {
             artnetListener.recordData(button_id);
@@ -54,9 +66,9 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     public void playSceneFromButton(int button) throws IOException {
         artnetSender = new ArtnetSender();
-        List<SceneX> scenes = iOService.getAllScenesFromDisk();
+        List<Scene> scenes = iOService.getAllScenesFromDisk();
 
-        for (SceneX scene : scenes) {
+        for (Scene scene : scenes) {
             if (scene.getButtonId() == button) {
                 playScene(scene);
             }
@@ -67,9 +79,9 @@ public class SceneXXServiceImpl implements ISceneXService {
 
     public void playSceneFromId(String id) throws IOException {
         artnetSender = new ArtnetSender();
-        List<SceneX> scenes = iOService.getAllScenesFromDisk();
+        List<Scene> scenes = iOService.getAllScenesFromDisk();
 
-        for (SceneX scene : scenes) {
+        for (Scene scene : scenes) {
             if (scene.getId().equals(id)) {
                 playScene(scene);
             }
@@ -77,7 +89,7 @@ public class SceneXXServiceImpl implements ISceneXService {
         }
     }
 
-    public void playScene(SceneX scene) {
+    public void playScene(Scene scene) {
         this.artnetSender.setSceneToPlay(scene);
         this.artnetSender.sendData();
         if (currentPlayingScene.getFrames().isEmpty()) {
