@@ -13,7 +13,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   selector: 'app-list-saved-scenes',
   template: `
 <h1>List of Scenes</h1>
-
   <div class="container">
   <mat-table  #table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="name">
@@ -32,24 +31,19 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 <ng-container matColumnDef="actions">
   <mat-header-cell *matHeaderCellDef > Actions </mat-header-cell>>
   <mat-cell *matCellDef="let row">
-       <button mat-icon-button (click)="play(row)" >
-       <mat-icon matTooltip="Play Scene">play_arrow</mat-icon>
+       <button class="fas fa-play-circle" mat-icon-button matTooltip="Play Scene" (click)="play(row)">
        </button>
 
-       <button mat-icon-button (click)="openDetailsDialog(row)">
-       <mat-icon matTooltip="View details of Scene">visibility</mat-icon>
+       <button class="fas fa-info-circle" mat-icon-button matTooltip="View details of Scene" (click)="openDetailsDialog(row)">
        </button>
 
-       <button mat-icon-button (click)="openEditDialog(row)" >
-       <mat-icon matTooltip="Edit Scene">edit</mat-icon>
+       <button class="fas fa-edit" mat-icon-button matTooltip="Edit Scene" (click)="openEditDialog(row)">
        </button>
 
-       <button mat-icon-button (click)="openDeleteDialog(row)">
-       <mat-icon matTooltip="Delete Scene">delete</mat-icon>
+       <button class="fas fa-trash-alt" mat-icon-button matTooltip="Delete Scene" (click)="openDeleteDialog(row)">
        </button>
 
-       <button mat-icon-button (click)="download(row)">
-       <mat-icon matTooltip="Download Scene">save_alt</mat-icon>
+       <button class="fas fa-download" mat-icon-button matTooltip="Download Scene" (click)="download(row)">
        </button>
   </mat-cell>
 </ng-container>
@@ -203,7 +197,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button (click)="onNoClick()"><i class="fas fa-window-close"></i> Close</button>
 
 </div>
 `
@@ -289,8 +283,8 @@ export class ConfirmDeleteDialogComponent {
 
 </div>
 <div mat-dialog-actions>
- <button mat-button [mat-dialog-close]="true" (click)="save()">Save</button>
-  <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+ <button mat-button [mat-dialog-close]="true" (click)="save()"><i class="fas fa-save"></i> Save</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial><i class="fas fa-window-close"></i> Cancel</button>
 </div>
 </form>
 `

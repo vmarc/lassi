@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Scenes } from './scenes';
-import { Observable } from 'rxjs';
-import {map} from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import {map, retry, catchError} from 'rxjs/operators';
 import { Frame } from './frame';
 
 @Injectable()
@@ -15,43 +15,56 @@ export class ScenesService {
   }
 
   public findAll(): Observable<Scenes[]> {
-    return this.http.get<Scenes[]>('/api/sceneslist');
+    return this.http.get<Scenes[]>('/api/sceneslist').pipe(retry(1), catchError(this.handleError));
   }
 
   public delete(scene_id: string): void {
-    this.http.get('/api/deletescene/' + scene_id).subscribe();
+    this.http.get('/api/deletescene/' + scene_id).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
   public get(scene_id: string): Observable<Scenes> {
-    return this.http.get<Scenes>('/api/getscene/' + scene_id);
+    return this.http.get<Scenes>('/api/getscene/' + scene_id).pipe(retry(1), catchError(this.handleError));;
   }
 
   public download(scene_id: string): Observable<Blob> {
-    return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'});
+    return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'}).pipe(retry(1), catchError(this.handleError));;
   }
 
   public play(id: string): void {
-    this.http.get('/api/playscenefromid/' + id).subscribe();
+    this.http.get('/api/playscenefromid/' + id).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
   public playFromButton(button: number): void {
-    this.http.get('/api/playscene/' + button).subscribe();
+    this.http.get('/api/playscene/' + button).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
 
   public record(button: number) : Observable<boolean> {
     console.log("recording...");
-    return this.http.get<boolean>('/api/recordscenebis/' + button);
+    return this.http.get<boolean>('/api/recordscenebis/' + button).pipe(retry(1), catchError(this.handleError));;
 
   }
 
   public save(scene: Scenes) {
-    return this.http.put<Scenes>('/api/savescene/', scene).subscribe();
+    return this.http.put<Scenes>('/api/savescene/', scene).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
   public getButtons(): Observable<boolean[]> {
-    return this.http.get<boolean[]>('api/getbuttons');
+    return this.http.get<boolean[]>('api/getbuttons').pipe(retry(1), catchError(this.handleError));;
 
+  }
+
+  handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      // client-side error
+      errorMessage = `Error: ${error.error.message}\n\nMake sure the Angular front-end is running!`;
+    } else {
+      // server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}\n\nMake sure the Spring back-end and/or the Raspberry Pi is running!`;
+    }
+    window.alert(errorMessage);
+    return throwError(errorMessage);
   }
 
 }

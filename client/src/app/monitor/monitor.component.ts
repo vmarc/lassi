@@ -6,6 +6,8 @@ import {Frame} from '../scene/frame';
 import { ScenesService } from '../scene/scenes.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import {map, retry, catchError} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-monitor',
@@ -16,9 +18,11 @@ import { Router } from '@angular/router';
     {{dmxValue}}
   </div>
 </div>
-<div class="buttons">
-  <button mat-flat-button color="warn" (click)="record()" [disabled]="recordingDone">Record</button>
-  <button mat-flat-button color="primary" (click)="stop()">Stop</button>
+<div>
+  <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordingDone">
+  <i class="fas fa-record-vinyl"></i> Record</button>
+  <button class="buttons" mat-flat-button color="primary" (click)="stop()">
+  <i class="far fa-stop-circle"></i> Stop</button>
  </div>
 `,
   styleUrls: ['./monitor.component.css']
@@ -29,12 +33,15 @@ export class MonitorComponent implements OnInit, OnDestroy {
   recordingDone: boolean = false;
   private topicSubscription: Subscription;
 
-  constructor(private rxStompService: RxStompService, private sceneService: ScenesService, private router: Router, private dialog: MatDialog) {
+  constructor(private rxStompService: RxStompService,
+              private sceneService: ScenesService,
+              private router: Router,
+              private dialog: MatDialog) {
 
   }
 
   ngOnInit() {
-    this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((message: Message) => {
+    this.topicSubscription = this.rxStompService.watch('/topic/output').pipe(retry(1), catchError(this.sceneService.handleError)).subscribe((message: Message) => {
       this.frame = Frame.fromJSON(JSON.parse(message.body));
     });
   }

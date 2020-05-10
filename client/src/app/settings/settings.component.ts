@@ -25,7 +25,7 @@ import { Settings } from './settings';
   </mat-select>
 </mat-form-field>
 </div>
-<button mat-button (click)="save()">Save</button>
+<button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
 </div>
 </form>
   `,
