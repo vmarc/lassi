@@ -143,13 +143,13 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   download(row) {
     this.scenesService.download(row['id']).subscribe( x => {
-      var newBlob = new Blob([x], {type: "text/plain"});
+      var newBlob = new Blob([x], {type: "application/json"});
 
       const data = window.URL.createObjectURL(newBlob);
 
       var link = document.createElement('a');
       link.href = data;
-      link.download = row['id'] + ".txt";
+      link.download = row['id'] + ".json";
       link.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
 
       this.snackbar.open('Scene downloaded', 'Close', {
