@@ -308,7 +308,6 @@ export class EditSavedSceneDialogComponent {
   scene: Scenes;
   selectedButton: any;
   selectedFadeTime: any;
-  selectedUniverse: any;
   buttons: any[] = [0,1,2,3,4,5,6,7,8,9];
   fadeTimes: any[] = [5,10,15,20,30,60];
 
