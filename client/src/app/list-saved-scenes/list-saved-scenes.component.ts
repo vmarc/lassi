@@ -281,6 +281,13 @@ export class ConfirmDeleteDialogComponent {
 </mat-form-field>
 </div>
 
+<div>
+<mat-form-field>
+  <h4>Universe:</h4>
+   <input matInput formControlName="universe">
+</mat-form-field>
+</div>
+
 </div>
 <div mat-dialog-actions>
  <button mat-button [mat-dialog-close]="true" (click)="save()"><i class="fas fa-save"></i> Save</button>
@@ -294,12 +301,14 @@ export class EditSavedSceneDialogComponent {
   editForm: FormGroup = new FormGroup({
     name: new FormControl(),
     buttonId: new FormControl(),
-    fadeTime: new FormControl()
+    fadeTime: new FormControl(),
+    universe: new FormControl()
   });
 
   scene: Scenes;
   selectedButton: any;
   selectedFadeTime: any;
+  selectedUniverse: any;
   buttons: any[] = [0,1,2,3,4,5,6,7,8,9];
   fadeTimes: any[] = [5,10,15,20,30,60];
 
@@ -316,10 +325,15 @@ export class EditSavedSceneDialogComponent {
         this.editForm.setValue({
           name: this.scene.name,
           buttonId: this.scene.buttonId,
-          fadeTime: this.scene.fadeTime
+          fadeTime: this.scene.fadeTime,
+          universe: this.scene.universe
         });
       });
 
+  }
+
+  get name() {
+    return this.editForm.get('name');
   }
 
   get buttonId() {
@@ -328,6 +342,10 @@ export class EditSavedSceneDialogComponent {
 
   get fadeTime() {
     return this.editForm.get('fadeTime');
+  }
+
+  get universe() {
+    return this.editForm.get('universe');
   }
 
   changeButton($event) {
@@ -345,9 +363,10 @@ export class EditSavedSceneDialogComponent {
   }
 
   save(): void {
-    this.scene.name = this.editForm.get('name').value;
-    this.scene.buttonId = this.editForm.get('buttonId').value;
-    this.scene.fadeTime = this.editForm.get('fadeTime').value;
+    this.scene.name = this.name.value;
+    this.scene.buttonId = this.buttonId.value;
+    this.scene.fadeTime = this.fadeTime.value;
+    this.scene.universe = this.universe.value;
 
     this.scenesService.save(this.scene);
     this.dialogRef.close();
