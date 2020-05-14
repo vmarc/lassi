@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.sceneX.Scene;
 import lighting.server.settings.Settings;
-//import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
