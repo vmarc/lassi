@@ -186,7 +186,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   <p>{{scene?.fadeTime}}</p>
   <h4>Universe:</h4>
   <p>{{scene?.universe}}</p>
-  <h4>Created On:</h4>
+  <h4>Created/Edited On:</h4>
   <p>{{scene?.createdOn | date:'d/LL/yyyy, HH:mm'}}</p>
   <h4>Frames:</h4>
   <ul>
@@ -310,6 +310,7 @@ export class EditSavedSceneDialogComponent {
   selectedFadeTime: any;
   buttons: any[] = [0,1,2,3,4,5,6,7,8,9];
   fadeTimes: any[] = [5,10,15,20,30,60];
+  currentDate: Date;
 
   constructor(
     public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
@@ -362,10 +363,12 @@ export class EditSavedSceneDialogComponent {
   }
 
   save(): void {
+    this.currentDate = new Date();
     this.scene.name = this.name.value;
     this.scene.buttonId = this.buttonId.value;
     this.scene.fadeTime = this.fadeTime.value;
     this.scene.universe = this.universe.value;
+    this.scene.createdOn = this.currentDate;
 
     this.scenesService.save(this.scene);
     this.dialogRef.close();
