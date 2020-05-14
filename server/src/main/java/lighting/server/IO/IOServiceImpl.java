@@ -62,11 +62,11 @@ public class IOServiceImpl implements IIOService {
         objectMapper.writeValue(new File((scenesDir) + "/scene_" + scene.getId() + ".json" ), scene);
     }
 
-    /*public String downloadScene(String scene_id) throws IOException {
+    public String downloadScene(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
-        //String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
-       // return str;
-    }*/
+        String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
+       return str;
+    }
 
     public List<Scene> getAllScenesFromDisk() throws IOException {
         List<String> result;

@@ -8,9 +8,9 @@
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenes/scene_2e3f3987-aaa9-426f-9fb1-c30ed3934713.json" beforeDir="false" afterPath="$PROJECT_DIR$/scenes/scene_2e3f3987-aaa9-426f-9fb1-c30ed3934713.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IIOService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IIOService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/IO/IOServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/sceneX/SceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,14 +165,7 @@
       <workItem from="1588787564797" duration="1972000" />
       <workItem from="1589383107903" duration="50000" />
       <workItem from="1589385253733" duration="430000" />
-      <workItem from="1589478996491" duration="2820000" />
-    </task>
-    <task id="LOCAL-00036" summary="overwrite button logic">
-      <created>1588266083168</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1588266083168</updated>
+      <workItem from="1589478996491" duration="3052000" />
     </task>
     <task id="LOCAL-00037" summary="IO Service added">
       <created>1588342622491</created>
@@ -510,7 +503,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589481793410</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="icons monitor/sceneslist">
+      <created>1589484038817</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1589484038818</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,12 +611,12 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="490" y="84" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1589481793273">
+    <state x="490" y="84" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1589484038672">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
     <state x="448" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588787600107" />
-    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1589481793273" />
+    <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1589484038672" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128780844" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
     <state x="936" y="448" key="CommitChangelistDialog2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1589117842875" />
@@ -889,12 +889,12 @@
     <state width="500" height="447" key="SwitcherDM/0.0.1680.1050@0.0.1680.1050" timestamp="1581865038743" />
     <state width="896" height="721" key="SwitcherDM/0.0.3008.1692@0.0.3008.1692" timestamp="1585400319831" />
     <state width="896" height="721" key="SwitcherDM/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588857026984" />
-    <state x="617" y="364" key="Vcs.Push.Dialog.v2" timestamp="1589481794952">
+    <state x="617" y="364" key="Vcs.Push.Dialog.v2" timestamp="1589484040557">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="-1903" y="287" key="Vcs.Push.Dialog.v2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989582643" />
     <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588703043182" />
-    <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1589481794952" />
+    <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1589484040557" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128782226" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1589117844697" />
     <state x="3437" y="199" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@3008.0.1680.1050" timestamp="1588846892750" />
