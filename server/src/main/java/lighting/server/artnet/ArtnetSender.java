@@ -2,7 +2,7 @@ package lighting.server.artnet;
 
 import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.frame.Frame;
-import lighting.server.sceneX.Scene;
+import lighting.server.scene.Scene;
 
 import java.util.List;
 

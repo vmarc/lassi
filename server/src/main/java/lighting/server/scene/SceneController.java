@@ -1,4 +1,4 @@
-package lighting.server.sceneX;
+package lighting.server.scene;
 
 import lighting.server.IO.IIOService;
 import org.springframework.web.bind.annotation.*;

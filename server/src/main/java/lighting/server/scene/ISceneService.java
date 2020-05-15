@@ -1,4 +1,4 @@
-package lighting.server.sceneX;
+package lighting.server.scene;
 
 
 import java.io.IOException;

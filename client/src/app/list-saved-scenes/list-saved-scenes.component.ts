@@ -7,6 +7,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import * as moment from 'moment';
+
+
 
 
 @Component({
@@ -187,7 +190,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   <h4>Universe:</h4>
   <p>{{scene?.universe}}</p>
   <h4>Created/Edited On:</h4>
-  <p>{{scene?.createdOn | date:'d/LL/yyyy, HH:mm'}}</p>
+  <p>{{date}}</p>
   <h4>Frames:</h4>
   <ul>
     <li *ngFor="let frame of scene?.frames">
@@ -205,6 +208,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 export class SceneDetailsDialogComponent implements OnInit{
 
   scene: Scenes;
+  date: string;
 
 
   constructor(
@@ -212,11 +216,17 @@ export class SceneDetailsDialogComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: { id: string },
     private sceneService: ScenesService) {
 
+
   }
 
   ngOnInit(): void {
+    moment.locale('nl-be')
         const id = this.data.id;
-        this.sceneService.get(id).subscribe(x => this.scene = x);
+        this.sceneService.get(id).subscribe(x => {
+          this.scene = x
+          this.date = moment(this.scene.createdOn).format('LLLL')
+
+        });
     }
 
   onNoClick(): void {
@@ -363,7 +373,9 @@ export class EditSavedSceneDialogComponent {
   }
 
   save(): void {
-    this.currentDate = new Date();
+    var now = new Date();
+    now.setHours(now.getHours() + 2)
+    this.currentDate =  now;
     this.scene.name = this.name.value;
     this.scene.buttonId = this.buttonId.value;
     this.scene.fadeTime = this.fadeTime.value;

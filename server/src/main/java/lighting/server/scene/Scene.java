@@ -1,4 +1,4 @@
-package lighting.server.sceneX;
+package lighting.server.scene;
 
 import lighting.server.frame.Frame;
 import java.time.LocalDateTime;

@@ -1,4 +1,4 @@
-package lighting.server;
+package lighting.server.scene;
 
 import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;

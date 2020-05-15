@@ -2,7 +2,7 @@ package lighting.server;
 
 import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
-import lighting.server.sceneX.Scene;
+import lighting.server.scene.Scene;
 
 import java.util.Random;
 import java.util.stream.IntStream;

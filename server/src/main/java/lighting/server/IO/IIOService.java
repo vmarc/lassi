@@ -1,6 +1,6 @@
 package lighting.server.IO;
 
-import lighting.server.sceneX.Scene;
+import lighting.server.scene.Scene;
 import lighting.server.settings.Settings;
 
 import java.io.IOException;

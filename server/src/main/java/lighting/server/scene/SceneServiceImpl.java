@@ -1,7 +1,6 @@
-package lighting.server.sceneX;
+package lighting.server.scene;
 
 import lighting.server.IO.IIOService;
-import lighting.server.SceneFader;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
