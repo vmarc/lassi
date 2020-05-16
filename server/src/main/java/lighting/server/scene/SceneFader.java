@@ -21,20 +21,19 @@ public class SceneFader {
         this.endFrame = endFrame;
     }
 
-    public List<int[]> fadeFrame() throws InterruptedException {
+    public void fadeFrame(ArtnetSender artnetSender) throws InterruptedException {
         Instant start = Instant.now();
 
         double totalFrames = framesPerSecond*fadeTimeInSeconds;
         double timeOut = 1000.0/framesPerSecond;
 
-        double[] differenceList = new double[128];
+        double[] differenceList = new double[512];
         int[] dmxValues = startFrame.getDmxValues().clone();
         int[] originalDmxValues = startFrame.getDmxValues().clone();
-        List<int[]> listToFill = new ArrayList<>();
 
         //Calculating the difference between the start value per channel in a frame and the end frame, adding it to the differenceList
         //(endFrame minus startFrame) dividing by the totalFrames
-        for (int i = 0; i < 128; i++) {
+        for (int i = 0; i < 512; i++) {
             differenceList[i] = ((endFrame.getDmxValues()[i] - startFrame.getDmxValues()[i])/totalFrames);
         }
 
@@ -48,13 +47,13 @@ public class SceneFader {
             long timeElapsed = Duration.between(start, now).toMillis();
             System.out.println("time elapsed: " + timeElapsed);
 
-            for (int j = 0; j < 128; j++) {
+            for (int j = 0; j < 512; j++) {
                 dmxValues[j] = (int) (originalDmxValues[j] + Math.round((i + 1) * differenceList[j]));
-                //dmxValues[j] = (int) (Math.round(differenceList[j] * (timeElapsed/1000)));
                 //Logging
                 System.out.print(dmxValues[j] + " / ");
             }
-            listToFill.add(dmxValues);
+
+            artnetSender.sendFrame(dmxValues);
 
             //Sleep expected sleep time - timeOut
             long x = (long) ((timeOut*(i+1)) - timeElapsed);
@@ -71,6 +70,5 @@ public class SceneFader {
         long timeElapsed = Duration.between(start, finish).toMillis();
         System.out.println();
         System.out.println("Time elapsed: " + timeElapsed +" milliseconds");
-        return listToFill;
     }
 }

@@ -49,17 +49,16 @@ public class ArtnetSender {
 
     }
 
-    public void sendFrame() {
+    public void sendFrame(int[] dmxvalues) {
         if (!artNetClient.isRunning()) {
             artNetClient.start();
         }
-        for (int[] frame : fadingList) {
-            byte[] dmxData = intArrayToByteArray(frame);
-            artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
+        byte[] dmxData = intArrayToByteArray(dmxvalues);
+        artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
 
-        }
+
         System.out.println("Frame verstuurd");
-        artNetClient.stop();
+        //artNetClient.stop();
     }
 
 

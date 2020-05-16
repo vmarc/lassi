@@ -92,14 +92,15 @@ public class SceneServiceImpl implements ISceneService {
         this.settings = this.iOService.getSettingsFromDisk();
 
         this.artnetSender.setSceneToPlay(scene);
-        this.artnetSender.sendData();
+        //this.artnetSender.sendData();
         if (currentPlayingScene.getFrames().isEmpty()) {
             int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
             Frame emptyFrame = new Frame(emptyArray);
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), emptyFrame, scene.getFrames().get(0));
             try {
-                this.artnetSender.setFadingList(sceneFader.fadeFrame());
-                this.artnetSender.sendFrame();
+                //this.artnetSender.setFadingList(sceneFader.fadeFrame());
+                sceneFader.fadeFrame(artnetSender);
+                //this.artnetSender.sendFrame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -107,8 +108,9 @@ public class SceneServiceImpl implements ISceneService {
         } else {
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
             try {
-                this.artnetSender.setFadingList(sceneFader.fadeFrame());
-                this.artnetSender.sendFrame();
+                //this.artnetSender.setFadingList(sceneFader.fadeFrame());
+                //this.artnetSender.sendFrame();
+                sceneFader.fadeFrame(artnetSender);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
