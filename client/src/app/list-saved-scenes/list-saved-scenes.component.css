@@ -2,15 +2,16 @@
   width: 100%;
   margin-left:auto;
   margin-right:auto;
+  margin-bottom: auto;
 
 }
 
 .container {
-  /*overflow-x: auto;*/
-  top:30%;
-  left: 50%;
-  transform: translate3d(-50%,-50%, 0);
-  position: absolute;
+  text-align: center
+}
+
+.table {
+  display: inline-block;
 
 }
 
@@ -37,5 +38,7 @@
   font-size: 20px;
 }
 
-
-h1 { text-align: center;}
+h1 {
+  text-align: center;
+  padding-bottom: 20px;
+}
