@@ -84,7 +84,7 @@ public class SceneController {
 
 
     @GetMapping(value = "/api/getscene/{scene_id}")
-    public Scene getScene(@PathVariable String scene_id) {
+    public Scene getSceneById(@PathVariable String scene_id) {
         try {
             return this.iioService.getSceneFromDisk(scene_id);
         } catch (IOException e) {

@@ -10,7 +10,7 @@ public class ArtnetSender {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
     private Scene sceneToPlay;
-    private List<int[]> toPlay;
+    private List<int[]> fadingList;
 
     public ArtnetSender() {
     }
@@ -24,12 +24,12 @@ public class ArtnetSender {
         return sceneToPlay;
     }
 
-    public void setToPlay(List<int[]> toPlay) {
-        this.toPlay = toPlay;
+    public void setFadingList(List<int[]> fadingList) {
+        this.fadingList = fadingList;
     }
 
-    public List<int[]> getToPlay() {
-        return toPlay;
+    public List<int[]> getFadingList() {
+        return fadingList;
     }
 
     public void sendData() {
@@ -53,9 +53,9 @@ public class ArtnetSender {
         if (!artNetClient.isRunning()) {
             artNetClient.start();
         }
-        for (int[] frame : toPlay) {
+        for (int[] frame : fadingList) {
             byte[] dmxData = intArrayToByteArray(frame);
-            artNetClient.broadcastDmx(0, 0, dmxData);
+            artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
 
         }
         System.out.println("Frame verstuurd");

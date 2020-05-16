@@ -96,25 +96,23 @@ public class SceneServiceImpl implements ISceneService {
             Frame emptyFrame = new Frame(emptyArray);
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), emptyFrame, scene.getFrames().get(0));
             try {
-                this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                this.artnetSender.setFadingList(sceneFader.fadeFrame());
                 this.artnetSender.sendFrame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.currentPlayingScene = scene;
-            System.out.println("playing scene");
 
         } else {
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
             try {
-                this.artnetSender.setToPlay(sceneFader.fadeFrame());
+                this.artnetSender.setFadingList(sceneFader.fadeFrame());
                 this.artnetSender.sendFrame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.currentPlayingScene = scene;
-            System.out.println("playing scene");
         }
+        this.currentPlayingScene = scene;
+        System.out.println("playing scene");
 
 
     }
