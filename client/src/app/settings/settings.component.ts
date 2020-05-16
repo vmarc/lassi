@@ -42,7 +42,7 @@ export class SettingsComponent implements OnInit {
   newSettings: Settings
   fps: any;
   fadeSec: any;
-  framesPSec: any[] = [10, 15, 50, 100, 150, 200, 400, 800];
+  framesPSec: any[] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 100, 150, 200, 400, 800];
   fadeTimeInSec: any[] = [1, 5, 10, 20, 30];
 
   constructor(private settingsService: SettingsService) { }
