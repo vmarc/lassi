@@ -14,9 +14,6 @@ public class SceneFader {
     private Frame startFrame;
     private Frame endFrame;
 
-    public SceneFader() {
-    }
-
     public SceneFader(int framesPerSecond, int fadeTimeInSeconds, Frame startFrame, Frame endFrame) {
         this.framesPerSecond = framesPerSecond;
         this.fadeTimeInSeconds = fadeTimeInSeconds;
@@ -28,8 +25,8 @@ public class SceneFader {
         Instant start = Instant.now();
 
         double totalFrames = framesPerSecond*fadeTimeInSeconds;
-        double percentageOnTimeOut = 1-(framesPerSecond/3000.0);
-        long timeOut = (long) (((1.0/framesPerSecond)*1000)*percentageOnTimeOut);
+        double timeOut = 1000.0/framesPerSecond;
+
         double[] differenceList = new double[128];
         int[] dmxValues = startFrame.getDmxValues().clone();
         int[] originalDmxValues = startFrame.getDmxValues().clone();
@@ -41,23 +38,33 @@ public class SceneFader {
             differenceList[i] = ((endFrame.getDmxValues()[i] - startFrame.getDmxValues()[i])/totalFrames);
         }
 
-        //For each frame add the rounded difference on the original value
-        //original startFrame values + rounded value of (the frame count times the difference)
+        //Fading Method
         for (int i = 0; i < totalFrames; i++) {
             //Logging
             System.out.println();
             System.out.print(i + 1 + "....  ");
-            
+
+            Instant now = Instant.now();
+            long timeElapsed = Duration.between(start, now).toMillis();
+            System.out.println("time elapsed: " + timeElapsed);
+
             for (int j = 0; j < 128; j++) {
                 dmxValues[j] = (int) (originalDmxValues[j] + Math.round((i + 1) * differenceList[j]));
-
+                //dmxValues[j] = (int) (Math.round(differenceList[j] * (timeElapsed/1000)));
                 //Logging
                 System.out.print(dmxValues[j] + " / ");
             }
             listToFill.add(dmxValues);
+
             //Sleep expected sleep time - timeOut
-            Thread.sleep(timeOut);
+            long x = (long) ((timeOut*(i+1)) - timeElapsed);
+            System.out.println();
+            System.out.println(x);
+            if (x > 0){
+                Thread.sleep(x);
+            }
         }
+
         Instant finish = Instant.now();
 
         //Logging

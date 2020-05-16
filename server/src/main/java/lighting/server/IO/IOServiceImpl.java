@@ -28,13 +28,6 @@ public class IOServiceImpl implements IIOService {
     public IOServiceImpl() {
         System.out.println(parentDir);
         createDirectories();
-        //default settings
-        Settings settings = new Settings(50, 5 );
-        try {
-            saveSettingsToDisk(settings);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void createDirectories() {
@@ -50,9 +43,20 @@ public class IOServiceImpl implements IIOService {
         if (!settings.exists()) {
             if (settings.mkdir()) {
                 System.out.println("Settings directory is created!");
+                createDefaultSettings();
             } else {
                 System.out.println("Failed to create Settings directory!");
             }
+        }
+    }
+
+    public void createDefaultSettings(){
+        //default settings
+        Settings settings = new Settings(50, 5 );
+        try {
+            saveSettingsToDisk(settings);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

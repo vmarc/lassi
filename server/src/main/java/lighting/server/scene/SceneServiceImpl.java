@@ -88,7 +88,9 @@ public class SceneServiceImpl implements ISceneService {
         }
     }
 
-    public void playScene(Scene scene) {
+    public void playScene(Scene scene) throws IOException {
+        this.settings = this.iOService.getSettingsFromDisk();
+
         this.artnetSender.setSceneToPlay(scene);
         this.artnetSender.sendData();
         if (currentPlayingScene.getFrames().isEmpty()) {
