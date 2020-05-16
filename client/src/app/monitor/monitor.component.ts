@@ -41,7 +41,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.topicSubscription = this.rxStompService.watch('/topic/output').pipe(retry(1), catchError(this.sceneService.handleError)).subscribe((message: Message) => {
+    this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((message: Message) => {
       this.frame = Frame.fromJSON(JSON.parse(message.body));
     });
   }

@@ -52,7 +52,7 @@ public class IOServiceImpl implements IIOService {
 
     public void createDefaultSettings(){
         //default settings
-        Settings settings = new Settings(50, 5 );
+        Settings settings = new Settings(40, 5 );
         try {
             saveSettingsToDisk(settings);
         } catch (IOException e) {

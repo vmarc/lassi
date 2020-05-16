@@ -3,6 +3,8 @@ package lighting.server.settings;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -32,5 +34,16 @@ public class SettingsController {
             e.printStackTrace();
         }
 
+    }
+
+    @GetMapping(value = "/api/gethostip")
+    public String getHostIpAddress() {
+        try {
+            InetAddress address = InetAddress.getLocalHost();
+            return address.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
