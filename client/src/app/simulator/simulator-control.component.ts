@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import { ScenesService } from '../scene/scenes.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-simulator-control',
@@ -34,20 +35,40 @@ export class SimulatorControlComponent implements OnInit {
   @Input() sceneId: number;
   @Input() recordSingleFrame: boolean;
   @Input() recordMultipleFrames: boolean;
+  @Input() playMode: boolean;
   @Input() playable: string;
+  startedMultipleFramesRecord: boolean = false;
 
-
-  constructor(private sceneService: ScenesService, private snackbar: MatSnackBar) {
+  constructor(private sceneService: ScenesService,
+              private snackbar: MatSnackBar,
+              private router: Router) {
   }
 
   ngOnInit(): void {
 
   }
 
-
-
   buttonClicked(): void {
-    if (this.recordSingleFrame) {
+    console.log(this.startedMultipleFramesRecord);
+    if (this.recordMultipleFrames && this.startedMultipleFramesRecord == true) {
+      this.sceneService.stopRecording().subscribe(data => {
+        if (data) {
+          this.snackbar.open('Recording Multiple Frames done......', 'Close', {
+            duration: 3000
+          });
+        }
+      });
+      this.startedMultipleFramesRecord = false;
+    }
+
+    else if (!this.recordMultipleFrames && !this.recordSingleFrame && !this.playMode) {
+      this.snackbar.open('Please choose a mode...', 'Close', {
+        duration: 3000
+      });
+    }
+
+
+    else if (this.recordSingleFrame) {
       this.sceneService.recordSingleFrame(this.sceneId).subscribe(data => {
         if (data) {
           this.snackbar.open('Recording Single Frame...', 'Close', {
@@ -58,32 +79,36 @@ export class SimulatorControlComponent implements OnInit {
 
     }
 
-    if (this.recordMultipleFrames) {
+    else if (this.recordMultipleFrames && this.startedMultipleFramesRecord == false) {
+      this.startedMultipleFramesRecord = true;
       this.sceneService.recordMultipleFrames(this.sceneId).subscribe(data => {
         if (data) {
           this.snackbar.open('Recording Multiple Frames...', 'Close', {
             duration: 3000
           });
+
+
         }
       });
 
     }
 
-      if (!this.recordSingleFrame && !this.recordMultipleFrames) {
-        if (this.playable == 'green') {
-          this.sceneService.playFromButton(this.sceneId);
-          this.snackbar.open('Playing Scene...', 'Close', {
-            duration: 3000
-          });
-        } else {
-          this.snackbar.open('This button does not have a Scene...', 'Close', {
-            duration: 3000
-          });
-        }
-
+    if (this.playMode) {
+      if (this.playable == 'green') {
+        this.sceneService.playFromButton(this.sceneId);
+        this.snackbar.open('Playing Scene...', 'Close', {
+          duration: 3000
+        });
+      } else {
+        this.snackbar.open('This button does not have a Scene...', 'Close', {
+          duration: 3000
+        });
       }
 
     }
+
+
+  }
 
 
 
