@@ -48,17 +48,25 @@ export class SimulatorControlComponent implements OnInit {
 
   buttonClicked(): void {
     if (this.recordSingleFrame) {
-      this.sceneService.recordSingleFrame(this.sceneId);
-      this.snackbar.open('Recording Single Frame...', 'Close', {
-        duration: 3000
+      this.sceneService.recordSingleFrame(this.sceneId).subscribe(data => {
+        if (data) {
+          this.snackbar.open('Recording Single Frame...', 'Close', {
+            duration: 3000
+          });
+        }
       });
+
     }
 
     if (this.recordMultipleFrames) {
-      this.sceneService.recordMultipleFrames(this.sceneId);
-      this.snackbar.open('Recording Multiple Frames...', 'Close', {
-        duration: 3000
+      this.sceneService.recordMultipleFrames(this.sceneId).subscribe(data => {
+        if (data) {
+          this.snackbar.open('Recording Multiple Frames...', 'Close', {
+            duration: 3000
+          });
+        }
       });
+
     }
 
       if (!this.recordSingleFrame && !this.recordMultipleFrames) {

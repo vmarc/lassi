@@ -7,6 +7,7 @@ import { ScenesService } from '../scene/scenes.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {map, retry, catchError} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -18,11 +19,22 @@ import {map, retry, catchError} from 'rxjs/operators';
     {{dmxValue}}
   </div>
 </div>
+<div class="record">
+   <table>
+<tr>
+   <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
+</tr>
+<tr>
+     <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
+</tr>
+</table>
+
 <div>
-  <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordingDone">
+  <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButton">
   <i class="fas fa-record-vinyl"></i> Record</button>
-  <button class="buttons" mat-flat-button color="primary" (click)="stop()">
+  <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButton">
   <i class="fas fa-stop-circle"></i> Stop</button>
+ </div>
  </div>
 `,
   styleUrls: ['./monitor.component.css']
@@ -30,13 +42,18 @@ import {map, retry, catchError} from 'rxjs/operators';
 export class MonitorComponent implements OnInit, OnDestroy {
 
   frame: Frame = Frame.empty();
-  recordingDone: boolean = false;
+  recordButton: boolean = true;
+  recordSingleFrame: boolean = false;
+  recordMultipleFrames: boolean = false;
+  stopButton: boolean = true;
+
   private topicSubscription: Subscription;
 
   constructor(private rxStompService: RxStompService,
               private sceneService: ScenesService,
               private router: Router,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private snackbar: MatSnackBar) {
 
   }
 
@@ -46,37 +63,61 @@ export class MonitorComponent implements OnInit, OnDestroy {
     });
   }
 
+  toggleSingleFrameRecord() {
+    this.recordSingleFrame = !this.recordSingleFrame;
+    this.recordButton = !this.recordButton;
+    if (this.stopButton == false) {
+      this.stopButton = true;
+    }
+    if (this.recordSingleFrame = true) {
+      this.recordMultipleFrames = false;
+    }
+
+
+  }
+
+  toggleMultipleFramesRecord() {
+    this.recordMultipleFrames = !this.recordMultipleFrames;
+    this.recordButton = !this.recordButton;
+    if (this.recordMultipleFrames = true) {
+      this.recordSingleFrame = false;
+    }
+
+  }
+
   record() {
-    this.sceneService.recordSingleFrame(0).subscribe(data => {
-      this.recordingDone = false;
-      this.openRecordingDoneDialog(data);
-    });
-    this.recordingDone = true;
-  }
-
-  stop() {
-
-  }
-
-  openRecordingDoneDialog(recordingDone: boolean) {
-
-    const dialogRef = this.dialog.open(RecordingDoneDialogComponent, {
-        width: '750px',
-        data: {
-          record: recordingDone
+    if (this.recordSingleFrame == true) {
+      this.sceneService.recordSingleFrame(0).subscribe(data => {
+        this.snackbar.open('Recording Single Frame...', 'Close', {
+          duration: 3000
+        });
+        if (data) {
+          this.snackbar.open('Recording Single Frame Done...', 'Close', {
+            duration: 3000
+          });
         }
       });
-
-
-
-    dialogRef.afterClosed().subscribe(result => this.reloadComponent());
-
+    }
+    if (this.recordMultipleFrames == true) {
+      this.sceneService.recordMultipleFrames(0).subscribe(data => {
+        this.snackbar.open('Recording Multiple Frames...', 'Close', {
+          duration: 3000
+        });
+        this.stopButton = !this.stopButton;
+      });
+    }
   }
 
-  reloadComponent() {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/monitor']);
+
+  stop() {
+    this.sceneService.stopRecording().subscribe( data => {
+      if (data) {
+        this.snackbar.open('Recording Multiple Frames Done...', 'Close', {
+          duration: 3000
+        });
+        this.stopButton = !this.stopButton;
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -85,36 +126,3 @@ export class MonitorComponent implements OnInit, OnDestroy {
 
 }
 
-
-@Component({
-  selector: 'recording-done-dialog',
-  template: `<h1 mat-dialog-title>Information</h1>
-<div mat-dialog-content>
-  <p>Recording {{status}}</p>
-</div>
-<div mat-dialog-actions>
- <button mat-button [mat-dialog-close]="true">OK</button>
-</div>
-`
-})
-export class RecordingDoneDialogComponent {
-
-  status: string;
-
-  constructor(
-    public dialogRef: MatDialogRef<RecordingDoneDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {record: boolean}) {
-    console.log(data);
-    if (data.record == true) {
-      this.status = "finished.";
-    } else {
-      this.status = "failed."
-    }
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-
-}

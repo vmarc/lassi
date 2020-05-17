@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
 import {appRxStompConfig} from './app-rx-stomp.config';
-import {MonitorComponent, RecordingDoneDialogComponent} from './monitor/monitor.component';
+import {MonitorComponent} from './monitor/monitor.component';
 import {MenuComponent} from './menu/menu.component';
 import {AppRoutingModule} from './app-routing.module';
 import {MatButtonModule} from '@angular/material/button';
@@ -51,7 +51,6 @@ import { Stomp } from './stomp';
     EditSavedSceneDialogComponent,
     SceneDetailsDialogComponent,
     SettingsComponent,
-    RecordingDoneDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,8 +76,7 @@ import { Stomp } from './stomp';
     MatSnackBarModule
   ],
   entryComponents: [
-    ConfirmDeleteDialogComponent,
-    RecordingDoneDialogComponent
+    ConfirmDeleteDialogComponent
   ],
   providers: [
     ScenesService,

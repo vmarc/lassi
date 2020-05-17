@@ -53,7 +53,7 @@ import * as moment from 'moment';
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 </div>
 </div>
 

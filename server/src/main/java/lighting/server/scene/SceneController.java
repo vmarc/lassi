@@ -3,7 +3,8 @@ package lighting.server.scene;
 import lighting.server.IO.IIOService;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.util.List;
 
 @RestController
@@ -52,6 +53,10 @@ public class SceneController {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @GetMapping(value = "api/downloadallscenes")
+    public void downloadAllScenesAsZip() {
     }
 
     @GetMapping(value = "/api/playscene/{button_id}")

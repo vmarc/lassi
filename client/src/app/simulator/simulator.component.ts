@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { ScenesService } from '../scene/scenes.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-simulator',
@@ -33,9 +34,12 @@ import { ScenesService } from '../scene/scenes.service';
 <tr>
      <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
 </tr>
+
 </table>
 
   </div>
+  <button class="record" mat-flat-button color="primary" (click)="stopRecording()" [disabled]="stopButton">
+  <i class="fas fa-stop-circle"></i> Stop</button>
 </div>
 `,
   styleUrls: [ './simulator.component.css' ]
@@ -48,6 +52,7 @@ export class SimulatorComponent implements OnInit{
   playMode: boolean = false;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
+  stopButton: boolean = true;
 
 
   playable1: string = 'gray';
@@ -62,12 +67,15 @@ export class SimulatorComponent implements OnInit{
 
   playColor: string;
 
-  constructor(private sceneService: ScenesService) {
+  constructor(private sceneService: ScenesService,
+              private snackbar: MatSnackBar) {
   }
 
   togglePlayMode() {
     this.playMode = !this.playMode;
-    console.log(this.playMode);
+    if (this.stopButton == false) {
+      this.stopButton = true;
+    }
     if (this.playMode == true) {
       this.recordMultipleFrames = !this.playMode;
       this.recordSingleFrame = !this.playMode;
@@ -78,6 +86,9 @@ export class SimulatorComponent implements OnInit{
 
   toggleSingleFrameRecord() {
     this.recordSingleFrame = !this.recordSingleFrame;
+    if (this.stopButton == false) {
+      this.stopButton = true;
+    }
     if (this.recordSingleFrame = true) {
       this.recordMultipleFrames = false;
       this.playMode = false;
@@ -88,6 +99,7 @@ export class SimulatorComponent implements OnInit{
 
   toggleMultipleFramesRecord() {
     this.recordMultipleFrames = !this.recordMultipleFrames;
+    this.stopButton = !this.stopButton;
     if (this.recordMultipleFrames = true) {
       this.recordSingleFrame = false;
       this.playMode = false;
@@ -95,6 +107,16 @@ export class SimulatorComponent implements OnInit{
 
 
     this.fillInColors();
+  }
+
+  stopRecording() {
+    this.sceneService.stopRecording().subscribe(data => {
+      if (data) {
+        this.snackbar.open('Recording Multiple Frames done...', 'Close', {
+          duration: 3000
+        });
+      }
+    });
   }
 
   ngOnInit(): void {
