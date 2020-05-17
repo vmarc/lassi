@@ -4,7 +4,7 @@ export var ipAddress;
 
 export const appRxStompConfig: InjectableRxStompConfig = {
 
-  brokerURL: 'ws://' + ipAddress + ':8080/stomp/websocket',
+  brokerURL: 'ws://localhost:8080/stomp/websocket',
 
   heartbeatIncoming: 0,
   heartbeatOutgoing: 20000,

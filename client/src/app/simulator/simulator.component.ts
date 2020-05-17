@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { ScenesService } from '../scene/scenes.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { SimulatorControlComponent } from './simulator-control.component';
 
 @Component({
   selector: 'app-simulator',
@@ -8,19 +9,19 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 <div class="buttons">
   <div>
     <div class="button-row">
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="1" [playable]="playable1"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="2" [playable]="playable2"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="3" [playable]="playable3"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="1" [playable]="playable1"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="2" [playable]="playable2"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="3" [playable]="playable3"></app-simulator-control>
     </div>
     <div class="button-row">
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="4" [playable]="playable4"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="5" [playable]="playable5"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="6" [playable]="playable6"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="4" [playable]="playable4"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="5" [playable]="playable5"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="6" [playable]="playable6"></app-simulator-control>
     </div>
     <div class="button-row">
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="7" [playable]="playable7"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="8" [playable]="playable8"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="9" [playable]="playable9"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="7" [playable]="playable7"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="8" [playable]="playable8"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="9" [playable]="playable9"></app-simulator-control>
     </div>
   </div>
    <div class="record">
@@ -38,13 +39,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 </table>
 
   </div>
-  <button class="record" mat-flat-button color="primary" (click)="stopRecording()" [disabled]="stopButton">
-  <i class="fas fa-stop-circle"></i> Stop</button>
 </div>
 `,
   styleUrls: [ './simulator.component.css' ]
 })
-export class SimulatorComponent implements OnInit{
+export class SimulatorComponent implements OnInit {
 
   playableButtons: boolean[];
   recordedButtons: boolean[];
@@ -52,8 +51,6 @@ export class SimulatorComponent implements OnInit{
   playMode: boolean = false;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
-  stopButton: boolean = true;
-
 
   playable1: string = 'gray';
   playable2: string = 'gray';
@@ -73,9 +70,6 @@ export class SimulatorComponent implements OnInit{
 
   togglePlayMode() {
     this.playMode = !this.playMode;
-    if (this.stopButton == false) {
-      this.stopButton = true;
-    }
     if (this.playMode == true) {
       this.recordMultipleFrames = !this.playMode;
       this.recordSingleFrame = !this.playMode;
@@ -86,9 +80,6 @@ export class SimulatorComponent implements OnInit{
 
   toggleSingleFrameRecord() {
     this.recordSingleFrame = !this.recordSingleFrame;
-    if (this.stopButton == false) {
-      this.stopButton = true;
-    }
     if (this.recordSingleFrame = true) {
       this.recordMultipleFrames = false;
       this.playMode = false;
@@ -98,8 +89,7 @@ export class SimulatorComponent implements OnInit{
   }
 
   toggleMultipleFramesRecord() {
-    this.recordMultipleFrames = !this.recordMultipleFrames;
-    this.stopButton = !this.stopButton;
+    this.recordMultipleFrames = !this.recordMultipleFrames;;
     if (this.recordMultipleFrames = true) {
       this.recordSingleFrame = false;
       this.playMode = false;
@@ -115,6 +105,10 @@ export class SimulatorComponent implements OnInit{
         this.snackbar.open('Recording Multiple Frames done...', 'Close', {
           duration: 3000
         });
+      } else {
+        this.snackbar.open('Select button to record to.', 'Close', {
+          duration: 3000
+        });
       }
     });
   }
@@ -125,7 +119,6 @@ export class SimulatorComponent implements OnInit{
       this.recordedButtons = data;
 
       this.playableButtons = this.inverted(this.recordedButtons);
-      console.log(this.playableButtons);
       this.fillInColors();
 
     });
