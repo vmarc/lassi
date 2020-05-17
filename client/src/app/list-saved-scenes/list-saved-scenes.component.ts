@@ -9,14 +9,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as moment from 'moment';
 
-
-
-
 @Component({
   selector: 'app-list-saved-scenes',
   template: `
 <h1>List of Scenes</h1>
-  <div class="container">
+<div class="container">
+  <div class="table">
   <mat-table  #table class="center" [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -57,7 +55,7 @@ import * as moment from 'moment';
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-
+</div>
 
   `,
   styleUrls: ['./list-saved-scenes.component.css']

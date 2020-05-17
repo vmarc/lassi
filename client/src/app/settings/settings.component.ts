@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SettingsService } from './settings.service';
 import { Settings } from './settings';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-settings',
   template: `
 <h1>Settings</h1>
 <form [formGroup]="settingsForm">
+<div class="container">
 <div class="center">
 <div>
 <mat-form-field>
@@ -27,6 +30,7 @@ import { Settings } from './settings';
 </div>
 <button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
 </div>
+</div>
 </form>
   `,
   styleUrls: ['./settings.component.css']
@@ -45,7 +49,8 @@ export class SettingsComponent implements OnInit {
   framesPSec: any[] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 100, 150, 200, 400, 800];
   fadeTimeInSec: any[] = [1, 5, 10, 20, 30];
 
-  constructor(private settingsService: SettingsService) { }
+  constructor(private settingsService: SettingsService,
+              private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.settingsService.getSettings().subscribe(data => {
@@ -88,6 +93,10 @@ export class SettingsComponent implements OnInit {
       this.settings.fadeTimeInSeconds = this.settingsForm.get('fadeTimeInSeconds').value;
       this.settingsService.saveSettings(this.settings);
     }
+
+    this.snackbar.open('Settings saved', 'Close', {
+      duration: 3000
+    });
 
 
   }
