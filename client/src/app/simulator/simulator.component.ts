@@ -80,7 +80,7 @@ export class SimulatorComponent implements OnInit {
 
   toggleSingleFrameRecord() {
     this.recordSingleFrame = !this.recordSingleFrame;
-    if (this.recordSingleFrame = true) {
+    if (this.recordSingleFrame == true) {
       this.recordMultipleFrames = false;
       this.playMode = false;
     }
@@ -89,8 +89,8 @@ export class SimulatorComponent implements OnInit {
   }
 
   toggleMultipleFramesRecord() {
-    this.recordMultipleFrames = !this.recordMultipleFrames;;
-    if (this.recordMultipleFrames = true) {
+    this.recordMultipleFrames = !this.recordMultipleFrames;
+    if (this.recordMultipleFrames == true) {
       this.recordSingleFrame = false;
       this.playMode = false;
     }
@@ -131,7 +131,7 @@ export class SimulatorComponent implements OnInit {
   }
 
   fillInColors() {
-
+    console.log(this.playMode,this.recordSingleFrame,this.recordMultipleFrames)
     if (!this.recordSingleFrame && !this.recordMultipleFrames && !this.playMode) {
       this.playColor = 'gray';
     }
