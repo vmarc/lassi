@@ -123,6 +123,7 @@ public class ArtnetListener {
         try {
             if (numberOfFrames > 0){
                 iioService.saveSceneToDisk(scene);
+                this.getArtNetClient().stop();
                 return true;
             }
             else return false;
