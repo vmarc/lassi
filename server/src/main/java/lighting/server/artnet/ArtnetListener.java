@@ -126,7 +126,10 @@ public class ArtnetListener {
                 this.getArtNetClient().stop();
                 return true;
             }
-            else return false;
+            else {
+                this.getArtNetClient().stop();
+                return false;
+            }
         } catch (IOException e) {
             e.printStackTrace();
             return false;
