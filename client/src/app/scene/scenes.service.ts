@@ -23,11 +23,11 @@ export class ScenesService {
   }
 
   public get(scene_id: string): Observable<Scenes> {
-    return this.http.get<Scenes>('/api/getscene/' + scene_id).pipe(retry(1), catchError(this.handleError));;
+    return this.http.get<Scenes>('/api/getscene/' + scene_id).pipe(retry(1), catchError(this.handleError));
   }
 
   public download(scene_id: string): Observable<Blob> {
-    return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'}).pipe(retry(1), catchError(this.handleError));;
+    return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'}).pipe(retry(1), catchError(this.handleError));
   }
 
   public play(id: string): void {
@@ -39,10 +39,18 @@ export class ScenesService {
   }
 
 
-  public record(button: number) : Observable<boolean> {
-    console.log("recording...");
-    return this.http.get<boolean>('/api/recordscenebis/' + button).pipe(retry(1), catchError(this.handleError));;
+  public recordSingleFrame(button: number) : Observable<boolean> {
+    return this.http.get<boolean>('/api/recordSceneSingleFrame/' + button).pipe(retry(1), catchError(this.handleError));
 
+  }
+
+  public recordMultipleFrames(button: number) : Observable<boolean> {
+    return this.http.get<boolean>('/api/recordSceneMultipleFrames/' + button).pipe(retry(1), catchError(this.handleError));
+
+  }
+
+  public stopRecording(): Observable<boolean> {
+    return this.http.get<boolean>('/api/stopRecording').pipe(retry(1), catchError(this.handleError));
   }
 
   public save(scene: Scenes) {
@@ -50,7 +58,7 @@ export class ScenesService {
   }
 
   public getButtons(): Observable<boolean[]> {
-    return this.http.get<boolean[]>('api/getbuttons').pipe(retry(1), catchError(this.handleError));;
+    return this.http.get<boolean[]>('api/getbuttons').pipe(retry(1), catchError(this.handleError));
 
   }
 

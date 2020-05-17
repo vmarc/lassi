@@ -47,7 +47,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
   record() {
-    this.sceneService.record(0).subscribe(data => {
+    this.sceneService.recordSingleFrame(0).subscribe(data => {
       this.recordingDone = false;
       this.openRecordingDoneDialog(data);
     });

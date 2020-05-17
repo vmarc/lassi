@@ -7,23 +7,29 @@ import { ScenesService } from '../scene/scenes.service';
 <div class="buttons">
   <div>
     <div class="button-row">
-      <app-simulator-control [record]="record" [sceneId]="1" [playable]="playable1"></app-simulator-control>
-      <app-simulator-control [record]="record" [sceneId]="2" [playable]="playable2"></app-simulator-control>
-      <app-simulator-control [record]="record" [sceneId]="3" [playable]="playable3"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="1" [playable]="playable1"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="2" [playable]="playable2"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="3" [playable]="playable3"></app-simulator-control>
     </div>
     <div class="button-row">
-      <app-simulator-control [record]="record" [sceneId]="4" [playable]="playable4"></app-simulator-control>
-      <app-simulator-control [record]="record" [sceneId]="5" [playable]="playable5"></app-simulator-control>
-      <app-simulator-control [record]="record" [sceneId]="6" [playable]="playable6"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="4" [playable]="playable4"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="5" [playable]="playable5"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="6" [playable]="playable6"></app-simulator-control>
     </div>
     <div class="button-row">
-      <app-simulator-control [record]="record" [sceneId]="7" [playable]="playable7"></app-simulator-control>
-      <app-simulator-control [record]="record" [sceneId]="8" [playable]="playable8"></app-simulator-control>
-      <app-simulator-control [record]="record" [sceneId]="9" [playable]="playable9"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="7" [playable]="playable7"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="8" [playable]="playable8"></app-simulator-control>
+      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [sceneId]="9" [playable]="playable9"></app-simulator-control>
     </div>
   </div>
+   <div class="record">
+    <mat-slide-toggle [checked]="playMode" (change)="togglePlayMode()">Play mode</mat-slide-toggle>
+  </div>
   <div class="record">
-    <mat-slide-toggle [checked]="record" (change)="toggleRecord()">Record mode</mat-slide-toggle>
+    <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
+  </div>
+  <div class="record">
+    <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
   </div>
 </div>
 `,
@@ -34,7 +40,10 @@ export class SimulatorComponent implements OnInit{
   playableButtons: boolean[];
   recordedButtons: boolean[];
 
-  record: boolean = false;
+  playMode: boolean = false;
+  recordSingleFrame: boolean = false;
+  recordMultipleFrames: boolean = false;
+
 
   playable1: string = 'gray';
   playable2: string = 'gray';
@@ -51,8 +60,35 @@ export class SimulatorComponent implements OnInit{
   constructor(private sceneService: ScenesService) {
   }
 
-  toggleRecord() {
-    this.record = !this.record;
+  togglePlayMode() {
+    this.playMode = !this.playMode;
+    console.log(this.playMode);
+    if (this.playMode == true) {
+      this.recordMultipleFrames = !this.playMode;
+      this.recordSingleFrame = !this.playMode;
+    }
+
+    this.fillInColors();
+  }
+
+  toggleSingleFrameRecord() {
+    this.recordSingleFrame = !this.recordSingleFrame;
+    if (this.recordSingleFrame = true) {
+      this.recordMultipleFrames = false;
+      this.playMode = false;
+    }
+
+    this.fillInColors();
+  }
+
+  toggleMultipleFramesRecord() {
+    this.recordMultipleFrames = !this.recordMultipleFrames;
+    if (this.recordMultipleFrames = true) {
+      this.recordSingleFrame = false;
+      this.playMode = false;
+    }
+
+
     this.fillInColors();
   }
 
@@ -65,10 +101,6 @@ export class SimulatorComponent implements OnInit{
       console.log(this.playableButtons);
       this.fillInColors();
 
-
-
-
-
     });
   }
 
@@ -80,9 +112,13 @@ export class SimulatorComponent implements OnInit{
 
   fillInColors() {
 
-    if (!this.record) {
+    if (!this.recordSingleFrame && !this.recordMultipleFrames && !this.playMode) {
+      this.playColor = 'gray';
+    }
+    if (this.playMode) {
       this.playColor = 'green';
-    } else {
+    }
+    if (this.recordMultipleFrames || this.recordSingleFrame) {
       this.playColor = 'red';
     }
 

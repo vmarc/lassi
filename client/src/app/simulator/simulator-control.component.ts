@@ -32,7 +32,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class SimulatorControlComponent implements OnInit {
 
   @Input() sceneId: number;
-  @Input() record: boolean;
+  @Input() recordSingleFrame: boolean;
+  @Input() recordMultipleFrames: boolean;
   @Input() playable: string;
 
 
@@ -46,14 +47,21 @@ export class SimulatorControlComponent implements OnInit {
 
 
   buttonClicked(): void {
-    if (this.record) {
-      this.sceneService.record(this.sceneId);
-      this.snackbar.open('Recording Scene...', 'Close', {
+    if (this.recordSingleFrame) {
+      this.sceneService.recordSingleFrame(this.sceneId);
+      this.snackbar.open('Recording Single Frame...', 'Close', {
         duration: 3000
       });
     }
 
-      if (!this.record) {
+    if (this.recordMultipleFrames) {
+      this.sceneService.recordMultipleFrames(this.sceneId);
+      this.snackbar.open('Recording Multiple Frames...', 'Close', {
+        duration: 3000
+      });
+    }
+
+      if (!this.recordSingleFrame && !this.recordMultipleFrames) {
         if (this.playable == 'green') {
           this.sceneService.playFromButton(this.sceneId);
           this.snackbar.open('Playing Scene...', 'Close', {

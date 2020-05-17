@@ -18,10 +18,21 @@ public class SceneController {
         this.iioService = iioService;
     }
 
-    @GetMapping(value = "/api/recordscenebis/{button_id}")
-    public boolean recordScene(@PathVariable int button_id) {
+    @GetMapping(value = "/api/recordSceneSingleFrame/{button_id}")
+    public boolean recordSceneSingleFrame(@PathVariable int button_id) {
         System.out.println("recording...");
         return this.sceneService.recordScene(button_id);
+    }
+
+    @GetMapping(value = "/api/recordSceneMultipleFrames/{button_id}")
+    public boolean recordSceneMultipleFrames(@PathVariable int button_id) {
+        System.out.println("recording...");
+        return this.sceneService.recordSceneMultipleFrames(button_id);
+    }
+
+    @GetMapping(value = "/api/stopRecording")
+    public boolean stopRecording() {
+        return this.sceneService.stopRecording();
     }
 
     @PutMapping(value = "/api/savescene/")
@@ -59,17 +70,6 @@ public class SceneController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @GetMapping(value = "/api/stopRecording")
-    public boolean stopRecording() {
-        return this.sceneService.stopRecording();
-    }
-
-    @GetMapping(value = "/api/recordSceneMultipleFrames/{button_id}")
-    public boolean recordSceneMultipleFrames(@PathVariable int button_id) {
-        System.out.println("recording...");
-        return this.sceneService.recordSceneMultipleFrames(button_id);
     }
 
 
