@@ -22,6 +22,7 @@ public class ArtnetListener {
     private Scene scene = new Scene();
     private boolean framesAdded = false;
     private Frame currentFrame;
+    private int numberOfFrames = 1;
     private Settings settings;
 
     public ArtnetListener(IIOService iioService) {
@@ -46,10 +47,14 @@ public class ArtnetListener {
         return framesAdded;
     }
 
+    public void setNumberOfFrames(int numberOfFrames) {
+        this.numberOfFrames = numberOfFrames;
+    }
+
     public void recordData(int button_id) throws IOException {
 
         this.settings = this.iioService.getSettingsFromDisk();
-
+        scene = new Scene();
         scene.setFadeTime(settings.getFadeTimeInSeconds());
         scene.setButtonId(button_id);
         scene.setCreatedOn(LocalDateTime.now());
@@ -67,17 +72,19 @@ public class ArtnetListener {
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
                         scene.getFrames().add(frame);
                         framesAdded = true;
-                        try {
-                            iioService.saveSceneToDisk(scene);
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        if (scene.getFrames().size() == numberOfFrames){
+                            try {
+                                iioService.saveSceneToDisk(scene);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            //artNetClient.stop();
                         }
-                        artNetClient.stop();
                     }
 
 
                 });
-        artNetClient.start();
+        //artNetClient.start();
     }
 
     public void captureData() {
@@ -94,6 +101,16 @@ public class ArtnetListener {
                 });
 
         artNetClient.start();
+    }
+
+    public void stopRecording(){
+        artNetClient.stop();
+        try {
+            iioService.saveSceneToDisk(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(numberOfFrames +"..."+ scene.getFrames().size());
     }
 
     public int[] byteArrayToIntArray(byte[] src) {

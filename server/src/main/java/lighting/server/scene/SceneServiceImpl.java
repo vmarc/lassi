@@ -29,6 +29,7 @@ public class SceneServiceImpl implements ISceneService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.artnetListener = new ArtnetListener(iOService);
     }
 
     public boolean recordScene(int button_id) {
@@ -44,8 +45,8 @@ public class SceneServiceImpl implements ISceneService {
             e.printStackTrace();
         }
 
-        artnetListener = new ArtnetListener(iOService);
         try {
+            artnetListener.setNumberOfFrames(1);
             artnetListener.recordData(button_id);
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,6 +62,35 @@ public class SceneServiceImpl implements ISceneService {
             return true;
         }
         else return false;
+    }
+
+    public boolean recordSceneMultipleFrames(int button_id) {
+        try {
+            List<Scene> scenesOnDisk = iOService.getAllScenesFromDisk();
+            for (Scene s : scenesOnDisk) {
+                //TODO gaat die niet altijd alle scenes aanpassen omdat button nul is?
+                // EN doet die dan een update van de scene op de disk ook? of enkel in memory
+                if (s.getButtonId() == button_id) {
+                    s.setButtonId(0);
+                }
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            artnetListener.setNumberOfFrames(20000);
+            artnetListener.recordData(button_id);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void stopRecording(){
+        artnetListener.stopRecording();
     }
 
     public void playSceneFromButton(int button) throws IOException {
@@ -92,15 +122,13 @@ public class SceneServiceImpl implements ISceneService {
         this.settings = this.iOService.getSettingsFromDisk();
 
         this.artnetSender.setSceneToPlay(scene);
-        //this.artnetSender.sendData();
+
         if (currentPlayingScene.getFrames().isEmpty()) {
             int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
             Frame emptyFrame = new Frame(emptyArray);
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), emptyFrame, scene.getFrames().get(0));
             try {
-                //this.artnetSender.setFadingList(sceneFader.fadeFrame());
                 sceneFader.fadeFrame(artnetSender);
-                //this.artnetSender.sendFrame();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -108,8 +136,6 @@ public class SceneServiceImpl implements ISceneService {
         } else {
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
             try {
-                //this.artnetSender.setFadingList(sceneFader.fadeFrame());
-                //this.artnetSender.sendFrame();
                 sceneFader.fadeFrame(artnetSender);
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -4,32 +4,17 @@ import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.frame.Frame;
 import lighting.server.scene.Scene;
 
-import java.util.List;
 
 public class ArtnetSender {
 
     private final ArtNetClient artNetClient = new ArtNetClient();
     private Scene sceneToPlay;
-    private List<int[]> fadingList;
 
     public ArtnetSender() {
     }
 
     public void setSceneToPlay(Scene sceneToPlay) {
         this.sceneToPlay = sceneToPlay;
-    }
-
-
-    public Scene getSceneToPlay() {
-        return sceneToPlay;
-    }
-
-    public void setFadingList(List<int[]> fadingList) {
-        this.fadingList = fadingList;
-    }
-
-    public List<int[]> getFadingList() {
-        return fadingList;
     }
 
     public void sendData() {
@@ -43,7 +28,6 @@ public class ArtnetSender {
             artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
 
         }
-
         //artNetClient.stop();
 
 
@@ -55,7 +39,6 @@ public class ArtnetSender {
         }
         byte[] dmxData = intArrayToByteArray(dmxvalues);
         artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
-
 
         System.out.println("Frame verstuurd");
         //artNetClient.stop();

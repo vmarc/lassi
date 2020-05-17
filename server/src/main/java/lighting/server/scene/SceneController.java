@@ -61,6 +61,17 @@ public class SceneController {
         }
     }
 
+    @GetMapping(value = "/api/stopRecording")
+    public void stopRecording() {
+        this.sceneService.stopRecording();
+    }
+
+    @GetMapping(value = "/api/recordSceneMultipleFrames/{button_id}")
+    public boolean recordSceneMultipleFrames(@PathVariable int button_id) {
+        System.out.println("recording...");
+        return this.sceneService.recordSceneMultipleFrames(button_id);
+    }
+
 
     @GetMapping(value = "/api/sceneslist")
     public List<Scene> getScenes() {
@@ -102,6 +113,8 @@ public class SceneController {
         }
         return null;
     }
+
+
 
 
 }
