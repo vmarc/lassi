@@ -86,6 +86,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
   record() {
+
     if (this.recordSingleFrame == true) {
       this.sceneService.recordSingleFrame(0).subscribe(data => {
         this.snackbar.open('Recording Single Frame...', 'Close', {
