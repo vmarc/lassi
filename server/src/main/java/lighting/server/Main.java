@@ -23,7 +23,7 @@ public class Main {
                 dmxData[x] = b;
             }
 
-            artNetClient.broadcastDmx(0, 2, dmxData);
+            artNetClient.unicastDmx("192.168.0.114",0, 2, dmxData);
 
             Thread.sleep(1000);
             System.out.println("send" + i);
