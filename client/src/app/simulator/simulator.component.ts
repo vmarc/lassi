@@ -23,13 +23,18 @@ import { ScenesService } from '../scene/scenes.service';
     </div>
   </div>
    <div class="record">
+   <table>
+   <tr>
     <mat-slide-toggle [checked]="playMode" (change)="togglePlayMode()">Play mode</mat-slide-toggle>
-  </div>
-  <div class="record">
-    <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
-  </div>
-  <div class="record">
-    <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
+</tr>
+<tr>
+   <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
+</tr>
+<tr>
+     <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
+</tr>
+</table>
+
   </div>
 </div>
 `,
