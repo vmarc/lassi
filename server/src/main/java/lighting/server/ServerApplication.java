@@ -13,6 +13,6 @@ public class ServerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServerApplication.class, args);
-		MonitorService monitorService = new MonitorService(null);
+		//MonitorService monitorService = new MonitorService(null);
 	}
 }

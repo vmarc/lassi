@@ -62,8 +62,8 @@ public class SceneController {
     }
 
     @GetMapping(value = "/api/stopRecording")
-    public void stopRecording() {
-        this.sceneService.stopRecording();
+    public boolean stopRecording() {
+        return this.sceneService.stopRecording();
     }
 
     @GetMapping(value = "/api/recordSceneMultipleFrames/{button_id}")

@@ -89,8 +89,8 @@ public class SceneServiceImpl implements ISceneService {
         }
     }
 
-    public void stopRecording(){
-        artnetListener.stopRecording();
+    public boolean stopRecording(){
+        return artnetListener.stopRecording();
     }
 
     public void playSceneFromButton(int button) throws IOException {

@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class ArtnetListener {
 
-    private final ArtNetClient artNetClient = new ArtNetClient();
+    private ArtNetClient artNetClient = new ArtNetClient();
     private final IIOService iioService;
     private Scene scene = new Scene();
     private boolean framesAdded = false;
@@ -29,7 +29,6 @@ public class ArtnetListener {
         this.iioService = iioService;
 
     }
-
 
     public Scene getScene() {
         return scene;
@@ -52,6 +51,7 @@ public class ArtnetListener {
     }
 
     public void recordData(int button_id) throws IOException {
+        artNetClient = new ArtNetClient();
 
         this.settings = this.iioService.getSettingsFromDisk();
         scene = new Scene();
@@ -72,19 +72,19 @@ public class ArtnetListener {
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
                         scene.getFrames().add(frame);
                         framesAdded = true;
-                        if (scene.getFrames().size() == numberOfFrames){
+                        if (scene.getFrames().size() >= numberOfFrames){
                             try {
                                 iioService.saveSceneToDisk(scene);
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
-                            //artNetClient.stop();
+                            artNetClient.stop();
                         }
                     }
 
 
                 });
-        //artNetClient.start();
+        artNetClient.start();
     }
 
     public void captureData() {
@@ -103,14 +103,17 @@ public class ArtnetListener {
         artNetClient.start();
     }
 
-    public void stopRecording(){
-        artNetClient.stop();
+    public boolean stopRecording(){
+        numberOfFrames = scene.getFrames().size();
         try {
             iioService.saveSceneToDisk(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(numberOfFrames +"..."+ scene.getFrames().size());
+        if (scene.getFrames().size() > 0){
+            return true;
+        }
+        else return false;
     }
 
     public int[] byteArrayToIntArray(byte[] src) {

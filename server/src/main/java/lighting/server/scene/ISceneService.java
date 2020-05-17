@@ -8,5 +8,5 @@ public interface ISceneService {
     void playSceneFromButton(int button) throws IOException;
     void playSceneFromId(String id) throws IOException;
     public boolean recordSceneMultipleFrames(int button_id);
-    public void stopRecording();
+    public boolean stopRecording();
 }
