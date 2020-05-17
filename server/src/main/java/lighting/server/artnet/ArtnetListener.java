@@ -51,6 +51,10 @@ public class ArtnetListener {
         return framesAdded;
     }
 
+    public void setFramesAdded(boolean framesAdded) {
+        this.framesAdded = framesAdded;
+    }
+
     public void setNumberOfFrames(int numberOfFrames) {
         this.numberOfFrames = numberOfFrames;
     }

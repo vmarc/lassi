@@ -46,7 +46,7 @@ public class SceneServiceImpl implements ISceneService {
         }
 
         try {
-            artnetListener.setNumberOfFrames(0);
+            artnetListener.setFramesAdded(false);
             artnetListener.setNumberOfFrames(1);
             artnetListener.recordData(button_id);
         } catch (IOException e) {
@@ -81,6 +81,7 @@ public class SceneServiceImpl implements ISceneService {
         }
 
         try {
+            artnetListener.setFramesAdded(false);
             artnetListener.setNumberOfFrames(20000);
             artnetListener.recordData(button_id);
             return true;
