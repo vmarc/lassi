@@ -7,9 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/ISceneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/ISceneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,13 +167,6 @@
       <workItem from="1589484478369" duration="2272000" />
       <workItem from="1589547915329" duration="11937000" />
       <workItem from="1589631876061" duration="13741000" />
-    </task>
-    <task id="LOCAL-00052" summary="directories">
-      <created>1588855668379</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1588855668379</updated>
     </task>
     <task id="LOCAL-00053" summary="directories">
       <created>1588855713153</created>
@@ -513,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589730154006</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="simulator fixed">
+      <created>1589731229072</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1589731229072</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,11 +614,11 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="448" y="0" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1589730153487">
+    <state x="448" y="0" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1589731228548">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
-    <state x="448" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1589730153487" />
+    <state x="448" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1589731228548" />
     <state x="448" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588787600107" />
     <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1589710853591" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128780844" />
@@ -908,11 +906,11 @@
     <state width="500" height="447" key="SwitcherDM/0.0.1680.1050@0.0.1680.1050" timestamp="1581865038743" />
     <state width="896" height="721" key="SwitcherDM/0.0.3008.1692@0.0.3008.1692" timestamp="1585400319831" />
     <state width="896" height="721" key="SwitcherDM/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1588857026984" />
-    <state x="564" y="286" key="Vcs.Push.Dialog.v2" timestamp="1589730156128">
+    <state x="564" y="286" key="Vcs.Push.Dialog.v2" timestamp="1589731231147">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1903" y="287" key="Vcs.Push.Dialog.v2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989582643" />
-    <state x="564" y="286" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1589730156128" />
+    <state x="564" y="286" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1589731231147" />
     <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588703043182" />
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1589710855161" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128782226" />
