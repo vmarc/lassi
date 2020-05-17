@@ -11,6 +11,8 @@ import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,6 +26,9 @@ public class ArtnetListener {
     private Frame currentFrame;
     private int numberOfFrames = 1;
     private Settings settings;
+    private Instant time;
+    private Instant timePrev;
+    private long timeElapsed;
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
@@ -62,14 +67,20 @@ public class ArtnetListener {
         scene.setName("Recording of " + scene.getCreatedOn().format(formatter));
 
         artNetClient.getArtNetServer().addListener(
-
                 new ArtNetServerEventAdapter() {
-                    @Override
-                    public void artNetPacketReceived(ArtNetPacket packet) {
+                    @Override public void artNetPacketReceived(ArtNetPacket packet) {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket) packet;
                         scene.setUniverse(dmxPacket.getUniverseID());
-                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
+
+                        time = Instant.now();
+                        if (timePrev != null){
+                            timeElapsed = Duration.between(timePrev, time).toMillis();
+                        }
+                        else {timeElapsed = 0;}
+                        timePrev = time;
+
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), timeElapsed);
                         scene.getFrames().add(frame);
                         framesAdded = true;
                         if (scene.getFrames().size() >= numberOfFrames){
@@ -106,14 +117,15 @@ public class ArtnetListener {
     public boolean stopRecording(){
         numberOfFrames = scene.getFrames().size();
         try {
-            iioService.saveSceneToDisk(scene);
+            if (numberOfFrames > 0){
+                iioService.saveSceneToDisk(scene);
+                return true;
+            }
+            else return false;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-        if (scene.getFrames().size() > 0){
-            return true;
-        }
-        else return false;
     }
 
     public int[] byteArrayToIntArray(byte[] src) {

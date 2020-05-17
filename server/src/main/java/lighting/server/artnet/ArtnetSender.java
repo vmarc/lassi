@@ -4,6 +4,8 @@ import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.frame.Frame;
 import lighting.server.scene.Scene;
 
+import java.util.List;
+
 
 public class ArtnetSender {
 
@@ -18,19 +20,25 @@ public class ArtnetSender {
     }
 
     public void sendData() {
-
-        for (Frame frame : sceneToPlay.getFrames()) {
+        List <Frame> frames = sceneToPlay.getFrames();
+        frames.remove(0);
+        for (Frame frame : frames) {
             byte[] dmxData = intArrayToByteArray(frame.getDmxValues());
             if (!artNetClient.isRunning()) {
                 artNetClient.start();
             }
 
             artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
+            try {
+                Thread.sleep(frame.getStartTime());
+                System.out.println(frame.getStartTime());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
+
         //artNetClient.stop();
-
-
     }
 
     public void sendFrame(int[] dmxvalues) {

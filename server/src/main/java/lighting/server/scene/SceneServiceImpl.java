@@ -133,7 +133,8 @@ public class SceneServiceImpl implements ISceneService {
                 e.printStackTrace();
             }
 
-        } else {
+        }
+        else {
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
             try {
                 sceneFader.fadeFrame(artnetSender);
@@ -142,6 +143,7 @@ public class SceneServiceImpl implements ISceneService {
             }
         }
         this.currentPlayingScene = scene;
+        artnetSender.sendData();
         System.out.println("playing scene");
 
 
