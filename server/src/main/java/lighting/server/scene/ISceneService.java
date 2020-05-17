@@ -9,4 +9,5 @@ public interface ISceneService {
     void playSceneFromId(String id) throws IOException;
     boolean recordSceneMultipleFrames(int button_id);
     boolean stopRecording();
+    void stop();
 }

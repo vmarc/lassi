@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ArtnetSender {
 
-    private final ArtNetClient artNetClient = new ArtNetClient();
+    private ArtNetClient artNetClient = new ArtNetClient();
     private Scene sceneToPlay;
 
     public ArtnetSender() {
@@ -50,6 +50,11 @@ public class ArtnetSender {
 
         System.out.println("Frame verstuurd");
         //artNetClient.stop();
+    }
+
+    public void stop(){
+        artNetClient.stop();
+        System.out.println("Stop everything");
     }
 
 

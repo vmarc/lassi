@@ -78,6 +78,11 @@ public class SceneController {
         }
     }
 
+    @GetMapping(value = "/api/stop")
+    public void stop() {
+        this.sceneService.stop();
+    }
+
 
     @GetMapping(value = "/api/sceneslist")
     public List<Scene> getScenes() {

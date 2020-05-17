@@ -152,5 +152,9 @@ public class SceneServiceImpl implements ISceneService {
 
     }
 
+    public void stop(){
+        artnetSender.stop();
+    }
+
 
 }
