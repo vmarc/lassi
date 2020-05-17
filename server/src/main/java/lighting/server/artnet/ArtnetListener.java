@@ -144,6 +144,5 @@ public class ArtnetListener {
             intArray[i] = x;
         }
         return intArray;
-
     }
 }

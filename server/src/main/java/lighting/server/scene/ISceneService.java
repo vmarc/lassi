@@ -10,4 +10,5 @@ public interface ISceneService {
     boolean recordSceneMultipleFrames(int button_id);
     boolean stopRecording();
     void stop();
+    void pause(boolean bool);
 }

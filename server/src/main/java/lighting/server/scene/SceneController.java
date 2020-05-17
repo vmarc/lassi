@@ -83,6 +83,11 @@ public class SceneController {
         this.sceneService.stop();
     }
 
+    @GetMapping(value = "/api/pause/{bool}")
+    public void pause(@PathVariable boolean bool) {
+        this.sceneService.pause(bool);
+    }
+
 
     @GetMapping(value = "/api/sceneslist")
     public List<Scene> getScenes() {

@@ -13,6 +13,9 @@ public class SceneFader {
     private int fadeTimeInSeconds;
     private Frame startFrame;
     private Frame endFrame;
+    private int[] dmxValues;
+    private double totalFrames;
+    private boolean pause = false;
 
     public SceneFader(int framesPerSecond, int fadeTimeInSeconds, Frame startFrame, Frame endFrame) {
         this.framesPerSecond = framesPerSecond;
@@ -21,14 +24,26 @@ public class SceneFader {
         this.endFrame = endFrame;
     }
 
-    public void fadeFrame(ArtnetSender artnetSender) throws InterruptedException {
+    public void setTotalFrames(double totalFrames) {
+        this.totalFrames = totalFrames;
+    }
+
+    public int[] getDmxValues() {
+        return dmxValues;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
+    }
+
+    public void fadeFrame(ArtnetSender artnetSender) {
         Instant start = Instant.now();
 
-        double totalFrames = framesPerSecond*fadeTimeInSeconds;
+        totalFrames = framesPerSecond*fadeTimeInSeconds;
         double timeOut = 1000.0/framesPerSecond;
 
         double[] differenceList = new double[512];
-        int[] dmxValues = startFrame.getDmxValues().clone();
+        dmxValues = startFrame.getDmxValues().clone();
         int[] originalDmxValues = startFrame.getDmxValues().clone();
 
         //Calculating the difference between the start value per channel in a frame and the end frame, adding it to the differenceList
@@ -56,11 +71,21 @@ public class SceneFader {
             artnetSender.sendFrame(dmxValues);
 
             //Sleep expected sleep time - timeOut
-            long x = (long) ((timeOut*(i+1)) - timeElapsed);
+            long sleep = (long) ((timeOut*(i+1)) - timeElapsed);
             System.out.println();
-            System.out.println(x);
-            if (x > 0){
-                Thread.sleep(x);
+            System.out.println(sleep);
+
+            try {
+                Thread.sleep(sleep);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            while (pause) {
+                try {
+                    wait();
+                } catch (InterruptedException e)  {
+                    Thread.currentThread().interrupt();
+                }
             }
         }
 
@@ -69,6 +94,6 @@ public class SceneFader {
         //Logging
         long timeElapsed = Duration.between(start, finish).toMillis();
         System.out.println();
-        System.out.println("Time elapsed: " + timeElapsed +" milliseconds");
+        System.out.println("Time elapsed: " + timeElapsed + " milliseconds");
     }
 }

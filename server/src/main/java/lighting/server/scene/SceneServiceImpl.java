@@ -3,32 +3,23 @@ package lighting.server.scene;
 import lighting.server.IO.IIOService;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.artnet.ArtnetSender;
-import lighting.server.frame.Frame;
-import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.IntStream;
 
 @Component
 public class SceneServiceImpl implements ISceneService {
 
     private ArtnetListener artnetListener;
     private ArtnetSender artnetSender;
-    private Scene currentPlayingScene = new Scene();
-    private Settings settings;
+
+
 
     private final IIOService iOService;
 
     public SceneServiceImpl(IIOService iOService) {
         this.iOService = iOService;
-        try {
-            this.settings = this.iOService.getSettingsFromDisk();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         this.artnetListener = new ArtnetListener(iOService);
     }
 
@@ -96,7 +87,7 @@ public class SceneServiceImpl implements ISceneService {
     }
 
     public boolean playSceneFromButton(int button) throws IOException {
-        artnetSender = new ArtnetSender();
+        artnetSender = new ArtnetSender(iOService);
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
         for (Scene scene : scenes) {
@@ -108,8 +99,8 @@ public class SceneServiceImpl implements ISceneService {
     }
 
     public void playSceneFromId(String id) throws IOException
-{
-        artnetSender = new ArtnetSender();
+    {
+        artnetSender = new ArtnetSender(iOService);
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
         for (Scene scene : scenes) {
@@ -119,41 +110,23 @@ public class SceneServiceImpl implements ISceneService {
         }
     }
 
-    public boolean playScene(Scene scene) throws IOException {
-        this.settings = this.iOService.getSettingsFromDisk();
+    public boolean playScene(Scene scene) {
 
-        this.artnetSender.setSceneToPlay(scene);
-
-        if (currentPlayingScene.getFrames().isEmpty()) {
-            int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
-            Frame emptyFrame = new Frame(emptyArray);
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), emptyFrame, scene.getFrames().get(0));
-            try {
-                sceneFader.fadeFrame(artnetSender);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return false;
-            }
-
-        }
-        else {
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), scene.getFadeTime(), currentPlayingScene.getFrames().get(0), scene.getFrames().get(0));
-            try {
-                sceneFader.fadeFrame(artnetSender);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return false;
-            }
-        }
-        this.currentPlayingScene = scene;
+        artnetSender.setSceneToPlay(scene);
         artnetSender.sendData();
+        artnetSender.setCurrentPlayingScene(scene);
+
         System.out.println("playing scene");
         return true;
-
     }
 
     public void stop(){
         artnetSender.stop();
+    }
+
+    @Override
+    public void pause(boolean bool) {
+        artnetSender.pause(bool);
     }
 
 
