@@ -36,8 +36,9 @@ public class SceneServiceImpl implements ISceneService {
         try {
             List<Scene> scenesOnDisk = iOService.getAllScenesFromDisk();
             for (Scene s : scenesOnDisk) {
-                if (s.getButtonId() == button_id) {
+                if (button_id != 0 && s.getButtonId() == button_id) {
                     s.setButtonId(0);
+                    iOService.updateSceneFromDisk(s);
                 }
 
             }
@@ -69,10 +70,9 @@ public class SceneServiceImpl implements ISceneService {
         try {
             List<Scene> scenesOnDisk = iOService.getAllScenesFromDisk();
             for (Scene s : scenesOnDisk) {
-                //TODO gaat die niet altijd alle scenes aanpassen omdat button nul is?
-                // EN doet die dan een update van de scene op de disk ook? of enkel in memory
-                if (s.getButtonId() == button_id) {
+                if (button_id != 0 && s.getButtonId() == button_id) {
                     s.setButtonId(0);
+                    iOService.updateSceneFromDisk(s);
                 }
 
             }
