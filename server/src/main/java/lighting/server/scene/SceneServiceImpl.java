@@ -95,20 +95,20 @@ public class SceneServiceImpl implements ISceneService {
         return artnetListener.stopRecording();
     }
 
-    public void playSceneFromButton(int button) throws IOException {
+    public boolean playSceneFromButton(int button) throws IOException {
         artnetSender = new ArtnetSender();
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
         for (Scene scene : scenes) {
             if (scene.getButtonId() == button) {
-                playScene(scene);
+                return playScene(scene);
             }
-
         }
-
+        return false;
     }
 
-    public void playSceneFromId(String id) throws IOException {
+    public void playSceneFromId(String id) throws IOException
+{
         artnetSender = new ArtnetSender();
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
@@ -116,11 +116,10 @@ public class SceneServiceImpl implements ISceneService {
             if (scene.getId().equals(id)) {
                 playScene(scene);
             }
-
         }
     }
 
-    public void playScene(Scene scene) throws IOException {
+    public boolean playScene(Scene scene) throws IOException {
         this.settings = this.iOService.getSettingsFromDisk();
 
         this.artnetSender.setSceneToPlay(scene);
@@ -133,6 +132,7 @@ public class SceneServiceImpl implements ISceneService {
                 sceneFader.fadeFrame(artnetSender);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                return false;
             }
 
         }
@@ -142,12 +142,13 @@ public class SceneServiceImpl implements ISceneService {
                 sceneFader.fadeFrame(artnetSender);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+                return false;
             }
         }
         this.currentPlayingScene = scene;
         artnetSender.sendData();
         System.out.println("playing scene");
-
+        return true;
 
     }
 
