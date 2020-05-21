@@ -49,9 +49,9 @@ public class SceneServiceImpl implements ISceneService {
             artnetListener.getArtNetClient().stop();
         } catch (InterruptedException e) {
             e.printStackTrace();
+            iOService.writeToLog(-1, " Could not record a scene with a single frames to button " + button_id);
         }
         if(artnetListener.isFramesAdded()){
-            System.out.println("Something recorded");
             return true;
         }
         else return false;
@@ -78,6 +78,7 @@ public class SceneServiceImpl implements ISceneService {
             return true;
         } catch (IOException e) {
             e.printStackTrace();
+            iOService.writeToLog(-1, " Could not record a scene with multiple frames to button " + button_id);
             return false;
         }
     }
@@ -117,7 +118,6 @@ public class SceneServiceImpl implements ISceneService {
         artnetSender.sendData();
         artnetSender.setCurrentPlayingScene(scene);
 
-        System.out.println("playing scene");
         return true;
     }
 

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SettingsService } from './settings.service';
 import { Settings } from './settings';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings',
@@ -29,6 +30,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 </mat-form-field>
 </div>
 <button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
+<button mat-button (click)="deleteLog()"><i class="fas fa-trash-alt"></i> Delete log file</button>
 </div>
 </div>
 </form>
@@ -50,6 +52,7 @@ export class SettingsComponent implements OnInit {
   fadeTimeInSec: any[] = [1, 5, 10, 20, 30];
 
   constructor(private settingsService: SettingsService,
+              private dialog: MatDialog,
               private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
@@ -100,5 +103,49 @@ export class SettingsComponent implements OnInit {
 
 
   }
+
+  deleteLog() {
+    const dialogRef = this.dialog.open(ConfirmDeleteLogDialogComponent, {
+      width: '750px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.settingsService.deleteLog();
+        this.snackbar.open('Log file deleted', 'Close', {
+          duration: 3000
+        });
+
+      }
+    });
+
+  }
+
+
+
+}
+
+@Component({
+  selector: 'confirm-delete-log--dialog',
+  template: `<h1 mat-dialog-title>Confirmation</h1>
+<div mat-dialog-content>
+  <p>Are you sure you want to delete the log file and create a new one?</p>
+</div>
+<div mat-dialog-actions>
+ <button mat-button [mat-dialog-close]="true">Yes</button>
+  <button mat-button (click)="onNoClick()" cdkFocusInitial>No</button>
+</div>
+`
+})
+export class ConfirmDeleteLogDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmDeleteLogDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: String) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 
 }

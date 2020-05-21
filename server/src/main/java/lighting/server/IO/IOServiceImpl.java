@@ -14,6 +14,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,6 +26,7 @@ public class IOServiceImpl implements IIOService {
     private Path parentDir = Paths.get(System.getProperty("user.dir"));
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
     private Path settingsDir = Paths.get(parentDir + "/settings/");
+    private Path logsDir = Paths.get(parentDir + "/lightingLogs/");
 
     public IOServiceImpl() {
         createDirectories();
@@ -46,6 +50,52 @@ public class IOServiceImpl implements IIOService {
                 System.out.println("Failed to create Settings directory!");
             }
         }
+        File logs = new File(String.valueOf(logsDir));
+        if (!logs.exists()) {
+            if (logs.mkdir()) {
+                System.out.println("Logs directory is created!");
+            } else {
+                System.out.println("Failed to create Logs directory!");
+            }
+        }
+
+
+    }
+
+    public void deleteLog() throws IOException {
+        Path filePath = Paths.get(logsDir + "/Lighting.log");
+        Files.deleteIfExists(filePath);
+        writeToLog(0, "New log file created!");
+    }
+
+    public void writeToLog(int level, String message) {
+
+        Logger logger = Logger.getLogger("Lighting logs");
+        FileHandler fh;
+
+        try {
+
+            // This block configure the logger with handler and formatter
+            fh = new FileHandler(logsDir.toString() + "/Lighting.log", true);
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+
+            if (level == 0) {
+                logger.info(message);
+                fh.close();
+            } else if (level == -1) {
+                logger.warning(message);
+                fh.close();
+            }
+
+
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void createDefaultSettings(){
@@ -62,12 +112,13 @@ public class IOServiceImpl implements IIOService {
     public void saveSceneToDisk(Scene scene) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         objectMapper.writeValue(new File((scenesDir) + "/scene_" + scene.getId() + ".json" ), scene);
+
     }
 
     public String downloadScene(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
-       return str;
+        return str;
     }
 
     public List<Scene> getAllScenesFromDisk() throws IOException {
@@ -86,6 +137,7 @@ public class IOServiceImpl implements IIOService {
             scenesList.add(scene);
         }
 
+
         return scenesList;
 
     }
@@ -93,6 +145,7 @@ public class IOServiceImpl implements IIOService {
     public void deleteSceneFromDisk(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         Files.deleteIfExists(filePath);
+
     }
 
     public Scene getSceneFromDisk(String scene_id) throws IOException {

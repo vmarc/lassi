@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IIOService {
+    void deleteLog() throws IOException;
+    void writeToLog(int level, String message);
     void updateSceneFromDisk(Scene scene) throws IOException;
     void saveSceneToDisk(Scene scene) throws IOException;
     String downloadScene(String scene_id) throws IOException;

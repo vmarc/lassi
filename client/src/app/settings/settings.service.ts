@@ -19,6 +19,10 @@ export class SettingsService {
     this.http.put<Settings>('/api/savesettings/', settings).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
+  public deleteLog() {
+    this.http.get('api/deletelog').pipe(retry(1), catchError(this.handleError)).subscribe();
+  }
+
   public getHostIp(): Observable<string> {
     return this.http.get<string>('/api/gethostip');
   }
