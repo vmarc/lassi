@@ -121,10 +121,9 @@ public class ArtnetSender {
     }
 
     public void pause(boolean bool) {
-        /*
         if (sceneFader != null) {
             sceneFader.setPause(bool);
-        }*/
+        }
         pause = bool;
         System.out.println("pause : " + bool);
     }

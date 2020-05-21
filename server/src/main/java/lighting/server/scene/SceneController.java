@@ -70,11 +70,12 @@ public class SceneController {
     }
 
     @GetMapping(value = "/api/playscenefromid/{id}")
-    public void playSceneFromId(@PathVariable String id) {
+    public boolean playSceneFromId(@PathVariable String id) {
         try {
-            this.sceneService.playSceneFromId(id);
+            return this.sceneService.playSceneFromId(id);
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
