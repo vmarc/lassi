@@ -98,16 +98,17 @@ public class SceneServiceImpl implements ISceneService {
         return false;
     }
 
-    public void playSceneFromId(String id) throws IOException
+    public boolean playSceneFromId(String id) throws IOException
     {
         artnetSender = new ArtnetSender(iOService);
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
         for (Scene scene : scenes) {
             if (scene.getId().equals(id)) {
-                playScene(scene);
+                return playScene(scene);
             }
         }
+        return false;
     }
 
     public boolean playScene(Scene scene) {

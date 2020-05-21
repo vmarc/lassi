@@ -52,6 +52,14 @@ public class SceneFader {
             differenceList[i] = ((endFrame.getDmxValues()[i] - startFrame.getDmxValues()[i])/totalFrames);
         }
 
+        while (pause) {
+            try {
+                wait();
+            } catch (InterruptedException e)  {
+                Thread.currentThread().interrupt();
+            }
+        }
+
         //Fading Method
         for (int i = 0; i < totalFrames; i++) {
             //Logging
@@ -79,13 +87,6 @@ public class SceneFader {
                 Thread.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
-            while (pause) {
-                try {
-                    wait();
-                } catch (InterruptedException e)  {
-                    Thread.currentThread().interrupt();
-                }
             }
         }
 
