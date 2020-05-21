@@ -31,8 +31,12 @@ export class ScenesService {
     return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'}).pipe(retry(1), catchError(this.handleError));
   }
 
-  public play(id: string): void {
-    this.http.get('/api/playscenefromid/' + id).pipe(retry(1), catchError(this.handleError)).subscribe();
+  public play(id: string): Observable<boolean> {
+    return this.http.get<boolean>('/api/playscenefromid/' + id).pipe(retry(1), catchError(this.handleError));
+  }
+
+  public pause(bool: boolean) : void {
+    this.http.get('/api/pause/' + bool).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
   public playFromButton(button: number): void {
@@ -48,6 +52,10 @@ export class ScenesService {
   public recordMultipleFrames(button: number) : Observable<boolean> {
     return this.http.get<boolean>('/api/recordSceneMultipleFrames/' + button).pipe(retry(1), catchError(this.handleError));
 
+  }
+
+  public stopPlaying(): void {
+    this.http.get('/api/stop').pipe(retry(1), catchError(this.handleError));
   }
 
   public stopRecording(): Observable<boolean> {

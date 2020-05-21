@@ -78,7 +78,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   get customCss() {
-    if(this.playingScene){
+    if (this.playingScene){
       return 'fas fa-pause-circle'
     }
     else {
@@ -100,13 +100,15 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   playPause(row) {
     if (this.playingScene = false) {
       this.playingScene = !this.playingScene;
-      this.scenesService.play(row['id']);
-      this.snackbar.open('Playing Scene...', 'Close', {
-        duration: 3000
+      this.scenesService.play(row['id']).subscribe(x => {
+        this.snackbar.open('Playing Scene...', 'Close', {
+          duration: 3000
+        });
       });
+
     } else if (this.playingScene) {
       this.playingScene = !this.playingScene;
-      //TODO
+      this.scenesService.pause(true);
     }
 
 
@@ -114,6 +116,11 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   stop(row) {
+    this.scenesService.stopPlaying();
+    this.snackbar.open('Stopping Scene...', 'Close', {
+      duration: 3000
+    });
+    this.playingScene = !this.playingScene;
 
   }
 

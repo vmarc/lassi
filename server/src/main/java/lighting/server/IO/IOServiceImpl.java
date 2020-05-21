@@ -7,7 +7,6 @@ import lighting.server.settings.Settings;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -69,12 +68,6 @@ public class IOServiceImpl implements IIOService {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
        return str;
-    }
-
-    public void downloadAllScenesAsZip(HttpServletResponse response) throws IOException {
-
-
-
     }
 
     public List<Scene> getAllScenesFromDisk() throws IOException {

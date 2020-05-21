@@ -125,7 +125,6 @@ public class SceneServiceImpl implements ISceneService {
         artnetSender.stop();
     }
 
-    @Override
     public void pause(boolean bool) {
         artnetSender.pause(bool);
     }

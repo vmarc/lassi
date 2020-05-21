@@ -55,10 +55,6 @@ public class SceneController {
         return null;
     }
 
-    @GetMapping(value = "api/downloadallscenes")
-    public void downloadAllScenesAsZip() {
-    }
-
     @GetMapping(value = "/api/playscene/{button_id}")
     public boolean playSceneFromButton(@PathVariable int button_id) {
         try {
