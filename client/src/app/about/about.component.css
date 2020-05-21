@@ -2,3 +2,16 @@
   margin-left: 1em;
   margin-right: 1em;
 }
+
+.container {
+  text-align: center
+}
+
+.center {
+  display: inline-block;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 20px;
+}
