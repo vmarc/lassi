@@ -82,9 +82,13 @@ import { Stomp } from './stomp';
     ScenesService,
     {
       provide: InjectableRxStompConfig,
-      useClass: Stomp,
-      deps: [SettingsService]
+      useValue: appRxStompConfig
     },
+    // {
+    //   provide: InjectableRxStompConfig,
+    //   useClass: Stomp,
+    //   deps: [SettingsService]
+    // }
     {
       provide: RxStompService,
       useFactory: rxStompServiceFactory,

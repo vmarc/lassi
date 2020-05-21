@@ -26,7 +26,6 @@ public class IOServiceImpl implements IIOService {
     private Path settingsDir = Paths.get(parentDir + "/settings/");
 
     public IOServiceImpl() {
-        System.out.println(parentDir);
         createDirectories();
     }
 

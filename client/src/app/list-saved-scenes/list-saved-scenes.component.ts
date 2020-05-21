@@ -30,9 +30,11 @@ import * as moment from 'moment';
     </ng-container>
 
 <ng-container matColumnDef="actions">
-  <mat-header-cell *matHeaderCellDef > Actions </mat-header-cell>>
+  <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>>
   <mat-cell *matCellDef="let row">
-       <button class="fas fa-play-circle" mat-icon-button matTooltip="Play Scene" (click)="play(row)">
+       <button [ngClass]="customCss" mat-icon-button matTooltip="Play/Pause Scene" (click)="playPause(row)">
+       </button>
+        <button class="fas fa-stop-circle" mat-icon-button matTooltip="Stop Scene"  [disabled]="!playingScene"(click)="stop(row)">
        </button>
 
        <button class="fas fa-info-circle" mat-icon-button matTooltip="View details of Scene" (click)="openDetailsDialog(row)">
@@ -66,12 +68,22 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
   displayedColumns = ['name', 'buttonId', 'universe', 'actions'];
+  playingScene: boolean = false;
 
   constructor(private scenesService: ScenesService,
               private router: Router,
               private dialog: MatDialog,
               private snackbar: MatSnackBar) {
 
+  }
+
+  get customCss() {
+    if(this.playingScene){
+      return 'fas fa-pause-circle'
+    }
+    else {
+      return 'fas fa-play-circle'
+    }
   }
 
   ngOnInit(): void {
@@ -85,11 +97,23 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   }
 
-  play(row) {
-    this.scenesService.play(row['id']);
-    this.snackbar.open('Playing Scene...', 'Close', {
-      duration: 3000
-    });
+  playPause(row) {
+    if (this.playingScene = false) {
+      this.playingScene = !this.playingScene;
+      this.scenesService.play(row['id']);
+      this.snackbar.open('Playing Scene...', 'Close', {
+        duration: 3000
+      });
+    } else if (this.playingScene) {
+      this.playingScene = !this.playingScene;
+      //TODO
+    }
+
+
+
+  }
+
+  stop(row) {
 
   }
 
