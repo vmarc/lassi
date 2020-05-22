@@ -84,7 +84,7 @@ public class ArtnetSender {
         }
         byte[] dmxData = intArrayToByteArray(dmxvalues);
         artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
-        iOService.writeToLog(0, "Frame sent with values " + dmxvalues);
+        iOService.writeToLog(0, "Frame sent");
         //artNetClient.stop();
     }
 
@@ -92,11 +92,11 @@ public class ArtnetSender {
         if (currentPlayingScene == null) {
             Frame emptyFrame = createEmptyFrame();
             sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), emptyFrame, sceneToPlay.getFrames().get(0));
-            iOService.writeToLog(0, "Fading from empty frame to frame with values: " + sceneToPlay.getFrames().get(0).getDmxValues());
+            iOService.writeToLog(0, "Fading from empty frame to frame");
         }
         else {
             sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), currentPlayingScene.getFrames().get(0), sceneToPlay.getFrames().get(0));
-            iOService.writeToLog(0, "Fading from frame with values: " + currentPlayingScene.getFrames().get(0).getDmxValues() +  "\nto frame with values: " + sceneToPlay.getFrames().get(0).getDmxValues());
+            iOService.writeToLog(0, "Fading from frame to frame");
 
         }
         sceneFader.fadeFrame(this);
