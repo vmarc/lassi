@@ -38,6 +38,7 @@ public class SceneFader {
 
     public void fadeFrame(ArtnetSender artnetSender) {
         Instant start = Instant.now();
+        long pauseTimeLong = 0;
 
         totalFrames = framesPerSecond*fadeTimeInSeconds;
         double timeOut = 1000.0/framesPerSecond;
@@ -52,13 +53,6 @@ public class SceneFader {
             differenceList[i] = ((endFrame.getDmxValues()[i] - startFrame.getDmxValues()[i])/totalFrames);
         }
 
-        while (pause) {
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException e)  {
-                e.printStackTrace();
-            }
-        }
 
         //Fading Method
         for (int i = 0; i < totalFrames; i++) {
@@ -66,22 +60,45 @@ public class SceneFader {
             System.out.println();
             System.out.print(i + 1 + "....  ");
 
-            Instant now = Instant.now();
-            long timeElapsed = Duration.between(start, now).toMillis();
-            System.out.println("time elapsed: " + timeElapsed);
 
             for (int j = 0; j < 512; j++) {
                 dmxValues[j] = (int) (originalDmxValues[j] + Math.round((i + 1) * differenceList[j]));
                 //Logging
-                System.out.print(dmxValues[j] + " / ");
+                //System.out.print(dmxValues[j] + " / ");
             }
+
+            Instant pauseTime = null;
+            while (pause) {
+                if (pauseTime == null){
+                    pauseTime = Instant.now();
+                }
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e)  {
+                    e.printStackTrace();
+                }
+            }
+
+            Instant now = Instant.now();
+            long timeElapsed = Duration.between(start, now).toMillis();
+            System.out.println();
+            System.out.println("time elapsed: " + timeElapsed);
+
+            if (pauseTime != null) {
+                pauseTimeLong += Duration.between(pauseTime, Instant.now()).toMillis();
+            }
+            pauseTime = null;
+
+            System.out.println("PauseTimeLong: " + pauseTimeLong);
 
             artnetSender.sendFrame(dmxValues);
 
             //Sleep expected sleep time - timeOut
-            long sleep = (long) ((timeOut*(i+1)) - timeElapsed);
+
+            long sleep = (long) ((timeOut*(i+1)) - (timeElapsed - pauseTimeLong));
+
             System.out.println();
-            System.out.println(sleep);
+            System.out.println("sleeptime: " + sleep);
 
             if (sleep > 0) {
                 try {
