@@ -12,15 +12,6 @@ import {Component} from '@angular/core';
     <main>
       <router-outlet></router-outlet>
     </main>
-
-
-<div class="footerWrap">
-    <div class="footer">
-      <div class="footerContent">
-       <small>&copy; Copyright 2019-2020, Matthias Somay & Kenneth Van Den Borne</small>
-      </div>
-    </div>
-</div>
   `
 })
 export class AppComponent {

@@ -11,20 +11,4 @@ body {
 
 }
 
-.footerWrap {
-  width:100%;
-  position: absolute;
-  bottom: 0px;
-}
-.footer {
-  width:400px;
-  margin:auto;
-}
-.footerContent {
-  float:left;
-  width:100%;
-  padding:20px 0;
-}
-.footer small {float:left; width:100%; text-align:center; }
-
 
