@@ -54,9 +54,9 @@ public class SceneFader {
 
         while (pause) {
             try {
-                wait();
+                Thread.sleep(200);
             } catch (InterruptedException e)  {
-                Thread.currentThread().interrupt();
+                e.printStackTrace();
             }
         }
 
@@ -83,11 +83,14 @@ public class SceneFader {
             System.out.println();
             System.out.println(sleep);
 
-            try {
-                Thread.sleep(sleep);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if (sleep > 0) {
+                try {
+                    Thread.sleep(sleep);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
 
         Instant finish = Instant.now();
