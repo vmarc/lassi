@@ -101,11 +101,14 @@ public class ArtnetSender {
     }
 
     public void stop() {
-        if (sceneFader != null){
-            sceneFader.setTotalFrames(0);
+        if (stop){
+            if (sceneFader != null){
+                sceneFader.setTotalFrames(0);
+            }
+            stop = true;
+            fadeStop();
+            stop = false;
         }
-        stop = true;
-        fadeStop();
     }
 
     public void fadeStop(){
