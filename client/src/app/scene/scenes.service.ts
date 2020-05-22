@@ -55,7 +55,7 @@ export class ScenesService {
   }
 
   public stopPlaying(): void {
-    this.http.get('/api/stop').pipe(retry(1), catchError(this.handleError));
+    this.http.get('/api/stop').pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
   public stopRecording(): Observable<boolean> {

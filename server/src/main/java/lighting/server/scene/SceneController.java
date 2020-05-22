@@ -85,14 +85,14 @@ public class SceneController {
 
     @GetMapping(value = "/api/stop")
     public void stop() {
-        iOService.writeToLog(0, "Stopped playing a scene");
         this.sceneService.stop();
+        iOService.writeToLog(0, "Stopped playing a scene");
     }
 
     @GetMapping(value = "/api/pause/{bool}")
     public void pause(@PathVariable boolean bool) {
-        iOService.writeToLog(0, "Paused a playing scene");
         this.sceneService.pause(bool);
+        iOService.writeToLog(0, "Paused a playing scene");
     }
 
 

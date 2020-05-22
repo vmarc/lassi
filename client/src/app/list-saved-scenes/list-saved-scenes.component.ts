@@ -97,18 +97,25 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   }
 
-  playPause(row) {
-    if (this.playingScene = false) {
-      this.playingScene = !this.playingScene;
-      this.scenesService.play(row['id']).subscribe(x => {
-        this.snackbar.open('Playing Scene...', 'Close', {
-          duration: 3000
-        });
+  play(row) {
+    this.scenesService.play(row['id']).subscribe(x => {
+      this.snackbar.open('Playing Scene...', 'Close', {
+        duration: 3000
       });
+    });
+  }
+
+  playPause(row) {
+    if (this.playingScene == false) {
+      this.playingScene = !this.playingScene;
+      this.play(row);
 
     } else if (this.playingScene) {
       this.playingScene = !this.playingScene;
       this.scenesService.pause(true);
+      this.snackbar.open('Paused playing Scene...', 'Close', {
+        duration: 3000
+      });
     }
 
 
