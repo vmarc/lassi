@@ -29,7 +29,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormsModule } from '@angular/forms';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent, ConfirmDeleteLogDialogComponent} from './settings/settings.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SettingsService } from './settings/settings.service';
@@ -51,6 +51,7 @@ import { Stomp } from './stomp';
     EditSavedSceneDialogComponent,
     SceneDetailsDialogComponent,
     SettingsComponent,
+    ConfirmDeleteLogDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -82,9 +83,13 @@ import { Stomp } from './stomp';
     ScenesService,
     {
       provide: InjectableRxStompConfig,
-      useClass: Stomp,
-      deps: [SettingsService]
+      useValue: appRxStompConfig
     },
+    // {
+    //   provide: InjectableRxStompConfig,
+    //   useClass: Stomp,
+    //   deps: [SettingsService]
+    // }
     {
       provide: RxStompService,
       useFactory: rxStompServiceFactory,

@@ -131,7 +131,6 @@ export class SimulatorComponent implements OnInit {
   }
 
   fillInColors() {
-    console.log(this.playMode,this.recordSingleFrame,this.recordMultipleFrames)
     if (!this.recordSingleFrame && !this.recordMultipleFrames && !this.playMode) {
       this.playColor = 'gray';
     }

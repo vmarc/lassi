@@ -4,10 +4,10 @@ import {RxStompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
 import {Frame} from '../scene/frame';
 import { ScenesService } from '../scene/scenes.service';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import {map, retry, catchError} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { SettingsService } from '../settings/settings.service';
 
 
 @Component({
@@ -46,13 +46,14 @@ export class MonitorComponent implements OnInit, OnDestroy {
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
   stopButton: boolean = true;
+  hostIp: string;
 
   private topicSubscription: Subscription;
 
   constructor(private rxStompService: RxStompService,
               private sceneService: ScenesService,
+              private settingsService: SettingsService,
               private router: Router,
-              private dialog: MatDialog,
               private snackbar: MatSnackBar) {
 
   }
@@ -61,6 +62,10 @@ export class MonitorComponent implements OnInit, OnDestroy {
     this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((message: Message) => {
       this.frame = Frame.fromJSON(JSON.parse(message.body));
     });
+  }
+
+  ngOnDestroy() {
+    this.topicSubscription.unsubscribe();
   }
 
   toggleSingleFrameRecord() {
@@ -119,10 +124,6 @@ export class MonitorComponent implements OnInit, OnDestroy {
         this.stopButton = !this.stopButton;
       }
     });
-  }
-
-  ngOnDestroy() {
-    this.topicSubscription.unsubscribe();
   }
 
 }

@@ -84,8 +84,7 @@ public class ArtnetSender {
         }
         byte[] dmxData = intArrayToByteArray(dmxvalues);
         artNetClient.broadcastDmx(0, sceneToPlay.getUniverse(), dmxData);
-
-        System.out.println("Frame verstuurd");
+        iOService.writeToLog(0, "Frame sent with values " + dmxvalues);
         //artNetClient.stop();
     }
 
@@ -93,9 +92,12 @@ public class ArtnetSender {
         if (currentPlayingScene == null) {
             Frame emptyFrame = createEmptyFrame();
             sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), emptyFrame, sceneToPlay.getFrames().get(0));
+            iOService.writeToLog(0, "Fading from empty frame to frame with values: " + sceneToPlay.getFrames().get(0).getDmxValues());
         }
         else {
             sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), currentPlayingScene.getFrames().get(0), sceneToPlay.getFrames().get(0));
+            iOService.writeToLog(0, "Fading from frame with values: " + currentPlayingScene.getFrames().get(0).getDmxValues() +  "\nto frame with values: " + sceneToPlay.getFrames().get(0).getDmxValues());
+
         }
         sceneFader.fadeFrame(this);
     }
@@ -121,6 +123,8 @@ public class ArtnetSender {
         Frame stoppedFrame = new Frame(sceneFader.getDmxValues());
         sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), stoppedFrame , emptyFrame);
         sceneFader.fadeFrame(this);
+        iOService.writeToLog(0, "Stopped fading");
+
     }
 
     public void pause(boolean bool) {
@@ -128,7 +132,6 @@ public class ArtnetSender {
             sceneFader.setPause(bool);
         }
         pause = bool;
-        System.out.println("pause : " + bool);
     }
 
     public Frame createEmptyFrame(){
