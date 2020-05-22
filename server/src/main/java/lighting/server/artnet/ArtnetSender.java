@@ -103,7 +103,7 @@ public class ArtnetSender {
     }
 
     public void stop() {
-        if (stop){
+        if (!stop){
             if (sceneFader != null){
                 sceneFader.setTotalFrames(0);
             }
