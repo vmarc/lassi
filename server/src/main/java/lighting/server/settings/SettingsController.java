@@ -52,14 +52,14 @@ public class SettingsController {
         }
     }
 
-    @GetMapping(value = "/api/gethostip")
-    public String getHostIpAddress() {
-        try {
-            InetAddress address = InetAddress.getLocalHost();
-            return address.getHostAddress();
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    @GetMapping(value = "/api/gethostip")
+//    public String getHostIpAddress() {
+//        try {
+//            InetAddress address = InetAddress.getLocalHost();
+//            return address.getHostAddress();
+//        } catch (UnknownHostException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

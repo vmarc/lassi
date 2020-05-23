@@ -1,324 +1,366 @@
-mei 22, 2020 4:06:22 PM lighting.server.IO.IOServiceImpl writeToLog
+mei 23, 2020 4:21:50 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: New log file created!
-mei 22, 2020 4:06:30 PM lighting.server.IO.IOServiceImpl writeToLog
+mei 23, 2020 4:21:57 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 4:22:03 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved all scenes from disk
-mei 22, 2020 4:06:35 PM lighting.server.IO.IOServiceImpl writeToLog
+mei 23, 2020 4:22:06 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 4:23:09 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 4:23:12 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 4:23:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 770b2f06-43c2-4065-bec9-3335a2268f40
+mei 23, 2020 4:23:32 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 4:23:34 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 8ab82b11-a892-4f3a-8381-c3d37e9993b2
+mei 23, 2020 4:23:37 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 770b2f06-43c2-4065-bec9-3335a2268f40
+mei 23, 2020 4:26:43 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 4:26:50 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 8ab82b11-a892-4f3a-8381-c3d37e9993b2
+mei 23, 2020 4:27:43 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 4:27:45 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 8ab82b11-a892-4f3a-8381-c3d37e9993b2
+mei 23, 2020 4:28:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 4:28:59 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 8ab82b11-a892-4f3a-8381-c3d37e9993b2
+mei 23, 2020 4:37:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 4:43:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved settings from disk
+mei 23, 2020 4:48:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 4:48:32 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 6:44:40 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 6:58:09 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved settings from disk
+mei 23, 2020 6:58:11 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 23, 2020 6:58:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 6:58:41 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Playing scene from button 4
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Fading from empty frame to frame
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:14 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:15 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:16 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Paused a playing scene
-mei 22, 2020 4:06:52 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Playing scene from ID 8ab82b11-a892-4f3a-8381-c3d37e9993b2
-mei 22, 2020 4:06:52 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Fading from empty frame to frame with values: [I@e6f981c
-mei 22, 2020 4:06:52 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:52 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:52 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:52 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Retrieved all scenes from disk
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:53 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Playing scene from ID 770b2f06-43c2-4065-bec9-3335a2268f40
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Fading from empty frame to frame with values: [I@1e729083
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:54 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:55 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
+mei 23, 2020 6:59:22 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Paused a playing scene
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:56 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@4b751cd
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:57 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:58 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:06:59 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Frame sent with values [I@58d321c8
-mei 22, 2020 4:11:05 PM lighting.server.IO.IOServiceImpl writeToLog
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:23 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:26 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:26 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:26 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:26 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:27 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:28 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:30 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Frame sent
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Stopped fading
+mei 23, 2020 6:59:31 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Stopped playing a scene
+mei 23, 2020 8:41:07 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved all scenes from disk
-mei 22, 2020 4:24:22 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Retrieved all scenes from disk
-mei 22, 2020 4:24:24 PM lighting.server.IO.IOServiceImpl writeToLog
-INFO: Retrieved all scenes from disk
+mei 23, 2020 8:41:56 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 8ab82b11-a892-4f3a-8381-c3d37e9993b2

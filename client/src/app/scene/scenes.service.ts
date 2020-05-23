@@ -39,8 +39,8 @@ export class ScenesService {
     this.http.get('/api/pause/' + bool).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
-  public playFromButton(button: number): void {
-    this.http.get('/api/playscene/' + button).pipe(retry(1), catchError(this.handleError)).subscribe();
+  public playFromButton(button: number): Observable<boolean> {
+    return this.http.get<boolean>('/api/playscene/' + button).pipe(retry(1), catchError(this.handleError));
   }
 
 

@@ -74,6 +74,12 @@ export class SimulatorComponent implements OnInit {
       this.recordMultipleFrames = !this.playMode;
       this.recordSingleFrame = !this.playMode;
     }
+    else if (this.playMode == false) {
+      this.sceneService.stopPlaying();
+      this.snackbar.open('Stopping all scenes...', 'Close', {
+        duration: 2000
+      });
+    }
 
     this.fillInColors();
   }
