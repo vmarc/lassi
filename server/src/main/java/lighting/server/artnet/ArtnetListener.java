@@ -23,28 +23,28 @@ public class ArtnetListener {
     private final IIOService iioService;
     private Scene scene = new Scene();
     private boolean framesAdded = false;
-    private Frame currentFrame;
     private int numberOfFrames = 1;
     private Settings settings;
     private Instant time;
     private Instant timePrev;
     private long timeElapsed;
+    private Frame[] currentFrames = new Frame[32768];
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
 
     }
 
+    public Frame[] getCurrentFrames() {
+        return currentFrames;
+    }
+
+    public void setCurrentFrames(Frame[] currentFrames) {
+        this.currentFrames = currentFrames;
+    }
+
     public Scene getScene() {
         return scene;
-    }
-
-    public Frame getCurrentFrame() {
-        return currentFrame;
-    }
-
-    public void setCurrentFrame(Frame currentFrame) {
-        this.currentFrame = currentFrame;
     }
 
     public ArtNetClient getArtNetClient() {
@@ -112,7 +112,7 @@ public class ArtnetListener {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100, dmxPacket.getUniverseID());
-                        currentFrame = frame;
+                        currentFrames[frame.getUniverse()] = frame;
                     }
 
 
