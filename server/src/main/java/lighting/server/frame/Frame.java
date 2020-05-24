@@ -7,14 +7,16 @@ public class Frame {
     private UUID id = UUID.randomUUID();
     private int[] dmxValues;
     private long startTime;
+    private int universe;
 
     public Frame(int[] dmxValues) {
         this.dmxValues = dmxValues;
     }
 
-    public Frame(int[] dmxValues, long startTime) {
+    public Frame(int[] dmxValues, long startTime, int universe) {
         this.dmxValues = dmxValues;
         this.startTime = startTime;
+        this.universe = universe;
     }
 
     public Frame() {
@@ -38,5 +40,13 @@ public class Frame {
 
     public UUID getId() {
         return id;
+    }
+
+    public int getUniverse() {
+        return universe;
+    }
+
+    public void setUniverse(int universe) {
+        this.universe = universe;
     }
 }

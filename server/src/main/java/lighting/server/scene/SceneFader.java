@@ -47,6 +47,8 @@ public class SceneFader {
         dmxValues = startFrame.getDmxValues().clone();
         int[] originalDmxValues = startFrame.getDmxValues().clone();
 
+        int universe = startFrame.getUniverse();
+
         //Calculating the difference between the start value per channel in a frame and the end frame, adding it to the differenceList
         //(endFrame minus startFrame) dividing by the totalFrames
         for (int i = 0; i < 512; i++) {
@@ -91,7 +93,7 @@ public class SceneFader {
 
             System.out.println("PauseTimeLong: " + pauseTimeLong);
 
-            artnetSender.sendFrame(dmxValues);
+            artnetSender.sendFrame(dmxValues, universe);
 
             //Sleep expected sleep time - timeOut
 
@@ -110,6 +112,7 @@ public class SceneFader {
 
         }
 
+        artnetSender.removeSceneFader(this);
         Instant finish = Instant.now();
 
         //Logging

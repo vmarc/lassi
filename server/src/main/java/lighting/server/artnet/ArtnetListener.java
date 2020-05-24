@@ -75,7 +75,6 @@ public class ArtnetListener {
                     @Override public void artNetPacketReceived(ArtNetPacket packet) {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket) packet;
-                        scene.setUniverse(dmxPacket.getUniverseID());
 
                         time = Instant.now();
                         if (timePrev != null){
@@ -84,7 +83,7 @@ public class ArtnetListener {
                         else {timeElapsed = 0;}
                         timePrev = time;
 
-                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), timeElapsed);
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), timeElapsed, dmxPacket.getUniverseID());
                         scene.getFrames().add(frame);
                         framesAdded = true;
                         if (scene.getFrames().size() >= numberOfFrames){
@@ -108,7 +107,7 @@ public class ArtnetListener {
                     @Override public void artNetPacketReceived(ArtNetPacket packet) {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
-                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100);
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100, dmxPacket.getUniverseID());
                         currentFrame = frame;
                     }
 

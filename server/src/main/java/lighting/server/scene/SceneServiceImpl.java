@@ -13,14 +13,12 @@ public class SceneServiceImpl implements ISceneService {
 
     private ArtnetListener artnetListener;
     private ArtnetSender artnetSender;
-
-
-
     private final IIOService iOService;
 
     public SceneServiceImpl(IIOService iOService) {
         this.iOService = iOService;
         this.artnetListener = new ArtnetListener(iOService);
+        this.artnetSender = new ArtnetSender(iOService);
     }
 
     public boolean recordScene(int button_id) {
@@ -88,7 +86,6 @@ public class SceneServiceImpl implements ISceneService {
     }
 
     public boolean playSceneFromButton(int button) throws IOException {
-        artnetSender = new ArtnetSender(iOService);
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
         for (Scene scene : scenes) {
@@ -101,7 +98,6 @@ public class SceneServiceImpl implements ISceneService {
 
     public boolean playSceneFromId(String id) throws IOException
     {
-        artnetSender = new ArtnetSender(iOService);
         List<Scene> scenes = iOService.getAllScenesFromDisk();
 
         for (Scene scene : scenes) {
@@ -116,7 +112,6 @@ public class SceneServiceImpl implements ISceneService {
 
         artnetSender.setSceneToPlay(scene);
         artnetSender.sendData();
-        artnetSender.setCurrentPlayingScene(scene);
 
         return true;
     }

@@ -12,7 +12,6 @@ public class Scene {
     private String name;
     private Long duration;
     private int fadeTime;
-    private int universe;
     private int buttonId;
     private LocalDateTime createdOn;
     private List<Frame> frames = new ArrayList<>();
@@ -28,12 +27,11 @@ public class Scene {
         this.frames = frames;
     }
 
-    public Scene(String name, Long duration, int buttonId, int fadeTime, int universe, LocalDateTime createdOn, List<Frame> frames) {
+    public Scene(String name, Long duration, int buttonId, int fadeTime, LocalDateTime createdOn, List<Frame> frames) {
         this.name = name;
         this.duration = duration;
         this.buttonId = buttonId;
         this.fadeTime = fadeTime;
-        this.universe = universe;
         this.createdOn = createdOn;
         this.frames = frames;
     }
@@ -81,14 +79,6 @@ public class Scene {
 
     public void setFadeTime(int fadeTime) {
         this.fadeTime = fadeTime;
-    }
-
-    public int getUniverse() {
-        return universe;
-    }
-
-    public void setUniverse(int universe) {
-        this.universe = universe;
     }
 
     public LocalDateTime getCreatedOn() {
