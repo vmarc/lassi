@@ -30,19 +30,5 @@ export class Frame {
     );
   }
 
-  public static arrayFromJSON(jsonObject): Frame[] {
-    let frames: Frame[] = [];
-    if (!jsonObject) {
-      return undefined;
-    }
-    for (let element of jsonObject) {
-      frames.push(this.fromJSON(element));
-      console.log(element);
-    }
-    return frames;
-
-
-    }
-
 
 }
