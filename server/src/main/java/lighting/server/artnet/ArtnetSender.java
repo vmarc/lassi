@@ -110,7 +110,6 @@ public class ArtnetSender {
             }
             stop = true;
             fadeStop();
-            stop = false;
         }
     }
 
@@ -122,6 +121,8 @@ public class ArtnetSender {
         }
         Frame emptyFrame = createEmptyFrame();
         Frame stoppedFrame = new Frame(sceneFader.getDmxValues());
+        Scene scene = new Scene();
+        scene.getFrames().add(emptyFrame);
         sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), stoppedFrame , emptyFrame);
         sceneFader.fadeFrame(this);
         iOService.writeToLog(0, "Stopped fading");
