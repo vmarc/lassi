@@ -47,13 +47,15 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
-  universe =  new FormControl('', [Validators.required, Validators.minLength(0), Validators.maxLength(32768)]);
+  universe =  new FormControl('0', [Validators.required, Validators.minLength(0), Validators.maxLength(32768)]);
 
-  frame: Frame = Frame.empty();
+  frame: Frame;
   recordButtonDisabled: boolean = true;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
   stopButtonDisabled: boolean = true;
+  frames: Frame[] = [];
+  map = new Map<string, Frame>();
 
   private topicSubscription: Subscription;
 
@@ -69,15 +71,27 @@ export class MonitorComponent implements OnInit, OnDestroy {
       return 'You must enter a valid value';
     }
     if (this.universe.hasError('minlength')) {
-
+      return 'You must enter a value above 0';
     }
-
-    return this.universe.hasError('universe') ? 'Not a valid universe' : '';
+    if (this.universe.hasError('maxlength')) {
+      return 'You must enter a value below 32768';
+    }
   }
 
   ngOnInit() {
-    this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((message: Message) => {
-      this.frame = Frame.fromJSON(JSON.parse(message.body));
+    this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((data: Message) => {
+
+      let jsonObject = JSON.parse(data.body);
+      for (var value in jsonObject) {
+        this.map.set(value, Frame.fromJSON(jsonObject[value]));
+      }
+
+      console.log(this.universe.value);
+      this.frame = this.map.get(this.universe.value);
+      if (this.frame == null) {
+        this.frame = Frame.empty();
+      }
+
     });
   }
 
@@ -86,6 +100,9 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
   toggleSingleFrameRecord() {
+    this.map.forEach((value, key) => {
+      console.log(key, value);
+    });
     this.recordSingleFrame = !this.recordSingleFrame;
 
     if (this.recordSingleFrame == true) {

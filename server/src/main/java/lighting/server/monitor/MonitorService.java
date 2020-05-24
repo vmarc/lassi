@@ -6,6 +6,8 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 @Component
 public class MonitorService {
 
@@ -19,7 +21,7 @@ public class MonitorService {
 
 	}
 
-	@Scheduled(fixedDelay = 200)
+	@Scheduled(fixedDelay = 2000)
 	public void simulateOutputUpdate() {
 		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrames());
 	}
