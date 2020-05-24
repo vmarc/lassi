@@ -7,12 +7,19 @@ import { ScenesService } from '../scene/scenes.service';
 import { Router } from '@angular/router';
 import {map, retry, catchError} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { FormControl, Validators } from '@angular/forms';
 
 
 @Component({
   selector: 'app-monitor',
   template: `
 <h1>Monitor</h1>
+<mat-form-field class="universe" appearance="fill">
+    <mat-label>Enter the universe</mat-label>
+    <input matInput placeholder="0" [formControl]="universe" required>
+    <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
+ </mat-form-field>
+
 <div class="dmx-levels">
   <div *ngFor="let dmxValue of frame.dmxValues" class="dmx-level">
     {{dmxValue}}
@@ -40,6 +47,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
+  universe =  new FormControl('', [Validators.required, Validators.minLength(0), Validators.maxLength(32768)]);
+
   frame: Frame = Frame.empty();
   recordButtonDisabled: boolean = true;
   recordSingleFrame: boolean = false;
@@ -53,6 +62,14 @@ export class MonitorComponent implements OnInit, OnDestroy {
               private router: Router,
               private snackbar: MatSnackBar) {
 
+  }
+
+  getErrorMessage() {
+    if (this.universe.hasError('required')) {
+      return 'You must enter a valid value';
+    }
+
+    return this.universe.hasError('universe') ? 'Not a valid universe' : '';
   }
 
   ngOnInit() {

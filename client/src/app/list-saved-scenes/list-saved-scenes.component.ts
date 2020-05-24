@@ -24,10 +24,6 @@ import * as moment from 'moment';
       <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>>
       <mat-cell *matCellDef="let scenes"> {{scenes.buttonId}} </mat-cell>>
     </ng-container>
-     <ng-container matColumnDef="universe">
-      <mat-header-cell *matHeaderCellDef> Universe </mat-header-cell>>
-      <mat-cell *matCellDef="let scenes"> {{scenes.universe}} </mat-cell>>
-    </ng-container>
 
 <ng-container matColumnDef="actions">
   <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>>
@@ -67,7 +63,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
-  displayedColumns = ['name', 'buttonId', 'universe', 'actions'];
+  displayedColumns = ['name', 'buttonId', 'actions'];
   playingScene: boolean = false;
   pause: boolean = false;
 
@@ -239,14 +235,12 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   <p>{{scene?.buttonId}}</p>
   <h4>Fade Time:</h4>
   <p>{{scene?.fadeTime}}</p>
-  <h4>Universe:</h4>
-  <p>{{scene?.universe}}</p>
   <h4>Created/Edited On:</h4>
   <p>{{date}}</p>
   <h4>Frames:</h4>
   <ul>
     <li *ngFor="let frame of scene?.frames">
-    {{frame.dmxValues}}
+    Universe: {{frame.universe}} <br> {{frame.dmxValues}}
     </li>
 </ul>
 
@@ -343,13 +337,6 @@ export class ConfirmDeleteDialogComponent {
 </mat-form-field>
 </div>
 
-<div>
-<mat-form-field>
-  <h4>Universe:</h4>
-   <input matInput formControlName="universe">
-</mat-form-field>
-</div>
-
 </div>
 <div mat-dialog-actions>
  <button mat-button [mat-dialog-close]="true" (click)="save()"><i class="fas fa-save"></i> Save</button>
@@ -364,7 +351,6 @@ export class EditSavedSceneDialogComponent {
     name: new FormControl(),
     buttonId: new FormControl(),
     fadeTime: new FormControl(),
-    universe: new FormControl()
   });
 
   scene: Scenes;
@@ -388,7 +374,6 @@ export class EditSavedSceneDialogComponent {
           name: this.scene.name,
           buttonId: this.scene.buttonId,
           fadeTime: this.scene.fadeTime,
-          universe: this.scene.universe
         });
       });
 
@@ -404,10 +389,6 @@ export class EditSavedSceneDialogComponent {
 
   get fadeTime() {
     return this.editForm.get('fadeTime');
-  }
-
-  get universe() {
-    return this.editForm.get('universe');
   }
 
   changeButton($event) {
@@ -431,7 +412,6 @@ export class EditSavedSceneDialogComponent {
     this.scene.name = this.name.value;
     this.scene.buttonId = this.buttonId.value;
     this.scene.fadeTime = this.fadeTime.value;
-    this.scene.universe = this.universe.value;
     this.scene.createdOn = this.currentDate;
 
     this.scenesService.save(this.scene);
