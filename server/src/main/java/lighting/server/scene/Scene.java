@@ -39,6 +39,16 @@ public class Scene {
     }
 
     public Scene() {
+        long duration = 0;
+        if (frames.size() > 0) {
+            for (Frame f : frames) {
+                duration += f.getStartTime();
+
+
+            }
+        }
+        setDuration(duration);
+
     }
 
     public String getName() {

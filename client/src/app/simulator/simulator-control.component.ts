@@ -38,6 +38,8 @@ export class SimulatorControlComponent implements OnInit {
   @Input() playMode: boolean;
   @Input() playable: string;
   startedMultipleFramesRecord: boolean = false;
+  scenePlaying: boolean = false;
+  pausedPlaying: boolean = false;
 
   constructor(private sceneService: ScenesService,
               private snackbar: MatSnackBar,
@@ -49,7 +51,7 @@ export class SimulatorControlComponent implements OnInit {
   }
 
   buttonClicked(): void {
-    console.log(this.startedMultipleFramesRecord);
+
     if (this.recordMultipleFrames && this.startedMultipleFramesRecord == true) {
       this.sceneService.stopRecording().subscribe(data => {
         if (data) {
@@ -93,12 +95,24 @@ export class SimulatorControlComponent implements OnInit {
 
     }
 
-    if (this.playMode) {
+    if (this.playMode && this.scenePlaying == false) {
+      console.log("Play scene");
+      console.log("Scene playing:" + this.scenePlaying);
+      console.log("Paused Playing: " + this.pausedPlaying);
       if (this.playable == 'green') {
-        this.sceneService.playFromButton(this.sceneId);
+        this.scenePlaying = true;
         this.snackbar.open('Playing Scene...', 'Close', {
           duration: 3000
         });
+        this.sceneService.playFromButton(this.sceneId).subscribe(donePlaying => {
+          if (donePlaying) {
+            this.snackbar.open('Done playing Scene...', 'Close', {
+              duration: 3000
+            });
+            this.scenePlaying = false;
+          }
+        });
+
       } else {
         this.snackbar.open('This button does not have a Scene...', 'Close', {
           duration: 3000
@@ -106,6 +120,29 @@ export class SimulatorControlComponent implements OnInit {
       }
 
     }
+
+    else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == false) {
+      console.log("Pause scene");
+      console.log("Scene playing:" + this.scenePlaying);
+      console.log("Paused Playing: " + this.pausedPlaying);
+      this.pausedPlaying = true;
+      this.sceneService.pause(true);
+      this.snackbar.open('Paused playing Scene...', 'Close', {
+        duration: 3000
+      });
+    }
+
+    else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == true) {
+      console.log("Resume scene");
+      console.log("Scene playing:" + this.scenePlaying);
+      console.log("Paused Playing: " + this.pausedPlaying);
+      this.pausedPlaying = false;
+      this.sceneService.pause(false);
+      this.snackbar.open('Resumed playing Scene...', 'Close', {
+        duration: 3000
+      });
+    }
+
 
 
   }

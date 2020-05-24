@@ -69,6 +69,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
   displayedColumns = ['name', 'buttonId', 'universe', 'actions'];
   playingScene: boolean = false;
+  pause: boolean = false;
 
   constructor(private scenesService: ScenesService,
               private router: Router,
@@ -78,10 +79,10 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   get customCss() {
-    if (this.playingScene){
+    if (this.playingScene && this.pause == false){
       return 'fas fa-pause-circle'
     }
-    else {
+    else if (this.playingScene == false || this.pause == true) {
       return 'fas fa-play-circle'
     }
   }
@@ -98,27 +99,37 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   play(row) {
-    this.scenesService.play(row['id']).subscribe(x => {
-      this.snackbar.open('Playing Scene...', 'Close', {
-        duration: 3000
-      });
+    this.snackbar.open('Playing Scene...', 'Close', {
+      duration: 3000
+    });
+    this.scenesService.play(row['id']).subscribe(donePlaying => {
 
-      if (x) {
+
+      if (donePlaying) {
         this.playingScene = !this.playingScene;
+        this.snackbar.open('Done playing Scene...', 'Close', {
+          duration: 3000
+        });
       }
     });
   }
 
   playPause(row) {
     if (this.playingScene == false) {
-      this.scenesService.pause(false);
       this.playingScene = !this.playingScene;
       this.play(row);
 
-    } else if (this.playingScene) {
-      this.playingScene = !this.playingScene;
+    } else if (this.playingScene && !this.pause) {
+      this.pause = true;
       this.scenesService.pause(true);
       this.snackbar.open('Paused playing Scene...', 'Close', {
+        duration: 3000
+      });
+    }
+    else if (this.playingScene && this.pause) {
+      this.pause = false;
+      this.scenesService.pause(false);
+      this.snackbar.open('Resumed playing Scene...', 'Close', {
         duration: 3000
       });
     }
