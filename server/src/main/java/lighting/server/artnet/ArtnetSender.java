@@ -38,6 +38,7 @@ public class ArtnetSender {
 
     public void sendData() {
         stop = false;
+        pause = false;
 
         try {
             this.settings = this.iOService.getSettingsFromDisk();
