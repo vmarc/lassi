@@ -1,5 +1,6 @@
 package lighting.server.frame;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Frame {
@@ -8,15 +9,18 @@ public class Frame {
     private int[] dmxValues;
     private long startTime;
     private int universe;
+    private LocalDateTime createdOn;
 
     public Frame(int[] dmxValues) {
         this.dmxValues = dmxValues;
+        setCreatedOn();
     }
 
     public Frame(int[] dmxValues, long startTime, int universe) {
         this.dmxValues = dmxValues;
         this.startTime = startTime;
         this.universe = universe;
+        setCreatedOn();
     }
 
     public Frame() {
@@ -48,5 +52,13 @@ public class Frame {
 
     public void setUniverse(int universe) {
         this.universe = universe;
+    }
+
+    public LocalDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn() {
+        this.createdOn = LocalDateTime.now();
     }
 }
