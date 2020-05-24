@@ -70,24 +70,15 @@ export class MonitorComponent implements OnInit, OnDestroy {
 
     if (this.recordSingleFrame == true) {
       this.recordMultipleFrames = false;
-    }
-
-    if (this.recordButtonDisabled == true) {
       this.recordButtonDisabled = false;
     } else {
-      this.recordButtonDisabled = !this.recordButtonDisabled;
+      this.recordButtonDisabled = true;
     }
+
 
     if (this.stopButtonDisabled == false) {
       this.stopButtonDisabled = true;
     }
-
-    console.log("LOG: Single Frame record toggle: ");
-    console.log("LOG: recordSingleFrame: " + this.recordSingleFrame);
-    console.log("LOG: recordMultipleFrames: " + this.recordMultipleFrames);
-    console.log("LOG: recordButtonDisabled: " + this.recordButtonDisabled);
-    console.log("LOG: stopButtonDisabled: " + this.stopButtonDisabled);
-    console.log("LOG: -----------------------------------------------------");
 
   }
 
@@ -95,21 +86,12 @@ export class MonitorComponent implements OnInit, OnDestroy {
     this.recordMultipleFrames = !this.recordMultipleFrames;
 
     if (this.recordMultipleFrames == true) {
-      this.recordSingleFrame = false;
-    }
-
-    if (this.recordButtonDisabled == true) {
       this.recordButtonDisabled = false;
+      this.recordSingleFrame = false;
     } else {
-      this.recordButtonDisabled = !this.recordButtonDisabled;
+      this.recordButtonDisabled = true;
     }
 
-    console.log("LOG: Multiple Frames record toggle: ");
-    console.log("LOG: recordSingleFrame: " + this.recordSingleFrame);
-    console.log("LOG: recordMultipleFrames: " + this.recordMultipleFrames);
-    console.log("LOG: recordButtonDisabled: " + this.recordButtonDisabled);
-    console.log("LOG: stopButtonDisabled: " + this.stopButtonDisabled);
-    console.log("LOG: -----------------------------------------------------");
   }
 
   record() {
@@ -121,10 +103,14 @@ export class MonitorComponent implements OnInit, OnDestroy {
           duration: 3000
         });
         if (data) {
-          this.snackbar.open('Recording Single Frame Done...', 'Close', {
+          this.snackbar.open('Recording Single Frame Done', 'Close', {
             duration: 3000
           });
 
+        } else {
+          this.snackbar.open('No data to record...', 'Close', {
+            duration: 3000
+          });
         }
       });
     }
@@ -142,7 +128,12 @@ export class MonitorComponent implements OnInit, OnDestroy {
   stop() {
     this.sceneService.stopRecording().subscribe( recordingDone => {
       if (recordingDone) {
-        this.snackbar.open('Recording Multiple Frames Done...', 'Close', {
+        this.snackbar.open('Recording Multiple Frames Done', 'Close', {
+          duration: 3000
+        });
+        this.stopButtonDisabled = !this.stopButtonDisabled;
+      } else {
+        this.snackbar.open('No data to record...', 'Close', {
           duration: 3000
         });
         this.stopButtonDisabled = !this.stopButtonDisabled;

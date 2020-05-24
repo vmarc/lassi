@@ -35,10 +35,10 @@ import { SimulatorControlComponent } from './simulator-control.component';
 <tr>
      <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
 </tr>
-<td>
-     <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButtonDisabled">
-  <i class="fas fa-stop-circle"></i> Stop</button>
-</td>
+<tr>
+     <button class="buttons" mat-flat-button color="primary" (click)="stopPlaying()" [disabled]="stopButtonDisabled">
+  <i class="fas fa-stop-circle"></i> Stop playing Scene</button>
+</tr>
 
 </table>
 
@@ -55,6 +55,7 @@ export class SimulatorComponent implements OnInit {
   playMode: boolean = false;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
+  stopButtonDisabled: boolean = true;
 
   playable1: string = 'gray';
   playable2: string = 'gray';
@@ -74,15 +75,10 @@ export class SimulatorComponent implements OnInit {
 
   togglePlayMode() {
     this.playMode = !this.playMode;
+    this.stopButtonDisabled = !this.stopButtonDisabled;
     if (this.playMode == true) {
       this.recordMultipleFrames = !this.playMode;
       this.recordSingleFrame = !this.playMode;
-    }
-    else if (this.playMode == false) {
-      this.sceneService.stopPlaying();
-      this.snackbar.open('Stopping all scenes...', 'Close', {
-        duration: 2000
-      });
     }
 
     this.fillInColors();
@@ -120,6 +116,13 @@ export class SimulatorComponent implements OnInit {
           duration: 3000
         });
       }
+    });
+  }
+
+  stopPlaying() {
+    this.sceneService.stopPlaying();
+    this.snackbar.open('Stopping all scenes...', 'Close', {
+      duration: 2000
     });
   }
 
