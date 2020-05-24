@@ -122,7 +122,10 @@ public class SceneServiceImpl implements ISceneService {
     }
 
     public void stop(){
-        artnetSender.stop();
+        if (artnetSender != null) {
+            artnetSender.stop();
+        }
+
     }
 
     public void pause(boolean bool) {

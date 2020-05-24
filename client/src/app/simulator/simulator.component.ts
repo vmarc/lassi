@@ -35,6 +35,10 @@ import { SimulatorControlComponent } from './simulator-control.component';
 <tr>
      <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
 </tr>
+<td>
+     <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButtonDisabled">
+  <i class="fas fa-stop-circle"></i> Stop</button>
+</td>
 
 </table>
 
