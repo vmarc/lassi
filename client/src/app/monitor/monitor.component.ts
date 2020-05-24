@@ -68,6 +68,9 @@ export class MonitorComponent implements OnInit, OnDestroy {
     if (this.universe.hasError('required')) {
       return 'You must enter a valid value';
     }
+    if (this.universe.hasError('minlength')) {
+
+    }
 
     return this.universe.hasError('universe') ? 'Not a valid universe' : '';
   }
