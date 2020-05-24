@@ -7,7 +7,6 @@ import { ScenesService } from '../scene/scenes.service';
 import { Router } from '@angular/router';
 import {map, retry, catchError} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { SettingsService } from '../settings/settings.service';
 
 
 @Component({
@@ -30,9 +29,9 @@ import { SettingsService } from '../settings/settings.service';
 </table>
 
 <div>
-  <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButton">
+  <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButtonDisabled">
   <i class="fas fa-record-vinyl"></i> Record</button>
-  <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButton">
+  <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButtonDisabled">
   <i class="fas fa-stop-circle"></i> Stop</button>
  </div>
  </div>
@@ -42,17 +41,15 @@ import { SettingsService } from '../settings/settings.service';
 export class MonitorComponent implements OnInit, OnDestroy {
 
   frame: Frame = Frame.empty();
-  recordButton: boolean = true;
+  recordButtonDisabled: boolean = true;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
-  stopButton: boolean = true;
-  hostIp: string;
+  stopButtonDisabled: boolean = true;
 
   private topicSubscription: Subscription;
 
   constructor(private rxStompService: RxStompService,
               private sceneService: ScenesService,
-              private settingsService: SettingsService,
               private router: Router,
               private snackbar: MatSnackBar) {
 
@@ -70,22 +67,29 @@ export class MonitorComponent implements OnInit, OnDestroy {
 
   toggleSingleFrameRecord() {
     this.recordSingleFrame = !this.recordSingleFrame;
-    this.recordButton = !this.recordButton;
-    if (this.stopButton == false) {
-      this.stopButton = true;
-    }
-    if (this.recordSingleFrame = true) {
+
+    if (this.recordSingleFrame == true) {
       this.recordMultipleFrames = false;
+      this.recordButtonDisabled = false;
+    } else {
+      this.recordButtonDisabled = true;
     }
 
+
+    if (this.stopButtonDisabled == false) {
+      this.stopButtonDisabled = true;
+    }
 
   }
 
   toggleMultipleFramesRecord() {
     this.recordMultipleFrames = !this.recordMultipleFrames;
-    this.recordButton = !this.recordButton;
-    if (this.recordMultipleFrames = true) {
+
+    if (this.recordMultipleFrames == true) {
+      this.recordButtonDisabled = false;
       this.recordSingleFrame = false;
+    } else {
+      this.recordButtonDisabled = true;
     }
 
   }
@@ -93,12 +97,18 @@ export class MonitorComponent implements OnInit, OnDestroy {
   record() {
 
     if (this.recordSingleFrame == true) {
+
       this.sceneService.recordSingleFrame(0).subscribe(data => {
         this.snackbar.open('Recording Single Frame...', 'Close', {
           duration: 3000
         });
         if (data) {
-          this.snackbar.open('Recording Single Frame Done...', 'Close', {
+          this.snackbar.open('Recording Single Frame Done', 'Close', {
+            duration: 3000
+          });
+
+        } else {
+          this.snackbar.open('No data to record...', 'Close', {
             duration: 3000
           });
         }
@@ -109,19 +119,24 @@ export class MonitorComponent implements OnInit, OnDestroy {
         this.snackbar.open('Recording Multiple Frames...', 'Close', {
           duration: 3000
         });
-        this.stopButton = !this.stopButton;
+        this.stopButtonDisabled = !this.stopButtonDisabled;
       });
     }
   }
 
 
   stop() {
-    this.sceneService.stopRecording().subscribe( data => {
-      if (data) {
-        this.snackbar.open('Recording Multiple Frames Done...', 'Close', {
+    this.sceneService.stopRecording().subscribe( recordingDone => {
+      if (recordingDone) {
+        this.snackbar.open('Recording Multiple Frames Done', 'Close', {
           duration: 3000
         });
-        this.stopButton = !this.stopButton;
+        this.stopButtonDisabled = !this.stopButtonDisabled;
+      } else {
+        this.snackbar.open('No data to record...', 'Close', {
+          duration: 3000
+        });
+        this.stopButtonDisabled = !this.stopButtonDisabled;
       }
     });
   }

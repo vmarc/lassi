@@ -43,6 +43,10 @@ public class ArtnetListener {
         return currentFrame;
     }
 
+    public void setCurrentFrame(Frame currentFrame) {
+        this.currentFrame = currentFrame;
+    }
+
     public ArtNetClient getArtNetClient() {
         return artNetClient;
     }
