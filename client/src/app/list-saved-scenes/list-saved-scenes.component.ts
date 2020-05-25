@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as moment from 'moment';
+import { MatSort, Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-list-saved-scenes',
@@ -15,14 +16,18 @@ import * as moment from 'moment';
 <h1>List of Scenes</h1>
 <div class="container">
   <div class="table">
-  <mat-table  #table class="center" [dataSource]="dataSource">
+  <mat-table  #table class="center" [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
       <mat-cell *matCellDef="let scenes"> {{scenes.name}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="buttonId">
-      <mat-header-cell *matHeaderCellDef> Button </mat-header-cell>>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Button </mat-header-cell>>
       <mat-cell *matCellDef="let scenes"> {{scenes.buttonId}} </mat-cell>>
+    </ng-container>
+    <ng-container matColumnDef="createdOn">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Created/Edited On </mat-header-cell>>
+      <mat-cell *matCellDef="let scenes"> {{scenes.createdOn | date:'d/LL/yyyy, HH:mm'}} </mat-cell>>
     </ng-container>
 
 <ng-container matColumnDef="actions">
@@ -61,9 +66,10 @@ import * as moment from 'moment';
 export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
-  displayedColumns = ['name', 'buttonId', 'actions'];
+  displayedColumns = ['name', 'buttonId','createdOn', 'actions'];
   playingScene: boolean = false;
   pause: boolean = false;
 
@@ -86,7 +92,10 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.scenesService.findAll().subscribe(data => {
       this.dataSource.data = data;
+      this.dataSource.sort = this.sort;
+
     });
+
   }
 
   ngAfterViewInit() {

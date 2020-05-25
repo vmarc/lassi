@@ -7,17 +7,18 @@ import { ScenesService } from '../scene/scenes.service';
 import { Router } from '@angular/router';
 import {map, retry, catchError} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
   selector: 'app-monitor',
   template: `
 <h1>Monitor</h1>
-<mat-form-field class="universe" appearance="fill">
-    <mat-label>Enter the universe</mat-label>
-    <input matInput placeholder="0" [formControl]="universe" required>
+<mat-form-field class="universe" appearance="outline">
+    <mat-label>Filter by universe</mat-label>
+    <input matInput placeholder="" [formControl]="universe" required>
     <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
+     <mat-error *ngIf="universe.min">{{getErrorMessage()}}</mat-error>
  </mat-form-field>
 
 <div class="dmx-levels">
@@ -47,7 +48,9 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
-  universe =  new FormControl('0', [Validators.required, Validators.minLength(0), Validators.maxLength(32768)]);
+  formGroup: FormGroup;
+
+  universe =  new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
 
   frame: Frame;
   recordButtonDisabled: boolean = true;
@@ -62,7 +65,11 @@ export class MonitorComponent implements OnInit, OnDestroy {
   constructor(private rxStompService: RxStompService,
               private sceneService: ScenesService,
               private router: Router,
-              private snackbar: MatSnackBar) {
+              private snackbar: MatSnackBar,
+              private builder: FormBuilder) {
+    this.formGroup = this.builder.group({
+      universe: ["", []]
+    })
 
   }
 
@@ -70,10 +77,10 @@ export class MonitorComponent implements OnInit, OnDestroy {
     if (this.universe.hasError('required')) {
       return 'You must enter a valid value';
     }
-    if (this.universe.hasError('minlength')) {
+    if (this.universe.hasError('min')) {
       return 'You must enter a value above 0';
     }
-    if (this.universe.hasError('maxlength')) {
+    if (this.universe.hasError('max')) {
       return 'You must enter a value below 32768';
     }
   }
@@ -86,7 +93,6 @@ export class MonitorComponent implements OnInit, OnDestroy {
         this.map.set(value, Frame.fromJSON(jsonObject[value]));
       }
 
-      console.log(this.universe.value);
       this.frame = this.map.get(this.universe.value);
       if (this.frame == null) {
         this.frame = Frame.empty();
@@ -100,9 +106,6 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
   toggleSingleFrameRecord() {
-    this.map.forEach((value, key) => {
-      console.log(key, value);
-    });
     this.recordSingleFrame = !this.recordSingleFrame;
 
     if (this.recordSingleFrame == true) {
