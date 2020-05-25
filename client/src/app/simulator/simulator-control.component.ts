@@ -50,6 +50,12 @@ export class SimulatorControlComponent implements OnInit {
 
   }
 
+  reloadComponent() {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/simulator']);
+  }
+
   buttonClicked(): void {
 
     if (this.recordMultipleFrames && this.startedMultipleFramesRecord == true) {
@@ -58,6 +64,7 @@ export class SimulatorControlComponent implements OnInit {
           this.snackbar.open('Recording Multiple Frames done......', 'Close', {
             duration: 3000
           });
+          this.reloadComponent();
         }
       });
       this.startedMultipleFramesRecord = false;
@@ -71,9 +78,17 @@ export class SimulatorControlComponent implements OnInit {
 
 
     else if (this.recordSingleFrame) {
+      this.snackbar.open('Recording Single Frame...', 'Close', {
+        duration: 3000
+      });
       this.sceneService.recordSingleFrame(this.sceneId).subscribe(data => {
         if (data) {
-          this.snackbar.open('Recording Single Frame...', 'Close', {
+          this.snackbar.open('Recording Single Frame done', 'Close', {
+            duration: 3000
+          });
+          this.reloadComponent();
+        } else {
+          this.snackbar.open('Could not record Single Frame.', 'Close', {
             duration: 3000
           });
         }
@@ -88,17 +103,16 @@ export class SimulatorControlComponent implements OnInit {
           this.snackbar.open('Recording Multiple Frames...', 'Close', {
             duration: 3000
           });
-
-
+        } else {
+          this.snackbar.open('Could not record Multiple Frames.', 'Close', {
+            duration: 3000
+          });
         }
       });
 
     }
 
     if (this.playMode && this.scenePlaying == false) {
-      console.log("Play scene");
-      console.log("Scene playing:" + this.scenePlaying);
-      console.log("Paused Playing: " + this.pausedPlaying);
       if (this.playable == 'green') {
         this.scenePlaying = true;
         this.snackbar.open('Playing Scene...', 'Close', {
@@ -122,9 +136,6 @@ export class SimulatorControlComponent implements OnInit {
     }
 
     else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == false) {
-      console.log("Pause scene");
-      console.log("Scene playing:" + this.scenePlaying);
-      console.log("Paused Playing: " + this.pausedPlaying);
       this.pausedPlaying = true;
       this.sceneService.pause(true);
       this.snackbar.open('Paused playing Scene...', 'Close', {
