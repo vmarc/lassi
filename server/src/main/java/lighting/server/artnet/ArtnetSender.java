@@ -8,6 +8,7 @@ import lighting.server.scene.SceneFader;
 import lighting.server.settings.Settings;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -125,7 +126,7 @@ public class ArtnetSender {
         }
 
         lastFrames.forEach((integer, frame) ->{
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame());
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame(),0);
             sceneFader.fadeFrame(this);
             activeSceneFaders.add(sceneFader);
         });
@@ -180,11 +181,13 @@ public class ArtnetSender {
         for (Frame f: list
              ) {
             Frame startFrame = lastFrames.get(f.getUniverse());
+            long startTime = Duration.between(list.get(0).getCreatedOn(),f.getCreatedOn()).toMillis();
+            System.out.println("Wait time for fading: " + startTime);
             if (startFrame == null){
                 startFrame = createEmptyFrame();
             }
             if (!Arrays.equals(f.getDmxValues(), startFrame.getDmxValues())){
-                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), startFrame, f);
+                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), startFrame, f, startTime);
                 sceneFader.fadeFrame(this);
                 activeSceneFaders.add(sceneFader);
             }
