@@ -612,12 +612,12 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="448" y="16" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1590429341250">
+    <state x="448" y="16" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1590429480371">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
     <state x="448" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158885843" />
-    <state x="448" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590429341250" />
+    <state x="448" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590429480371" />
     <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1589710853591" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128780844" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
@@ -885,11 +885,11 @@
     </state>
     <state x="154" y="74" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590429367214" />
     <state x="168" y="94" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1589708971647" />
-    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog" timestamp="1590429378321">
+    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog" timestamp="1590429506989">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="433" y="158" key="MultipleFileMergeDialog/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158901813" />
-    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590429378321" />
+    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590429506989" />
     <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588348666302" />
     <state x="987" y="400" width="443" height="252" key="MultipleFileMergeDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1587901317813" />
     <state x="3809" y="234" key="MultipleFileMergeDialog/3008.0.1680.1050/0.0.3008.1692@3008.0.1680.1050" timestamp="1588846235551" />
@@ -912,12 +912,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="129" key="VCS.ChangeListViewerDialog/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158880387" />
-    <state x="392" y="156" key="Vcs.Push.Dialog.v2" timestamp="1590429390065">
+    <state x="392" y="156" key="Vcs.Push.Dialog.v2" timestamp="1590429518403">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1903" y="287" key="Vcs.Push.Dialog.v2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989582643" />
     <state x="564" y="286" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158829594" />
-    <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590429390065" />
+    <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590429518403" />
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1589710855161" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128782226" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1589645793468" />
@@ -927,10 +927,11 @@
     </state>
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590221078814" />
     <state x="465" y="238" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590427979829" />
-    <state x="570" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590158890430">
+    <state x="570" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590429529242">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="570" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158890430" />
+    <state x="570" y="352" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1590429529242" />
     <state x="623" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1680.1050@0.0.1680.1050" timestamp="1589708965011" />
     <state x="1115" y="724" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.3008.1692@0.0.3008.1692" timestamp="1587901309511" />
     <state x="3631" y="449" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/3008.0.1680.1050/0.0.3008.1692@3008.0.1680.1050" timestamp="1588846242317" />

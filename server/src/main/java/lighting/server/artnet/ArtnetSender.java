@@ -187,7 +187,7 @@ public class ArtnetSender {
                 startFrame = createEmptyFrame();
             }
             if (!Arrays.equals(f.getDmxValues(), startFrame.getDmxValues())){
-                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), startFrame, f, startTime);
+                SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), startFrame, f, startTime);
                 sceneFader.fadeFrame(this);
                 activeSceneFaders.add(sceneFader);
             }
