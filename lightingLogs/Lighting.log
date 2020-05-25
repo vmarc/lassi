@@ -1518,3 +1518,29 @@ mei 25, 2020 3:36:00 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved scene from disk with ID: eabd477e-0418-4021-84ff-aea9138111b6
 mei 25, 2020 3:37:01 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved all scenes from disk
+mei 25, 2020 7:45:24 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Recorded a scene with multiple frames to button 0
+mei 25, 2020 7:45:35 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Stopped recording
+mei 25, 2020 7:45:40 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 25, 2020 7:46:00 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 47ecaa24-dfd2-4a0c-a7ea-66ea5f2ac721
+mei 25, 2020 7:46:46 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 05e04a6b-09f0-4904-8a35-4995e47062ff
+mei 25, 2020 7:46:50 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Scene deleted with ID: 05e04a6b-09f0-4904-8a35-4995e47062ff
+mei 25, 2020 7:46:50 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 25, 2020 7:46:53 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Scene deleted with ID: 47ecaa24-dfd2-4a0c-a7ea-66ea5f2ac721
+mei 25, 2020 7:46:53 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 25, 2020 7:50:19 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 436869bf-3f7d-4f34-90dc-369bf58844e8
+mei 25, 2020 7:50:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Saved/updated scene to disk with ID: 436869bf-3f7d-4f34-90dc-369bf58844e8
+mei 25, 2020 7:50:25 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 25, 2020 7:51:19 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: eabd477e-0418-4021-84ff-aea9138111b6
