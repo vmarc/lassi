@@ -141,11 +141,17 @@ public class ArtnetListener {
     }
 
     public int[] byteArrayToIntArray(byte[] src) {
+        int size = src.length;
         int[] intArray = new int[512];
+        System.out.println("element size => " + size);
 
         for (int i = 0; i < 512; i++) {
-            int x = src[i] & 0xFF;
-            intArray[i] = x;
+            if (i < size){
+                int x = src[i] & 0xFF;
+                intArray[i] = x;
+                System.out.println("element: " + i);
+            }
+            intArray[i] = 0;
         }
         return intArray;
     }
