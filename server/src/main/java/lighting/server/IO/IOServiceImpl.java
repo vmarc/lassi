@@ -23,7 +23,7 @@ import java.util.stream.Stream;
 @Component
 public class IOServiceImpl implements IIOService {
 
-    private Path parentDir = Paths.get("/home/pi/DMX-Lighting/");
+    private Path parentDir = Paths.get(System.getProperty("user.dir"));//"/home/pi/DMX-Lighting/"
     private Path scenesDir = Paths.get(parentDir + "/scenes/");
     private Path settingsDir = Paths.get(parentDir + "/settings/");
     private Path logsDir = Paths.get(parentDir + "/lightingLogs/");

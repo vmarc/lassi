@@ -13,14 +13,14 @@ public class Frame {
 
     public Frame(int[] dmxValues) {
         this.dmxValues = dmxValues;
-        setCreatedOn();
+        this.createdOn = LocalDateTime.now();
     }
 
     public Frame(int[] dmxValues, long startTime, int universe) {
         this.dmxValues = dmxValues;
         this.startTime = startTime;
         this.universe = universe;
-        setCreatedOn();
+        this.createdOn = LocalDateTime.now();
     }
 
     public Frame() {
@@ -58,7 +58,4 @@ public class Frame {
         return createdOn;
     }
 
-    public void setCreatedOn() {
-        this.createdOn = LocalDateTime.now();
-    }
 }
