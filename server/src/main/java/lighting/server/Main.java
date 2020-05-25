@@ -28,7 +28,7 @@ public class Main {
 
             artNetClient.broadcastDmx(0, 1, dmxData);
             //artNetClient.broadcastDmx(0, 2, dmxData);
-            artNetClient.unicastDmx("raspberrypi", 0,1, dmxData);
+            artNetClient.unicastDmx("192.168.0.197", 0,1, dmxData);
 
 
 

@@ -64,8 +64,8 @@ public class ArtnetListener {
         this.numberOfFrames = numberOfFrames;
     }
 
-    public void recordData(int button_id) throws IOException {
-        artNetClient = new ArtNetClient();
+    public void recordData(int button_id) throws IOException {/*
+        //artNetClient = new ArtNetClient();
 
         this.settings = this.iioService.getSettingsFromDisk();
         scene = new Scene();
@@ -103,7 +103,7 @@ public class ArtnetListener {
 
 
                 });
-        artNetClient.start();
+        artNetClient.start();*/
     }
 
     public void captureData() {
@@ -112,7 +112,7 @@ public class ArtnetListener {
                     @Override public void artNetPacketReceived(ArtNetPacket packet) {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
-                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100, dmxPacket.getUniverseID());
+                        Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 0, dmxPacket.getUniverseID());
                         currentFrames.put(frame.getUniverse(), frame);
                     }
 
