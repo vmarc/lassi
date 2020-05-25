@@ -16,18 +16,18 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 <h1>Monitor</h1>
 
 
-<div class="date">
- <strong >Frame created on: {{frame.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
+<div class="date" [hidden]="disabledDate">
+ <strong>Frame created on: {{frame?.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
 </div>
 
 <div class="dmx-levels">
-  <div *ngFor="let dmxValue of frame.dmxValues" class="dmx-level">
+  <div *ngFor="let dmxValue of frame?.dmxValues" class="dmx-level">
     {{dmxValue}}
   </div>
 </div>
 
 <mat-form-field class="universe" appearance="outline">
-    <mat-label>Filter by universe</mat-label>
+    <mat-label>Choose universe to display</mat-label>
     <input matInput placeholder="" [formControl]="universe" required>
     <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
  </mat-form-field>
@@ -60,6 +60,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   universe =  new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
 
   frame: Frame;
+  disabledDate: boolean = false;
   recordButtonDisabled: boolean = true;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
@@ -103,6 +104,9 @@ export class MonitorComponent implements OnInit, OnDestroy {
       this.frame = this.map.get(this.universe.value);
       if (this.frame == null) {
         this.frame = Frame.empty();
+        this.disabledDate = true;
+      } else {
+        this.disabledDate = false;
       }
 
     });
