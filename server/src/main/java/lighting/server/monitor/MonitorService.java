@@ -20,7 +20,7 @@ public class MonitorService {
 
 	}
 
-	@Scheduled(fixedDelay = 2000)
+	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
 		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrames());
 	}
