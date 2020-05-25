@@ -1544,3 +1544,13 @@ mei 25, 2020 7:50:25 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved all scenes from disk
 mei 25, 2020 7:51:19 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved scene from disk with ID: eabd477e-0418-4021-84ff-aea9138111b6
+mei 25, 2020 8:11:58 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
+mei 25, 2020 8:30:29 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: eabd477e-0418-4021-84ff-aea9138111b6
+mei 25, 2020 8:30:38 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 436869bf-3f7d-4f34-90dc-369bf58844e9
+mei 25, 2020 8:30:40 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 436869bf-3f7d-4f34-90dc-369bf58844e8
+mei 25, 2020 8:30:42 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved scene from disk with ID: 436869bf-3f7d-4f34-90dc-369bf58844e4
