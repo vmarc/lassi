@@ -39,8 +39,6 @@ public class SceneFader {
     }
 
     public void fadeFrame(ArtnetSender artnetSender) {
-        
-        startTime = startTime - (fadeTimeInSeconds*1000);
         try {
             Thread.sleep(startTime);
         } catch (InterruptedException e) {

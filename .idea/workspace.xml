@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc66e82e-c75f-4c7b-83b7-c590247470c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/artnet/ArtnetSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/artnet/ArtnetSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneFader.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/lighting/server/scene/SceneFader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/monitor/MonitorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/target/classes/lighting/server/monitor/MonitorService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,14 +173,7 @@
       <workItem from="1590138751784" duration="6183000" />
       <workItem from="1590221034403" duration="3279000" />
       <workItem from="1590324629060" duration="13678000" />
-      <workItem from="1590427971478" duration="1172000" />
-    </task>
-    <task id="LOCAL-00067" summary="play fixed">
-      <created>1588947335200</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1588947335200</updated>
+      <workItem from="1590427971478" duration="1442000" />
     </task>
     <task id="LOCAL-00068" summary="play fixed">
       <created>1588949853583</created>
@@ -522,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590344866504</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="frame update">
+      <created>1590429341991</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1590429341992</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -616,12 +612,12 @@
     </state>
     <state x="578" y="279" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1585568459086" />
     <state x="1035" y="450" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1585923711504" />
-    <state x="448" y="16" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1590344865923">
+    <state x="448" y="16" width="963" height="1050" key="CommitChangelistDialog2" timestamp="1590429341250">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-2131" y="-165" key="CommitChangelistDialog2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989579937" />
     <state x="448" y="0" key="CommitChangelistDialog2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158885843" />
-    <state x="448" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590344865923" />
+    <state x="448" y="16" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1590429341250" />
     <state x="490" y="84" width="880" height="870" key="CommitChangelistDialog2/0.0.1680.1050@0.0.1680.1050" timestamp="1589710853591" />
     <state x="936" y="448" key="CommitChangelistDialog2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128780844" />
     <state x="490" y="84" key="CommitChangelistDialog2/0.23.1680.970@0.23.1680.970" timestamp="1581803735714" />
@@ -884,16 +880,16 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="378" y="187" key="Maven.ArtifactSearchDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1581800742017" />
-    <state x="168" y="94" key="MergeDialog" timestamp="1589708971647">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="154" y="74" key="MergeDialog" timestamp="1590429367214">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="154" y="74" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1588701907622" />
+    <state x="154" y="74" key="MergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590429367214" />
     <state x="168" y="94" key="MergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1589708971647" />
-    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog" timestamp="1590343160306">
+    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog" timestamp="1590429378321">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="433" y="158" key="MultipleFileMergeDialog/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158901813" />
-    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590343160306" />
+    <state x="732" y="184" width="530" height="467" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1590429378321" />
     <state x="551" y="248" width="443" height="252" key="MultipleFileMergeDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1588348666302" />
     <state x="987" y="400" width="443" height="252" key="MultipleFileMergeDialog/0.0.3008.1692@0.0.3008.1692" timestamp="1587901317813" />
     <state x="3809" y="234" key="MultipleFileMergeDialog/3008.0.1680.1050/0.0.3008.1692@3008.0.1680.1050" timestamp="1588846235551" />
@@ -916,12 +912,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="555" y="129" key="VCS.ChangeListViewerDialog/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158880387" />
-    <state x="392" y="156" key="Vcs.Push.Dialog.v2" timestamp="1590344868737">
+    <state x="392" y="156" key="Vcs.Push.Dialog.v2" timestamp="1590429390065">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1903" y="287" key="Vcs.Push.Dialog.v2/-3008.-300.3008.1692/0.0.1680.1050@-3008.-300.3008.1692" timestamp="1582989582643" />
     <state x="564" y="286" key="Vcs.Push.Dialog.v2/0.0.1536.824/-1280.0.1280.984@0.0.1536.824" timestamp="1590158829594" />
-    <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590344868737" />
+    <state x="392" y="156" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1590429390065" />
     <state x="617" y="364" key="Vcs.Push.Dialog.v2/0.0.1680.1050@0.0.1680.1050" timestamp="1589710855161" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/0.0.3008.1692@0.0.3008.1692" timestamp="1589128782226" />
     <state x="1104" y="586" key="Vcs.Push.Dialog.v2/3008.0.1680.1050/0.0.3008.1692@0.0.3008.1692" timestamp="1589645793468" />
@@ -970,7 +966,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/server/src/main/java/lighting/server/monitor/MonitorService.java</url>
-          <line>23</line>
+          <line>24</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
