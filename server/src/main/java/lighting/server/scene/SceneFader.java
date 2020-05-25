@@ -16,12 +16,14 @@ public class SceneFader {
     private int[] dmxValues;
     private double totalFrames;
     private boolean pause = false;
+    private long startTime = 0;
 
-    public SceneFader(int framesPerSecond, int fadeTimeInSeconds, Frame startFrame, Frame endFrame) {
+    public SceneFader(int framesPerSecond, int fadeTimeInSeconds, Frame startFrame, Frame endFrame, long startTime) {
         this.framesPerSecond = framesPerSecond;
         this.fadeTimeInSeconds = fadeTimeInSeconds;
         this.startFrame = startFrame;
         this.endFrame = endFrame;
+        this.startTime = startTime;
     }
 
     public void setTotalFrames(double totalFrames) {
@@ -37,6 +39,14 @@ public class SceneFader {
     }
 
     public void fadeFrame(ArtnetSender artnetSender) {
+        
+        startTime = startTime - (fadeTimeInSeconds*1000);
+        try {
+            Thread.sleep(startTime);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Instant start = Instant.now();
         long pauseTimeLong = 0;
 
