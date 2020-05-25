@@ -25,4 +25,18 @@
 
 }
 
+.universe {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
 h1 { text-align: center;}
+
+.date {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.record {
+  margin-left: 1em;
+}

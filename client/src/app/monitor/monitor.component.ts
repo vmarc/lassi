@@ -7,17 +7,31 @@ import { ScenesService } from '../scene/scenes.service';
 import { Router } from '@angular/router';
 import {map, retry, catchError} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 
 @Component({
   selector: 'app-monitor',
   template: `
 <h1>Monitor</h1>
+
+
+<div class="date">
+ <strong >Frame created on: {{frame.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
+</div>
+
 <div class="dmx-levels">
   <div *ngFor="let dmxValue of frame.dmxValues" class="dmx-level">
     {{dmxValue}}
   </div>
 </div>
+
+<mat-form-field class="universe" appearance="outline">
+    <mat-label>Filter by universe</mat-label>
+    <input matInput placeholder="" [formControl]="universe" required>
+    <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
+ </mat-form-field>
+
 <div class="record">
    <table>
 <tr>
@@ -27,6 +41,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
      <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
 </tr>
 </table>
+
 
 <div>
   <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButtonDisabled">
@@ -40,24 +55,56 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
-  frame: Frame = Frame.empty();
+  formGroup: FormGroup;
+
+  universe =  new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
+
+  frame: Frame;
   recordButtonDisabled: boolean = true;
   recordSingleFrame: boolean = false;
   recordMultipleFrames: boolean = false;
   stopButtonDisabled: boolean = true;
+  frames: Frame[] = [];
+  map = new Map<string, Frame>();
 
   private topicSubscription: Subscription;
 
   constructor(private rxStompService: RxStompService,
               private sceneService: ScenesService,
               private router: Router,
-              private snackbar: MatSnackBar) {
+              private snackbar: MatSnackBar,
+              private builder: FormBuilder) {
+    this.formGroup = this.builder.group({
+      universe: ["", []]
+    })
 
   }
 
+  getErrorMessage() {
+    if (this.universe.hasError('required')) {
+      return 'You must enter a valid value';
+    }
+    if (this.universe.hasError('min')) {
+      return 'You must enter a value above 0';
+    }
+    if (this.universe.hasError('max')) {
+      return 'You must enter a value below 32768';
+    }
+  }
+
   ngOnInit() {
-    this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((message: Message) => {
-      this.frame = Frame.fromJSON(JSON.parse(message.body));
+    this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((data: Message) => {
+
+      let jsonObject = JSON.parse(data.body);
+      for (var value in jsonObject) {
+        this.map.set(value, Frame.fromJSON(jsonObject[value]));
+      }
+
+      this.frame = this.map.get(this.universe.value);
+      if (this.frame == null) {
+        this.frame = Frame.empty();
+      }
+
     });
   }
 

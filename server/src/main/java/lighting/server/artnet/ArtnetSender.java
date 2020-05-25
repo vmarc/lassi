@@ -166,7 +166,7 @@ public class ArtnetSender {
     }
 
     public void renewLastFrames(Frame frame){
-        lastFrames.replace(frame.getUniverse(), frame);
+        lastFrames.put(frame.getUniverse(), frame);
     }
 
     public void fade(){

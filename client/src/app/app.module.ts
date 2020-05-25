@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { SettingsComponent, ConfirmDeleteLogDialogComponent} from './settings/settings.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
 import { SettingsService } from './settings/settings.service';
 import { Stomp } from './stomp';
 
@@ -74,7 +75,8 @@ import { Stomp } from './stomp';
     MatInputModule,
     FormsModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSortModule
   ],
   entryComponents: [
     ConfirmDeleteDialogComponent

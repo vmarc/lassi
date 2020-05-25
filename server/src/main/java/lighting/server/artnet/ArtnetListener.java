@@ -15,6 +15,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 
 @Component
 public class ArtnetListener {
@@ -28,19 +29,19 @@ public class ArtnetListener {
     private Instant time;
     private Instant timePrev;
     private long timeElapsed;
-    private Frame[] currentFrames = new Frame[32768];
+    private HashMap<Integer, Frame> currentFrames = new HashMap<>();
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
 
     }
 
-    public Frame[] getCurrentFrames() {
-        return currentFrames;
+    public void setCurrentFrames(HashMap<Integer, Frame> currentFrames) {
+        this.currentFrames = currentFrames;
     }
 
-    public void setCurrentFrames(Frame[] currentFrames) {
-        this.currentFrames = currentFrames;
+    public HashMap<Integer, Frame> getCurrentFrames() {
+        return currentFrames;
     }
 
     public Scene getScene() {
@@ -112,7 +113,7 @@ public class ArtnetListener {
 
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 100, dmxPacket.getUniverseID());
-                        currentFrames[frame.getUniverse()] = frame;
+                        currentFrames.put(frame.getUniverse(), frame);
                     }
 
 
