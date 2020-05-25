@@ -249,7 +249,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   <h4>Frames:</h4>
   <ul>
     <li *ngFor="let frame of scene?.frames">
-    Universe: {{frame.universe}} <br> {{frame.dmxValues}}
+    Universe: {{frame.universe}}<br> Created On: {{frame.createdOn | date:'d/LL/yyyy, HH:mm'}} <br> {{frame.dmxValues}}
     </li>
 </ul>
 

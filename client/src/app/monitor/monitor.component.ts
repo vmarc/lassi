@@ -14,18 +14,24 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
   selector: 'app-monitor',
   template: `
 <h1>Monitor</h1>
-<mat-form-field class="universe" appearance="outline">
-    <mat-label>Filter by universe</mat-label>
-    <input matInput placeholder="" [formControl]="universe" required>
-    <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
-     <mat-error *ngIf="universe.min">{{getErrorMessage()}}</mat-error>
- </mat-form-field>
+
+
+<div class="date">
+ <strong >Frame created on: {{frame.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
+</div>
 
 <div class="dmx-levels">
   <div *ngFor="let dmxValue of frame.dmxValues" class="dmx-level">
     {{dmxValue}}
   </div>
 </div>
+
+<mat-form-field class="universe" appearance="outline">
+    <mat-label>Filter by universe</mat-label>
+    <input matInput placeholder="" [formControl]="universe" required>
+    <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
+ </mat-form-field>
+
 <div class="record">
    <table>
 <tr>
@@ -35,6 +41,7 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
      <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
 </tr>
 </table>
+
 
 <div>
   <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButtonDisabled">
