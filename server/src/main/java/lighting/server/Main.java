@@ -26,7 +26,7 @@ public class Main {
                 dmxData[x] = b;
             }
 
-            //artNetClient.broadcastDmx(0, 1, dmxData);
+            artNetClient.broadcastDmx(0, 1, dmxData);
             //artNetClient.broadcastDmx(0, 2, dmxData);
             artNetClient.unicastDmx("raspberrypi", 0,1, dmxData);
 
