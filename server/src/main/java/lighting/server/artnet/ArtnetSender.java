@@ -225,7 +225,7 @@ public class ArtnetSender {
                     if (broadcast == null)
                         continue;
 
-                    ipAdress = broadcast.toString();
+                    ipAdress = broadcast.toString().substring(1);
                     System.out.println(ipAdress);
                 }
             }
