@@ -2,9 +2,12 @@ package lighting.server.monitor;
 
 import lighting.server.IO.IOServiceImpl;
 import lighting.server.artnet.ArtnetListener;
+import lighting.server.frame.Frame;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
 
 
 @Component
@@ -12,6 +15,7 @@ public class MonitorService {
 
 	private ArtnetListener artnetListener;
 	private SimpMessagingTemplate messagingTemplate;
+	private HashMap<Integer, Frame> currentFrames = new HashMap<>();
 
 	public MonitorService(SimpMessagingTemplate messagingTemplate) {
 		this.messagingTemplate = messagingTemplate;
@@ -20,10 +24,11 @@ public class MonitorService {
 
 	}
 
-	@Scheduled(fixedDelay = 200)
+	@Scheduled(fixedDelay = 2000)
 	public void simulateOutputUpdate() {
-		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrames());
-		System.out.println("monitor: " + artnetListener.getCurrentFrames().get(1).getDmxValues()[0]);
+		currentFrames = artnetListener.getCurrentFrames();
+		this.messagingTemplate.convertAndSend("/topic/output", currentFrames);
+		System.out.println("monitor: " + currentFrames.get(1).getDmxValues()[0]);
 
 	}
 
