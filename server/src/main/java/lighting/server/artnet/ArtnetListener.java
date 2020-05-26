@@ -6,6 +6,7 @@ import ch.bildspur.artnet.packets.ArtDmxPacket;
 import ch.bildspur.artnet.packets.ArtNetPacket;
 import lighting.server.IO.IIOService;
 import lighting.server.frame.Frame;
+import lighting.server.monitor.MonitorService;
 import lighting.server.scene.Scene;
 import lighting.server.settings.Settings;
 import org.springframework.stereotype.Component;
@@ -30,9 +31,11 @@ public class ArtnetListener {
     private Instant timePrev;
     private long timeElapsed;
     private HashMap<Integer, Frame> currentFrames = new HashMap<>();
+    private MonitorService monitorService;
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
+        this.monitorService = new MonitorService(null, this);
 
     }
 

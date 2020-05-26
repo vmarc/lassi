@@ -1,5 +1,6 @@
 package lighting.server.monitor;
 
+import ch.bildspur.artnet.packets.ArtDmxPacket;
 import lighting.server.IO.IOServiceImpl;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.frame.Frame;
@@ -17,9 +18,10 @@ public class MonitorService {
 	private SimpMessagingTemplate messagingTemplate;
 	private HashMap<Integer, Frame> currentFrames = new HashMap<>();
 
-	public MonitorService(SimpMessagingTemplate messagingTemplate) {
+	public MonitorService(SimpMessagingTemplate messagingTemplate, ArtnetListener artnetListener) {
 		this.messagingTemplate = messagingTemplate;
-		this.artnetListener = new ArtnetListener(new IOServiceImpl());
+		//this.artnetListener = new ArtnetListener(new IOServiceImpl());
+		this.artnetListener = artnetListener;
 		this.artnetListener.captureData();
 
 	}
