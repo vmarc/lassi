@@ -74,7 +74,7 @@ public class SceneFader {
             for (int j = 0; j < 512; j++) {
                 dmxValues[j] = (int) (originalDmxValues[j] + Math.round((i + 1) * differenceList[j]));
                 //Logging
-                //System.out.print(dmxValues[j] + " / ");
+                System.out.print(dmxValues[j] + " / ");
             }
 
             Instant pauseTime = null;

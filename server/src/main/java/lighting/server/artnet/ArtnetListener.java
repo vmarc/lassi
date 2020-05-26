@@ -69,7 +69,7 @@ public class ArtnetListener {
     }
 
     public void recordData(int button_id) throws IOException {
-        //artNetClient = new ArtNetClient();
+        artNetClient = new ArtNetClient();
 
         this.settings = this.iioService.getSettingsFromDisk();
         scene = new Scene();

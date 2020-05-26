@@ -57,7 +57,7 @@ public class Main {
 
 
 
-            Thread.sleep(3000);
+            Thread.sleep(1000);
             System.out.println("send" + i);
         }
         //artNetClient.stop();

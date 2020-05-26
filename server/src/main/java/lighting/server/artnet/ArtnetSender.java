@@ -136,6 +136,8 @@ public class ArtnetSender {
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame(frame),0);
             sceneFader.fadeFrame(this);
             activeSceneFaders.add(sceneFader);
+            renewLastFrames(frame);
+
         });
 
 /*        Frame emptyFrame = createEmptyFrame();
@@ -198,6 +200,7 @@ public class ArtnetSender {
                 sceneFader.fadeFrame(this);
                 activeSceneFaders.add(sceneFader);
             }
+            renewLastFrames(f);
         }
 
     }
@@ -219,7 +222,7 @@ public class ArtnetSender {
             {
                 NetworkInterface networkInterface = interfaces.nextElement();
                 if (networkInterface.isLoopback())
-                    continue;    // Do not want to use the loopback interface.
+                    continue;
                 for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses())
                 {
                     InetAddress broadcast = interfaceAddress.getBroadcast();
@@ -231,10 +234,10 @@ public class ArtnetSender {
                 }
             }
 
-/*            NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
+            NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
             List<InterfaceAddress> list = networkInterface.getInterfaceAddresses();
             ipAdress = list.get(0).getBroadcast().toString();
-            System.out.println(ipAdress);*/
+            System.out.println(ipAdress);
         } catch (SocketException e) {
             e.printStackTrace();
         }
