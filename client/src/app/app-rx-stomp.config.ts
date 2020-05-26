@@ -4,7 +4,7 @@ export const appRxStompConfig: InjectableRxStompConfig = {
 
   brokerURL: 'ws://raspberrypi:8080/stomp/websocket',
 
-  heartbeatIncoming: 0,
+  heartbeatIncoming: 200,
   heartbeatOutgoing: 20000,
   reconnectDelay: 5000,
 

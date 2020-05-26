@@ -1,6 +1,5 @@
 package lighting.server.monitor;
 
-import ch.bildspur.artnet.packets.ArtDmxPacket;
 import lighting.server.IO.IOServiceImpl;
 import lighting.server.artnet.ArtnetListener;
 import lighting.server.frame.Frame;
@@ -16,21 +15,17 @@ public class MonitorService {
 
 	private ArtnetListener artnetListener;
 	private SimpMessagingTemplate messagingTemplate;
-	private HashMap<Integer, Frame> currentFrames = new HashMap<>();
 
 	public MonitorService(SimpMessagingTemplate messagingTemplate, ArtnetListener artnetListener) {
 		this.messagingTemplate = messagingTemplate;
-		//this.artnetListener = new ArtnetListener(new IOServiceImpl());
 		this.artnetListener = artnetListener;
 		this.artnetListener.captureData();
 
 	}
 
-	//@Scheduled(fixedDelay = 2000)
+	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
-		currentFrames = artnetListener.getCurrentFrames();
-		//this.messagingTemplate.convertAndSend("/topic/output", currentFrames);
-		System.out.println("monitor: " + currentFrames.get(1).getDmxValues()[0]);
+		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrames());
 
 	}
 
