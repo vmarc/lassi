@@ -55,7 +55,7 @@ public class SceneFader {
         dmxValues = startFrame.getDmxValues().clone();
         int[] originalDmxValues = startFrame.getDmxValues().clone();
 
-        int universe = startFrame.getUniverse();
+        int universe = endFrame.getUniverse();
 
         //Calculating the difference between the start value per channel in a frame and the end frame, adding it to the differenceList
         //(endFrame minus startFrame) dividing by the totalFrames

@@ -133,7 +133,7 @@ public class ArtnetSender {
         }
 
         lastFrames.forEach((integer, frame) ->{
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame(),0);
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame(frame),0);
             sceneFader.fadeFrame(this);
             activeSceneFaders.add(sceneFader);
         });
@@ -156,9 +156,9 @@ public class ArtnetSender {
         pause = bool;
     }
 
-    public Frame createEmptyFrame(){
+    public Frame createEmptyFrame(Frame frame){
         int[] emptyArray = IntStream.generate(() -> new Random().nextInt(1)).limit(512).toArray();
-        return new Frame(emptyArray);
+        return new Frame(emptyArray, 0, frame.getUniverse());
     }
 
 
@@ -191,7 +191,7 @@ public class ArtnetSender {
             long startTime = Duration.between(list.get(0).getCreatedOn(),f.getCreatedOn()).toMillis();
             System.out.println("Wait time for fading: " + startTime);
             if (startFrame == null){
-                startFrame = createEmptyFrame();
+                startFrame = createEmptyFrame(f);
             }
             if (!Arrays.equals(f.getDmxValues(), startFrame.getDmxValues())){
                 SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), startFrame, f, startTime);
