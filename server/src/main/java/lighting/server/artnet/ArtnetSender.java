@@ -213,10 +213,27 @@ public class ArtnetSender {
     public String getIp(){
         String ipAdress = "192.168.0.255";
         try {
-            NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces.hasMoreElements())
+            {
+                NetworkInterface networkInterface = interfaces.nextElement();
+                if (networkInterface.isLoopback())
+                    continue;    // Do not want to use the loopback interface.
+                for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses())
+                {
+                    InetAddress broadcast = interfaceAddress.getBroadcast();
+                    if (broadcast == null)
+                        continue;
+
+                    ipAdress = broadcast.toString();
+                    System.out.println(ipAdress);
+                }
+            }
+
+/*            NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
             List<InterfaceAddress> list = networkInterface.getInterfaceAddresses();
             ipAdress = list.get(0).getBroadcast().toString();
-            System.out.println(ipAdress);
+            System.out.println(ipAdress);*/
         } catch (SocketException e) {
             e.printStackTrace();
         }
