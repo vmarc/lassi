@@ -23,8 +23,8 @@ public class MonitorService {
 	@Scheduled(fixedDelay = 200)
 	public void simulateOutputUpdate() {
 		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrames());
-		System.out.println(artnetListener.getCurrentFrames().get(1).getDmxValues()[0]);
-		//artnetListener.getCurrentFrames().
+		System.out.println("monitor: " + artnetListener.getCurrentFrames().get(1).getDmxValues()[0]);
+
 	}
 
 }
