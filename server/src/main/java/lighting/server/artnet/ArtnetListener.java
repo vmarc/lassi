@@ -37,7 +37,7 @@ public class ArtnetListener {
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
-        this.monitorService = new MonitorService(null, this);
+        //this.monitorService = new MonitorService(null, this);
 
     }
 
