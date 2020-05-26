@@ -219,9 +219,9 @@ public class ArtnetSender {
             InetAddress inetAddress = interfaceAddress.getAddress();
             ipAdress = inetAddress.getHostAddress();
             System.out.println(ipAdress);
-            String[] x = ipAdress.split("\\.");
-            ipAdress = x[0] + "." + x[1] + "." + x[2] + "." + "255";
-            System.out.println(ipAdress);
+//            String[] x = ipAdress.split("\\.");
+//            ipAdress = x[0] + "." + x[1] + "." + x[2] + "." + "255";
+//            System.out.println(ipAdress);
         } catch (SocketException e) {
             e.printStackTrace();
         }
