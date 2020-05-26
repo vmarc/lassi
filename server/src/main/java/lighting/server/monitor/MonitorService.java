@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class MonitorService {
 
-	private final ArtnetListener artnetListener;
-	private final SimpMessagingTemplate messagingTemplate;
+	private ArtnetListener artnetListener;
+	private SimpMessagingTemplate messagingTemplate;
 
 	public MonitorService(SimpMessagingTemplate messagingTemplate) {
 		this.messagingTemplate = messagingTemplate;
