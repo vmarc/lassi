@@ -215,13 +215,8 @@ public class ArtnetSender {
         try {
             NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
             List<InterfaceAddress> list = networkInterface.getInterfaceAddresses();
-            InterfaceAddress interfaceAddress = list.get(0);
-            InetAddress inetAddress = interfaceAddress.getAddress();
-            ipAdress = inetAddress.getHostAddress();
+            ipAdress = list.get(0).getBroadcast().toString();
             System.out.println(ipAdress);
-//            String[] x = ipAdress.split("\\.");
-//            ipAdress = x[0] + "." + x[1] + "." + x[2] + "." + "255";
-//            System.out.println(ipAdress);
         } catch (SocketException e) {
             e.printStackTrace();
         }
