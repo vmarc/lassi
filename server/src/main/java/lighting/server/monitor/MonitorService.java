@@ -24,6 +24,7 @@ public class MonitorService {
 	public void simulateOutputUpdate() {
 		this.messagingTemplate.convertAndSend("/topic/output", artnetListener.getCurrentFrames());
 		System.out.println(artnetListener.getCurrentFrames().get(1).getDmxValues()[0]);
+		//artnetListener.getCurrentFrames().
 	}
 
 }
