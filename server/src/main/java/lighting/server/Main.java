@@ -7,6 +7,7 @@ import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
 import lighting.server.scene.Scene;
 
+import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -27,9 +28,27 @@ public class Main {
                 dmxData[x] = b;
             }
 
-            //artNetClient.broadcastDmx(0, 1, dmxData);
-            artNetClient.broadcastDmx(0, 2, dmxData);
-            artNetClient.unicastDmx("raspberrypi", 0,1, dmxData);
+
+/*
+            String ipAdress = "192.168.0.255";
+            try {
+                NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
+                List<InterfaceAddress> list = networkInterface.getInterfaceAddresses();
+                InterfaceAddress interfaceAddress = list.get(0);
+                InetAddress inetAddress = interfaceAddress.getAddress();
+                ipAdress = inetAddress.getHostAddress();
+                System.out.println(ipAdress);
+                String[] x = ipAdress.split("\\.");
+                ipAdress = x[0] + "." + x[1] + "." + x[2] + "." + "255";
+                System.out.println(ipAdress);
+            } catch (SocketException e) {
+                e.printStackTrace();
+            }
+*/
+
+
+
+            artNetClient.unicastDmx("192.168.0.255", 0,1, dmxData);
 /*            ArtDmxPacket a = new ArtDmxPacket();
             a.setDMX(dmxData, 512);
             a.setUniverse(0,1);
@@ -38,7 +57,7 @@ public class Main {
 
 
 
-            Thread.sleep(500);
+            Thread.sleep(3000);
             System.out.println("send" + i);
         }
         //artNetClient.stop();

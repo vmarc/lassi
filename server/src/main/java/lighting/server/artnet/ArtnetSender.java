@@ -8,6 +8,10 @@ import lighting.server.scene.SceneFader;
 import lighting.server.settings.Settings;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.InterfaceAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,10 +31,12 @@ public class ArtnetSender {
     private boolean pause = false;
     private HashMap<Integer, Frame> lastFrames = new HashMap<>();
     List<SceneFader> activeSceneFaders = new ArrayList<>();
+    private String ipAddress = "192.168.0.255";
 
 
     public ArtnetSender(IIOService iOService) {
         this.iOService = iOService;
+        this.ipAddress = getIp();
     }
 
     public void setSceneToPlay(Scene sceneToPlay) {
@@ -70,7 +76,7 @@ public class ArtnetSender {
                 }
                 System.out.println(frame.getStartTime());
 
-                artNetClient.broadcastDmx(0, frame.getUniverse(), dmxData);
+                artNetClient.unicastDmx(ipAddress, 0, frame.getUniverse(), dmxData);
 
                 try {
                     Thread.sleep(frame.getStartTime());
@@ -88,7 +94,7 @@ public class ArtnetSender {
             artNetClient.start();
         }
         byte[] dmxData = intArrayToByteArray(dmxvalues);
-        artNetClient.broadcastDmx(0, universe, dmxData);
+        artNetClient.unicastDmx(ipAddress,0, universe, dmxData);
         iOService.writeToLog(0, "Frame sent");
         //artNetClient.stop();
     }
@@ -202,6 +208,24 @@ public class ArtnetSender {
 
     public void removeSceneFader(SceneFader sceneFader){
         activeSceneFaders.remove(sceneFader);
+    }
+
+    public String getIp(){
+        String ipAdress = "192.168.0.255";
+        try {
+            NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
+            List<InterfaceAddress> list = networkInterface.getInterfaceAddresses();
+            InterfaceAddress interfaceAddress = list.get(0);
+            InetAddress inetAddress = interfaceAddress.getAddress();
+            ipAdress = inetAddress.getHostAddress();
+            System.out.println(ipAdress);
+            String[] x = ipAdress.split("\\.");
+            ipAdress = x[0] + "." + x[1] + "." + x[2] + "." + "255";
+            System.out.println(ipAdress);
+        } catch (SocketException e) {
+            e.printStackTrace();
+        }
+        return ipAdress;
     }
 
 
