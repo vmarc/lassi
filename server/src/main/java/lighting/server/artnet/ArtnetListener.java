@@ -9,6 +9,7 @@ import lighting.server.frame.Frame;
 import lighting.server.monitor.MonitorService;
 import lighting.server.scene.Scene;
 import lighting.server.settings.Settings;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -32,6 +33,7 @@ public class ArtnetListener {
     private long timeElapsed;
     private HashMap<Integer, Frame> currentFrames = new HashMap<>();
     private MonitorService monitorService;
+    private SimpMessagingTemplate messagingTemplate = new SimpMessagingTemplate(null);
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
@@ -119,6 +121,7 @@ public class ArtnetListener {
                         currentFrames.put(frame.getUniverse(), frame);
                         System.out.println("frame: " + frame.getDmxValues()[0]);
                         System.out.println("getFramescurrent: " + currentFrames.get(1).getDmxValues()[0]);
+                        messagingTemplate.convertAndSend("/topic/output", currentFrames);
                     }
 
 
