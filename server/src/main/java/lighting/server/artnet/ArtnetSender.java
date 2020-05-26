@@ -77,6 +77,7 @@ public class ArtnetSender {
                 System.out.println(frame.getStartTime());
 
                 artNetClient.unicastDmx(ipAddress, 0, frame.getUniverse(), dmxData);
+                System.out.println("U: " + frame.getUniverse());
 
                 try {
                     Thread.sleep(frame.getStartTime());
