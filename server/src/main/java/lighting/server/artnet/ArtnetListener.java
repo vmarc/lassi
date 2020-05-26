@@ -114,7 +114,6 @@ public class ArtnetListener {
                         ArtDmxPacket dmxPacket = (ArtDmxPacket)packet;
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 0, dmxPacket.getUniverseID());
                         currentFrames.put(frame.getUniverse(), frame);
-                        System.out.println(frame.getDmxValues()[0]);
                     }
 
 
