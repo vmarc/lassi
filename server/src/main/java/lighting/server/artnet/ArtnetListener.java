@@ -33,7 +33,7 @@ public class ArtnetListener {
     private long timeElapsed;
     private HashMap<Integer, Frame> currentFrames = new HashMap<>();
     private MonitorService monitorService;
-    private SimpMessagingTemplate messagingTemplate = new SimpMessagingTemplate(null);
+    private SimpMessagingTemplate messagingTemplate;
 
     public ArtnetListener(IIOService iioService) {
         this.iioService = iioService;
@@ -120,8 +120,11 @@ public class ArtnetListener {
                         Frame frame = new Frame(byteArrayToIntArray(dmxPacket.getDmxData()), 0, dmxPacket.getUniverseID());
                         currentFrames.put(frame.getUniverse(), frame);
                         System.out.println("frame: " + frame.getDmxValues()[0]);
-                        System.out.println("getFramescurrent: " + currentFrames.get(1).getDmxValues()[0]);
-                        messagingTemplate.convertAndSend("/topic/output", currentFrames);
+                        if (currentFrames.get(1) != null){
+                            System.out.println("getFramescurrent: " + currentFrames.get(1).getDmxValues()[0]);
+                            messagingTemplate.convertAndSend("/topic/output", currentFrames);
+                        }
+
                     }
 
 
