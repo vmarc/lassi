@@ -1,6 +1,7 @@
 package lighting.server;
 
 import ch.bildspur.artnet.ArtNetClient;
+import ch.bildspur.artnet.packets.ArtDmxPacket;
 import lighting.server.IO.IOServiceImpl;
 import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
@@ -26,9 +27,14 @@ public class Main {
                 dmxData[x] = b;
             }
 
-            artNetClient.broadcastDmx(0, 1, dmxData);
-            //artNetClient.broadcastDmx(0, 2, dmxData);
-            artNetClient.unicastDmx("192.168.0.197", 0,1, dmxData);
+            //artNetClient.broadcastDmx(0, 1, dmxData);
+            artNetClient.broadcastDmx(0, 2, dmxData);
+            artNetClient.unicastDmx("raspberrypi", 0,1, dmxData);
+/*            ArtDmxPacket a = new ArtDmxPacket();
+            a.setDMX(dmxData, 512);
+            a.setUniverse(0,1);
+            artNetClient.getArtNetServer().broadcastPacket(a);*/
+
 
 
 

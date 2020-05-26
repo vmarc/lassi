@@ -76,6 +76,7 @@ public class ArtnetListener {
         scene.setName("Recording of " + scene.getCreatedOn().format(formatter));
 
         artNetClient.getArtNetServer().addListener(
+                /
                 new ArtNetServerEventAdapter() {
                     @Override public void artNetPacketReceived(ArtNetPacket packet) {
 

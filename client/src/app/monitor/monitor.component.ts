@@ -66,7 +66,6 @@ export class MonitorComponent implements OnInit, OnDestroy {
   recordMultipleFrames: boolean = false;
   stopButtonDisabled: boolean = true;
   frames: Frame[] = [];
-  map = new Map<string, Frame>();
 
   private topicSubscription: Subscription;
 
@@ -95,13 +94,13 @@ export class MonitorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.topicSubscription = this.rxStompService.watch('/topic/output').subscribe((data: Message) => {
-
+      let map = new Map<string, Frame>();
       let jsonObject = JSON.parse(data.body);
       for (var value in jsonObject) {
-        this.map.set(value, Frame.fromJSON(jsonObject[value]));
+        map.set(value, Frame.fromJSON(jsonObject[value]));
       }
 
-      this.frame = this.map.get(this.universe.value);
+      this.frame = map.get(this.universe.value);
       if (this.frame == null) {
         this.frame = Frame.empty();
         this.disabledDate = true;

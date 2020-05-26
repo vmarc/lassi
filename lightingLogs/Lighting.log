@@ -2054,3 +2054,7 @@ mei 25, 2020 10:02:33 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved all scenes from disk
 mei 25, 2020 10:02:57 PM lighting.server.IO.IOServiceImpl writeToLog
 INFO: Retrieved all scenes from disk
+mei 26, 2020 6:34:40 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved buttons status
+mei 26, 2020 6:34:45 PM lighting.server.IO.IOServiceImpl writeToLog
+INFO: Retrieved all scenes from disk
