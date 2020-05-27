@@ -82,6 +82,7 @@ public class SceneFader {
             }
 
             Instant pauseTime = null;
+            System.out.println("Pause: " + pause);
             while (pause) {
                 if (pauseTime == null){
                     pauseTime = Instant.now();
