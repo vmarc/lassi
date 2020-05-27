@@ -55,18 +55,19 @@ public class ArtnetSender {
 
         fade();
 
-        if (!stop) {
-            while (pause) {
-                try {
-                    Thread.sleep(200);
-                } catch (InterruptedException e)  {
-                    e.printStackTrace();
-                }
-            }
+        List <Frame> frames = sceneToPlay.getFrames();
+        frames.remove(0);
+        for (Frame frame : frames) {
 
-            List <Frame> frames = sceneToPlay.getFrames();
-            frames.remove(0);
-            for (Frame frame : frames) {
+            if (!stop) {
+
+                while (pause) {
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 renewLastFrames(frame);
 
@@ -85,6 +86,7 @@ public class ArtnetSender {
                     e.printStackTrace();
                 }
             }
+
         }
 
         //artNetClient.stop();
@@ -189,7 +191,7 @@ public class ArtnetSender {
         List<Frame> list = sceneToPlay.getFrames().stream().filter(distinctByKey(Frame::getUniverse)).collect(Collectors.toList());
 
         for (Frame f: list
-             ) {
+        ) {
             Frame startFrame = lastFrames.get(f.getUniverse());
             long startTime = Duration.between(list.get(0).getCreatedOn(),f.getCreatedOn()).toMillis();
             System.out.println("Wait time for fading: " + startTime);

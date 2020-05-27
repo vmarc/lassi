@@ -48,7 +48,7 @@ public class Main {
 
 
 
-            artNetClient.unicastDmx("192.168.1.255", 0,1, dmxData);
+            artNetClient.unicastDmx("192.168.0.255", 0,1, dmxData);
 /*            ArtDmxPacket a = new ArtDmxPacket();
             a.setDMX(dmxData, 512);
             a.setUniverse(0,1);
