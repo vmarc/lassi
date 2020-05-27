@@ -140,10 +140,11 @@ public class ArtnetSender {
         }
 
         lastFrames.forEach((integer, frame) ->{
-            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame(frame),0);
+            Frame emptyFrame = createEmptyFrame(frame);
+            SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, emptyFrame,0);
             activeSceneFaders.add(sceneFader);
             sceneFader.fadeFrame(this);
-            renewLastFrames(frame);
+            renewLastFrames(emptyFrame);
 
         });
         iOService.writeToLog(0, "Stopped fading");
