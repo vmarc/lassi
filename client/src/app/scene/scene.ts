@@ -1,6 +1,6 @@
 import { Frame } from './frame';
 
-export class Scenes {
+export class Scene {
 
   id: string;
   name: string;
@@ -21,11 +21,11 @@ export class Scenes {
   }
 
 
-  public static fromJSON(jsonObject): Scenes {
+  public static fromJSON(jsonObject): Scene {
     if (!jsonObject) {
       return undefined;
     }
-    return new Scenes(
+    return new Scene(
       jsonObject.id,
       jsonObject.name,
       jsonObject.duration,

@@ -11,7 +11,8 @@ export class Stomp extends InjectableRxStompConfig {
 
   constructor(private settingsService: SettingsService) {
     super();
-    this.settingsService.getHostIp().subscribe(ip => this.brokerURL = 'ws://' + ip + ':8080/stomp/websocket')
+    //this.settingsService.getHostIp().subscribe(ip => this.brokerURL = 'ws://' + ip + ':8080/stomp/websocket')
+    this.brokerURL = null;
     this.heartbeatIncoming = 0;
     this.heartbeatOutgoing = 20000;
     this.reconnectDelay = 5000;
@@ -29,9 +30,9 @@ export class Stomp extends InjectableRxStompConfig {
         });
       }));
     }
-    console.log(this.brokerURL);
-  }*/
-
-
+    console.log(this.brokerURL);*/
   }
+
+
+
 }

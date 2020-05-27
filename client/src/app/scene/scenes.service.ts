@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Scenes } from './scenes';
+import { Scene } from './scene';
 import { Observable, throwError, Subject, BehaviorSubject } from 'rxjs';
 import {map, retry, catchError} from 'rxjs/operators';
 import { Frame } from './frame';
@@ -15,16 +15,16 @@ export class ScenesService {
   }
 
 
-  public findAll(): Observable<Scenes[]> {
-    return this.http.get<Scenes[]>('/api/sceneslist').pipe(retry(1), catchError(this.handleError));
+  public findAll(): Observable<Scene[]> {
+    return this.http.get<Scene[]>('/api/sceneslist').pipe(retry(1), catchError(this.handleError));
   }
 
   public delete(scene_id: string): void {
     this.http.get('/api/deletescene/' + scene_id).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
-  public get(scene_id: string): Observable<Scenes> {
-    return this.http.get<Scenes>('/api/getscene/' + scene_id).pipe(retry(1), catchError(this.handleError));
+  public get(scene_id: string): Observable<Scene> {
+    return this.http.get<Scene>('/api/getscene/' + scene_id).pipe(retry(1), catchError(this.handleError));
   }
 
   public download(scene_id: string): Observable<Blob> {
@@ -62,8 +62,8 @@ export class ScenesService {
     return this.http.get<boolean>('/api/stopRecording').pipe(retry(1), catchError(this.handleError));
   }
 
-  public save(scene: Scenes) {
-    return this.http.put<Scenes>('/api/savescene/', scene).pipe(retry(1), catchError(this.handleError)).subscribe();
+  public save(scene: Scene) {
+    return this.http.put<Scene>('/api/savescene/', scene).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
   public getButtons(): Observable<boolean[]> {

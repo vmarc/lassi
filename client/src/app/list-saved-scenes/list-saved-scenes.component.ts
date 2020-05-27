@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ViewChild, AfterViewInit } from '@angular/core';
-import { Scenes } from '../scene/scenes';
+import { Scene } from '../scene/scene';
 import { ScenesService } from '../scene/scenes.service';
 import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -68,7 +68,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  dataSource: MatTableDataSource<Scenes> = new MatTableDataSource<Scenes>();
+  dataSource: MatTableDataSource<Scene> = new MatTableDataSource<Scene>();
   displayedColumns = ['name', 'buttonId','createdOn', 'actions'];
   playingScene: boolean = false;
   pause: boolean = false;
@@ -108,8 +108,6 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
       duration: 3000
     });
     this.scenesService.play(row['id']).subscribe(donePlaying => {
-
-
       if (donePlaying) {
         this.playingScene = !this.playingScene;
         this.snackbar.open('Done playing Scene...', 'Close', {
@@ -262,7 +260,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 })
 export class SceneDetailsDialogComponent implements OnInit{
 
-  scene: Scenes;
+  scene: Scene;
   date: string;
 
 
@@ -362,7 +360,7 @@ export class EditSavedSceneDialogComponent {
     fadeTime: new FormControl(),
   });
 
-  scene: Scenes;
+  scene: Scene;
   selectedButton: any;
   selectedFadeTime: any;
   buttons: any[] = [0,1,2,3,4,5,6,7,8,9];

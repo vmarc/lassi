@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import {map, retry, catchError} from 'rxjs/operators';
 import { Settings } from './settings';
@@ -21,10 +21,6 @@ export class SettingsService {
 
   public deleteLog() {
     this.http.get('api/deletelog').pipe(retry(1), catchError(this.handleError)).subscribe();
-  }
-
-  public getHostIp(): Observable<string> {
-    return this.http.get<string>('/api/gethostip');
   }
 
   handleError(error) {

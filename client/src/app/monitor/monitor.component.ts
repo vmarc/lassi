@@ -153,7 +153,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
           duration: 3000
         });
         if (data) {
-          this.snackbar.open('Recording Single Frame Done', 'Close', {
+          this.snackbar.open('Recording Single Frame done', 'Close', {
             duration: 3000
           });
 
@@ -178,7 +178,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   stop() {
     this.sceneService.stopRecording().subscribe( recordingDone => {
       if (recordingDone) {
-        this.snackbar.open('Recording Multiple Frames Done', 'Close', {
+        this.snackbar.open('Recording Multiple Frames done', 'Close', {
           duration: 3000
         });
         this.stopButtonDisabled = !this.stopButtonDisabled;
