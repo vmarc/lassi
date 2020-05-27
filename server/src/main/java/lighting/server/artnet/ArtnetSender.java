@@ -238,7 +238,6 @@ public class ArtnetSender {
         } catch (SocketException e) {
             e.printStackTrace();
         }
-        ipAdress = "192.168.0.255";
         return ipAdress;
     }
 
