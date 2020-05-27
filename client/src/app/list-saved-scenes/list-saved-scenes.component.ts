@@ -8,7 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as moment from 'moment';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort, Sort, MatSortable } from '@angular/material/sort';
 
 @Component({
   selector: 'app-list-saved-scenes',
