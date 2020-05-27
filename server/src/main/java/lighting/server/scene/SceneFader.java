@@ -30,6 +30,10 @@ public class SceneFader {
         this.totalFrames = totalFrames;
     }
 
+    public Frame getEndFrame() {
+        return endFrame;
+    }
+
     public int[] getDmxValues() {
         return dmxValues;
     }
@@ -67,14 +71,14 @@ public class SceneFader {
         //Fading Method
         for (int i = 0; i < totalFrames; i++) {
             //Logging
-            System.out.println();
-            System.out.print(i + 1 + "....  ");
+            //System.out.println();
+            //System.out.print(i + 1 + "....  ");
 
 
             for (int j = 0; j < 512; j++) {
                 dmxValues[j] = (int) (originalDmxValues[j] + Math.round((i + 1) * differenceList[j]));
                 //Logging
-                System.out.print(dmxValues[j] + " / ");
+                //System.out.print(dmxValues[j] + " / ");
             }
 
             Instant pauseTime = null;
@@ -91,15 +95,15 @@ public class SceneFader {
 
             Instant now = Instant.now();
             long timeElapsed = Duration.between(start, now).toMillis();
-            System.out.println();
-            System.out.println("time elapsed: " + timeElapsed);
+            //System.out.println();
+            //System.out.println("time elapsed: " + timeElapsed);
 
             if (pauseTime != null) {
                 pauseTimeLong += Duration.between(pauseTime, Instant.now()).toMillis();
             }
             pauseTime = null;
 
-            System.out.println("PauseTimeLong: " + pauseTimeLong);
+            //System.out.println("PauseTimeLong: " + pauseTimeLong);
 
             artnetSender.sendFrame(dmxValues, universe);
 
@@ -107,8 +111,8 @@ public class SceneFader {
 
             long sleep = (long) ((timeOut*(i+1)) - (timeElapsed - pauseTimeLong));
 
-            System.out.println();
-            System.out.println("sleeptime: " + sleep);
+            //System.out.println();
+            //System.out.println("sleeptime: " + sleep);
 
             if (sleep > 0) {
                 try {
@@ -125,7 +129,7 @@ public class SceneFader {
 
         //Logging
         long timeElapsed = Duration.between(start, finish).toMillis();
-        System.out.println();
+        //System.out.println();
         System.out.println("Time elapsed: " + timeElapsed + " milliseconds");
     }
 }

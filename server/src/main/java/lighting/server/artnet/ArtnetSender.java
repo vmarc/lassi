@@ -117,8 +117,8 @@ public class ArtnetSender {
     public void stop() {
         if (!stop){
             for (SceneFader sf:activeSceneFaders
-                 ) {
-                sf.setTotalFrames(0);
+            ) {
+                sf.setPause(true);
             }
             stop = true;
             fadeStop();
@@ -132,20 +132,20 @@ public class ArtnetSender {
             e.printStackTrace();
         }
 
+        for (SceneFader sf:activeSceneFaders
+        ) {
+            renewLastFrames(new Frame(sf.getDmxValues(), 0, sf.getEndFrame().getUniverse()));
+            sf.setTotalFrames(0);
+            System.out.println("Setting 0");
+        }
+
         lastFrames.forEach((integer, frame) ->{
             SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), frame, createEmptyFrame(frame),0);
-            sceneFader.fadeFrame(this);
             activeSceneFaders.add(sceneFader);
+            sceneFader.fadeFrame(this);
             renewLastFrames(frame);
 
         });
-
-/*        Frame emptyFrame = createEmptyFrame();
-        Frame stoppedFrame = new Frame(sceneFader.getDmxValues());
-        Scene scene = new Scene();
-        scene.getFrames().add(emptyFrame);
-        sceneFader = new SceneFader(settings.getFramesPerSecond(), settings.getFadeTimeInSeconds(), stoppedFrame , emptyFrame);
-        sceneFader.fadeFrame(this);*/
         iOService.writeToLog(0, "Stopped fading");
 
     }
@@ -197,8 +197,8 @@ public class ArtnetSender {
             }
             if (!Arrays.equals(f.getDmxValues(), startFrame.getDmxValues())){
                 SceneFader sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), startFrame, f, startTime);
-                sceneFader.fadeFrame(this);
                 activeSceneFaders.add(sceneFader);
+                sceneFader.fadeFrame(this);
             }
             renewLastFrames(f);
         }
@@ -234,13 +234,11 @@ public class ArtnetSender {
                 }
             }
 
-            NetworkInterface networkInterface = NetworkInterface.getByName("eth0");
-            List<InterfaceAddress> list = networkInterface.getInterfaceAddresses();
-            ipAdress = list.get(0).getBroadcast().toString();
             System.out.println(ipAdress);
         } catch (SocketException e) {
             e.printStackTrace();
         }
+        ipAdress = "192.168.0.255";
         return ipAdress;
     }
 
