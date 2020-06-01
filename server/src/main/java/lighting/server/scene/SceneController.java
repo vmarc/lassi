@@ -133,16 +133,17 @@ public class SceneController {
         return null;
     }
 
-    @GetMapping(value = "api/getbuttons")
-    public List<Boolean> getButtons() {
+
+    @GetMapping(value = "api/getPages")
+    public int getPages() {/*
         try {
-            iOService.writeToLog(0, "Retrieved buttons status");
-            return this.iOService.getButtons();
+            iOService.writeToLog(0, "Retrieved page size");
+            //return this.iOService.getButtons();
         } catch (IOException e) {
-            iOService.writeToLog(-1, "Could not retrieve buttons status");
+            iOService.writeToLog(-1, "Could not retrieve page size");
             e.printStackTrace();
-        }
-        return null;
+        }*/
+        return 0;
     }
 
 
