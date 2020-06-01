@@ -135,14 +135,14 @@ public class SceneController {
 
 
     @GetMapping(value = "api/getPages")
-    public int getPages() {/*
+    public int getPages() {
         try {
             iOService.writeToLog(0, "Retrieved page size");
-            //return this.iOService.getButtons();
+            return this.iOService.getSettingsFromDisk().getButtonPages();
         } catch (IOException e) {
             iOService.writeToLog(-1, "Could not retrieve page size");
             e.printStackTrace();
-        }*/
+        }
         return 0;
     }
 
