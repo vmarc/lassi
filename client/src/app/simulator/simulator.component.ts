@@ -37,7 +37,7 @@ import { SimulatorControlComponent } from './simulator-control.component';
 </tr>
 <tr>
      <button class="buttons" mat-flat-button color="primary" (click)="stopPlaying()" [disabled]="stopButtonDisabled">
-  <i class="fas fa-stop-circle"></i> Stop playing Scene</button>
+  <i class="fas fa-stop-circle"></i> Stop playing scene</button>
 </tr>
 
 </table>
@@ -86,6 +86,9 @@ export class SimulatorComponent implements OnInit {
 
   toggleSingleFrameRecord() {
     this.recordSingleFrame = !this.recordSingleFrame;
+    if (this.playMode == true) {
+      this.stopButtonDisabled = !this.stopButtonDisabled;
+    }
     if (this.recordSingleFrame == true) {
       this.recordMultipleFrames = false;
       this.playMode = false;
@@ -96,6 +99,11 @@ export class SimulatorComponent implements OnInit {
 
   toggleMultipleFramesRecord() {
     this.recordMultipleFrames = !this.recordMultipleFrames;
+
+    if (this.playMode == true) {
+      this.stopButtonDisabled = !this.stopButtonDisabled;
+    }
+
     if (this.recordMultipleFrames == true) {
       this.recordSingleFrame = false;
       this.playMode = false;

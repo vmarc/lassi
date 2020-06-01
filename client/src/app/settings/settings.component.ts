@@ -29,6 +29,14 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
   </mat-select>
 </mat-form-field>
 </div>
+<div>
+<mat-form-field>
+  <p>Number of button pages</p>
+  <mat-select  formControlName="buttonPages" (change)="changePages($event)" [value]="pages">
+    <mat-option *ngFor="let page of buttonsPages" [value]="page" >{{page}}</mat-option>
+  </mat-select>
+</mat-form-field>
+</div>
 <button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
 <button mat-button (click)="deleteLog()"><i class="fas fa-trash-alt"></i> Delete log file</button>
 </div>
@@ -41,15 +49,18 @@ export class SettingsComponent implements OnInit {
 
   settingsForm: FormGroup = new FormGroup({
     framesPerSecond: new FormControl(),
-    fadeTimeInSeconds: new FormControl()
+    fadeTimeInSeconds: new FormControl(),
+    buttonPages: new FormControl()
   })
 
   settings: Settings;
   newSettings: Settings
   fps: any;
   fadeSec: any;
+  pages: any;
   framesPSec: any[] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 100, 150, 200, 400, 800];
   fadeTimeInSec: any[] = [1, 5, 10, 20, 30];
+  buttonsPages: any[] = [1, 2, 3];
 
   constructor(private settingsService: SettingsService,
               private dialog: MatDialog,
@@ -60,9 +71,11 @@ export class SettingsComponent implements OnInit {
       this.settings = data;
       this.fps = this.settings.framesPerSecond;
       this.fadeSec = this.settings.fadeTimeInSeconds;
+      this.pages = this.settings.buttonPages;
       this.settingsForm.setValue({
         framesPerSecond: this.settings.framesPerSecond,
-        fadeTimeInSeconds: this.settings.fadeTimeInSeconds
+        fadeTimeInSeconds: this.settings.fadeTimeInSeconds,
+        buttonPages: this.settings.buttonPages
       });
 
 
@@ -78,6 +91,12 @@ export class SettingsComponent implements OnInit {
     return this.settingsForm.get('fadeTimeInSeconds');
   }
 
+  get buttonPages() {
+    return this.settingsForm.get('buttonPages');
+  }
+
+
+
   changeFps($event) {
     this.framesPerSecond.setValue(this.framesPSec[$event]);
   }
@@ -86,14 +105,19 @@ export class SettingsComponent implements OnInit {
     this.fadeTimeInSeconds.setValue(this.fadeTimeInSec[$event]);
   }
 
+  changePages($event) {
+    this.buttonPages.setValue(this.buttonsPages[$event]);
+  }
+
   save() {
 
     if (this.settings == null) {
-       this.newSettings = new Settings(this.settingsForm.get('framesPerSecond').value, this.settingsForm.get('fadeTimeInSeconds').value );
+       this.newSettings = new Settings(this.settingsForm.get('framesPerSecond').value, this.settingsForm.get('fadeTimeInSeconds').value, this.settingsForm.get('buttonPages').value);
        this.settingsService.saveSettings(this.newSettings);
     } else {
       this.settings.framesPerSecond = this.settingsForm.get('framesPerSecond').value;
       this.settings.fadeTimeInSeconds = this.settingsForm.get('fadeTimeInSeconds').value;
+      this.settings.buttonPages = this.settingsForm.get('buttonPages').value;
       this.settingsService.saveSettings(this.settings);
     }
 

@@ -4,13 +4,15 @@ public class Settings {
 
     private int framesPerSecond;
     private int fadeTimeInSeconds;
+    private int buttonPages;
 
     public Settings() {
     }
 
-    public Settings(int framesPerSecond, int fadeTimeInSeconds) {
+    public Settings(int framesPerSecond, int fadeTimeInSeconds, int buttonPages) {
         this.framesPerSecond = framesPerSecond;
         this.fadeTimeInSeconds = fadeTimeInSeconds;
+        this.buttonPages = buttonPages;
     }
 
 
@@ -30,4 +32,11 @@ public class Settings {
         this.fadeTimeInSeconds = fadeTimeInSeconds;
     }
 
+    public int getButtonPages() {
+        return buttonPages;
+    }
+
+    public void setButtonPages(int buttonPages) {
+        this.buttonPages = buttonPages;
+    }
 }

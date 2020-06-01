@@ -8,7 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as moment from 'moment';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatSort, Sort, MatSortable } from '@angular/material/sort';
 
 @Component({
   selector: 'app-list-saved-scenes',
@@ -200,8 +200,8 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   download(row) {
-    this.scenesService.download(row['id']).subscribe( x => {
-      var newBlob = new Blob([x], {type: "application/json"});
+    this.scenesService.download(row['id']).subscribe( blob => {
+      var newBlob = new Blob([blob], {type: "application/json"});
 
       const data = window.URL.createObjectURL(newBlob);
 
@@ -363,7 +363,7 @@ export class EditSavedSceneDialogComponent {
   scene: Scene;
   selectedButton: any;
   selectedFadeTime: any;
-  buttons: any[] = [0,1,2,3,4,5,6,7,8,9];
+  buttons: any[] = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27];
   fadeTimes: any[] = [5,10,15,20,30,60];
   currentDate: Date;
 

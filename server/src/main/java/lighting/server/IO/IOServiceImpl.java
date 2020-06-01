@@ -32,6 +32,7 @@ public class IOServiceImpl implements IIOService {
         createDirectories();
     }
 
+    //Check if directories are created, if not creates them
     public void createDirectories() {
         File scenes = new File(String.valueOf(scenesDir));
         if (!scenes.exists()) {
@@ -73,9 +74,8 @@ public class IOServiceImpl implements IIOService {
         Logger logger = Logger.getLogger("Lighting logs");
         FileHandler fh;
 
+        //write message to log
         try {
-
-            // This block configure the logger with handler and formatter
             fh = new FileHandler(logsDir.toString() + "/Lighting.log", true);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
@@ -100,7 +100,7 @@ public class IOServiceImpl implements IIOService {
 
     public void createDefaultSettings(){
         //default settings
-        Settings settings = new Settings(40, 5 );
+        Settings settings = new Settings(40, 5, 1);
         try {
             saveSettingsToDisk(settings);
         } catch (IOException e) {
@@ -108,13 +108,14 @@ public class IOServiceImpl implements IIOService {
         }
     }
 
-
+    //maps Scene object to .json and saves it to disk
     public void saveSceneToDisk(Scene scene) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
         objectMapper.writeValue(new File((scenesDir) + "/scene_" + scene.getId() + ".json" ), scene);
 
     }
 
+    //Returns String representation of a Scene .json file
     public String downloadScene(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
@@ -148,6 +149,7 @@ public class IOServiceImpl implements IIOService {
 
     }
 
+    //gets .json file from disk by scene_id and maps it to a Scene object
     public Scene getSceneFromDisk(String scene_id) throws IOException {
         Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
         ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
@@ -156,6 +158,7 @@ public class IOServiceImpl implements IIOService {
 
     }
 
+    //Overwrites Scene from disk
     public void updateSceneFromDisk(Scene sceneX) throws IOException {
         List<Scene> scenesFromDisk = getAllScenesFromDisk();
 
@@ -173,6 +176,7 @@ public class IOServiceImpl implements IIOService {
 
     }
 
+    //gets the status of all buttons
     public List<Boolean> getButtons() throws IOException {
         List<Boolean> buttons = new ArrayList<>(
                 Arrays.asList(  true, true, true, true, true, true, true, true, true,
@@ -190,11 +194,13 @@ public class IOServiceImpl implements IIOService {
         return buttons;
     }
 
+    //maps a Settings object to .json file and saves it on disk
     public void saveSettingsToDisk(Settings settings) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.writeValue(new File((settingsDir) + "/settings.json"), settings);
     }
 
+    //gets .json file from disk and maps it to a Settings object
     public Settings getSettingsFromDisk() throws IOException {
         Stream<Path> walk = Files.walk(Paths.get(String.valueOf(settingsDir)));
         String result = walk.filter(Files::isRegularFile)
