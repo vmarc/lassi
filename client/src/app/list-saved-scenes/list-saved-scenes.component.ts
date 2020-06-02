@@ -72,6 +72,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   displayedColumns = ['name', 'buttonId','createdOn', 'actions'];
   playingScene: boolean = false;
   pause: boolean = false;
+  stopped: boolean = false;
 
   constructor(private scenesService: ScenesService,
               private router: Router,
@@ -104,15 +105,21 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   play(row) {
+    this.stopped == false;
     this.snackbar.open('Playing Scene...', 'Close', {
       duration: 3000
     });
     this.scenesService.play(row['id']).subscribe(donePlaying => {
       if (donePlaying) {
-        this.playingScene = !this.playingScene;
-        this.snackbar.open('Done playing Scene...', 'Close', {
-          duration: 3000
-        });
+        if (this.stopped == true) {
+
+        } else {
+          this.playingScene = !this.playingScene;
+          this.snackbar.open('Done playing Scene...', 'Close', {
+            duration: 3000
+          });
+        }
+
       }
     });
   }
@@ -142,6 +149,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   stop(row) {
+    this.stopped = true;
     this.scenesService.stopPlaying();
     this.snackbar.open('Stopping Scene...', 'Close', {
       duration: 3000
