@@ -105,7 +105,7 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
   }
 
   play(row) {
-    this.stopped == false;
+    this.stopped = false;
     this.snackbar.open('Playing Scene...', 'Close', {
       duration: 3000
     });
