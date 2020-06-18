@@ -15,7 +15,7 @@ If you wish to run the project on your computer for testing, follow these instru
 #### Angular
 
 Make sure npm is installed on your computer.
-If you are deploying for the first time, run this command in the client folder:
+If you are deploying for the first time, run this command in the **client** folder:
 
 ```
 npm install
@@ -43,12 +43,12 @@ private Path parentDir = Paths.get(System.getProperty("user.dir"));
 You can replace the "user.dir" property with another location on your drive.
 <br>
 <br>
-After this, run following command in the server folder:
+Make sure Maven is installed on your computer. After this, run following command in the **server** folder:
 ```
 mvn spring-boot:run
 ```
 
-This will create the scenes and settings directories in the server directory that you ran previous command, unless you have changed the parentDir variable.
+This will create the scenes and settings directories in the server directory because of the previous command, unless you have replaced *user.dir* in the *parentDir* variable.
 
 
 
