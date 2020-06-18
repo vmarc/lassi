@@ -40,7 +40,7 @@ To make sure the directories for scenes and settings are created on your compute
 ```java
 private Path parentDir = Paths.get(System.getProperty("user.dir"));
 ```
-You can replace the "user.dir" property with another location on your drive.
+You can replace the *user.dir* property with another physical filepath on your drive.
 <br>
 <br>
 Make sure Maven is installed on your computer. After this, run following command in the **server** folder:
