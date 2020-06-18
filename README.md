@@ -2,7 +2,7 @@
 
 ### Introduction
 
-A project made with Spring Boot, Angular and Node.JS for recording and playing lightscenes through the Art-Net/DMX protocol.
+A project made with Spring Boot, Angular for recording and playing lightscenes through the Art-Net/DMX protocol.
 The purpose of this project is to be deployed on a custom Raspberry Pi, with physical buttons. 
 
 [![Schets.png](https://i.postimg.cc/6q9tGFf1/Schets.png)](https://postimg.cc/YGyJ5nV1)
