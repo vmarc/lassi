@@ -34,7 +34,7 @@ Follow the instructions below.
 #### Spring Boot
 
 **Warning**<br>
-To make sure the directories for scenes and settings are created on your computer, make sure the parentDir variable in 
+To make sure the directories for scenes and settings are created on your computer, make sure the parentDir variable in<br>
 *DMX-Lighting/server/src/main/java/lighting/server/IO/IOServiceImpl.java* is set to:
 
 ```java
