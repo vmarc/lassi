@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
 
-public class Main {
+public class SendRandomData {
     public static void main(String[] args) throws InterruptedException {
 
         ArtNetClient artNetClient = new ArtNetClient();
