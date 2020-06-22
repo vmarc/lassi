@@ -34,7 +34,7 @@ Follow the instructions below.
 #### Spring Boot
 
 **Warning**<br>
-To make sure the directories for scenes and settings are created on your computer, make sure the parentDir variable in<br>
+To make sure the directories for scenes and settings are created on your computer, make sure the *parentDir* variable in<br>
 *DMX-Lighting/server/src/main/java/lighting/server/IO/IOServiceImpl.java* is set to:
 
 ```java
@@ -51,4 +51,25 @@ mvn spring-boot:run
 This will create the scenes and settings directories in the server directory because of the previous command, unless you have replaced *user.dir* in the *parentDir* variable.
 
 
+#### Testing
+
+In case you want to make sure everything works as intended, you can send out random DMX data with the *SendRandomData* class.
+
+**Warning**<br>
+To make sure the DMX data gets shown in the *Monitor* component of the Angular application, make sure the *brokerURL* property in *DMX-Lighting/client/src/app/app-rx-stomp.config.ts* is set to:
+
+```
+brokerURL: 'ws://localhost:8080/stomp/websocket'
+```
+
+Of course if you run everything on the Raspberry Pi, this has to be set to:
+
+```
+brokerURL: 'ws://raspberrypi:8080/stomp/websocket'
+```
+
+Make sure Maven is installed on your computer. After this, run following command in the **server** folder:
+
+```
+mvn -X clean install  exec:java -Dexec.mainClass=lighting.server.SendRandomData -Dexec.classpathScope=test -e
 
