@@ -28,7 +28,7 @@ npm start
 ```
 
 After this is completed, the Angular application should be running at http://localhost:4200/<br>
-Note: the Angular application won't work properly without running the Spring Boot backend first.<br> 
+**Note:** the Angular application won't work properly without running the Spring Boot backend first.<br> 
 Follow the instructions below.
 
 #### Spring Boot
@@ -76,5 +76,5 @@ mvn -X clean install  exec:java -Dexec.mainClass=lighting.server.SendRandomData 
 
 Now you should be able to see random data in the *Monitor* component. Make sure you enter a universe (1,2 or 3) in the text field.
 
-To test the recording capability, you can record a single or multiple frames. After recording, you should be also to see the recorded scenes in the *List of Scenes* component.
+To test the recording capability, you can record a single or multiple frames. After recording, you should be able to see the recorded scenes in the *List of Scenes* component.
 
