@@ -72,4 +72,9 @@ Make sure Maven is installed on your computer. After this, run following command
 
 ```
 mvn -X clean install  exec:java -Dexec.mainClass=lighting.server.SendRandomData -Dexec.classpathScope=test -e
+```
+
+Now you should be able to see random data in the *Monitor* component. Make sure you enter a universe (1,2 or 3) in the text field.
+
+To test the recording capability, you can record a single or multiple frames. After recording, you should be also to see the recorded scenes in the *List of Scenes* component.
 
