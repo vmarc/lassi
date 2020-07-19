@@ -2,14 +2,16 @@
 
 html, body {
   height: 100%;
-
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   position: relative;
-
 }
 
+h1 {
+  font-weight: normal;
+}
 
 

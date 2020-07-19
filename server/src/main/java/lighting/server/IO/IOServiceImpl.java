@@ -8,13 +8,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,10 +25,11 @@ import lighting.server.settings.Settings;
 @Component
 public class IOServiceImpl implements IOService {
 
+	private static final Logger log = LogManager.getLogger(IOServiceImpl.class);
+
 	private final Path parentDir = Paths.get(System.getProperty("user.dir"));
 	private final Path scenesDir = Paths.get(parentDir + "/scenes/");
 	private final Path settingsDir = Paths.get(parentDir + "/settings/");
-	private final Path logsDir = Paths.get(parentDir + "/lightingLogs/");
 
 	public IOServiceImpl() {
 		createDirectories();
@@ -40,59 +40,19 @@ public class IOServiceImpl implements IOService {
 		File scenes = new File(String.valueOf(scenesDir));
 		if (!scenes.exists()) {
 			if (scenes.mkdir()) {
-				System.out.println("Scenes directory is created!");
+				log.info("Scenes directory is created!");
 			} else {
-				System.out.println("Failed to create Scenes directory!");
+				log.info("Failed to create Scenes directory!");
 			}
 		}
 		File settings = new File(String.valueOf(settingsDir));
 		if (!settings.exists()) {
 			if (settings.mkdir()) {
-				System.out.println("Settings directory is created!");
+				log.info("Settings directory is created!");
 				createDefaultSettings();
 			} else {
-				System.out.println("Failed to create Settings directory!");
+				log.info("Failed to create Settings directory!");
 			}
-		}
-		File logs = new File(String.valueOf(logsDir));
-		if (!logs.exists()) {
-			if (logs.mkdir()) {
-				System.out.println("Logs directory is created!");
-			} else {
-				System.out.println("Failed to create Logs directory!");
-			}
-		}
-	}
-
-	public void deleteLog() throws IOException {
-		Path filePath = Paths.get(logsDir + "/Lighting.log");
-		Files.deleteIfExists(filePath);
-		writeToLog(0, "New log file created!");
-	}
-
-	public void writeToLog(int level, String message) {
-
-		Logger logger = Logger.getLogger("Lighting logs");
-		FileHandler fh;
-
-		//write message to log
-		try {
-			fh = new FileHandler(logsDir.toString() + "/Lighting.log", true);
-			logger.addHandler(fh);
-			SimpleFormatter formatter = new SimpleFormatter();
-			fh.setFormatter(formatter);
-
-			if (level == 0) {
-				logger.info(message);
-				fh.close();
-			} else if (level == -1) {
-				logger.warning(message);
-				fh.close();
-			}
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 	}
 
@@ -102,7 +62,7 @@ public class IOServiceImpl implements IOService {
 		try {
 			saveSettingsToDisk(settings);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could not save settings to disk", e);
 		}
 	}
 
@@ -115,8 +75,7 @@ public class IOServiceImpl implements IOService {
 	//Returns String representation of a Scene .json file
 	public String downloadScene(String scene_id) throws IOException {
 		Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
-		String str = FileUtils.readFileToString(filePath.toFile(), "UTF-8");
-		return str;
+		return FileUtils.readFileToString(filePath.toFile(), "UTF-8");
 	}
 
 	public List<Scene> getAllScenesFromDisk() throws IOException {
@@ -146,8 +105,7 @@ public class IOServiceImpl implements IOService {
 	public Scene getSceneFromDisk(String scene_id) throws IOException {
 		Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
 		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-		Scene scene = objectMapper.readValue(filePath.toFile(), Scene.class);
-		return scene;
+		return objectMapper.readValue(filePath.toFile(), Scene.class);
 	}
 
 	//Overwrites Scene from disk
@@ -192,9 +150,7 @@ public class IOServiceImpl implements IOService {
 	public Settings getSettingsFromDisk() throws IOException {
 		Stream<Path> walk = Files.walk(Paths.get(String.valueOf(settingsDir)));
 		String result = walk.filter(Files::isRegularFile).map(x -> x.toString()).filter(f -> f.endsWith(".json")).collect(Collectors.joining());
-
 		ObjectMapper objectMapper = new ObjectMapper();
-		Settings settings = objectMapper.readValue(new File(result), Settings.class);
-		return settings;
+		return objectMapper.readValue(new File(result), Settings.class);
 	}
 }

@@ -3,6 +3,8 @@ package lighting.server.scene;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import lighting.server.IO.IOService;
@@ -11,6 +13,8 @@ import lighting.server.artnet.ArtnetSender;
 
 @Component
 public class SceneServiceImpl implements SceneService {
+
+	private static final Logger log = LogManager.getLogger(SceneServiceImpl.class);
 
 	private final ArtnetListener artnetListener;
 	private final ArtnetSender artnetSender;
@@ -32,7 +36,7 @@ public class SceneServiceImpl implements SceneService {
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could not read scenes from disk", e);
 		}
 
 		try {
@@ -40,14 +44,14 @@ public class SceneServiceImpl implements SceneService {
 			artnetListener.setNumberOfFrames(1);
 			artnetListener.recordData(button_id);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could not record a scene with a single frames to button " + button_id, e);
 		}
+
 		try {
 			Thread.sleep(3000);
 			artnetListener.getArtNetClient().stop();
 		} catch (InterruptedException e) {
-			e.printStackTrace();
-			iOService.writeToLog(-1, " Could not record a scene with a single frames to button " + button_id);
+			log.error("Could not record a scene with a single frames to button " + button_id, e);
 		}
 		return artnetListener.isFramesAdded();
 	}
@@ -62,7 +66,7 @@ public class SceneServiceImpl implements SceneService {
 				}
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could dot read all scenes from disk", e);
 		}
 
 		try {
@@ -71,8 +75,7 @@ public class SceneServiceImpl implements SceneService {
 			artnetListener.recordData(button_id);
 			return true;
 		} catch (IOException e) {
-			e.printStackTrace();
-			iOService.writeToLog(-1, " Could not record a scene with multiple frames to button " + button_id);
+			log.error("Could not record a scene with multiple frames to button " + button_id, e);
 			return false;
 		}
 	}

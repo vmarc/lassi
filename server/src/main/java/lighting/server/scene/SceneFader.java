@@ -3,10 +3,15 @@ package lighting.server.scene;
 import java.time.Duration;
 import java.time.Instant;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import lighting.server.artnet.ArtnetSender;
 import lighting.server.frame.Frame;
 
 public class SceneFader {
+
+	private static final Logger log = LogManager.getLogger(SceneFader.class);
 
 	private final int framesPerSecond;
 	private final int fadeTimeInSeconds;
@@ -46,7 +51,7 @@ public class SceneFader {
 		try {
 			Thread.sleep(startTime);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			// do nothing
 		}
 
 		Instant start = Instant.now();
@@ -80,7 +85,7 @@ public class SceneFader {
 			}
 
 			Instant pauseTime = null;
-			System.out.println("Pause: " + pause);
+			log.info("Pause: " + pause);
 			while (pause) {
 				if (pauseTime == null) {
 					pauseTime = Instant.now();
@@ -88,7 +93,7 @@ public class SceneFader {
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					// do nothing
 				}
 			}
 
@@ -117,7 +122,7 @@ public class SceneFader {
 				try {
 					Thread.sleep(sleep);
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					// do nothing
 				}
 			}
 		}
@@ -125,9 +130,7 @@ public class SceneFader {
 		artnetSender.removeSceneFader(this);
 		Instant finish = Instant.now();
 
-		//Logging
 		long timeElapsed = Duration.between(start, finish).toMillis();
-		//System.out.println();
-		System.out.println("Time elapsed: " + timeElapsed + " milliseconds");
+		log.info("Time elapsed: " + timeElapsed + " milliseconds");
 	}
 }

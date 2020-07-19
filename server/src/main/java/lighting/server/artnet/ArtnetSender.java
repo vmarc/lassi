@@ -19,6 +19,9 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ch.bildspur.artnet.ArtNetClient;
 import lighting.server.IO.IOService;
 import lighting.server.frame.Frame;
@@ -27,6 +30,8 @@ import lighting.server.scene.SceneFader;
 import lighting.server.settings.Settings;
 
 public class ArtnetSender {
+
+	private static final Logger log = LogManager.getLogger(ArtnetSender.class);
 
 	private final IOService iOService;
 	private ArtNetClient artNetClient = new ArtNetClient();
@@ -54,7 +59,7 @@ public class ArtnetSender {
 		try {
 			this.settings = this.iOService.getSettingsFromDisk();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could not send data", e);
 		}
 
 		fade();
@@ -69,7 +74,7 @@ public class ArtnetSender {
 					try {
 						Thread.sleep(200);
 					} catch (InterruptedException e) {
-						e.printStackTrace();
+						// do nothing
 					}
 				}
 
@@ -79,15 +84,15 @@ public class ArtnetSender {
 				if (!artNetClient.isRunning()) {
 					artNetClient.start();
 				}
-				System.out.println(frame.getStartTime());
+				log.info(frame.getStartTime());
 
 				artNetClient.unicastDmx(ipAddress, 0, frame.getUniverse(), dmxData);
-				System.out.println("U: " + frame.getUniverse());
+				log.info("U: " + frame.getUniverse());
 
 				try {
 					Thread.sleep(frame.getStartTime());
 				} catch (InterruptedException e) {
-					e.printStackTrace();
+					// do nothing
 				}
 			}
 		}
@@ -101,7 +106,7 @@ public class ArtnetSender {
 		}
 		byte[] dmxData = intArrayToByteArray(dmxvalues);
 		artNetClient.unicastDmx(ipAddress, 0, universe, dmxData);
-		iOService.writeToLog(0, "Frame sent");
+		log.debug("Frame sent");
 		//artNetClient.stop();
 	}
 
@@ -133,13 +138,13 @@ public class ArtnetSender {
 		try {
 			this.settings = this.iOService.getSettingsFromDisk();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could get read settings from disk", e);
 		}
 
 		for (SceneFader sf : activeSceneFaders) {
 			renewLastFrames(new Frame(sf.getDmxValues(), 0, sf.getEndFrame().getUniverse()));
 			sf.setTotalFrames(0);
-			System.out.println("Setting 0");
+			log.info("Setting 0");
 		}
 
 		lastFrames.forEach((integer, frame) -> {
@@ -149,7 +154,7 @@ public class ArtnetSender {
 			sceneFader.fadeFrame(this);
 			renewLastFrames(emptyFrame);
 		});
-		iOService.writeToLog(0, "Stopped fading");
+		log.debug("Stopped fading");
 	}
 
 	public void pause(boolean bool) {
@@ -182,7 +187,7 @@ public class ArtnetSender {
 		try {
 			this.settings = this.iOService.getSettingsFromDisk();
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Could not read settings from disk", e);
 		}
 
 		List<Frame> list = sceneToPlay.getFrames().stream().filter(distinctByKey(Frame::getUniverse)).collect(Collectors.toList());
@@ -190,7 +195,7 @@ public class ArtnetSender {
 		for (Frame f : list) {
 			Frame startFrame = lastFrames.get(f.getUniverse());
 			long startTime = Duration.between(list.get(0).getCreatedOn(), f.getCreatedOn()).toMillis();
-			System.out.println("Wait time for fading: " + startTime);
+			log.info("Wait time for fading: " + startTime);
 			if (startFrame == null) {
 				startFrame = createEmptyFrame(f);
 			}
@@ -213,7 +218,7 @@ public class ArtnetSender {
 	}
 
 	public String getIp() {
-		String ipAdress = "192.168.0.255";
+		String ipAddress = "192.168.0.255";
 		try {
 			Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
 			while (interfaces.hasMoreElements()) {
@@ -225,15 +230,15 @@ public class ArtnetSender {
 					if (broadcast == null)
 						continue;
 
-					ipAdress = broadcast.toString().substring(1);
-					System.out.println(ipAdress);
+					ipAddress = broadcast.toString().substring(1);
+					log.info(ipAddress);
 				}
 			}
 
-			System.out.println(ipAdress);
+			log.info(ipAddress);
 		} catch (SocketException e) {
-			e.printStackTrace();
+			log.error("Could get ipAddress", e);
 		}
-		return ipAdress;
+		return ipAddress;
 	}
 }

@@ -3,9 +3,14 @@ package lighting.server;
 import java.util.Random;
 import java.util.stream.IntStream;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ch.bildspur.artnet.ArtNetClient;
 
 public class SendRandomData {
+
+	private static final Logger log = LogManager.getLogger(SendRandomData.class);
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -40,7 +45,7 @@ public class SendRandomData {
 			artNetClient.broadcastDmx(0, 3, dmxData2);
 
 			Thread.sleep(1000);
-			System.out.println("send" + i);
+			log.info("send" + i);
 		}
 	}
 }

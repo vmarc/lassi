@@ -7,6 +7,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import ch.bildspur.artnet.ArtNetClient;
@@ -20,6 +22,8 @@ import lighting.server.settings.Settings;
 
 @Component
 public class ArtnetListener {
+
+	private static final Logger log = LogManager.getLogger(ArtnetListener.class);
 
 	private final IOService iioService;
 	private ArtNetClient artNetClient = new ArtNetClient();
@@ -96,7 +100,7 @@ public class ArtnetListener {
 					try {
 						iioService.saveSceneToDisk(scene);
 					} catch (IOException e) {
-						e.printStackTrace();
+						log.error("Could not save scene to disk", e);
 					}
 					artNetClient.stop();
 				}
@@ -130,7 +134,7 @@ public class ArtnetListener {
 				return false;
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("Error while stop recording", e);
 			return false;
 		}
 	}

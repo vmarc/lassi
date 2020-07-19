@@ -1,47 +1,45 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { SettingsService } from './settings.service';
-import { Settings } from './settings';
-import { MatTableDataSource } from '@angular/material/table';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {SettingsService} from './settings.service';
+import {Settings} from './settings';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings',
   template: `
-<h1>Settings</h1>
-<form [formGroup]="settingsForm">
-<div class="container">
-<div class="center">
-<div>
-<mat-form-field>
-  <p>Frames per second</p>
-  <mat-select  formControlName="framesPerSecond" (change)="changeFps($event)" [value]="fps">
-    <mat-option *ngFor="let frame of framesPSec" [value]="frame" >{{frame}}</mat-option>
-  </mat-select>
-</mat-form-field>
-</div>
-<div>
-<mat-form-field>
-  <p>Fade time in seconds for newly recorded scenes</p>
-  <mat-select  formControlName="fadeTimeInSeconds" (change)="changeFade($event)" [value]="fadeSec">
-    <mat-option *ngFor="let fade of fadeTimeInSec" [value]="fade" >{{fade}}</mat-option>
-  </mat-select>
-</mat-form-field>
-</div>
-<div>
-<mat-form-field>
-  <p>Number of button pages</p>
-  <mat-select  formControlName="buttonPages" (change)="changePages($event)" [value]="pages">
-    <mat-option *ngFor="let page of buttonsPages" [value]="page" >{{page}}</mat-option>
-  </mat-select>
-</mat-form-field>
-</div>
-<button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
-<button mat-button (click)="deleteLog()"><i class="fas fa-trash-alt"></i> Delete log file</button>
-</div>
-</div>
-</form>
+    <h1>Settings</h1>
+    <form [formGroup]="settingsForm">
+      <div class="container">
+        <div class="center">
+          <div>
+            <mat-form-field>
+              <p>Frames per second</p>
+              <mat-select formControlName="framesPerSecond" (change)="changeFps($event)" [value]="fps">
+                <mat-option *ngFor="let frame of framesPSec" [value]="frame">{{frame}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <p>Fade time in seconds for newly recorded scenes</p>
+              <mat-select formControlName="fadeTimeInSeconds" (change)="changeFade($event)" [value]="fadeSec">
+                <mat-option *ngFor="let fade of fadeTimeInSec" [value]="fade">{{fade}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <p>Number of button pages</p>
+              <mat-select formControlName="buttonPages" (change)="changePages($event)" [value]="pages">
+                <mat-option *ngFor="let page of buttonsPages" [value]="page">{{page}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
+        </div>
+      </div>
+    </form>
   `,
   styleUrls: ['./settings.component.css']
 })
@@ -64,23 +62,7 @@ export class SettingsComponent implements OnInit {
 
   constructor(private settingsService: SettingsService,
               private dialog: MatDialog,
-              private snackbar: MatSnackBar) { }
-
-  ngOnInit(): void {
-    this.settingsService.getSettings().subscribe(data => {
-      this.settings = data;
-      this.fps = this.settings.framesPerSecond;
-      this.fadeSec = this.settings.fadeTimeInSeconds;
-      this.pages = this.settings.buttonPages;
-      this.settingsForm.setValue({
-        framesPerSecond: this.settings.framesPerSecond,
-        fadeTimeInSeconds: this.settings.fadeTimeInSeconds,
-        buttonPages: this.settings.buttonPages
-      });
-
-
-    });
-
+              private snackbar: MatSnackBar) {
   }
 
   get framesPerSecond() {
@@ -95,7 +77,19 @@ export class SettingsComponent implements OnInit {
     return this.settingsForm.get('buttonPages');
   }
 
-
+  ngOnInit(): void {
+    this.settingsService.getSettings().subscribe(data => {
+      this.settings = data;
+      this.fps = this.settings.framesPerSecond;
+      this.fadeSec = this.settings.fadeTimeInSeconds;
+      this.pages = this.settings.buttonPages;
+      this.settingsForm.setValue({
+        framesPerSecond: this.settings.framesPerSecond,
+        fadeTimeInSeconds: this.settings.fadeTimeInSeconds,
+        buttonPages: this.settings.buttonPages
+      });
+    });
+  }
 
   changeFps($event) {
     this.framesPerSecond.setValue(this.framesPSec[$event]);
@@ -112,8 +106,8 @@ export class SettingsComponent implements OnInit {
   save() {
 
     if (this.settings == null) {
-       this.newSettings = new Settings(this.settingsForm.get('framesPerSecond').value, this.settingsForm.get('fadeTimeInSeconds').value, this.settingsForm.get('buttonPages').value);
-       this.settingsService.saveSettings(this.newSettings);
+      this.newSettings = new Settings(this.settingsForm.get('framesPerSecond').value, this.settingsForm.get('fadeTimeInSeconds').value, this.settingsForm.get('buttonPages').value);
+      this.settingsService.saveSettings(this.newSettings);
     } else {
       this.settings.framesPerSecond = this.settingsForm.get('framesPerSecond').value;
       this.settings.fadeTimeInSeconds = this.settingsForm.get('fadeTimeInSeconds').value;
@@ -124,52 +118,5 @@ export class SettingsComponent implements OnInit {
     this.snackbar.open('Settings saved', 'Close', {
       duration: 3000
     });
-
-
   }
-
-  deleteLog() {
-    const dialogRef = this.dialog.open(ConfirmDeleteLogDialogComponent, {
-      width: '750px'
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.settingsService.deleteLog();
-        this.snackbar.open('Log file deleted', 'Close', {
-          duration: 3000
-        });
-
-      }
-    });
-
-  }
-
-
-
-}
-
-@Component({
-  selector: 'confirm-delete-log--dialog',
-  template: `<h1 mat-dialog-title>Confirmation</h1>
-<div mat-dialog-content>
-  <p>Are you sure you want to delete the log file and create a new one?</p>
-</div>
-<div mat-dialog-actions>
- <button mat-button [mat-dialog-close]="true">Yes</button>
-  <button mat-button (click)="onNoClick()" cdkFocusInitial>No</button>
-</div>
-`
-})
-export class ConfirmDeleteLogDialogComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<ConfirmDeleteLogDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: String) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-
 }

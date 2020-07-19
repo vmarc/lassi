@@ -8,10 +8,6 @@ import lighting.server.settings.Settings;
 
 public interface IOService {
 
-	void deleteLog() throws IOException;
-
-	void writeToLog(int level, String message);
-
 	void updateSceneFromDisk(Scene scene) throws IOException;
 
 	void saveSceneToDisk(Scene scene) throws IOException;
