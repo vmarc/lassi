@@ -1,24 +1,25 @@
 package lighting.server.settings;
 
-import lighting.server.IO.IIOService;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 
+import org.springframework.stereotype.Component;
+
+import lighting.server.IO.IOService;
+
 @Component
-public class SettingsServiceImpl implements ISettingsService {
+public class SettingsServiceImpl implements SettingsService {
 
-    private final IIOService iOService;
+	private final IOService iOService;
 
-    public SettingsServiceImpl(IIOService iOService) {
-        this.iOService = iOService;
-    }
+	public SettingsServiceImpl(final IOService iOService) {
+		this.iOService = iOService;
+	}
 
-    public void saveSettingsToDisk(Settings settings) throws IOException {
-        this.iOService.saveSettingsToDisk(settings);
-    }
+	public void saveSettingsToDisk(Settings settings) throws IOException {
+		this.iOService.saveSettingsToDisk(settings);
+	}
 
-    public Settings getSettingsFromDisk() throws IOException {
-        return this.iOService.getSettingsFromDisk();
-    }
+	public Settings getSettingsFromDisk() throws IOException {
+		return this.iOService.getSettingsFromDisk();
+	}
 }
