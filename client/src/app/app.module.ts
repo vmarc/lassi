@@ -18,25 +18,23 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSliderModule} from '@angular/material/slider';
-import { MatTableModule } from '@angular/material/table';
+import {MatTableModule} from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon'
-import { ListSavedScenesComponent, ConfirmDeleteDialogComponent, EditSavedSceneDialogComponent, SceneDetailsDialogComponent } from './list-saved-scenes/list-saved-scenes.component';
-import { ScenesService } from './scene/scenes.service';
+import {ListSavedScenesComponent} from './list-saved-scenes/list-saved-scenes.component';
+import {ScenesService} from './scene/scenes.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { FormsModule } from '@angular/forms';
-import { SettingsComponent, ConfirmDeleteLogDialogComponent} from './settings/settings.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {SettingsComponent} from './settings/settings.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
-import { SettingsService } from './settings/settings.service';
-import { Stomp } from './stomp';
-
-
+import {ConfirmDeleteDialogComponent} from "./list-saved-scenes/confirm-delete-dialog.component";
+import {SceneDetailsDialogComponent} from "./list-saved-scenes/scene-details-dialog.component";
+import {EditSavedSceneDialogComponent} from "./list-saved-scenes/edit-scene-dialog.component";
 
 @NgModule({
   declarations: [
@@ -51,8 +49,7 @@ import { Stomp } from './stomp';
     ConfirmDeleteDialogComponent,
     EditSavedSceneDialogComponent,
     SceneDetailsDialogComponent,
-    SettingsComponent,
-    ConfirmDeleteLogDialogComponent
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -87,11 +84,11 @@ import { Stomp } from './stomp';
       provide: InjectableRxStompConfig,
       useValue: appRxStompConfig
     },
-  /*  {
-      provide: InjectableRxStompConfig,
-      useClass: Stomp,
-      deps: [SettingsService]
-    },*/
+    /*  {
+        provide: InjectableRxStompConfig,
+        useClass: Stomp,
+        deps: [SettingsService]
+      },*/
     {
       provide: RxStompService,
       useFactory: rxStompServiceFactory,
