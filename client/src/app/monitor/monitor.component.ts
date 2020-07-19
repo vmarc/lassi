@@ -1,63 +1,109 @@
-import {Component, OnDestroy, OnInit, Inject} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
 import {Frame} from '../scene/frame';
-import { ScenesService } from '../scene/scenes.service';
-import { Router } from '@angular/router';
-import {map, retry, catchError} from 'rxjs/operators';
+import {ScenesService} from '../scene/scenes.service';
+import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-monitor',
   template: `
-<h1>Monitor</h1>
+    <h1>Monitor</h1>
 
+    <div class="date" [hidden]="disabledDate">
+      <strong>Frame created on: {{frame?.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
+    </div>
 
-<div class="date" [hidden]="disabledDate">
- <strong>Frame created on: {{frame?.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
-</div>
+    <div class="dmx-levels">
+      <div *ngFor="let dmxValue of frame?.dmxValues" class="dmx-level">
+        {{dmxValue}}
+      </div>
+    </div>
 
-<div class="dmx-levels">
-  <div *ngFor="let dmxValue of frame?.dmxValues" class="dmx-level">
-    {{dmxValue}}
-  </div>
-</div>
+    <mat-form-field class="universe" appearance="outline">
+      <mat-label>Choose universe to display</mat-label>
+      <input matInput placeholder="" [formControl]="universe" required>
+      <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
 
-<mat-form-field class="universe" appearance="outline">
-    <mat-label>Choose universe to display</mat-label>
-    <input matInput placeholder="" [formControl]="universe" required>
-    <mat-error *ngIf="universe.invalid">{{getErrorMessage()}}</mat-error>
- </mat-form-field>
+    <div class="record">
 
-<div class="record">
-   <table>
-<tr>
-   <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
-</tr>
-<tr>
-     <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
-</tr>
-</table>
+      <table>
+        <tr>
+          <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
+        </tr>
+        <tr>
+          <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
+        </tr>
+      </table>
 
+      <div>
+        <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButtonDisabled">
+          <i class="fas fa-record-vinyl"></i> Record
+        </button>
+        <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButtonDisabled">
+          <i class="fas fa-stop-circle"></i> Stop
+        </button>
+      </div>
+    </div>
+  `,
+  styles: [`
 
-<div>
-  <button class="buttons" mat-flat-button color="warn" (click)="record()" [disabled]="recordButtonDisabled">
-  <i class="fas fa-record-vinyl"></i> Record</button>
-  <button class="buttons" mat-flat-button color="primary" (click)="stop()" [disabled]="stopButtonDisabled">
-  <i class="fas fa-stop-circle"></i> Stop</button>
- </div>
- </div>
-`,
-  styleUrls: ['./monitor.component.css']
+    .dmx-levels {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 1em;
+      margin-right: 1em;
+      margin-bottom: 3em;
+      border-top: 1px solid lightgray;
+      border-left: 1px solid lightgray;
+    }
+
+    .dmx-level {
+      display: inline-block;
+      width: 2.2em;
+      height: 1.8em;
+      line-height: 1.8em;
+      border-right: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+      text-align: center;
+    }
+
+    .buttons {
+      display: inline-flex;
+      flex-wrap: wrap;
+      margin: 5px;
+
+    }
+
+    .universe {
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .date {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+
+    .record {
+      margin-left: 1em;
+    }
+
+  `]
 })
 export class MonitorComponent implements OnInit, OnDestroy {
 
   formGroup: FormGroup;
 
-  universe =  new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
+  universe = new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
 
   frame: Frame;
   disabledDate: boolean = false;
@@ -76,8 +122,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
               private builder: FormBuilder) {
     this.formGroup = this.builder.group({
       universe: ["", []]
-    })
-
+    });
   }
 
   getErrorMessage() {
@@ -116,6 +161,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
   toggleSingleFrameRecord() {
+
     this.recordSingleFrame = !this.recordSingleFrame;
 
     if (this.recordSingleFrame == true) {
@@ -125,14 +171,13 @@ export class MonitorComponent implements OnInit, OnDestroy {
       this.recordButtonDisabled = true;
     }
 
-
     if (this.stopButtonDisabled == false) {
       this.stopButtonDisabled = true;
     }
-
   }
 
   toggleMultipleFramesRecord() {
+
     this.recordMultipleFrames = !this.recordMultipleFrames;
 
     if (this.recordMultipleFrames == true) {
@@ -141,7 +186,6 @@ export class MonitorComponent implements OnInit, OnDestroy {
     } else {
       this.recordButtonDisabled = true;
     }
-
   }
 
   record() {
@@ -156,7 +200,6 @@ export class MonitorComponent implements OnInit, OnDestroy {
           this.snackbar.open('Recording Single Frame done', 'Close', {
             duration: 3000
           });
-
         } else {
           this.snackbar.open('No data to record...', 'Close', {
             duration: 3000
@@ -174,9 +217,8 @@ export class MonitorComponent implements OnInit, OnDestroy {
     }
   }
 
-
   stop() {
-    this.sceneService.stopRecording().subscribe( recordingDone => {
+    this.sceneService.stopRecording().subscribe(recordingDone => {
       if (recordingDone) {
         this.snackbar.open('Recording Multiple Frames done', 'Close', {
           duration: 3000
@@ -192,4 +234,3 @@ export class MonitorComponent implements OnInit, OnDestroy {
   }
 
 }
-

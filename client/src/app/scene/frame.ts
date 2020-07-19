@@ -1,4 +1,5 @@
 export class Frame {
+
   dmxValues: any;
 
   constructor(readonly id: number,
@@ -29,6 +30,5 @@ export class Frame {
       jsonObject.dmxValues
     );
   }
-
 
 }

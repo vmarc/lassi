@@ -1,26 +1,29 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import {map, retry, catchError} from 'rxjs/operators';
-import { Settings } from './settings';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
+import {Settings} from './settings';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
-  public getSettings() : Observable<Settings> {
-    return this.http.get<Settings>('/api/getsettings').pipe(retry(1), catchError(this.handleError));
+  public getSettings(): Observable<Settings> {
+    return this.http.get<Settings>('/api/getsettings').pipe(
+      retry(1),
+      catchError(this.handleError)
+    );
   }
 
   public saveSettings(settings: Settings) {
-    this.http.put<Settings>('/api/savesettings/', settings).pipe(retry(1), catchError(this.handleError)).subscribe();
-  }
-
-  public deleteLog() {
-    this.http.get('api/deletelog').pipe(retry(1), catchError(this.handleError)).subscribe();
+    this.http.put<Settings>('/api/savesettings/', settings).pipe(
+      retry(1),
+      catchError(this.handleError)
+    ).subscribe();
   }
 
   handleError(error) {

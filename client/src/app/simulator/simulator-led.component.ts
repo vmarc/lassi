@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-simulator-led',
@@ -39,18 +39,7 @@ import {Component, Input, OnInit} from '@angular/core';
 
   `]
 })
-export class SimulatorLedComponent implements OnInit {
-
+export class SimulatorLedComponent {
   @Input() sceneId: number;
   @Input() playable: string;
-
-  buttons: boolean[];
-
-  constructor() {
-  }
-
-
-  ngOnInit() {
-  }
-
 }

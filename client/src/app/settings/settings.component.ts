@@ -41,7 +41,21 @@ import {MatDialog} from '@angular/material/dialog';
       </div>
     </form>
   `,
-  styleUrls: ['./settings.component.css']
+  styles: [`
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      text-align: center
+    }
+
+    .center {
+      display: block;
+    }
+
+  `]
 })
 export class SettingsComponent implements OnInit {
 

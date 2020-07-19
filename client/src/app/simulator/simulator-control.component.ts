@@ -1,7 +1,7 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import { ScenesService } from '../scene/scenes.service';
+import {Component, Input} from '@angular/core';
+import {ScenesService} from '../scene/scenes.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-simulator-control',
@@ -30,7 +30,7 @@ import { Router } from '@angular/router';
     }
   `]
 })
-export class SimulatorControlComponent implements OnInit {
+export class SimulatorControlComponent {
 
   @Input() sceneId: number;
   @Input() recordSingleFrame: boolean;
@@ -44,10 +44,6 @@ export class SimulatorControlComponent implements OnInit {
   constructor(private sceneService: ScenesService,
               private snackbar: MatSnackBar,
               private router: Router) {
-  }
-
-  ngOnInit(): void {
-
   }
 
   reloadComponent() {
@@ -68,16 +64,11 @@ export class SimulatorControlComponent implements OnInit {
         }
       });
       this.startedMultipleFramesRecord = false;
-    }
-
-    else if (!this.recordMultipleFrames && !this.recordSingleFrame && !this.playMode) {
+    } else if (!this.recordMultipleFrames && !this.recordSingleFrame && !this.playMode) {
       this.snackbar.open('Please choose a mode...', 'Close', {
         duration: 3000
       });
-    }
-
-
-    else if (this.recordSingleFrame) {
+    } else if (this.recordSingleFrame) {
       this.snackbar.open('Recording Single Frame...', 'Close', {
         duration: 3000
       });
@@ -94,9 +85,7 @@ export class SimulatorControlComponent implements OnInit {
         }
       });
 
-    }
-
-    else if (this.recordMultipleFrames && this.startedMultipleFramesRecord == false) {
+    } else if (this.recordMultipleFrames && this.startedMultipleFramesRecord == false) {
       this.startedMultipleFramesRecord = true;
       this.sceneService.recordMultipleFrames(this.sceneId).subscribe(data => {
         if (data) {
@@ -133,17 +122,13 @@ export class SimulatorControlComponent implements OnInit {
         });
       }
 
-    }
-
-    else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == false) {
+    } else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == false) {
       this.pausedPlaying = true;
       this.sceneService.pause(true);
       this.snackbar.open('Paused playing Scene...', 'Close', {
         duration: 3000
       });
-    }
-
-    else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == true) {
+    } else if (this.playMode && this.scenePlaying == true && this.pausedPlaying == true) {
       console.log("Resume scene");
       console.log("Scene playing:" + this.scenePlaying);
       console.log("Paused Playing: " + this.pausedPlaying);
@@ -153,11 +138,6 @@ export class SimulatorControlComponent implements OnInit {
         duration: 3000
       });
     }
-
-
-
   }
-
-
 
 }

@@ -1,51 +1,122 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { ScenesService } from '../scene/scenes.service';
+import {Component, OnInit} from '@angular/core';
+import {ScenesService} from '../scene/scenes.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { SimulatorControlComponent } from './simulator-control.component';
 
 @Component({
   selector: 'app-simulator',
-  template: `<h1 class="title">Simulator</h1>
-<div class="buttons">
-  <div>
-    <div class="button-row">
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="1" [playable]="playable1"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="2" [playable]="playable2"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="3" [playable]="playable3"></app-simulator-control>
-    </div>
-    <div class="button-row">
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="4" [playable]="playable4"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="5" [playable]="playable5"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="6" [playable]="playable6"></app-simulator-control>
-    </div>
-    <div class="button-row">
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="7" [playable]="playable7"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="8" [playable]="playable8"></app-simulator-control>
-      <app-simulator-control [recordSingleFrame]="recordSingleFrame" [recordMultipleFrames]="recordMultipleFrames" [playMode]="playMode" [sceneId]="9" [playable]="playable9"></app-simulator-control>
-    </div>
-  </div>
-   <div class="record">
-   <table>
-   <tr>
-    <mat-slide-toggle [checked]="playMode" (change)="togglePlayMode()">Play mode</mat-slide-toggle>
-</tr>
-<tr>
-   <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
-</tr>
-<tr>
-     <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
-</tr>
-<tr>
-     <button class="buttons" mat-flat-button color="primary" (click)="stopPlaying()" [disabled]="stopButtonDisabled">
-  <i class="fas fa-stop-circle"></i> Stop playing scene</button>
-</tr>
+  template: `
+    <h1 class="title">Simulator</h1>
+    <div class="buttons">
+      <div>
+        <div class="button-row">
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="1"
+            [playable]="playable1">
+          </app-simulator-control>
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="2"
+            [playable]="playable2">
+          </app-simulator-control>
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="3"
+            [playable]="playable3">
+          </app-simulator-control>
+        </div>
+        <div class="button-row">
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="4"
+            [playable]="playable4">
 
-</table>
+          </app-simulator-control>
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="5"
+            [playable]="playable5">
+          </app-simulator-control>
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="6"
+            [playable]="playable6">
+          </app-simulator-control>
+        </div>
+        <div class="button-row">
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="7"
+            [playable]="playable7">
+          </app-simulator-control>
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="8"
+            [playable]="playable8">
+          </app-simulator-control>
+          <app-simulator-control
+            [recordSingleFrame]="recordSingleFrame"
+            [recordMultipleFrames]="recordMultipleFrames"
+            [playMode]="playMode"
+            [sceneId]="9"
+            [playable]="playable9">
+          </app-simulator-control>
+        </div>
+      </div>
+      <div class="record">
+        <table>
+          <tr>
+            <mat-slide-toggle [checked]="playMode" (change)="togglePlayMode()">Play mode</mat-slide-toggle>
+          </tr>
+          <tr>
+            <mat-slide-toggle [checked]="recordSingleFrame" (change)="toggleSingleFrameRecord()">Record single frame</mat-slide-toggle>
+          </tr>
+          <tr>
+            <mat-slide-toggle [checked]="recordMultipleFrames" (change)="toggleMultipleFramesRecord()">Record multiple frames</mat-slide-toggle>
+          </tr>
+          <tr>
+            <button class="buttons" mat-flat-button color="primary" (click)="stopPlaying()" [disabled]="stopButtonDisabled">
+              <i class="fas fa-stop-circle"></i> Stop playing scene
+            </button>
+          </tr>
+        </table>
+      </div>
+    </div>
+  `,
+  styles: [`
 
-  </div>
-</div>
-`,
-  styleUrls: [ './simulator.component.css' ]
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .button-row {
+      padding-bottom: 1em;
+    }
+
+    .record button {
+      margin-top: 2em;
+      font-size: 1.2em;
+    }
+
+  `]
 })
 export class SimulatorComponent implements OnInit {
 
@@ -98,6 +169,7 @@ export class SimulatorComponent implements OnInit {
   }
 
   toggleMultipleFramesRecord() {
+
     this.recordMultipleFrames = !this.recordMultipleFrames;
 
     if (this.playMode == true) {
@@ -108,7 +180,6 @@ export class SimulatorComponent implements OnInit {
       this.recordSingleFrame = false;
       this.playMode = false;
     }
-
 
     this.fillInColors();
   }
@@ -136,19 +207,16 @@ export class SimulatorComponent implements OnInit {
 
   ngOnInit(): void {
     this.sceneService.getButtons().subscribe(data => {
-
       this.recordedButtons = data;
-
       this.playableButtons = this.inverted(this.recordedButtons);
       this.fillInColors();
-
     });
   }
 
   inverted(bools: boolean[]): boolean[] {
     return bools.map(function (bool) {
       return !bool;
-    })
+    });
   }
 
   fillInColors() {
