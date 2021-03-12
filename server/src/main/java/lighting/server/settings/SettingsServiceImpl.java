@@ -16,10 +16,10 @@ public class SettingsServiceImpl implements SettingsService {
 	}
 
 	public void saveSettingsToDisk(Settings settings) throws IOException {
-		this.iOService.saveSettingsToDisk(settings);
+		iOService.saveSettingsToDisk(settings);
 	}
 
 	public Settings getSettingsFromDisk() throws IOException {
-		return this.iOService.getSettingsFromDisk();
+		return iOService.getSettingsFromDisk();
 	}
 }

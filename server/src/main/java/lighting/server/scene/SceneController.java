@@ -31,25 +31,25 @@ public class SceneController {
 	@GetMapping(value = "/api/recordSceneSingleFrame/{button_id}")
 	public boolean recordSceneSingleFrame(@PathVariable int button_id) {
 		log.info("Recorded a scene with a single frame to button " + button_id);
-		return this.sceneService.recordScene(button_id);
+		return sceneService.recordScene(button_id);
 	}
 
 	@GetMapping(value = "/api/recordSceneMultipleFrames/{button_id}")
 	public boolean recordSceneMultipleFrames(@PathVariable int button_id) {
 		log.info("Recorded a scene with multiple frames to button " + button_id);
-		return this.sceneService.recordSceneMultipleFrames(button_id);
+		return sceneService.recordSceneMultipleFrames(button_id);
 	}
 
 	@GetMapping(value = "/api/stopRecording")
 	public boolean stopRecording() {
 		log.info("Stopped recording");
-		return this.sceneService.stopRecording();
+		return sceneService.stopRecording();
 	}
 
 	@PutMapping(value = "/api/savescene/")
 	public void saveScene(@RequestBody Scene scene) {
 		try {
-			this.iOService.updateSceneFromDisk(scene);
+			iOService.updateSceneFromDisk(scene);
 			log.info("Saved/updated scene to disk with ID: " + scene.getId());
 		} catch (IOException e) {
 			log.error("Could not save scene to disk with ID: " + scene.getId(), e);
@@ -60,7 +60,7 @@ public class SceneController {
 	public String downloadScene(@PathVariable String scene_id) {
 		try {
 			log.info("Downloaded scene with ID: " + scene_id);
-			return this.iOService.downloadScene(scene_id);
+			return iOService.downloadScene(scene_id);
 		} catch (IOException e) {
 			log.error("Could not download scene with ID: " + scene_id, e);
 		}
@@ -71,7 +71,7 @@ public class SceneController {
 	public boolean playSceneFromButton(@PathVariable int button_id) {
 		try {
 			log.info("Playing scene from button " + button_id);
-			return this.sceneService.playSceneFromButton(button_id);
+			return sceneService.playSceneFromButton(button_id);
 		} catch (IOException e) {
 			log.error("Could not play scene from button " + button_id, e);
 			return false;
@@ -82,7 +82,7 @@ public class SceneController {
 	public boolean playSceneFromId(@PathVariable String id) {
 		try {
 			log.info("Playing scene from ID " + id);
-			return this.sceneService.playSceneFromId(id);
+			return sceneService.playSceneFromId(id);
 		} catch (IOException e) {
 			log.error("Could not play scene from ID " + id, e);
 			return false;
@@ -91,13 +91,13 @@ public class SceneController {
 
 	@GetMapping(value = "/api/stop")
 	public void stop() {
-		this.sceneService.stop();
+		sceneService.stop();
 		log.info("Stopped playing a scene");
 	}
 
 	@GetMapping(value = "/api/pause/{bool}")
 	public void pause(@PathVariable boolean bool) {
-		this.sceneService.pause(bool);
+		sceneService.pause(bool);
 		log.info("Paused a playing scene");
 	}
 
@@ -115,7 +115,7 @@ public class SceneController {
 	@GetMapping(value = "/api/deletescene/{scene_id}")
 	public void deleteScene(@PathVariable String scene_id) {
 		try {
-			this.iOService.deleteSceneFromDisk(scene_id);
+			iOService.deleteSceneFromDisk(scene_id);
 			log.info("Scene deleted with ID: " + scene_id);
 		} catch (IOException e) {
 			log.error("Could not delete scene with ID: " + scene_id, e);
@@ -126,7 +126,7 @@ public class SceneController {
 	public Scene getSceneById(@PathVariable String scene_id) {
 		try {
 			log.info("Retrieved scene from disk with ID: " + scene_id);
-			return this.iOService.getSceneFromDisk(scene_id);
+			return iOService.getSceneFromDisk(scene_id);
 		} catch (IOException e) {
 			log.error("Could not retrieved scene from disk with ID: " + scene_id, e);
 		}
@@ -137,7 +137,7 @@ public class SceneController {
 	public List<Boolean> getButtons() {
 		try {
 			log.info("Retrieved buttons status");
-			return this.iOService.getButtons();
+			return iOService.getButtons();
 		} catch (IOException e) {
 			log.error("Could not retrieve buttons status", e);
 		}
@@ -148,7 +148,7 @@ public class SceneController {
 	public int getPages() {
 		try {
 			log.info("Retrieved page size");
-			return this.iOService.getSettingsFromDisk().getButtonPages();
+			return iOService.getSettingsFromDisk().getButtonPages();
 		} catch (IOException e) {
 			log.error("Could not retrieve page size", e);
 		}

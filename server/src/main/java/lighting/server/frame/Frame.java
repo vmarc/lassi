@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class Frame {
 
-    private UUID id = UUID.randomUUID();
+    private final UUID id = UUID.randomUUID();
     private int[] dmxValues;
     private long startTime;
     private int universe;

@@ -9,7 +9,7 @@ import lighting.server.frame.Frame;
 
 public class Scene {
 
-	private String id = UUID.randomUUID().toString();
+	private final String id = UUID.randomUUID().toString();
 	private String name;
 	private Long duration;
 	private int fadeTime;

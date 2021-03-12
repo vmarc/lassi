@@ -34,14 +34,14 @@ public class ArtnetSender {
 	private static final Logger log = LogManager.getLogger(ArtnetSender.class);
 
 	private final IOService iOService;
-	private ArtNetClient artNetClient = new ArtNetClient();
+	private final ArtNetClient artNetClient = new ArtNetClient();
 	private Settings settings;
 	private Scene sceneToPlay;
 	private boolean stop = false;
 	private boolean pause = false;
-	private HashMap<Integer, Frame> lastFrames = new HashMap<>();
-	List<SceneFader> activeSceneFaders = new ArrayList<>();
-	private String ipAddress = "192.168.0.255";
+	private final HashMap<Integer, Frame> lastFrames = new HashMap<>();
+	private final List<SceneFader> activeSceneFaders = new ArrayList<>();
+	private final String ipAddress;
 
 	public ArtnetSender(IOService iOService) {
 		this.iOService = iOService;
@@ -57,7 +57,7 @@ public class ArtnetSender {
 		pause = false;
 
 		try {
-			this.settings = this.iOService.getSettingsFromDisk();
+			settings = this.iOService.getSettingsFromDisk();
 		} catch (IOException e) {
 			log.error("Could not send data", e);
 		}
@@ -107,22 +107,7 @@ public class ArtnetSender {
 		byte[] dmxData = intArrayToByteArray(dmxvalues);
 		artNetClient.unicastDmx(ipAddress, 0, universe, dmxData);
 		log.debug("Frame sent");
-		//artNetClient.stop();
 	}
-
-/*    public void fade(){
-        if (currentPlayingScene == null) {
-            Frame emptyFrame = createEmptyFrame();
-            sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), emptyFrame, sceneToPlay.getFrames().get(0));
-            iOService.writeToLog(0, "Fading from empty frame to frame");
-        }
-        else {
-            sceneFader = new SceneFader(settings.getFramesPerSecond(), sceneToPlay.getFadeTime(), currentPlayingScene.getFrames().get(0), sceneToPlay.getFrames().get(0));
-            iOService.writeToLog(0, "Fading from frame to frame");
-
-        }
-        sceneFader.fadeFrame(this);
-    }*/
 
 	public void stop() {
 		if (!stop) {
@@ -136,7 +121,7 @@ public class ArtnetSender {
 
 	public void fadeStop() {
 		try {
-			this.settings = this.iOService.getSettingsFromDisk();
+			settings = iOService.getSettingsFromDisk();
 		} catch (IOException e) {
 			log.error("Could get read settings from disk", e);
 		}
@@ -185,7 +170,7 @@ public class ArtnetSender {
 
 	public void fade() {
 		try {
-			this.settings = this.iOService.getSettingsFromDisk();
+			settings = iOService.getSettingsFromDisk();
 		} catch (IOException e) {
 			log.error("Could not read settings from disk", e);
 		}
