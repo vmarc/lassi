@@ -106,11 +106,11 @@ export class MonitorComponent implements OnInit, OnDestroy {
   universe = new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
 
   frame: Frame;
-  disabledDate: boolean = false;
-  recordButtonDisabled: boolean = true;
-  recordSingleFrame: boolean = false;
-  recordMultipleFrames: boolean = false;
-  stopButtonDisabled: boolean = true;
+  disabledDate = false;
+  recordButtonDisabled = true;
+  recordSingleFrame = false;
+  recordMultipleFrames = false;
+  stopButtonDisabled = true;
   frames: Frame[] = [];
 
   private topicSubscription: Subscription;

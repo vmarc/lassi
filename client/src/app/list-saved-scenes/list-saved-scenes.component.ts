@@ -110,9 +110,9 @@ export class ListSavedScenesComponent implements OnInit, AfterViewInit {
 
   dataSource: MatTableDataSource<Scene> = new MatTableDataSource<Scene>();
   displayedColumns = ['name', 'buttonId', 'createdOn', 'actions'];
-  playingScene: boolean = false;
-  pause: boolean = false;
-  stopped: boolean = false;
+  playingScene = false;
+  pause = false;
+  stopped = false;
 
   constructor(private scenesService: ScenesService,
               private router: Router,

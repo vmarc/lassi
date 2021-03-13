@@ -63,16 +63,16 @@ export class SettingsComponent implements OnInit {
     framesPerSecond: new FormControl(),
     fadeTimeInSeconds: new FormControl(),
     buttonPages: new FormControl()
-  })
+  });
 
   settings: Settings;
   newSettings: Settings
-  fps: any;
-  fadeSec: any;
-  pages: any;
-  framesPSec: any[] = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 100, 150, 200, 400, 800];
-  fadeTimeInSec: any[] = [1, 5, 10, 20, 30];
-  buttonsPages: any[] = [1, 2, 3];
+  fps: number;
+  fadeSec: number;
+  pages: number;
+  framesPSec = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 100, 150, 200, 400, 800];
+  fadeTimeInSec = [1, 5, 10, 20, 30];
+  buttonsPages = [1, 2, 3];
 
   constructor(private settingsService: SettingsService,
               private dialog: MatDialog,

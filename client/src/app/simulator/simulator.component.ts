@@ -123,10 +123,10 @@ export class SimulatorComponent implements OnInit {
   playableButtons: boolean[];
   recordedButtons: boolean[];
 
-  playMode: boolean = false;
-  recordSingleFrame: boolean = false;
-  recordMultipleFrames: boolean = false;
-  stopButtonDisabled: boolean = true;
+  playMode = false;
+  recordSingleFrame = false;
+  recordMultipleFrames = false;
+  stopButtonDisabled = true;
 
   playable1: string = 'gray';
   playable2: string = 'gray';

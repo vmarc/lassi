@@ -37,9 +37,9 @@ export class SimulatorControlComponent {
   @Input() recordMultipleFrames: boolean;
   @Input() playMode: boolean;
   @Input() playable: string;
-  startedMultipleFramesRecord: boolean = false;
-  scenePlaying: boolean = false;
-  pausedPlaying: boolean = false;
+  startedMultipleFramesRecord = false;
+  scenePlaying = false;
+  pausedPlaying = false;
 
   constructor(private sceneService: ScenesService,
               private snackbar: MatSnackBar,

@@ -1,5 +1,5 @@
-import {Component, Inject} from "@angular/core";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'confirm-delete-dialog',
@@ -15,9 +15,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 })
 export class ConfirmDeleteDialogComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<ConfirmDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: String) {
+  constructor(public dialogRef: MatDialogRef<ConfirmDeleteDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: String) {
   }
 
   onNoClick(): void {

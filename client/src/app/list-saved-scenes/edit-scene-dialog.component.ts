@@ -1,8 +1,8 @@
-import {Component, Inject} from "@angular/core";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Scene} from "../scene/scene";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ScenesService} from "../scene/scenes.service";
+import {Component, Inject} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Scene} from '../scene/scene';
+import {ScenesService} from '../scene/scenes.service';
 
 @Component({
   selector: 'edit-scene-dialog',
@@ -52,16 +52,15 @@ export class EditSavedSceneDialogComponent {
   });
 
   scene: Scene;
-  selectedButton: any;
-  selectedFadeTime: any;
-  buttons: any[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
-  fadeTimes: any[] = [5, 10, 15, 20, 30, 60];
+  selectedButton: number;
+  selectedFadeTime: number;
+  buttons = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
+  fadeTimes = [5, 10, 15, 20, 30, 60];
   currentDate: Date;
 
-  constructor(
-    public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: string },
-    private scenesService: ScenesService) {
+  constructor(public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: { id: string },
+              private scenesService: ScenesService) {
   }
 
   get name() {
@@ -103,7 +102,7 @@ export class EditSavedSceneDialogComponent {
 
   save(): void {
     var now = new Date();
-    now.setHours(now.getHours() + 2)
+    now.setHours(now.getHours() + 2);
     this.currentDate = now;
     this.scene.name = this.name.value;
     this.scene.buttonId = this.buttonId.value;

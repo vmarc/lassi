@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Scene } from './scene';
-import { Observable, throwError, Subject, BehaviorSubject } from 'rxjs';
-import {map, retry, catchError} from 'rxjs/operators';
-import { Frame } from './frame';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, throwError} from 'rxjs';
+import {catchError, retry} from 'rxjs/operators';
+import {Scene} from './scene';
 
 @Injectable()
 export class ScenesService {

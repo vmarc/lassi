@@ -1,8 +1,8 @@
-import {Component, Inject, OnInit} from "@angular/core";
-import {Scene} from "../scene/scene";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ScenesService} from "../scene/scenes.service";
-import * as moment from "moment";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import * as moment from 'moment';
+import {Scene} from '../scene/scene';
+import {ScenesService} from '../scene/scenes.service';
 
 @Component({
   selector: 'scene-details-dialog',
@@ -38,14 +38,13 @@ export class SceneDetailsDialogComponent implements OnInit {
   scene: Scene;
   date: string;
 
-  constructor(
-    public dialogRef: MatDialogRef<SceneDetailsDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: string },
-    private sceneService: ScenesService) {
+  constructor(public dialogRef: MatDialogRef<SceneDetailsDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: { id: string },
+              private sceneService: ScenesService) {
   }
 
   ngOnInit(): void {
-    moment.locale('nl-be')
+    moment.locale('nl-be');
     const id = this.data.id;
     this.sceneService.get(id).subscribe(x => {
       this.scene = x;
