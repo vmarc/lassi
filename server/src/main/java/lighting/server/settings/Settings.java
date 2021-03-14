@@ -4,17 +4,16 @@ public class Settings {
 
     private int framesPerSecond;
     private int fadeTimeInSeconds;
-    private int buttonPages;
+    private int buttonPageCount;
 
     public Settings() {
     }
 
-    public Settings(int framesPerSecond, int fadeTimeInSeconds, int buttonPages) {
+    public Settings(final int framesPerSecond, final int fadeTimeInSeconds, final int buttonPageCount) {
         this.framesPerSecond = framesPerSecond;
         this.fadeTimeInSeconds = fadeTimeInSeconds;
-        this.buttonPages = buttonPages;
+        this.buttonPageCount = buttonPageCount;
     }
-
 
     public int getFramesPerSecond() {
         return framesPerSecond;
@@ -32,11 +31,11 @@ public class Settings {
         this.fadeTimeInSeconds = fadeTimeInSeconds;
     }
 
-    public int getButtonPages() {
-        return buttonPages;
+    public int getButtonPageCount() {
+        return buttonPageCount;
     }
 
-    public void setButtonPages(int buttonPages) {
-        this.buttonPages = buttonPages;
+    public void setButtonPageCount(int buttonPageCount) {
+        this.buttonPageCount = buttonPageCount;
     }
 }

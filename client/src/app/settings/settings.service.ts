@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 import {Settings} from './settings';
@@ -13,14 +13,14 @@ export class SettingsService {
   }
 
   public getSettings(): Observable<Settings> {
-    return this.http.get<Settings>('/api/getsettings').pipe(
+    return this.http.get<Settings>('/api/settings/get').pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
 
   public saveSettings(settings: Settings) {
-    this.http.put<Settings>('/api/savesettings/', settings).pipe(
+    this.http.put<Settings>('/api/settings/save', settings).pipe(
       retry(1),
       catchError(this.handleError)
     ).subscribe();

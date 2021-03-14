@@ -148,7 +148,7 @@ public class SceneController {
 	public int getPages() {
 		try {
 			log.info("Retrieved page size");
-			return iOService.getSettingsFromDisk().getButtonPages();
+			return iOService.getSettingsFromDisk().getButtonPageCount();
 		} catch (IOException e) {
 			log.error("Could not retrieve page size", e);
 		}

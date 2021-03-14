@@ -2,12 +2,12 @@ export class Settings {
 
   framesPerSecond: number;
   fadeTimeInSeconds: number;
-  buttonPages: number;
+  buttonPageCount: number;
 
-  constructor(framesPerSecond: number, fadeTimeInSeconds: number, buttonPages: number) {
+  constructor(framesPerSecond: number, fadeTimeInSeconds: number, buttonPageCount: number) {
     this.framesPerSecond = framesPerSecond;
     this.fadeTimeInSeconds = fadeTimeInSeconds;
-    this.buttonPages = buttonPages;
+    this.buttonPageCount = buttonPageCount;
   }
 
 }
