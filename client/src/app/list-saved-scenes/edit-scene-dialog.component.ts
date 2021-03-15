@@ -1,3 +1,4 @@
+import {OnInit} from '@angular/core';
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
@@ -13,15 +14,15 @@ import {ScenesService} from '../scene/scenes.service';
         <div>
           <mat-form-field>
             <h4>Name:</h4>
-            <input matInput formControlName="name">
+            <input matInput [formControl]="name">
           </mat-form-field>
         </div>
 
         <div>
           <mat-form-field>
             <h4>Button:</h4>
-            <mat-select formControlName="buttonId" (change)="changeButton($event)" [value]="selectedButton">
-              <mat-option *ngFor="let button of buttons" [value]="button">{{button}}</mat-option>
+            <mat-select [formControl]="buttonId">
+              <mat-option *ngFor="let option of buttonOptions" [value]="option">{{option}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -29,8 +30,8 @@ import {ScenesService} from '../scene/scenes.service';
         <div>
           <mat-form-field>
             <h4>Fade Time:</h4>
-            <mat-select formControlName="fadeTime" (change)="changeFadeTime($event)" [value]="selectedFadeTime">
-              <mat-option *ngFor="let fade of fadeTimes" [value]="fade">{{fade}}</mat-option>
+            <mat-select [formControl]="fadeTime">
+              <mat-option *ngFor="let option of fadeTimeOptions" [value]="option">{{option}}</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -43,57 +44,37 @@ import {ScenesService} from '../scene/scenes.service';
     </form>
   `
 })
-export class EditSavedSceneDialogComponent {
+export class EditSavedSceneDialogComponent implements OnInit {
 
-  editForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    buttonId: new FormControl(),
-    fadeTime: new FormControl(),
+  readonly name = new FormControl();
+  readonly buttonId = new FormControl();
+  readonly fadeTime = new FormControl();
+
+  readonly editForm: FormGroup = new FormGroup({
+    name: this.name,
+    buttonId: this.buttonId,
+    fadeTime: this.fadeTime
   });
 
+  readonly buttonOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
+  readonly fadeTimeOptions = [5, 10, 15, 20, 30, 60];
+
   scene: Scene;
-  selectedButton: number;
-  selectedFadeTime: number;
-  buttons = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27];
-  fadeTimes = [5, 10, 15, 20, 30, 60];
-  currentDate: Date;
 
   constructor(public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: { id: string },
               private scenesService: ScenesService) {
   }
 
-  get name() {
-    return this.editForm.get('name');
-  }
-
-  get buttonId() {
-    return this.editForm.get('buttonId');
-  }
-
-  get fadeTime() {
-    return this.editForm.get('fadeTime');
-  }
-
   ngOnInit(): void {
-    this.scenesService.get(this.data.id).subscribe(data => {
-      this.scene = data;
-      this.selectedButton = this.scene.buttonId;
-      this.selectedFadeTime = this.scene.fadeTime;
+    this.scenesService.get(this.data.id).subscribe(scene => {
+      this.scene = scene;
       this.editForm.setValue({
-        name: this.scene.name,
-        buttonId: this.scene.buttonId,
-        fadeTime: this.scene.fadeTime,
+        name: scene.name,
+        buttonId: scene.buttonId,
+        fadeTime: scene.fadeTime,
       });
     });
-  }
-
-  changeButton($event) {
-    this.buttonId.setValue(this.buttons[$event]);
-  }
-
-  changeFadeTime($event) {
-    this.fadeTime.setValue(this.fadeTimes[$event]);
   }
 
   onNoClick(): void {
@@ -101,15 +82,18 @@ export class EditSavedSceneDialogComponent {
   }
 
   save(): void {
-    var now = new Date();
+    const now = new Date();
     now.setHours(now.getHours() + 2);
-    this.currentDate = now;
-    this.scene.name = this.name.value;
-    this.scene.buttonId = this.buttonId.value;
-    this.scene.fadeTime = this.fadeTime.value;
-    this.scene.createdOn = this.currentDate;
-
-    this.scenesService.save(this.scene);
+    const scene = new Scene(
+      this.scene.id,
+      this.name.value,
+      this.scene.duration,
+      this.buttonId.value,
+      this.fadeTime.value,
+      now,
+      this.scene.frames
+    );
+    this.scenesService.save(scene);
     this.dialogRef.close();
   }
 }

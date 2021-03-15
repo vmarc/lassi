@@ -13,7 +13,6 @@ export class ScenesService {
     this.buttons = this.getButtons();
   }
 
-
   public findAll(): Observable<Scene[]> {
     return this.http.get<Scene[]>('/api/sceneslist').pipe(retry(1), catchError(this.handleError));
   }
@@ -42,15 +41,12 @@ export class ScenesService {
     return this.http.get<boolean>('/api/playscene/' + button).pipe(retry(1), catchError(this.handleError));
   }
 
-
   public recordSingleFrame(button: number) : Observable<boolean> {
     return this.http.get<boolean>('/api/recordSceneSingleFrame/' + button).pipe(retry(1), catchError(this.handleError));
-
   }
 
   public recordMultipleFrames(button: number) : Observable<boolean> {
     return this.http.get<boolean>('/api/recordSceneMultipleFrames/' + button).pipe(retry(1), catchError(this.handleError));
-
   }
 
   public stopPlaying(): void {
@@ -67,7 +63,6 @@ export class ScenesService {
 
   public getButtons(): Observable<boolean[]> {
     return this.http.get<boolean[]>('api/getbuttons').pipe(retry(1), catchError(this.handleError));
-
   }
 
   handleError(error) {

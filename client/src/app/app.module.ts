@@ -75,9 +75,6 @@ import {EditSavedSceneDialogComponent} from "./list-saved-scenes/edit-scene-dial
     MatSnackBarModule,
     MatSortModule
   ],
-  entryComponents: [
-    ConfirmDeleteDialogComponent
-  ],
   providers: [
     ScenesService,
     {
