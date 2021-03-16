@@ -1,4 +1,9 @@
 PROXY_CONFIG = {
+  "/scala-api/**": {
+    target: "http://localhost:8081",
+    secure: false,
+    logLevel: 'debug'
+  },
   "/api/**": {
     target: "http://localhost:8080",
     secure: false,

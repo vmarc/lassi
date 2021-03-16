@@ -12,7 +12,13 @@ import {Component} from '@angular/core';
     <main>
       <router-outlet></router-outlet>
     </main>
-  `
+  `,
+  styles: [`
+    main {
+      padding-left: 2em;
+      padding-right: 1em;
+    }
+  `]
 })
 export class AppComponent {
 }

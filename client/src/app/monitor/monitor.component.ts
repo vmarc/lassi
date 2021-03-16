@@ -84,10 +84,6 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
       margin-bottom: 1em;
     }
 
-    h1 {
-      text-align: center;
-    }
-
     .date {
       text-align: center;
       margin-bottom: 2em;

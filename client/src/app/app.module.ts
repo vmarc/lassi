@@ -1,40 +1,40 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
-import {appRxStompConfig} from './app-rx-stomp.config';
-import {MonitorComponent} from './monitor/monitor.component';
-import {MenuComponent} from './menu/menu.component';
-import {AppRoutingModule} from './app-routing.module';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {SimulatorComponent} from './simulator/simulator.component';
-import {SimulatorLedComponent} from './simulator/simulator-led.component';
-import {SimulatorControlComponent} from './simulator/simulator-control.component';
 import {HttpClientModule} from '@angular/common/http';
-import {AboutComponent} from './about/about.component';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatTableModule} from '@angular/material/table';
-import {MatIconModule} from '@angular/material/icon'
-import {ListSavedScenesComponent} from './list-saved-scenes/list-saved-scenes.component';
-import {ScenesService} from './scene/scenes.service';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {SettingsComponent} from './settings/settings.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSliderModule} from '@angular/material/slider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSortModule} from '@angular/material/sort';
-import {ConfirmDeleteDialogComponent} from "./list-saved-scenes/confirm-delete-dialog.component";
-import {SceneDetailsDialogComponent} from "./list-saved-scenes/scene-details-dialog.component";
-import {EditSavedSceneDialogComponent} from "./list-saved-scenes/edit-scene-dialog.component";
+import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@stomp/ng2-stompjs';
+import {AboutComponent} from './about/about.component';
+import {AppRoutingModule} from './app-routing.module';
+import {appRxStompConfig} from './app-rx-stomp.config';
+import {AppComponent} from './app.component';
+import {ConfirmDeleteDialogComponent} from './list-saved-scenes/confirm-delete-dialog.component';
+import {SceneDetailsComponent} from './list-saved-scenes/scene-details.component';
+import {SceneEditComponent} from './list-saved-scenes/scene-edit.component';
+import {ScenesComponent} from './list-saved-scenes/scenes.component';
+import {MenuComponent} from './menu/menu.component';
+import {MonitorComponent} from './monitor/monitor.component';
+import {ScenesService} from './scene/scenes.service';
+import {SettingsComponent} from './settings/settings.component';
+import {SimulatorControlComponent} from './simulator/simulator-control.component';
+import {SimulatorLedComponent} from './simulator/simulator-led.component';
+import {SimulatorComponent} from './simulator/simulator.component';
 
 @NgModule({
   declarations: [
@@ -45,10 +45,10 @@ import {EditSavedSceneDialogComponent} from "./list-saved-scenes/edit-scene-dial
     SimulatorLedComponent,
     SimulatorControlComponent,
     AboutComponent,
-    ListSavedScenesComponent,
+    ScenesComponent,
     ConfirmDeleteDialogComponent,
-    EditSavedSceneDialogComponent,
-    SceneDetailsDialogComponent,
+    SceneEditComponent,
+    SceneDetailsComponent,
     SettingsComponent
   ],
   imports: [

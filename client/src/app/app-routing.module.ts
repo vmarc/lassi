@@ -1,33 +1,42 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {AboutComponent} from './about/about.component';
+import {SceneDetailsComponent} from './list-saved-scenes/scene-details.component';
+import {SceneEditComponent} from './list-saved-scenes/scene-edit.component';
+import {ScenesComponent} from './list-saved-scenes/scenes.component';
 import {MenuComponent} from './menu/menu.component';
 import {MonitorComponent} from './monitor/monitor.component';
+import {SettingsComponent} from './settings/settings.component';
 import {SimulatorComponent} from './simulator/simulator.component';
-import {AboutComponent} from './about/about.component';
-import { ListSavedScenesComponent } from './list-saved-scenes/list-saved-scenes.component';
-import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
   {
-    path: 'settings',
-    component: SettingsComponent
-
+    path: 'scenes/:sceneId/edit',
+    component: SceneEditComponent
   },
   {
-    path: 'monitor',
-    component: MonitorComponent
+    path: 'scenes/:sceneId',
+    component: SceneDetailsComponent
+  },
+  {
+    path: 'scenes',
+    component: ScenesComponent
   },
   {
     path: 'simulator',
     component: SimulatorComponent
   },
   {
-    path: 'about',
-    component: AboutComponent
+    path: 'monitor',
+    component: MonitorComponent
   },
   {
-    path: 'sceneslist',
-    component: ListSavedScenesComponent
+    path: 'settings',
+    component: SettingsComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '',
@@ -38,7 +47,7 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { enableTracing: false, relativeLinkResolution: 'legacy' })
+    RouterModule.forRoot(routes, {enableTracing: false, relativeLinkResolution: 'legacy'})
   ],
   exports: [
     RouterModule

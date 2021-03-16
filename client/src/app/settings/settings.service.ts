@@ -13,14 +13,14 @@ export class SettingsService {
   }
 
   public getSettings(): Observable<Settings> {
-    return this.http.get<Settings>('/api/settings/get').pipe(
+    return this.http.get<Settings>('/scala-api/settings/get').pipe(
       retry(1),
       catchError(this.handleError)
     );
   }
 
   public saveSettings(settings: Settings) {
-    this.http.put<Settings>('/api/settings/save', settings).pipe(
+    this.http.put<Settings>('/scala-api/settings/save', settings).pipe(
       retry(1),
       catchError(this.handleError)
     ).subscribe();

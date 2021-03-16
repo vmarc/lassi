@@ -5,7 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'app-simulator',
   template: `
-    <h1 class="title">Simulator</h1>
+    <h1>Simulator</h1>
     <div class="buttons">
       <div>
         <div class="button-row">
@@ -104,7 +104,6 @@ import {MatSnackBar} from '@angular/material/snack-bar';
     .buttons {
       display: flex;
       flex-direction: column;
-      align-items: center;
     }
 
     .button-row {

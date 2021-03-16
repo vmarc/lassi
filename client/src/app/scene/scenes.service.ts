@@ -42,7 +42,7 @@ export class ScenesService {
   }
 
   public recordSingleFrame(button: number) : Observable<boolean> {
-    return this.http.get<boolean>('/api/recordSceneSingleFrame/' + button).pipe(retry(1), catchError(this.handleError));
+    return this.http.get<boolean>('/scala-api/scenes/record/' + button).pipe(retry(1), catchError(this.handleError));
   }
 
   public recordMultipleFrames(button: number) : Observable<boolean> {
@@ -57,8 +57,8 @@ export class ScenesService {
     return this.http.get<boolean>('/api/stopRecording').pipe(retry(1), catchError(this.handleError));
   }
 
-  public save(scene: Scene) {
-    return this.http.put<Scene>('/api/savescene/', scene).pipe(retry(1), catchError(this.handleError)).subscribe();
+  public save(scene: Scene): Observable<Scene> {
+    return this.http.put<Scene>('/api/savescene/', scene).pipe(retry(1), catchError(this.handleError));
   }
 
   public getButtons(): Observable<boolean[]> {

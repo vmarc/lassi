@@ -10,52 +10,33 @@ import {SettingsService} from './settings.service';
   template: `
     <h1>Settings</h1>
     <form [formGroup]="settingsForm">
-      <div class="container">
-        <div class="center">
-          <div>
-            <mat-form-field>
-              <p>Frames per second</p>
-              <mat-select [formControl]="framesPerSecond">
-                <mat-option *ngFor="let option of framesPerSecondOptions" [value]="option">{{option}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <p>Fade time in seconds for newly recorded scenes</p>
-              <mat-select [formControl]="fadeTimeInSeconds">
-                <mat-option *ngFor="let option of fadeTimeInSecondsOptions" [value]="option">{{option}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div>
-            <mat-form-field>
-              <p>Number of button pages</p>
-              <mat-select [formControl]="buttonPageCount">
-                <mat-option *ngFor="let option of buttonPageCountOptions" [value]="option">{{option}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
-        </div>
+      <div>
+        <mat-form-field>
+          <p>Frames per second</p>
+          <mat-select [formControl]="framesPerSecond">
+            <mat-option *ngFor="let option of framesPerSecondOptions" [value]="option">{{option}}</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
+      <div>
+        <mat-form-field>
+          <p>Fade time in seconds for newly recorded scenes</p>
+          <mat-select [formControl]="fadeTimeInSeconds">
+            <mat-option *ngFor="let option of fadeTimeInSecondsOptions" [value]="option">{{option}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <p>Number of button pages</p>
+          <mat-select [formControl]="buttonPageCount">
+            <mat-option *ngFor="let option of buttonPageCountOptions" [value]="option">{{option}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button mat-button (click)="save()"><i class="fas fa-save"></i> Save</button>
     </form>
-  `,
-  styles: [`
-
-    h1 {
-      text-align: center;
-    }
-
-    .container {
-      text-align: center
-    }
-
-    .center {
-      display: block;
-    }
-
-  `]
+  `
 })
 export class SettingsComponent implements OnInit {
 

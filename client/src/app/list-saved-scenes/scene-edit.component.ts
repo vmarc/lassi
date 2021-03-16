@@ -6,9 +6,9 @@ import {Scene} from '../scene/scene';
 import {ScenesService} from '../scene/scenes.service';
 
 @Component({
-  selector: 'edit-scene-dialog',
+  selector: 'app-scene-edit',
   template: `
-    <h1 mat-dialog-title>Edit Scene</h1>
+    <h1>Scene</h1>
     <form [formGroup]="editForm">
       <div mat-dialog-content>
         <div>
@@ -44,7 +44,7 @@ import {ScenesService} from '../scene/scenes.service';
     </form>
   `
 })
-export class EditSavedSceneDialogComponent implements OnInit {
+export class SceneEditComponent implements OnInit {
 
   readonly name = new FormControl();
   readonly buttonId = new FormControl();
@@ -61,24 +61,27 @@ export class EditSavedSceneDialogComponent implements OnInit {
 
   scene: Scene;
 
-  constructor(public dialogRef: MatDialogRef<EditSavedSceneDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { id: string },
-              private scenesService: ScenesService) {
+  constructor(private scenesService: ScenesService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.scenesService.get(this.data.id).subscribe(scene => {
-      this.scene = scene;
-      this.editForm.setValue({
-        name: scene.name,
-        buttonId: scene.buttonId,
-        fadeTime: scene.fadeTime,
+    this.activatedRoute.params.pipe(first()).subscribe(params => {
+      const id = params['sceneId'];
+      this.scenesService.get(id).subscribe(scene => {
+        this.scene = scene;
+        this.editForm.setValue({
+          name: scene.name,
+          buttonId: scene.buttonId,
+          fadeTime: scene.fadeTime,
+        });
       });
     });
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.router.navigate(['/scenes']);
   }
 
   save(): void {
@@ -93,7 +96,8 @@ export class EditSavedSceneDialogComponent implements OnInit {
       now,
       this.scene.frames
     );
-    this.scenesService.save(scene);
-    this.dialogRef.close();
+    this.scenesService.save(scene).subscribe(() => {
+      this.router.navigate(['/scenes']);
+    });
   }
 }
