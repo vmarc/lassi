@@ -22,7 +22,9 @@ public interface IOService {
 
 	List<Boolean> getButtons() throws IOException;
 
+	// migrated
 	void saveSettingsToDisk(Settings settings) throws IOException;
 
+	// migrated
 	Settings getSettingsFromDisk() throws IOException;
 }

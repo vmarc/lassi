@@ -6,8 +6,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class ServerApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(ServerApplication.class, args);
-	}
+// migrated
+public class OldServerApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(OldServerApplication.class, args);
+    }
 }

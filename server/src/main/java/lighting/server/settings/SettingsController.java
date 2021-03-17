@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
+// migrated
 public class SettingsController {
 
     private static final Logger log = LogManager.getLogger(SettingsController.class);

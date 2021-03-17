@@ -1,5 +1,6 @@
 package lighting.server.settings;
 
+// migrated
 public class Settings {
 
     private int framesPerSecond;

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import lighting.server.IO.IOService;
 
 @Component
+// migrated
 public class SettingsServiceImpl implements SettingsService {
 
 	private final IOService iOService;

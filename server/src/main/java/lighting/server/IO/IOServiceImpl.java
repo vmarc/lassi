@@ -140,13 +140,13 @@ public class IOServiceImpl implements IOService {
 		return buttons;
 	}
 
-	// maps a Settings object to .json file and saves it on disk
+	// migrated
 	public void saveSettingsToDisk(Settings settings) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.writeValue(new File((settingsDir) + "/settings.json"), settings);
 	}
 
-	// gets .json file from disk and maps it to a Settings object
+	// migrated
 	public Settings getSettingsFromDisk() throws IOException {
 		Stream<Path> walk = Files.walk(Paths.get(String.valueOf(settingsDir)));
 		String result = walk.filter(Files::isRegularFile).map(Path::toString).filter(f -> f.endsWith(".json")).collect(Collectors.joining());
