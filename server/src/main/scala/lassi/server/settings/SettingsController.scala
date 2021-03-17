@@ -6,25 +6,24 @@ import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 
-import java.io.IOException
-
 @RestController
 class SettingsController(settingsService: SettingsService) {
 
   private val log = LogManager.getLogger(classOf[SettingsController])
 
-  @GetMapping(value = Array("/scala-api/settings/get"))
+  @GetMapping(value = Array("/scala-api/settings"))
   def getSettings: Settings = {
     try {
-      log.info("Retrieved settings from disk")
-      settingsService.readSettings
+      val settings = settingsService.readSettings
+      log.info("Retrieved settings from disk " + settings)
+      settings
     } catch {
-      case e: IOException =>
-        throw new IllegalStateException("Could not retrieve settings from disk", e)
+      case e: Exception =>
+        throw new RuntimeException("Could not retrieve settings from disk", e)
     }
   }
 
-  @PutMapping(value = Array("/scala-api/settings/save"))
+  @PutMapping(value = Array("/scala-api/settings"))
   def saveSettings(@RequestBody settings: Settings): Unit = {
     try {
       settingsService.writeSettings(settings)
@@ -33,7 +32,7 @@ class SettingsController(settingsService: SettingsService) {
       message += ", button page count: " + settings.buttonPageCount
       log.info(message)
     } catch {
-      case e: IOException =>
+      case e: Exception =>
         var message = "Could not save settings to disk: fade time in seconds: " + settings.fadeTimeInSeconds
         message += ", frames per seconds: " + settings.framesPerSecond
         message += ", button page count: " + settings.buttonPageCount

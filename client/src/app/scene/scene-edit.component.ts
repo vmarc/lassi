@@ -1,9 +1,11 @@
 import {OnInit} from '@angular/core';
-import {Component, Inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Scene} from '../scene/scene';
-import {ScenesService} from '../scene/scenes.service';
+import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
+import {first} from 'rxjs/operators';
+import {Scene} from '../domain/scene';
+import {ScenesService} from './scenes.service';
 
 @Component({
   selector: 'app-scene-edit',

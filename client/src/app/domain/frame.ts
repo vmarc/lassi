@@ -10,7 +10,7 @@ export class Frame {
     this.dmxValues = dmxValues;
   }
 
-  public static empty(): Frame {
+  static empty(): Frame {
     const dmxValues = new Array<number>();
     for (let i = 0; i < 512; i++) {
       dmxValues[i] = 0;
@@ -18,7 +18,7 @@ export class Frame {
     return new Frame(-1, '', 0, new Date(2020, 10, 10 ), dmxValues);
   }
 
-  public static fromJSON(jsonObject): Frame {
+  static fromJSON(jsonObject): Frame {
     if (!jsonObject) {
       return undefined;
     }

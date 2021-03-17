@@ -27,7 +27,7 @@ public class IOServiceImpl implements IOService {
 
 	private static final Logger log = LogManager.getLogger(IOServiceImpl.class);
 
-	private final Path parentDir = Paths.get(System.getProperty("user.dir"));
+	private final Path parentDir = Paths.get("/lassi");
 	private final Path scenesDir = Paths.get(parentDir + "/scenes/");
 	private final Path settingsDir = Paths.get(parentDir + "/settings/");
 
@@ -67,14 +67,15 @@ public class IOServiceImpl implements IOService {
 	}
 
 	// maps Scene object to .json and saves it to disk
+	// migrated
 	public void saveSceneToDisk(Scene scene) throws IOException {
 		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 		objectMapper.writeValue(new File((scenesDir) + "/scene_" + scene.getId() + ".json"), scene);
 	}
 
 	// Returns String representation of a Scene .json file
-	public String downloadScene(String scene_id) throws IOException {
-		Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
+	public String downloadScene(String sceneId) throws IOException {
+		Path filePath = Paths.get(scenesDir + "/scene_" + sceneId + ".json");
 		return FileUtils.readFileToString(filePath.toFile(), "UTF-8");
 	}
 
@@ -96,14 +97,14 @@ public class IOServiceImpl implements IOService {
 		return scenesList;
 	}
 
-	public void deleteSceneFromDisk(String scene_id) throws IOException {
-		Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
+	public void deleteSceneFromDisk(String sceneId) throws IOException {
+		Path filePath = Paths.get(scenesDir + "/scene_" + sceneId + ".json");
 		Files.deleteIfExists(filePath);
 	}
 
 	// gets .json file from disk by scene_id and maps it to a Scene object
-	public Scene getSceneFromDisk(String scene_id) throws IOException {
-		Path filePath = Paths.get(scenesDir + "/scene_" + scene_id + ".json");
+	public Scene getSceneFromDisk(String sceneId) throws IOException {
+		Path filePath = Paths.get(scenesDir + "/scene_" + sceneId + ".json");
 		ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
 		return objectMapper.readValue(filePath.toFile(), Scene.class);
 	}

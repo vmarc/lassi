@@ -1,6 +1,6 @@
 package lassi.server.io
 
-import lassi.server.scene.Scene
+import lassi.domain.Scene
 import lassi.server.settings.Settings
 
 trait IOService {

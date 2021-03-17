@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import * as moment from 'moment';
 import {first} from 'rxjs/operators';
-import {Scene} from '../scene/scene';
-import {ScenesService} from '../scene/scenes.service';
+import {Scene} from '../domain/scene';
+import {ScenesService} from './scenes.service';
 
 @Component({
-  selector: 'app-scene-edit',
+  selector: 'app-scene-details',
   template: `
     <h1>Scene</h1>
     <div>

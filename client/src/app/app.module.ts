@@ -24,10 +24,10 @@ import {AboutComponent} from './about/about.component';
 import {AppRoutingModule} from './app-routing.module';
 import {appRxStompConfig} from './app-rx-stomp.config';
 import {AppComponent} from './app.component';
-import {ConfirmDeleteDialogComponent} from './list-saved-scenes/confirm-delete-dialog.component';
-import {SceneDetailsComponent} from './list-saved-scenes/scene-details.component';
-import {SceneEditComponent} from './list-saved-scenes/scene-edit.component';
-import {ScenesComponent} from './list-saved-scenes/scenes.component';
+import {ConfirmDeleteDialogComponent} from './scene/confirm-delete-dialog.component';
+import {SceneDetailsComponent} from './scene/scene-details.component';
+import {SceneEditComponent} from './scene/scene-edit.component';
+import {ScenesComponent} from './scene/scenes.component';
 import {MenuComponent} from './menu/menu.component';
 import {MonitorComponent} from './monitor/monitor.component';
 import {ScenesService} from './scene/scenes.service';
@@ -81,11 +81,6 @@ import {SimulatorComponent} from './simulator/simulator.component';
       provide: InjectableRxStompConfig,
       useValue: appRxStompConfig
     },
-    /*  {
-        provide: InjectableRxStompConfig,
-        useClass: Stomp,
-        deps: [SettingsService]
-      },*/
     {
       provide: RxStompService,
       useFactory: rxStompServiceFactory,

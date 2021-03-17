@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AboutComponent} from './about/about.component';
-import {SceneDetailsComponent} from './list-saved-scenes/scene-details.component';
-import {SceneEditComponent} from './list-saved-scenes/scene-edit.component';
-import {ScenesComponent} from './list-saved-scenes/scenes.component';
+import {SceneDetailsComponent} from './scene/scene-details.component';
+import {SceneEditComponent} from './scene/scene-edit.component';
+import {ScenesComponent} from './scene/scenes.component';
 import {MenuComponent} from './menu/menu.component';
 import {MonitorComponent} from './monitor/monitor.component';
 import {SettingsComponent} from './settings/settings.component';

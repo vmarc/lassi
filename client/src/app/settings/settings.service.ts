@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {catchError, retry} from 'rxjs/operators';
 import {Settings} from './settings';
 
@@ -13,15 +14,13 @@ export class SettingsService {
   }
 
   public getSettings(): Observable<Settings> {
-    return this.http.get<Settings>('/scala-api/settings/get').pipe(
-      retry(1),
+    return this.http.get<Settings>('/scala-api/settings').pipe(
       catchError(this.handleError)
     );
   }
 
   public saveSettings(settings: Settings) {
-    this.http.put<Settings>('/scala-api/settings/save', settings).pipe(
-      retry(1),
+    this.http.put<Settings>('/scala-api/settings', settings).pipe(
       catchError(this.handleError)
     ).subscribe();
   }
