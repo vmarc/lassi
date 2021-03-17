@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
-import {Frame} from '../scene/frame';
+import {Frame} from '../domain/frame';
 import {ScenesService} from '../scene/scenes.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -13,9 +13,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   template: `
     <h1>Monitor</h1>
 
-    <div class="date" [hidden]="disabledDate">
-      <strong>Frame created on: {{frame?.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>
-    </div>
+<!--    <div class="date" [hidden]="disabledDate">-->
+<!--      <strong>Frame created on: {{frame?.createdOn | date:'d/LL/yyyy, HH:mm'}}</strong>-->
+<!--    </div>-->
 
     <div class="dmx-levels">
       <div *ngFor="let dmxValue of frame?.dmxValues" class="dmx-level">
@@ -99,10 +99,10 @@ export class MonitorComponent implements OnInit, OnDestroy {
 
   formGroup: FormGroup;
 
-  universe = new FormControl('', [Validators.required, Validators.min(0), Validators.max(32768)]);
+  universe = new FormControl('1', [Validators.required, Validators.min(0), Validators.max(32768)]);
 
   frame: Frame;
-  disabledDate = false;
+  disabledDate = true;
   recordButtonDisabled = true;
   recordSingleFrame = false;
   recordMultipleFrames = false;
