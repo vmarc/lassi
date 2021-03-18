@@ -7,7 +7,7 @@ import {ScenesComponent} from './scene/scenes.component';
 import {MenuComponent} from './menu/menu.component';
 import {MonitorComponent} from './monitor/monitor.component';
 import {SettingsComponent} from './settings/settings.component';
-import {SimulatorComponent} from './simulator/simulator.component';
+import {OldSimulatorComponent} from './old-simulator/old-simulator.component';
 
 export const routes: Routes = [
   {
@@ -23,8 +23,8 @@ export const routes: Routes = [
     component: ScenesComponent
   },
   {
-    path: 'simulator',
-    component: SimulatorComponent
+    path: 'old-simulator',
+    component: OldSimulatorComponent
   },
   {
     path: 'monitor',

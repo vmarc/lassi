@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-simulator-led',
+  selector: 'app-old-simulator-led',
   template: `
     <div class="led {{playable}}">
     </div>
@@ -39,7 +39,7 @@ import {Component, Input} from '@angular/core';
 
   `]
 })
-export class SimulatorLedComponent {
+export class OldSimulatorLedComponent {
   @Input() sceneId: number;
   @Input() playable: string;
 }

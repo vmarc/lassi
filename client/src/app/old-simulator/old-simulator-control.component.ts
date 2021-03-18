@@ -4,10 +4,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-simulator-control',
+  selector: 'app-old-simulator-control',
   template: `
     <div class="control">
-      <app-simulator-led [sceneId]="sceneId" [playable]="playable"></app-simulator-led>
+      <app-old-simulator-led [sceneId]="sceneId" [playable]="playable"></app-old-simulator-led>
       <button mat-stroked-button (click)="buttonClicked()">{{sceneId}}</button>
     </div>
   `,
@@ -30,7 +30,7 @@ import {Router} from '@angular/router';
     }
   `]
 })
-export class SimulatorControlComponent {
+export class OldSimulatorControlComponent {
 
   @Input() sceneId: number;
   @Input() recordSingleFrame: boolean;

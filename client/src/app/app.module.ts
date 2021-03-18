@@ -24,26 +24,26 @@ import {AboutComponent} from './about/about.component';
 import {AppRoutingModule} from './app-routing.module';
 import {appRxStompConfig} from './app-rx-stomp.config';
 import {AppComponent} from './app.component';
+import {MenuComponent} from './menu/menu.component';
+import {MonitorComponent} from './monitor/monitor.component';
+import {OldSimulatorControlComponent} from './old-simulator/old-simulator-control.component';
+import {OldSimulatorLedComponent} from './old-simulator/old-simulator-led.component';
+import {OldSimulatorComponent} from './old-simulator/old-simulator.component';
 import {ConfirmDeleteDialogComponent} from './scene/confirm-delete-dialog.component';
 import {SceneDetailsComponent} from './scene/scene-details.component';
 import {SceneEditComponent} from './scene/scene-edit.component';
 import {ScenesComponent} from './scene/scenes.component';
-import {MenuComponent} from './menu/menu.component';
-import {MonitorComponent} from './monitor/monitor.component';
 import {ScenesService} from './scene/scenes.service';
 import {SettingsComponent} from './settings/settings.component';
-import {SimulatorControlComponent} from './simulator/simulator-control.component';
-import {SimulatorLedComponent} from './simulator/simulator-led.component';
-import {SimulatorComponent} from './simulator/simulator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MonitorComponent,
     MenuComponent,
-    SimulatorComponent,
-    SimulatorLedComponent,
-    SimulatorControlComponent,
+    OldSimulatorComponent,
+    OldSimulatorLedComponent,
+    OldSimulatorControlComponent,
     AboutComponent,
     ScenesComponent,
     ConfirmDeleteDialogComponent,

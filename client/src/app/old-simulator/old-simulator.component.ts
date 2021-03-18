@@ -3,80 +3,80 @@ import {ScenesService} from '../scene/scenes.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-simulator',
+  selector: 'app-old-simulator',
   template: `
     <h1>Simulator</h1>
     <div class="buttons">
       <div>
         <div class="button-row">
-          <app-simulator-control
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="1"
             [playable]="playable1">
-          </app-simulator-control>
-          <app-simulator-control
+          </app-old-simulator-control>
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="2"
             [playable]="playable2">
-          </app-simulator-control>
-          <app-simulator-control
+          </app-old-simulator-control>
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="3"
             [playable]="playable3">
-          </app-simulator-control>
+          </app-old-simulator-control>
         </div>
         <div class="button-row">
-          <app-simulator-control
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="4"
             [playable]="playable4">
 
-          </app-simulator-control>
-          <app-simulator-control
+          </app-old-simulator-control>
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="5"
             [playable]="playable5">
-          </app-simulator-control>
-          <app-simulator-control
+          </app-old-simulator-control>
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="6"
             [playable]="playable6">
-          </app-simulator-control>
+          </app-old-simulator-control>
         </div>
         <div class="button-row">
-          <app-simulator-control
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="7"
             [playable]="playable7">
-          </app-simulator-control>
-          <app-simulator-control
+          </app-old-simulator-control>
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="8"
             [playable]="playable8">
-          </app-simulator-control>
-          <app-simulator-control
+          </app-old-simulator-control>
+          <app-old-simulator-control
             [recordSingleFrame]="recordSingleFrame"
             [recordMultipleFrames]="recordMultipleFrames"
             [playMode]="playMode"
             [sceneId]="9"
             [playable]="playable9">
-          </app-simulator-control>
+          </app-old-simulator-control>
         </div>
       </div>
       <div class="record">
@@ -117,7 +117,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
   `]
 })
-export class SimulatorComponent implements OnInit {
+export class OldSimulatorComponent implements OnInit {
 
   playableButtons: boolean[];
   recordedButtons: boolean[];
