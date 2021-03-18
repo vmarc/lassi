@@ -1,7 +1,6 @@
 package lassi.tools
 
-import com.pi4j.io.gpio.GpioFactory
-import com.pi4j.io.gpio.PinState
+import lassi.pi.Pi
 
 object LedTestTool {
   def main(args: Array[String]): Unit = {
@@ -15,20 +14,15 @@ class LedTestTool() {
 
     println("Led test tool")
 
-    val gpio = GpioFactory.getInstance
-    val config = new PiConfig(gpio)
+    val pi = Pi()
 
-    config.leds.foreach { pin =>
-      pin.setShutdownOptions(true, PinState.LOW)
-    }
-
-    config.leds.foreach { pin =>
-      println(pin.getName)
-      pin.pulseSync(1000)
+    pi.leds.foreach { led =>
+      println(led.name)
+      led.output.pulseSync(1000)
     }
     Thread.sleep(1000)
 
-    gpio.shutdown()
+    pi.shutdown()
 
     println("done")
   }

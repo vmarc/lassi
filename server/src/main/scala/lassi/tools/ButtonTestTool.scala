@@ -1,9 +1,9 @@
 package lassi.tools
 
-import com.pi4j.io.gpio.GpioController
-import com.pi4j.io.gpio.GpioFactory
+import com.pi4j.io.gpio.PinState
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent
 import com.pi4j.io.gpio.event.GpioPinListenerDigital
+import lassi.pi.Pi
 
 object ButtonTestTool {
   def main(args: Array[String]): Unit = {
@@ -17,29 +17,38 @@ class ButtonTestTool {
 
     println("ButtonTestTool")
 
-    val gpio: GpioController = GpioFactory.getInstance
-    val config = new PiConfig(gpio)
-
-    config.buttons.foreach { button =>
-      button.setShutdownOptions(true)
-    }
+    val pi = Pi()
 
     val listener = new GpioPinListenerDigital() {
-      override def handleGpioPinDigitalStateChangeEvent(event: GpioPinDigitalStateChangeEvent): Unit = { // display pin state on console
-        println(event.getPin.getName + " = " + event.getState.name())
+      override def handleGpioPinDigitalStateChangeEvent(event: GpioPinDigitalStateChangeEvent): Unit = {
+        pi.button(event.getPin.getName) match {
+          case None =>
+          case Some(button) =>
+            println(button.name + " = " + event.getState.name())
+            pi.ledWithId(button.id) match {
+              case None =>
+              case Some(led) =>
+                if (event.getState == PinState.HIGH) {
+                  led.output.high()
+                }
+                else {
+                  led.output.low()
+                }
+            }
+        }
       }
     }
 
-    config.buttons.foreach { button =>
-      button.setShutdownOptions(true)
-      button.addListener(listener)
+    pi.buttons.foreach { button =>
+      button.input.setShutdownOptions(true)
+      button.input.addListener(listener)
     }
 
     while ( {
       true
     }) Thread.sleep(500)
 
-    gpio.shutdown()
+    pi.shutdown()
     println("Done")
   }
 
