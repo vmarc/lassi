@@ -35,6 +35,8 @@ import {SceneEditComponent} from './scene/scene-edit.component';
 import {ScenesComponent} from './scene/scenes.component';
 import {ScenesService} from './scene/scenes.service';
 import {SettingsComponent} from './settings/settings.component';
+import {SimulatorControlComponent} from './simulator/simulator-control.component';
+import {SimulatorComponent} from './simulator/simulator.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import {SettingsComponent} from './settings/settings.component';
     ConfirmDeleteDialogComponent,
     SceneEditComponent,
     SceneDetailsComponent,
-    SettingsComponent
+    SettingsComponent,
+    SimulatorComponent,
+    SimulatorControlComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,7 @@ import {SettingsComponent} from './settings/settings.component';
     FormsModule,
     MatTooltipModule,
     MatSnackBarModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [
     ScenesService,

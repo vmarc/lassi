@@ -5,6 +5,7 @@ import {Component} from '@angular/core';
   template: `
     <div class='buttons'>
       <button mat-stroked-button routerLink="scenes">Scenes</button>
+      <button mat-stroked-button routerLink="simulator">Simulator</button>
       <button mat-stroked-button routerLink="old-simulator">Old simulator</button>
       <button mat-stroked-button routerLink="monitor">Monitor</button>
       <button mat-stroked-button routerLink="settings">Settings</button>

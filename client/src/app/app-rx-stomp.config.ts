@@ -9,7 +9,7 @@ export const appRxStompConfig: InjectableRxStompConfig = {
   reconnectDelay: 5000,
 
   debug: (msg: string): void => {
-    console.log(new Date().toLocaleString('nl'), msg);
+    // console.log(new Date().toLocaleString('nl'), msg);
   }
 }
 
