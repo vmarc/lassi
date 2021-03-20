@@ -5,6 +5,9 @@ import com.pi4j.io.gpio.GpioFactory
 import com.pi4j.io.gpio.PinPullResistance
 import com.pi4j.io.gpio.PinState
 import com.pi4j.io.gpio.RaspiPin
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent
+import com.pi4j.io.gpio.event.GpioPinListener
+import com.pi4j.io.gpio.event.GpioPinListenerDigital
 
 object Pi {
 
@@ -86,6 +89,19 @@ class Pi(val gpio: GpioController, val leds: Seq[PiLed], val buttons: Seq[PiButt
 
   def ledWithId(id: String): Option[PiLed] = {
     leds.find(_.id == id)
+  }
+
+  def createButtonListener(listener: (PiButtonEvent) => Unit): GpioPinListener = {
+    new GpioPinListenerDigital() {
+      override def handleGpioPinDigitalStateChangeEvent(event: GpioPinDigitalStateChangeEvent): Unit = {
+        button(event.getPin.getName) match {
+          case None =>
+          case Some(button) =>
+            val buttonEvent = new PiButtonEvent(button, event.getState, event.getEdge)
+            listener(buttonEvent)
+        }
+      }
+    }
   }
 
   def shutdown(): Unit = gpio.shutdown()

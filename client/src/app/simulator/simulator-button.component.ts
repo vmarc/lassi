@@ -4,14 +4,19 @@ import {map} from 'rxjs/operators';
 import {SimulatorService} from './simulator.service';
 
 @Component({
-  selector: 'app-simulator-control',
+  selector: 'app-simulator-button',
   template: `
     <div class="control">
       <div>
         <div class="led {{colorClass | async}}">
         </div>
       </div>
-      <button mat-stroked-button (click)="buttonClicked()">{{title}}</button>
+      <button
+          mat-stroked-button
+          (mousedown)="mouseDown()"
+          (mouseup)="mouseUp()">
+        {{title}}
+      </button>
     </div>
   `,
   styles: [`
@@ -61,9 +66,9 @@ import {SimulatorService} from './simulator.service';
 
   `]
 })
-export class SimulatorControlComponent {
+export class SimulatorButtonComponent {
 
-  @Input() controlId: string;
+  @Input() buttonId: string;
   @Input() title: string;
   @Input() color: string;
 
@@ -72,7 +77,7 @@ export class SimulatorControlComponent {
   constructor(private simulatorService: SimulatorService) {
     this.colorClass = simulatorService.status$.pipe(
       map(simulatorStatus => {
-        const on = simulatorStatus[this.controlId];
+        const on = simulatorStatus[this.buttonId];
         if (on === true) {
           return this.color;
         }
@@ -81,8 +86,12 @@ export class SimulatorControlComponent {
     );
   }
 
-  buttonClicked(): void {
-    console.log('Clicked ' + this.controlId);
+  mouseDown(): void {
+    this.simulatorService.simulate(this.buttonId, true);
+  }
+
+  mouseUp(): void {
+    this.simulatorService.simulate(this.buttonId, false);
   }
 
 }

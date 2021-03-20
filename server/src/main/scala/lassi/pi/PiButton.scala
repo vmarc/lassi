@@ -4,6 +4,9 @@ import com.pi4j.io.gpio.GpioController
 import com.pi4j.io.gpio.GpioPinDigitalInput
 import com.pi4j.io.gpio.Pin
 import com.pi4j.io.gpio.PinPullResistance
+import com.pi4j.io.gpio.PinState
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent
+import com.pi4j.io.gpio.event.GpioPinListenerDigital
 
 object PiButton {
 
@@ -25,5 +28,11 @@ class PiButton(val input: GpioPinDigitalInput) {
   def id: String = input.getProperty("id")
 
   def name: String = input.getName
+
+  def addListener(): Unit = {
+  }
+
+
+
 
 }

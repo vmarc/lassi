@@ -1,36 +1,36 @@
 package lassi.server.simulator
 
 case class SimulatorStatus(
-  play: Boolean = false,
-  stop: Boolean = false,
-  record: Boolean = false,
-  control1: Boolean = false,
-  control2: Boolean = false,
-  control3: Boolean = false,
-  control4: Boolean = false,
-  control5: Boolean = false,
-  control6: Boolean = false,
-  control7: Boolean = false,
-  control8: Boolean = false,
-  control9: Boolean = false
+  buttonPlay: Boolean = false,
+  buttonStop: Boolean = false,
+  buttonRecord: Boolean = false,
+  button1: Boolean = false,
+  button2: Boolean = false,
+  button3: Boolean = false,
+  button4: Boolean = false,
+  button5: Boolean = false,
+  button6: Boolean = false,
+  button7: Boolean = false,
+  button8: Boolean = false,
+  button9: Boolean = false
 ) {
 
-  def controlCount: Int = 12
+  def buttonCount: Int = 12
 
   def put(controlId: Int, value: Boolean): SimulatorStatus = {
     controlId match {
-      case 0 => copy(play = value)
-      case 1 => copy(stop = value)
-      case 2 => copy(record = value)
-      case 3 => copy(control1 = value)
-      case 4 => copy(control2 = value)
-      case 5 => copy(control3 = value)
-      case 6 => copy(control4 = value)
-      case 7 => copy(control5 = value)
-      case 8 => copy(control6 = value)
-      case 9 => copy(control7 = value)
-      case 10 => copy(control8 = value)
-      case 11 => copy(control9 = value)
+      case 0 => copy(buttonPlay = value)
+      case 1 => copy(buttonStop = value)
+      case 2 => copy(buttonRecord = value)
+      case 3 => copy(button1 = value)
+      case 4 => copy(button2 = value)
+      case 5 => copy(button3 = value)
+      case 6 => copy(button4 = value)
+      case 7 => copy(button5 = value)
+      case 8 => copy(button6 = value)
+      case 9 => copy(button7 = value)
+      case 10 => copy(button8 = value)
+      case 11 => copy(button9 = value)
       case _ => this
     }
   }

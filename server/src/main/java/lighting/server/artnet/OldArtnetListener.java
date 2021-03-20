@@ -20,9 +20,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 @Component
-public class ArtnetListener {
+public class OldArtnetListener {
 
-    private static final Logger log = LogManager.getLogger(ArtnetListener.class);
+    private static final Logger log = LogManager.getLogger(OldArtnetListener.class);
 
     private final IOService iioService;
     private ArtNetClient artNetClient = new ArtNetClient();
@@ -35,7 +35,7 @@ public class ArtnetListener {
     private long timeElapsed;
     private HashMap<Integer, Frame> currentFrames = new HashMap<>();
 
-    public ArtnetListener(final IOService iioService) {
+    public OldArtnetListener(final IOService iioService) {
         this.iioService = iioService;
     }
 

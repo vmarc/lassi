@@ -35,7 +35,7 @@ import {SceneEditComponent} from './scene/scene-edit.component';
 import {ScenesComponent} from './scene/scenes.component';
 import {ScenesService} from './scene/scenes.service';
 import {SettingsComponent} from './settings/settings.component';
-import {SimulatorControlComponent} from './simulator/simulator-control.component';
+import {SimulatorButtonComponent} from './simulator/simulator-button.component';
 import {SimulatorComponent} from './simulator/simulator.component';
 
 @NgModule({
@@ -53,7 +53,7 @@ import {SimulatorComponent} from './simulator/simulator.component';
     SceneDetailsComponent,
     SettingsComponent,
     SimulatorComponent,
-    SimulatorControlComponent,
+    SimulatorButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,9 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Component
 
 @Component
-class SimulatorService(
-  messagingTemplate: SimpMessagingTemplate
-) {
+class SimulatorService(messagingTemplate: SimpMessagingTemplate) {
 
   private val log = LogManager.getLogger(classOf[SimulatorService])
 
@@ -19,7 +17,7 @@ class SimulatorService(
   def simulate(): Unit = {
 
     val index1 = index
-    val index2 = if (index < status.controlCount - 1) index + 1 else 0
+    val index2 = if (index < status.buttonCount - 1) index + 1 else 0
     index = index2
 
     status = status.put(index1, value = false)
@@ -27,4 +25,9 @@ class SimulatorService(
 
     this.messagingTemplate.convertAndSend("/topic/simulator/status", status)
   }
+
+  def simulate(buttonId: String, value: Boolean): Unit = {
+    log.info(s"$buttonId -> $value")
+  }
+
 }

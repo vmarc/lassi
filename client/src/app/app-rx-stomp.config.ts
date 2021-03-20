@@ -12,4 +12,3 @@ export const appRxStompConfig: InjectableRxStompConfig = {
     // console.log(new Date().toLocaleString('nl'), msg);
   }
 }
-

@@ -1,3 +1,3 @@
 export interface SimulatorStatus {
-  [controlId: string]: boolean;
+  [buttonId: string]: boolean;
 }
