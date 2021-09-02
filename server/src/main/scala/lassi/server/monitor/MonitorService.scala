@@ -2,7 +2,6 @@ package lassi.server.monitor
 
 import lassi.domain.Frame
 import lassi.server.artnet.ArtnetListener
-import lassi.server.io.IOServiceImpl
 import org.apache.logging.log4j.LogManager
 import org.springframework.messaging.simp.SimpMessagingTemplate
 import org.springframework.scheduling.annotation.Scheduled

@@ -3,7 +3,7 @@ package lassi.server.io
 import lassi.domain.Scene
 import lassi.server.settings.Settings
 
-trait IOService {
+trait IoService {
 
   def updateSceneFromDisk(scene: Scene): Unit
 

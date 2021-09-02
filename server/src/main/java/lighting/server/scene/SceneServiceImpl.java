@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import lighting.server.IO.IOService;
-import lighting.server.artnet.ArtnetListener;
+import lighting.server.artnet.OldArtnetListener;
 import lighting.server.artnet.ArtnetSender;
 
 @Component
@@ -16,21 +16,21 @@ public class SceneServiceImpl implements SceneService {
 
 	private static final Logger log = LogManager.getLogger(SceneServiceImpl.class);
 
-	private final ArtnetListener artnetListener;
+	private final OldArtnetListener artnetListener;
 	private final ArtnetSender artnetSender;
 	private final IOService iOService;
 
 	public SceneServiceImpl(final IOService iOService) {
 		this.iOService = iOService;
-		this.artnetListener = new ArtnetListener(iOService);
+		this.artnetListener = new OldArtnetListener(iOService);
 		this.artnetSender = new ArtnetSender(iOService);
 	}
 
-	public boolean recordScene(int button_id) {
+	public boolean recordScene(int buttonId) {
 		try {
 			List<Scene> scenesOnDisk = iOService.getAllScenesFromDisk();
 			for (Scene s : scenesOnDisk) {
-				if (button_id != 0 && s.getButtonId() == button_id) {
+				if (buttonId != 0 && s.getButtonId() == buttonId) {
 					s.setButtonId(0);
 					iOService.updateSceneFromDisk(s);
 				}
@@ -42,25 +42,25 @@ public class SceneServiceImpl implements SceneService {
 		try {
 			artnetListener.setFramesAdded(false);
 			artnetListener.setNumberOfFrames(1);
-			artnetListener.recordData(button_id);
+			artnetListener.recordData(buttonId);
 		} catch (IOException e) {
-			log.error("Could not record a scene with a single frames to button " + button_id, e);
+			log.error("Could not record a scene with a single frames to button " + buttonId, e);
 		}
 
 		try {
 			Thread.sleep(3000);
 			artnetListener.getArtNetClient().stop();
 		} catch (InterruptedException e) {
-			log.error("Could not record a scene with a single frames to button " + button_id, e);
+			log.error("Could not record a scene with a single frames to button " + buttonId, e);
 		}
 		return artnetListener.isFramesAdded();
 	}
 
-	public boolean recordSceneMultipleFrames(int button_id) {
+	public boolean recordSceneMultipleFrames(int buttonId) {
 		try {
 			List<Scene> scenesOnDisk = iOService.getAllScenesFromDisk();
 			for (Scene s : scenesOnDisk) {
-				if (button_id != 0 && s.getButtonId() == button_id) {
+				if (buttonId != 0 && s.getButtonId() == buttonId) {
 					s.setButtonId(0);
 					iOService.updateSceneFromDisk(s);
 				}
@@ -72,10 +72,10 @@ public class SceneServiceImpl implements SceneService {
 		try {
 			artnetListener.setFramesAdded(false);
 			artnetListener.setNumberOfFrames(20000);
-			artnetListener.recordData(button_id);
+			artnetListener.recordData(buttonId);
 			return true;
 		} catch (IOException e) {
-			log.error("Could not record a scene with multiple frames to button " + button_id, e);
+			log.error("Could not record a scene with multiple frames to button " + buttonId, e);
 			return false;
 		}
 	}
@@ -84,21 +84,21 @@ public class SceneServiceImpl implements SceneService {
 		return artnetListener.stopRecording();
 	}
 
-	public boolean playSceneFromButton(int button) throws IOException {
+	public boolean playSceneFromButton(int buttonId) throws IOException {
 		List<Scene> scenes = iOService.getAllScenesFromDisk();
 		for (Scene scene : scenes) {
-			if (scene.getButtonId() == button) {
+			if (scene.getButtonId() == buttonId) {
 				return playScene(scene);
 			}
 		}
 		return false;
 	}
 
-	public boolean playSceneFromId(String id) throws IOException {
+	public boolean playSceneFromId(String sceneId) throws IOException {
 		List<Scene> scenes = iOService.getAllScenesFromDisk();
 
 		for (Scene scene : scenes) {
-			if (scene.getId().equals(id)) {
+			if (scene.getId().equals(sceneId)) {
 				return playScene(scene);
 			}
 		}

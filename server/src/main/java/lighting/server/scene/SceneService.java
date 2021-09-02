@@ -4,13 +4,13 @@ import java.io.IOException;
 
 public interface SceneService {
 
-	boolean recordScene(int button_id);
+	boolean recordScene(int buttonId);
 
-	boolean playSceneFromButton(int button) throws IOException;
+	boolean playSceneFromButton(int buttonId) throws IOException;
 
-	boolean playSceneFromId(String id) throws IOException;
+	boolean playSceneFromId(String sceneId) throws IOException;
 
-	boolean recordSceneMultipleFrames(int button_id);
+	boolean recordSceneMultipleFrames(int buttonId);
 
 	boolean stopRecording();
 

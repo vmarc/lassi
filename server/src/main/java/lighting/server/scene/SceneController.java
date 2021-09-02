@@ -28,16 +28,16 @@ public class SceneController {
 		this.iOService = iOService;
 	}
 
-	@GetMapping(value = "/api/recordSceneSingleFrame/{button_id}")
-	public boolean recordSceneSingleFrame(@PathVariable int button_id) {
-		log.info("Recorded a scene with a single frame to button " + button_id);
-		return sceneService.recordScene(button_id);
+	@GetMapping(value = "/api/recordSceneSingleFrame/{buttonId}")
+	public boolean recordSceneSingleFrame(@PathVariable int buttonId) {
+		log.info("Record scene with a single frame to button " + buttonId);
+		return sceneService.recordScene(buttonId);
 	}
 
-	@GetMapping(value = "/api/recordSceneMultipleFrames/{button_id}")
-	public boolean recordSceneMultipleFrames(@PathVariable int button_id) {
-		log.info("Recorded a scene with multiple frames to button " + button_id);
-		return sceneService.recordSceneMultipleFrames(button_id);
+	@GetMapping(value = "/api/recordSceneMultipleFrames/{buttonId}")
+	public boolean recordSceneMultipleFrames(@PathVariable int buttonId) {
+		log.info("Recorded a scene with multiple frames to button " + buttonId);
+		return sceneService.recordSceneMultipleFrames(buttonId);
 	}
 
 	@GetMapping(value = "/api/stopRecording")
@@ -78,13 +78,13 @@ public class SceneController {
 		}
 	}
 
-	@GetMapping(value = "/api/playscenefromid/{id}")
-	public boolean playSceneFromId(@PathVariable String id) {
+	@GetMapping(value = "/api/playscenefromid/{sceneId}")
+	public boolean playSceneFromId(@PathVariable String sceneId) {
 		try {
-			log.info("Playing scene from ID " + id);
-			return sceneService.playSceneFromId(id);
+			log.info("Playing scene from ID " + sceneId);
+			return sceneService.playSceneFromId(sceneId);
 		} catch (IOException e) {
-			log.error("Could not play scene from ID " + id, e);
+			log.error("Could not play scene from ID " + sceneId, e);
 			return false;
 		}
 	}

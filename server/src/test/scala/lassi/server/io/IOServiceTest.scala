@@ -17,7 +17,7 @@ class IOServiceTest extends AnyFunSuite with Matchers {
     val settingsDir = new File("/tmp/lassi/settings")
     settingsDir.mkdirs()
 
-    val service = new IOServiceImpl("/tmp/lassi")
+    val service = new IoServiceImpl("/tmp/lassi")
 
     val settings = Settings(
       framesPerSecond = 1,

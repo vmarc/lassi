@@ -9,9 +9,9 @@ import java.io.File
 import java.nio.file.Paths
 
 @Component
-class IOServiceImpl(rootDir: String) extends IOService {
+class IoServiceImpl(rootDir: String) extends IoService {
 
-  private val log = LogManager.getLogger(classOf[IOServiceImpl])
+  private val log = LogManager.getLogger(classOf[IoServiceImpl])
   private val scenesDir = Paths.get(rootDir + "/scenes/")
   private val settingsDir = Paths.get(rootDir + "/settings/")
   private val settingsFile = new File((settingsDir) + "/settings.json")

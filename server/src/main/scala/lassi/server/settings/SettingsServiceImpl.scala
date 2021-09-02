@@ -1,16 +1,16 @@
 package lassi.server.settings
 
-import lassi.server.io.IOService
+import lassi.server.io.IoService
 import org.springframework.stereotype.Component
 
 @Component
-class SettingsServiceImpl(iOService: IOService) extends SettingsService {
+class SettingsServiceImpl(ioService: IoService) extends SettingsService {
 
   override def readSettings: Settings = {
-    iOService.readSettings
+    ioService.readSettings
   }
 
   override def writeSettings(settings: Settings): Unit = {
-    iOService.writeSettings(settings)
+    ioService.writeSettings(settings)
   }
 }

@@ -22,7 +22,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import lighting.server.scene.Scene;
 import lighting.server.settings.Settings;
 
-@Component
+//@Component
 public class IOServiceImpl implements IOService {
 
 	private static final Logger log = LogManager.getLogger(IOServiceImpl.class);
