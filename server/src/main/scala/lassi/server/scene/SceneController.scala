@@ -1,7 +1,8 @@
 package lassi.server.scene
 
 import lassi.domain.Scene
-import lassi.server.io.IoService
+import lassi.server.repository.IoService
+import lassi.server.repository.SettingsRepository
 import org.apache.logging.log4j.LogManager
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RestController
 import java.io.IOException
 
 @RestController
-class SceneController(sceneService: SceneService, ioService: IoService) {
+class SceneController(
+  sceneService: SceneService,
+  ioService: IoService,
+  settingsRepository: SettingsRepository
+) {
 
   private val log = LogManager.getLogger(classOf[SceneController])
 
@@ -140,7 +145,7 @@ class SceneController(sceneService: SceneService, ioService: IoService) {
   def getPages: Int = {
     try {
       log.info("Retrieved page size")
-      ioService.readSettings.buttonPageCount
+      settingsRepository.readSettings.buttonPageCount
     } catch {
       case e: IOException =>
         log.error("Could not retrieve page size", e)

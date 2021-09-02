@@ -1,4 +1,4 @@
-package lassi.server.io
+package lassi.server.repository
 
 import lassi.server.settings.Settings
 import org.scalatest.funsuite.AnyFunSuite
@@ -6,7 +6,7 @@ import org.scalatest.matchers.should.Matchers
 
 import java.io.File
 
-class IOServiceTest extends AnyFunSuite with Matchers {
+class SettingsRepositoryTest extends AnyFunSuite with Matchers {
 
   test("write/read settings file") {
 
@@ -17,7 +17,7 @@ class IOServiceTest extends AnyFunSuite with Matchers {
     val settingsDir = new File("/tmp/lassi/settings")
     settingsDir.mkdirs()
 
-    val service = new IoServiceImpl("/tmp/lassi")
+    val repository = new SettingsRepositoryImpl("/tmp/lassi")
 
     val settings = Settings(
       framesPerSecond = 1,
@@ -25,8 +25,8 @@ class IOServiceTest extends AnyFunSuite with Matchers {
       buttonPageCount = 3
     )
 
-    service.writeSettings(settings: Settings)
-    val settingsFromDisk = service.readSettings
+    repository.writeSettings(settings: Settings)
+    val settingsFromDisk = repository.readSettings
     settingsFromDisk should equal(settings)
   }
 

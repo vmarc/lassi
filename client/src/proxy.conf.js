@@ -5,17 +5,9 @@ PROXY_CONFIG = {
     logLevel: 'debug'
   },
   "/api/**": {
-    target: "http://localhost:8080",
+    target: "http://localhost:8081",
     secure: false,
     logLevel: 'debug'
-  },
-  "/json-api/**": {
-    "target": "http://localhost:9005",
-    "secure": false
-  },
-  "/tiles/**": {
-    "target": "https://experimental.knooppuntnet.nl",
-    "secure": false
   },
   "**": {
     "target": "http://localhost:9000",

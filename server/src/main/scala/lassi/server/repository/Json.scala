@@ -1,4 +1,4 @@
-package lassi.server.io
+package lassi.server.repository
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include.NON_ABSENT
 import com.fasterxml.jackson.databind.DeserializationFeature

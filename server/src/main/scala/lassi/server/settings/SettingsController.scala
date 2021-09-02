@@ -1,6 +1,6 @@
 package lassi.server.settings
 
-import org.apache.logging.log4j.LogManager
+import lassi.log.Log
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -9,34 +9,31 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class SettingsController(settingsService: SettingsService) {
 
-  private val log = LogManager.getLogger(classOf[SettingsController])
+  private val log = Log(classOf[SettingsController])
 
-  @GetMapping(value = Array("/scala-api/settings"))
+  @GetMapping(value = Array("/api/settings"))
   def getSettings: Settings = {
     try {
-      val settings = settingsService.readSettings
-      log.info("Retrieved settings from disk " + settings)
-      settings
+      log.infoElapsed {
+        val settings = settingsService.readSettings
+        ("Read: " + settings, settings)
+      }
     } catch {
       case e: Exception =>
-        throw new RuntimeException("Could not retrieve settings from disk", e)
+        throw new RuntimeException("Could not read settings from disk", e)
     }
   }
 
-  @PutMapping(value = Array("/scala-api/settings"))
+  @PutMapping(value = Array("/api/settings"))
   def saveSettings(@RequestBody settings: Settings): Unit = {
     try {
-      settingsService.writeSettings(settings)
-      var message = "Saved settings to disk: fade time in seconds: " + settings.fadeTimeInSeconds
-      message += ", frames per seconds: " + settings.framesPerSecond
-      message += ", button page count: " + settings.buttonPageCount
-      log.info(message)
+      log.infoElapsed {
+        settingsService.writeSettings(settings)
+        ("Write: " + settings, ())
+      }
     } catch {
       case e: Exception =>
-        var message = "Could not save settings to disk: fade time in seconds: " + settings.fadeTimeInSeconds
-        message += ", frames per seconds: " + settings.framesPerSecond
-        message += ", button page count: " + settings.buttonPageCount
-        throw new IllegalStateException(message, e)
+        throw new RuntimeException("Could not write settings to disk: " + settings, e)
     }
   }
 }

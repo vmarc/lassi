@@ -3,7 +3,8 @@ package lassi.server.scene
 import lassi.domain.Scene
 import lassi.server.artnet.ArtnetListener
 import lassi.server.artnet.ArtnetSender
-import lassi.server.io.IoService
+import lassi.server.repository.IoService
+import lassi.server.repository.SettingsRepository
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.springframework.stereotype.Component
@@ -16,7 +17,8 @@ import java.util.UUID
 class SceneServiceImpl(
   ioService: IoService,
   artnetListener: ArtnetListener,
-  artnetSender: ArtnetSender
+  artnetSender: ArtnetSender,
+  settingsRepository: SettingsRepository
 ) extends SceneService {
 
   private val log: Logger = LogManager.getLogger(classOf[SceneServiceImpl])
@@ -47,7 +49,7 @@ class SceneServiceImpl(
     //        throw new RuntimeException("Could not read scenes from disk", e)
     //    }
 
-    val settings = ioService.readSettings
+    val settings = settingsRepository.readSettings
     val createdOn: LocalDateTime = LocalDateTime.now
     val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
     val id = existingSceneOption.map(_.id).getOrElse(UUID.randomUUID.toString)

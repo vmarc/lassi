@@ -1,7 +1,6 @@
-package lassi.server.io
+package lassi.server.repository
 
 import lassi.domain.Scene
-import lassi.server.settings.Settings
 
 trait IoService {
 
@@ -19,7 +18,4 @@ trait IoService {
 
   def getButtons: Seq[Boolean]
 
-  def readSettings: Settings
-
-  def writeSettings(settings: Settings): Unit
 }
