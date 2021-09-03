@@ -3,7 +3,7 @@ package lassi.server.scene
 import lassi.domain.Scene
 import lassi.server.artnet.ArtnetListener
 import lassi.server.artnet.ArtnetSender
-import lassi.server.repository.IoService
+import lassi.server.repository.SceneRespository
 import lassi.server.repository.SettingsRepository
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -15,7 +15,7 @@ import java.util.UUID
 
 @Component
 class SceneServiceImpl(
-  ioService: IoService,
+  ioService: SceneRespository,
   artnetListener: ArtnetListener,
   artnetSender: ArtnetSender,
   settingsRepository: SettingsRepository

@@ -2,7 +2,7 @@ package lassi.server.repository
 
 import lassi.domain.Scene
 
-trait IoService {
+trait SceneRespository {
 
   def updateSceneFromDisk(scene: Scene): Unit
 

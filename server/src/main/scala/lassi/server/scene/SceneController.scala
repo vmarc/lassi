@@ -1,7 +1,7 @@
 package lassi.server.scene
 
 import lassi.domain.Scene
-import lassi.server.repository.IoService
+import lassi.server.repository.SceneRespository
 import lassi.server.repository.SettingsRepository
 import org.apache.logging.log4j.LogManager
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +15,7 @@ import java.io.IOException
 @RestController
 class SceneController(
   sceneService: SceneService,
-  ioService: IoService,
+  ioService: SceneRespository,
   settingsRepository: SettingsRepository
 ) {
 
