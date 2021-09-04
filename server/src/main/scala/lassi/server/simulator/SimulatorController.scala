@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class SimulatorController(simulatorService: SimulatorService) {
 
-  @GetMapping(value = Array("/scala-api/simulator/{buttonId}/{value}"))
+  @GetMapping(value = Array("/api/simulator/{buttonId}/{value}"))
   def simulate(@PathVariable buttonId: String, @PathVariable value: Boolean): Unit = {
     simulatorService.simulate(buttonId, value)
   }

@@ -13,55 +13,51 @@ export class ScenesService {
     this.buttons = this.getButtons();
   }
 
-  public findAll(): Observable<Scene[]> {
+  findAll(): Observable<Scene[]> {
     return this.http.get<Scene[]>('/api/sceneslist').pipe(retry(1), catchError(this.handleError));
   }
 
-  public delete(scene_id: string): void {
+  delete(scene_id: string): void {
     this.http.get('/api/deletescene/' + scene_id).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
-  public get(scene_id: string): Observable<Scene> {
+  get(scene_id: string): Observable<Scene> {
     return this.http.get<Scene>('/api/getscene/' + scene_id).pipe(retry(1), catchError(this.handleError));
   }
 
-  public download(scene_id: string): Observable<Blob> {
-    return this.http.get('/api/downloadscene/' + scene_id, {responseType: 'blob'}).pipe(retry(1), catchError(this.handleError));
-  }
-
-  public play(id: string): Observable<boolean> {
+  play(id: string): Observable<boolean> {
     return this.http.get<boolean>('/api/playscenefromid/' + id).pipe(retry(1), catchError(this.handleError));
   }
 
-  public pause(bool: boolean) : void {
+  pause(bool: boolean) : void {
     this.http.get('/api/pause/' + bool).pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
-  public playFromButton(button: number): Observable<boolean> {
+  playFromButton(button: number): Observable<boolean> {
     return this.http.get<boolean>('/api/playscene/' + button).pipe(retry(1), catchError(this.handleError));
   }
 
-  public recordSingleFrame(button: number) : Observable<boolean> {
+  recordSingleFrame(button: number) : Observable<boolean> {
     return this.http.get<boolean>('/scala-api/scenes/record/' + button).pipe(retry(1), catchError(this.handleError));
   }
 
-  public recordMultipleFrames(button: number) : Observable<boolean> {
+  recordMultipleFrames(button: number) : Observable<boolean> {
     return this.http.get<boolean>('/api/recordSceneMultipleFrames/' + button).pipe(retry(1), catchError(this.handleError));
   }
 
-  public stopPlaying(): void {
+  stopPlaying(): void {
     this.http.get('/api/stop').pipe(retry(1), catchError(this.handleError)).subscribe();
   }
 
-  public stopRecording(): Observable<boolean> {
+  stopRecording(): Observable<boolean> {
     return this.http.get<boolean>('/api/stopRecording').pipe(retry(1), catchError(this.handleError));
   }
 
-  public save(scene: Scene): Observable<Scene> {
+  save(scene: Scene): Observable<Scene> {
     return this.http.put<Scene>('/api/savescene/', scene).pipe(retry(1), catchError(this.handleError));
   }
 
-  public getButtons(): Observable<boolean[]> {
+  getButtons(): Observable<boolean[]> {
     return this.http.get<boolean[]>('api/getbuttons').pipe(retry(1), catchError(this.handleError));
   }
 

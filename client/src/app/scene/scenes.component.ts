@@ -5,9 +5,9 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {Router} from '@angular/router';
-import {Scene} from '../domain//scene';
-import {ScenesService} from '../scene/scenes.service';
+import {Scene} from '../domain/scene';
 import {ConfirmDeleteDialogComponent} from './confirm-delete-dialog.component';
+import {ScenesService} from './scenes.service';
 
 @Component({
   selector: 'app-scenes',
@@ -36,7 +36,6 @@ import {ConfirmDeleteDialogComponent} from './confirm-delete-dialog.component';
           <button class="fas fa-info-circle" mat-icon-button matTooltip="View details of Scene" (click)="gotoDetails(scene)"></button>
           <button class="fas fa-edit" mat-icon-button matTooltip="Edit Scene" (click)="openEditDialog(scene)"></button>
           <button class="fas fa-trash-alt" mat-icon-button matTooltip="Delete Scene" (click)="openDeleteDialog(scene)"></button>
-          <button class="fas fa-download" mat-icon-button matTooltip="Download Scene" (click)="download(scene)"></button>
         </mat-cell>
       </ng-container>
 
@@ -184,24 +183,6 @@ export class ScenesComponent implements OnInit, AfterViewInit {
       if (result) {
         this.delete(scene);
       }
-    });
-  }
-
-  download(scene: Scene) {
-    this.scenesService.download(scene.id).subscribe(blob => {
-      var newBlob = new Blob([blob], {type: 'application/json'});
-
-      const data = window.URL.createObjectURL(newBlob);
-
-      var link = document.createElement('a');
-      link.href = data;
-      link.download = scene.id + '.json';
-      link.dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
-
-      this.snackbar.open('Scene downloaded', 'Close', {
-        duration: 3000
-      });
-
     });
   }
 

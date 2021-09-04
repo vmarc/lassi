@@ -15,19 +15,19 @@ import java.io.IOException
 @RestController
 class SceneController(
   sceneService: SceneService,
-  ioService: SceneRespository,
+  sceneRespository: SceneRespository,
   settingsRepository: SettingsRepository
 ) {
 
   private val log = LogManager.getLogger(classOf[SceneController])
 
-  @GetMapping(value = Array("/scala-api/scenes/record/{buttonId}"))
+  @GetMapping(value = Array("/api/scenes/record/{buttonId}"))
   def recordSceneSingleFrame(@PathVariable buttonId: Int): Boolean = {
     log.info(s"Record scene with a single frame to button $buttonId")
     sceneService.recordScene(buttonId)
   }
 
-  @GetMapping(value = Array("/scala-api/recordSceneMultipleFrames/{buttonId}"))
+  @GetMapping(value = Array("/api/recordSceneMultipleFrames/{buttonId}"))
   def recordSceneMultipleFrames(@PathVariable buttonId: Int): Boolean = {
     log.info(s"Record scene with multiple frames to button $buttonId")
     sceneService.recordSceneMultipleFrames(buttonId)
@@ -42,24 +42,12 @@ class SceneController(
   @PutMapping(value = Array("/api/savescene/"))
   def saveScene(@RequestBody scene: Scene): Unit = {
     try {
-      ioService.updateSceneFromDisk(scene)
+      sceneRespository.updateSceneFromDisk(scene)
       log.info(s"Save scene ${scene.id}")
     } catch {
       case e: IOException =>
         log.error(s"Could not save scene ${scene.id}", e)
     }
-  }
-
-  @GetMapping(value = Array("api/downloadscene/{sceneId}"))
-  def downloadScene(@PathVariable sceneId: String): String = {
-    try {
-      log.info(s"Download scene $sceneId")
-      return ioService.downloadScene(sceneId)
-    } catch {
-      case e: IOException =>
-        log.error(s"Could not download scene $sceneId", e)
-    }
-    null
   }
 
   @GetMapping(value = Array("/api/playscene/{buttonId}"))
@@ -98,7 +86,7 @@ class SceneController(
   def getScenes: Seq[Scene] = {
     try {
       log.info("Retrieved all scenes from disk")
-      ioService.getAllScenesFromDisk
+      sceneRespository.getAllScenesFromDisk
     } catch {
       case e: IOException =>
         log.error("Could not retrieve all scenes from disk", e)
@@ -109,7 +97,7 @@ class SceneController(
   @GetMapping(value = Array("/api/deletescene/{sceneId}"))
   def deleteScene(@PathVariable sceneId: String): Unit = {
     try {
-      ioService.deleteSceneFromDisk(sceneId)
+      sceneRespository.deleteSceneFromDisk(sceneId)
       log.info(s"Deleted scene $sceneId")
     } catch {
       case e: IOException =>
@@ -121,7 +109,7 @@ class SceneController(
   def getSceneById(@PathVariable sceneId: String): Scene = {
     try {
       log.info(s"Retrieved scene from disk with ID: " + sceneId)
-      ioService.getSceneFromDisk(sceneId)
+      sceneRespository.getSceneFromDisk(sceneId)
     } catch {
       case e: IOException =>
         log.error("Could not retrieved scene from disk with ID: " + sceneId, e)
@@ -133,7 +121,7 @@ class SceneController(
   def getButtons: Seq[Boolean] = {
     try {
       log.info("Retrieved buttons status")
-      ioService.getButtons
+      sceneRespository.getButtons
     } catch {
       case e: IOException =>
         log.error("Could not retrieve buttons status", e)

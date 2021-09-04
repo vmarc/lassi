@@ -23,10 +23,6 @@ class SceneRespositoryImpl(rootDir: String) extends SceneRespository {
     Json.objectMapper.writeValue(new File(filename), scene)
   }
 
-  override def downloadScene(sceneId: String): String = {
-    FileUtils.readFileToString(sceneFile(sceneId), "UTF-8")
-  }
-
   override def getAllScenesFromDisk: Seq[Scene] = {
     val sceneFiles = new File(scenesDir).listFiles().toSeq
     sceneFiles.map(file => Json.objectMapper.readValue(file, classOf[Scene]))

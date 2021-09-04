@@ -8,8 +8,6 @@ trait SceneRespository {
 
   def saveSceneToDisk(scene: Scene): Unit
 
-  def downloadScene(scene_id: String): String
-
   def getAllScenesFromDisk: Seq[Scene]
 
   def deleteSceneFromDisk(sceneId: String): Unit
