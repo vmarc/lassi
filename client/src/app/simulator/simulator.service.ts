@@ -32,7 +32,7 @@ export class SimulatorService {
   }
 
   simulate(buttonId: string, value: boolean): void {
-    const url = `/scala-api/simulator/${buttonId}/${value}`;
+    const url = `/api/simulator/${buttonId}/${value}`;
     this.http.get<void>(url).subscribe();
   }
 

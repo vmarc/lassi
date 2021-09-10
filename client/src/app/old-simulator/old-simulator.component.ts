@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ScenesService} from '../scene/scenes.service';
+import {SceneService} from '../scene/scene.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -139,7 +139,7 @@ export class OldSimulatorComponent implements OnInit {
 
   playColor: string;
 
-  constructor(private sceneService: ScenesService,
+  constructor(private sceneService: SceneService,
               private snackbar: MatSnackBar) {
   }
 

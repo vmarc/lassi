@@ -1,9 +1,10 @@
 package lassi.server.scene
 
 import lassi.domain.Scene
+import lassi.log.Log
 import lassi.server.repository.SceneRespository
 import lassi.server.repository.SettingsRepository
-import org.apache.logging.log4j.LogManager
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PutMapping
@@ -19,13 +20,55 @@ class SceneController(
   settingsRepository: SettingsRepository
 ) {
 
-  private val log = LogManager.getLogger(classOf[SceneController])
+  private val log = Log(classOf[SceneController])
 
-  @GetMapping(value = Array("/api/scenes/record/{buttonId}"))
+  @GetMapping(value = Array("/api/scenes"))
+  def getScenes: Seq[Scene] = {
+    try {
+      log.infoElapsed {
+        val scenes = sceneRespository.getAllScenesFromDisk
+        (s"get ${scenes.size} scenes", scenes)
+      }
+    } catch {
+      case e: IOException =>
+        log.error("Could not retrieve all scenes from disk", e)
+        Seq.empty
+    }
+  }
+
+  @GetMapping(value = Array("/api/scenes/{sceneId}"))
+  def getScene(@PathVariable sceneId: String): Scene = {
+    try {
+      log.infoElapsed {
+        val scene = sceneRespository.getSceneFromDisk(sceneId)
+        (s"Get scene $sceneId", scene)
+      }
+    } catch {
+      case e: IOException =>
+        log.error("Could not retrieved scene from disk with ID: " + sceneId, e)
+        null
+    }
+  }
+
+  @DeleteMapping(value = Array("/api/scenes/{sceneId}"))
+  def deleteScene(@PathVariable sceneId: String): Unit = {
+    try {
+      log.infoElapsed {
+        sceneRespository.deleteSceneFromDisk(sceneId)
+        (s"Delete scene $sceneId", ())
+      }
+    } catch {
+      case e: IOException =>
+        log.error(s"Could not delete scene $sceneId", e)
+    }
+  }
+
+  @GetMapping(value = Array("/api/record-scene/{buttonId}"))
   def recordSceneSingleFrame(@PathVariable buttonId: Int): Boolean = {
     log.info(s"Record scene with a single frame to button $buttonId")
     sceneService.recordScene(buttonId)
   }
+
 
   @GetMapping(value = Array("/api/recordSceneMultipleFrames/{buttonId}"))
   def recordSceneMultipleFrames(@PathVariable buttonId: Int): Boolean = {
@@ -80,41 +123,6 @@ class SceneController(
   def pause(@PathVariable bool: Boolean): Unit = {
     sceneService.pause(bool)
     log.info("Pause playing scene")
-  }
-
-  @GetMapping(value = Array("/api/sceneslist"))
-  def getScenes: Seq[Scene] = {
-    try {
-      log.info("Retrieved all scenes from disk")
-      sceneRespository.getAllScenesFromDisk
-    } catch {
-      case e: IOException =>
-        log.error("Could not retrieve all scenes from disk", e)
-        Seq.empty
-    }
-  }
-
-  @GetMapping(value = Array("/api/deletescene/{sceneId}"))
-  def deleteScene(@PathVariable sceneId: String): Unit = {
-    try {
-      sceneRespository.deleteSceneFromDisk(sceneId)
-      log.info(s"Deleted scene $sceneId")
-    } catch {
-      case e: IOException =>
-        log.error(s"Could not delete scene $sceneId", e)
-    }
-  }
-
-  @GetMapping(value = Array("/api/getscene/{sceneId}"))
-  def getSceneById(@PathVariable sceneId: String): Scene = {
-    try {
-      log.info(s"Retrieved scene from disk with ID: " + sceneId)
-      sceneRespository.getSceneFromDisk(sceneId)
-    } catch {
-      case e: IOException =>
-        log.error("Could not retrieved scene from disk with ID: " + sceneId, e)
-        null
-    }
   }
 
   @GetMapping(value = Array("api/getbuttons"))

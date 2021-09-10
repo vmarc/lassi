@@ -3,7 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import * as moment from 'moment';
 import {first} from 'rxjs/operators';
 import {Scene} from '../domain/scene';
-import {ScenesService} from './scenes.service';
+import {SceneService} from './scene.service';
 
 @Component({
   selector: 'app-scene-details',
@@ -36,7 +36,7 @@ export class SceneDetailsComponent implements OnInit {
   scene: Scene;
   date: string;
 
-  constructor(private sceneService: ScenesService,
+  constructor(private sceneService: SceneService,
               private activatedRoute: ActivatedRoute) {
   }
 

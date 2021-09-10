@@ -3,7 +3,7 @@ import {Subscription} from 'rxjs';
 import {RxStompService} from '@stomp/ng2-stompjs';
 import {Message} from '@stomp/stompjs';
 import {Frame} from '../domain/frame';
-import {ScenesService} from '../scene/scenes.service';
+import {SceneService} from '../scene/scene.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
@@ -112,7 +112,7 @@ export class MonitorComponent implements OnInit, OnDestroy {
   private topicSubscription: Subscription;
 
   constructor(private rxStompService: RxStompService,
-              private sceneService: ScenesService,
+              private sceneService: SceneService,
               private router: Router,
               private snackbar: MatSnackBar,
               private builder: FormBuilder) {

@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {Scene} from '../domain/scene';
-import {ScenesService} from './scenes.service';
+import {SceneService} from './scene.service';
 
 @Component({
   selector: 'app-scene-edit',
@@ -63,7 +63,7 @@ export class SceneEditComponent implements OnInit {
 
   scene: Scene;
 
-  constructor(private scenesService: ScenesService,
+  constructor(private sceneService: SceneService,
               private router: Router,
               private activatedRoute: ActivatedRoute) {
   }
@@ -71,7 +71,7 @@ export class SceneEditComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.pipe(first()).subscribe(params => {
       const id = params['sceneId'];
-      this.scenesService.get(id).subscribe(scene => {
+      this.sceneService.get(id).subscribe(scene => {
         this.scene = scene;
         this.editForm.setValue({
           name: scene.name,
@@ -98,7 +98,7 @@ export class SceneEditComponent implements OnInit {
       now,
       this.scene.frames
     );
-    this.scenesService.save(scene).subscribe(() => {
+    this.sceneService.save(scene).subscribe(() => {
       this.router.navigate(['/scenes']);
     });
   }

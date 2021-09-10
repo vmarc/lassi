@@ -5,7 +5,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
   selector: 'confirm-delete-dialog',
   template: `<h1 mat-dialog-title>Confirmation</h1>
   <div mat-dialog-content>
-    <p>Are you sure you want to delete this Scene?</p>
+    <p>Are you sure you want to delete this scene?</p>
   </div>
   <div mat-dialog-actions>
     <button mat-button [mat-dialog-close]="true">Yes</button>

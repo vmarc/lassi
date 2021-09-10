@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ScenesService} from '../scene/scenes.service';
+import {SceneService} from '../scene/scene.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 
@@ -41,7 +41,7 @@ export class OldSimulatorControlComponent {
   scenePlaying = false;
   pausedPlaying = false;
 
-  constructor(private sceneService: ScenesService,
+  constructor(private sceneService: SceneService,
               private snackbar: MatSnackBar,
               private router: Router) {
   }

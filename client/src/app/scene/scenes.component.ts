@@ -7,7 +7,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Router} from '@angular/router';
 import {Scene} from '../domain/scene';
 import {ConfirmDeleteDialogComponent} from './confirm-delete-dialog.component';
-import {ScenesService} from './scenes.service';
+import {SceneService} from './scene.service';
 
 @Component({
   selector: 'app-scenes',
@@ -87,7 +87,7 @@ export class ScenesComponent implements OnInit, AfterViewInit {
   pause = false;
   stopped = false;
 
-  constructor(private scenesService: ScenesService,
+  constructor(private sceneService: SceneService,
               private router: Router,
               private dialog: MatDialog,
               private snackbar: MatSnackBar) {
@@ -102,7 +102,7 @@ export class ScenesComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.scenesService.findAll().subscribe(data => {
+    this.sceneService.scenes().subscribe(data => {
       this.dataSource.data = data;
       this.dataSource.sort = this.sort;
     });
@@ -117,7 +117,7 @@ export class ScenesComponent implements OnInit, AfterViewInit {
     this.snackbar.open('Playing Scene...', 'Close', {
       duration: 3000
     });
-    this.scenesService.play(scene.id).subscribe(donePlaying => {
+    this.sceneService.play(scene.id).subscribe(donePlaying => {
       if (donePlaying) {
         if (this.stopped == true) {
 
@@ -137,13 +137,13 @@ export class ScenesComponent implements OnInit, AfterViewInit {
       this.play(scene);
     } else if (this.playingScene && !this.pause) {
       this.pause = true;
-      this.scenesService.pause(true);
+      this.sceneService.pause(true);
       this.snackbar.open('Paused playing Scene...', 'Close', {
         duration: 3000
       });
     } else if (this.playingScene && this.pause) {
       this.pause = false;
-      this.scenesService.pause(false);
+      this.sceneService.pause(false);
       this.snackbar.open('Resumed playing Scene...', 'Close', {
         duration: 3000
       });
@@ -152,7 +152,7 @@ export class ScenesComponent implements OnInit, AfterViewInit {
 
   stop(scene: Scene) {
     this.stopped = true;
-    this.scenesService.stopPlaying();
+    this.sceneService.stopPlaying();
     this.snackbar.open('Stopping Scene...', 'Close', {
       duration: 3000
     });
@@ -160,7 +160,7 @@ export class ScenesComponent implements OnInit, AfterViewInit {
   }
 
   delete(scene: Scene) {
-    this.scenesService.delete(scene.id);
+    this.sceneService.delete(scene.id);
     this.reloadComponent();
     this.snackbar.open('Scene deleted', 'Close', {
       duration: 3000
